@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "chio-dev"
+version = "0.1.0"
+description = "Development environment of charging infrastructure ontology"
+authors = ["Arellano Ruiz, Eugenio Salvador <eugenio.arellanoruiz@dlr.de>"]
+license = "LICENSE"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mkdocs = "^1.5.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
