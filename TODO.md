@@ -6,6 +6,7 @@ I set everything up to have a working developer documentation, this has still
 to be filled with more content.
 
 - [ ] Setup CI to render docs.
+- [ ] Consider adding documentation versioning.
 
 ## 26.02.2024
 

@@ -1,6 +1,10 @@
 site_name: CHIO developer documentation
 theme:
+  font:
+    text: Roboto
   name: material
+  icon:
+    repo: fontawesome/brands/gitlab
   palette:
     - scheme: default
       primary: deep orange
@@ -32,3 +36,10 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+
+repo_url: https://gitlab.dlr.de/ensym/lod/charging-ontology
+
+extra:
+  social:
+    - icon: fontawesome/brands/gitlab
+      link: https://gitlab.dlr.de/ensym/lod/charging-ontology
