@@ -1,7 +1,7 @@
 # Getting started
 
 Ontology development can be done with multiple approaches. In our case we do a
-method inspired by the one used by the [Open Energy Ontology
+method heavily inspired by the one used by the [Open Energy Ontology
 (OEO)](https://github.com/OpenEnergyPlatform/ontology/wiki/).
 
 ## Dependencies
@@ -63,7 +63,9 @@ Cooperative development workflows require version control software. In this
 project we rely on git. If you are not familiar with git please before you even
 think about doing changes to the ontology. There is a lot of resources out
 there, such as the [official git
-tutorial](https://git-scm.com/docs/gittutorial). Git can be installed using [the instructions in their official downloads webpage](https://git-scm.com/downloads).
+tutorial](https://git-scm.com/docs/gittutorial). Git can be installed using
+[the instructions in their official downloads
+webpage](https://git-scm.com/downloads).
 
 
 ### 5. Linux system (Optional)
@@ -138,3 +140,12 @@ At last create a merge request, and we will review your submission.
 
 ## Protégé settings
 
+Go to **File>Preferences...** and search for the **New Entities** tab and
+configure it as follows:
+
+![protege settings](images/setting_up_protege.png)
+
+!!! info "User unique ID"
+
+    Make sure that you use your unique user ID in the Prefix like CHIO_**XXXX**
+    where XXXX is your ID.
