@@ -1,0 +1,25 @@
+site_name: CHIO developer documentation
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: deep orange
+    accent: teal
+
+copyright: Copyright &copy; 2024 German Aerospace Center (DLR)
+
+nav:
+  - Home: index.md
+  - Getting started: gettingstarted.md
+  - About: about.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
