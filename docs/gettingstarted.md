@@ -81,9 +81,6 @@ of your preference using git.
 ```bash
 git clone <repository-link>
 ```
-
-## 1. Documentation
-
 Then change to the cloned directory, or open it with your favourite IDE and call
 poetry by running:
 
@@ -96,5 +93,48 @@ You can proceed to get the ROBOT dependency by calling the provided python scrip
 ```bash
 python scripts/get-robot.py
 ```
+## Become a contributor
 
-## 2. Protégé settings
+To become a contributor you have to create a new branch from dev.
+
+```bash
+git checkout -b new-contributor-<your handle>
+```
+
+Open Protégé and go to the **Active Ontology** tab, then click in the **+**
+button next to annotations:
+
+![new user](images/add_new_user.png)
+
+Pick the next consecutive number available and add your information with the
+following format:
+
+```
+(XXXX) <name> (@<handle>)
+```
+
+![new user](images/contributor_name_and_handle.png)
+
+Save the file and your changes should show in the rendered file, something like:
+
+```
+<http://purl.org/dc/elements/1.1/contributor> "(0000) Eugenio Salvador Arellano Ruiz (@arel_eu)" ,
+                                            "(0001) Contributor Name (@contributor_handle)" .
+```
+
+Add the changes with git:
+
+```bash
+git add src/chio.ttl
+```
+
+And then push making a new branch in gitlab:
+
+```bash
+git push --set-upstream origin new-contributor-<your handle>
+```
+
+At last create a merge request, and we will review your submission.
+
+## Protégé settings
+
