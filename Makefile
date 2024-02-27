@@ -10,7 +10,9 @@ OWL_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)/* -type f -name 
 OMN_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)/* -type f -name "*.omn"))
 TTL_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)/* -type f -name "*.ttl"))
 
-OEP_BASE := http:\/\/openenergy-platform\.org\/ontology\/$(ONTOLOGY_NAME)
+IRI_BASE := http:\/\/openenergy-platform\.org\/ontology\/
+IRI_ONTOLOGY := $(IRI_BASE)$(ONTOLOGY_NAME)
+SEPARATOR := \/
 
 OWL_COPY := $(OWL_FILES)
 
@@ -75,7 +77,7 @@ merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 closure: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.owl
 
 clean:
-	- $(RM) -r $(VERSIONDIR) $(ROBOT_PATH)
+	- $(RM) -r $(VERSIONDIR)
 
 directories: ${VERSIONDIR}/imports ${VERSIONDIR}/modules
 
@@ -117,7 +119,7 @@ $(VERSIONDIR)/%.ttl: $(ONTOLOGY_SOURCE)/%.ttl
 	$(call replace_devs,$@)
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl : | base
-	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml $(foreach f, $(VERSIONDIR)/$(ONTOLOGY_NAME).owl $(TTL_COPY) $(OWL_COPY), --input $(f)) annotate --ontology-iri http://openenergy-platform.org/ontology/$(ONTOLOGY_NAME)/ --output $@
+	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml $(foreach f, $(VERSIONDIR)/$(ONTOLOGY_NAME).owl $(TTL_COPY) $(OWL_COPY), --input $(f)) annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
 	$(call replace_ttls,$@)
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
@@ -125,5 +127,5 @@ $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.tt
 	$(call replace_owls,$@)
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.owl
-	$(ROBOT) reason --input $< --reasoner hermit --catalog $(VERSIONDIR)/catalog-v001.xml --axiom-generators "SubClass EquivalentClass DataPropertyCharacteristic EquivalentDataProperties SubDataProperty ClassAssertion EquivalentObjectProperty InverseObjectProperties ObjectPropertyCharacteristic SubObjectProperty ObjectPropertyRange ObjectPropertyDomain" --include-indirect true annotate --ontology-iri http://openenergy-platform.org/ontology/$(OWL_COPY)/ --output $@
-	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml --input $< --input $@ annotate --ontology-iri http://openenergy-platform.org/ontology/$(OWL_COPY)/ --output $@
+	$(ROBOT) reason --input $< --reasoner hermit --catalog $(VERSIONDIR)/catalog-v001.xml --axiom-generators "SubClass EquivalentClass DataPropertyCharacteristic EquivalentDataProperties SubDataProperty ClassAssertion EquivalentObjectProperty InverseObjectProperties ObjectPropertyCharacteristic SubObjectProperty ObjectPropertyRange ObjectPropertyDomain" --include-indirect true annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
+	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml --input $< --input $@ annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
