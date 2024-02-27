@@ -3,14 +3,14 @@ theme:
   name: material
   palette:
     - scheme: default
-      primary: blue grey
+      primary: deep orange
       accent: teal
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - scheme: slate
-      primary: blue grey
-      accent: teal
+      primary: teal
+      accent: deep orange
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
