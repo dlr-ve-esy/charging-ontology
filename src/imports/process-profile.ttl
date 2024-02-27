@@ -8,7 +8,7 @@
 
 <http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology> rdf:type owl:Ontology ;
                                                                             owl:versionIRI <http://www.ontologyrepository.com/CommonCoreOntologies/Mid/2024-02-14/EventOntology> ;
-                                                                            rdfs:comment "This class was extracted from the EventOntology because the newest BFO does not have it." .
+                                                                            rdfs:comment "This class was extracted from the EventOntology because the newest BFO does not have it. Extracted from: https://github.com/CommonCoreOntology/CommonCoreOntologies" .
 
 #################################################################
 #    Annotation properties

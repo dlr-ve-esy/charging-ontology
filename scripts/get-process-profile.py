@@ -23,23 +23,28 @@ else:
     print(f"The file {EVENT_ONTOLOGY} already exists, you are good to go.")
 # %%
 if not Path(TARGET).exists():
-    extract_call = "java -jar {jar} \
+    extract_call = 'java -jar {jar} \
 extract --input {input} \
 --method {method} \
 --lower-term {lower_term} \
 --intermediates none \
 --upper-term {upper_term} \
-annotate --annotation rdfs:comment \"{annotation}\" \
---output {output}"
+annotate --annotation rdfs:comment "{annotation}" \
+--output {output}'
 
-    annotation = "This class was extracted from the EventOntology because the newest BFO does not have it."
-    sp.call(extract_call.format(jar= Path(ROBOT_PATH).resolve().as_posix(),
-                                input=Path(EVENT_ONTOLOGY).resolve().as_posix(), 
-                                method="MIREOT", 
-                                lower_term=CLASS_IRI, 
-                                upper_term=UPPER_TERM,
-                                annotation=annotation,
-                                output=Path(TARGET).resolve().as_posix()), shell=True)
+    annotation = "This class was extracted from the EventOntology because the newest BFO does not have it. Extracted from: https://github.com/CommonCoreOntology/CommonCoreOntologies"
+    sp.call(
+        extract_call.format(
+            jar=Path(ROBOT_PATH).resolve().as_posix(),
+            input=Path(EVENT_ONTOLOGY).resolve().as_posix(),
+            method="MIREOT",
+            lower_term=CLASS_IRI,
+            upper_term=UPPER_TERM,
+            annotation=annotation,
+            output=Path(TARGET).resolve().as_posix(),
+        ),
+        shell=True,
+    )
 else:
     print(f"The file {TARGET} already exists, you are good to go.")
 # %%
