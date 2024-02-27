@@ -65,6 +65,36 @@ think about doing changes to the ontology. There is a lot of resources out
 there, such as the [official git
 tutorial](https://git-scm.com/docs/gittutorial). Git can be installed using [the instructions in their official downloads webpage](https://git-scm.com/downloads).
 
+
+### 5. Linux system (Optional)
+
+To properly compile the ontology one needs to use make which works properly
+only in Linux and macOS. If you are working from a Windows system, either
+enable the WSL or install a library like GnuWin. The compilation is not
+necessary for development, but it must be always done before the release.
+
 ## Workspace
 
-Once all the dependencies are installed 
+Once all the dependencies are installed clone the repository into a directory
+of your preference using git.
+
+```bash
+git clone <repository-link>
+```
+
+## 1. Documentation
+
+Then change to the cloned directory, or open it with your favourite IDE and call
+poetry by running:
+
+```bash
+poetry install
+```
+
+You can proceed to get the ROBOT dependency by calling the provided python script:
+
+```bash
+python scripts/get-robot.py
+```
+
+## 2. Protégé settings
