@@ -57,4 +57,14 @@ it requires setting up Clojure, and we already add many dependencies we
 postpone this. Also, the point and click pattern of Protégé, while not
 efficient is easier to introduce to non-programmers.
 
+### 4. Git
+
+Cooperative development workflows require version control software. In this
+project we rely on git. If you are not familiar with git please before you even
+think about doing changes to the ontology. There is a lot of resources out
+there, such as the [official git
+tutorial](https://git-scm.com/docs/gittutorial). Git can be installed using [the instructions in their official downloads webpage](https://git-scm.com/downloads).
+
 ## Workspace
+
+Once all the dependencies are installed 
