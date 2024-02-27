@@ -24,6 +24,7 @@ copyright: Copyright &copy; 2024 German Aerospace Center (DLR)
 nav:
   - Home: index.md
   - Getting started: gettingstarted.md
+  - Scenarios: scenarios.md
   - About: about.md
 
 markdown_extensions:
