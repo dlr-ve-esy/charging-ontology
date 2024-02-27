@@ -42,8 +42,8 @@ define replace_ttls
 endef
 
 define replace_owls
-	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)owl/\1omn/m" $1
-	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)owl/\1omn/m" $1
+	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
+	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
 endef
 
 define translate_to_owl
@@ -68,7 +68,7 @@ endef
 
 all: base merge closure
 
-base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar $(OWL_COPY) $(OMN_COPY) $(OMN_TRANSLATE)
+base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar $(OWL_COPY) $(TTL_COPY) $(TTL_TRANSLATE)
 
 merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 
@@ -85,7 +85,7 @@ ${VERSIONDIR}/imports:
 ${VERSIONDIR}/modules:
 	${MKDIR_P} ${VERSIONDIR}/modules
 
-$(VERSIONDIR)/catalog-v001.xml: src/ontology/catalog-v001.xml
+$(VERSIONDIR)/catalog-v001.xml: $(ONTOLOGY_SOURCE)/catalog-v001.xml
 	cp $< $@
 	$(call replace_devs,$@)
 	sed -i -E "s/edits\//modules\//m" $@
@@ -116,14 +116,14 @@ $(VERSIONDIR)/%.ttl: $(ONTOLOGY_SOURCE)/%.ttl
 	cp -a $< $@
 	$(call replace_devs,$@)
 
-$(VERSIONDIR)/$(ONTOLOGY_NAME)-full.owl : | base
+$(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl : | base
 	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml $(foreach f, $(VERSIONDIR)/$(ONTOLOGY_NAME).owl $(TTL_COPY) $(OWL_COPY), --input $(f)) annotate --ontology-iri http://openenergy-platform.org/ontology/$(ONTOLOGY_NAME)/ --output $@
 	$(call replace_ttls,$@)
 
-$(VERSIONDIR)/$(OWL_COPY)-full.ttl : $(VERSIONDIR)/$(OWL_COPY)-full.owl
-	$(call translate_to_omn,$@,$<)
+$(VERSIONDIR)/$(ONTOLOGY_NAME)-full.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
+	$(call translate_to_ttl,$@,$<)
 	$(call replace_owls,$@)
 
-$(VERSIONDIR)/$(OWL_COPY)-closure.owl : $(VERSIONDIR)/$(OWL_COPY)-full.owl
+$(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.owl
 	$(ROBOT) reason --input $< --reasoner hermit --catalog $(VERSIONDIR)/catalog-v001.xml --axiom-generators "SubClass EquivalentClass DataPropertyCharacteristic EquivalentDataProperties SubDataProperty ClassAssertion EquivalentObjectProperty InverseObjectProperties ObjectPropertyCharacteristic SubObjectProperty ObjectPropertyRange ObjectPropertyDomain" --include-indirect true annotate --ontology-iri http://openenergy-platform.org/ontology/$(OWL_COPY)/ --output $@
 	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml --input $< --input $@ annotate --ontology-iri http://openenergy-platform.org/ontology/$(OWL_COPY)/ --output $@
