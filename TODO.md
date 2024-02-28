@@ -5,7 +5,7 @@
 Added documentation online [in gitlab
 pages](https://ensym.pages.gitlab.dlr.de/lod/charging-ontology/). 
 
-- [] I Figured out
+- [ ] I Figured out
 I need to rethink the approach for competency questions, this
 [paper](https://doi.org/10.1016/j.websem.2019.100534) has good examples of
 competency questions and their SPARQL implementation. Maybe I can use it to
