@@ -27,7 +27,8 @@ RM=/bin/rm
 ROBOT_PATH := robot.jar
 ROBOT := java -jar $(ROBOT_PATH)
 
-
+HERMIT_PATH := hermit.jar
+HERMIT :- java -jar $(HERMIT_PATH)
 
 define replace_devs
 	sed -i -E "s/$(OEP_BASE)\/dev\/([a-zA-Z/\.\-]+)/$(OEP_BASE)\/releases\/$(VERSION)\/\1/m" $1
@@ -92,9 +93,11 @@ $(VERSIONDIR)/catalog-v001.xml: $(ONTOLOGY_SOURCE)/catalog-v001.xml
 	$(call replace_devs,$@)
 	sed -i -E "s/edits\//modules\//m" $@
 
-robot.jar: | build
+$(ROBOT_PATH): | build
 	curl -L -o $@ https://github.com/ontodev/robot/releases/download/v1.9.2/robot.jar
 
+$(HERMIT_PATH): | build
+	curl -L -o $@ https://github.com/owlcs/releases/raw/master/HermiT/org.semanticweb.hermit-packaged-1.4.6.519-SNAPSHOT.jar
 
 $(VERSIONDIR)/%.owl: $(VERSIONDIR)/%.ttl
 	$(call translate_to_owl,$@,$<)

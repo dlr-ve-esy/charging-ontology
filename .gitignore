@@ -3,3 +3,4 @@ robot.jar
 poetry.lock
 .vscode
 build/*
+hermit.jar
