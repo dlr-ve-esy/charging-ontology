@@ -58,63 +58,55 @@ such conditions are explored in other scenarios.
 
 ???+ question "Competency question 1.0"
 
-    Charging station is a type of infrastructure.
+    How many charging points has <this charging station>?
 
 ???+ question "Competency question 1.1"
 
-    A charging station has charging columns as parts that can change during its lifetime.
+    How many charging columns has <this charging station>?
 
 ???+ question "Competency question 1.2"
 
-    A charging column has charging points as parts that do not change during its lifetime.
+    Can I plug in <this plug> in <this charging station>?
 
 ???+ question "Competency question 1.3"
 
-    A charging point is compatible with some plugs.
+    Which operator operates <this charging station>?
 
 ???+ question "Competency question 1.4"
 
-    A charging station has at least one operator at any given time.
+    When was this charging station commissioned?
 
 ???+ question "Competency question 1.5"
 
-    A charging station has comissioning and decomissioning dates which delimit its lifetime.
+    How much power can <this charging station> pull from the electrical grid it is connected to?
 
 ???+ question "Competency question 1.6"
 
-    A charging station has a maximum amount of power it can pull from an electric grid.
+    At which rate can <this charging station> charge <this vehicle>?
 
 ???+ question "Competency question 1.7"
 
-    A charging point has a maximum amount of power it can supply to a battery.
+    How many cars can <this charging station> supply at any given time?
 
 ???+ question "Competency question 1.8"
 
-    A charging point can supply one car at a time.
+    In which current system does <this charging point> operates?
 
 ???+ question "Competency question 1.9"
 
-    A charging point can operate with some current system.
+    What is the number of charging stations located at <this region>?
 
 ???+ question "Competency question 1.10"
 
-    A charging station is located in some site
+    How many charging columns are availible at <this address>?
 
 ???+ question "Competency question 1.11"
 
-    A site can be associated with some address
+    What are the coordinates of <this station>?
 
 ???+ question "Competency question 1.12"
 
-    A site can be associated with some geograpical feature.
-
-???+ question "Competency question 1.13"
-
-    A charging station has parking places as parts.
-
-???+ question "Competency question 1.14"
-
-    A charging station has a maximum vehicle capacity.
+    How many parking places does <this charging station> have?
 
 ## Scenario 2 - My awesome scenario
 
