@@ -1,5 +1,7 @@
 # Charging infrastructure ontology
 
+[Pages](https://ensym.pages.gitlab.dlr.de/lod/charging-ontology/)
+
 This is a bfo-based charging infrastructure ontology, intended as a tool for
 the demonstration of the "Ontology first data-model design" methodology part of
 the doctor thesis of [Eugenio Arellano](https://orcid.org/0000-0003-2508-3976). 
