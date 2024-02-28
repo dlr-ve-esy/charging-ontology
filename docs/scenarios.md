@@ -58,55 +58,55 @@ such conditions are explored in other scenarios.
 
 ???+ question "Competency question 1.0"
 
-    How many charging points has <this charging station>?
+    How many charging points has {this charging station}?
 
 ???+ question "Competency question 1.1"
 
-    How many charging columns has <this charging station>?
+    How many charging columns has {this charging station}?
 
 ???+ question "Competency question 1.2"
 
-    Can I plug in <this plug> in <this charging station>?
+    Can I plug in {this plug} in {this charging station}?
 
 ???+ question "Competency question 1.3"
 
-    Which operator operates <this charging station>?
+    Which operator operates {this charging station}?
 
 ???+ question "Competency question 1.4"
 
-    When was this charging station commissioned?
+    When was {this charging} station commissioned?
 
 ???+ question "Competency question 1.5"
 
-    How much power can <this charging station> pull from the electrical grid it is connected to?
+    How much power can {this charging station} pull from the electrical grid it is connected to?
 
 ???+ question "Competency question 1.6"
 
-    At which rate can <this charging station> charge <this vehicle>?
+    At which rate can {this charging station} charge {this vehicle}?
 
 ???+ question "Competency question 1.7"
 
-    How many cars can <this charging station> supply at any given time?
+    How many cars can {this charging station} supply at any given time?
 
 ???+ question "Competency question 1.8"
 
-    In which current system does <this charging point> operates?
+    In which current system does {this charging point} operates?
 
 ???+ question "Competency question 1.9"
 
-    What is the number of charging stations located at <this region>?
+    What is the number of charging stations located at {this region}?
 
 ???+ question "Competency question 1.10"
 
-    How many charging columns are availible at <this address>?
+    How many charging columns are availible at {this address}?
 
 ???+ question "Competency question 1.11"
 
-    What are the coordinates of <this station>?
+    What are the coordinates of {this station}?
 
 ???+ question "Competency question 1.12"
 
-    How many parking places does <this charging station> have?
+    How many parking places does {this charging station} have?
 
 ## Scenario 2 - My awesome scenario
 
