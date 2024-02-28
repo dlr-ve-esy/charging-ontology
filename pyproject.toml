@@ -12,6 +12,7 @@ python = "^3.10"
 mkdocs = "^1.5.3"
 mkdocs-material = "^9.5.11"
 ipykernel = "^6.29.3"
+pytest = "^8.0.2"
 
 
 [build-system]
