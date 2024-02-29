@@ -149,3 +149,8 @@ configure it as follows:
 
     Make sure that you use your unique user ID in the Prefix like CHIO_**XXXX**
     where XXXX is your ID.
+
+!!! info "The 1000th user"
+
+    I do not really expect the number of users to get that high but just in case,
+    the number 1000 is reserved for identifiers renamed automatically with scripts
