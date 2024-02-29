@@ -1,5 +1,14 @@
 # TODO and development roadmap
 
+## 29.02.2024
+
+Imported some concepts from the Common Core Ontologies. This might need an
+extra step of replacing the iris when releasing. Also assigned them with
+identifiers specific to the current ontology, so they are easily recognizable.
+
+- [ ] Currently the CCO imports cause a duplication of some BFO classes axioms.
+  I have to figure out how to make this leaner.
+
 ## 28.02.2024
 
 Added documentation online [in gitlab
@@ -25,8 +34,8 @@ This ontology project is a small practical application intended for
 demonstration of the concepts explored in one of my publications. This should
 serve as practice for ontology development. Initial setup requirements:
 
-- [x] Set documentation environment up using [mkdocs](https://www.mkdocs.org/)~~, and probably the [gitbook theme](https://gitlab.com/lramage/mkdocs-gitbook-theme)~~.
-- [ ] Setup of the testing framework using competency questions.
+- [X] Set documentation environment up using [mkdocs](https://www.mkdocs.org/)~~, and probably the [gitbook theme](https://gitlab.com/lramage/mkdocs-gitbook-theme)~~.
+- [X] Setup of the testing framework using competency questions.
 - [ ] Write down the use case scenarios (these are also going in the paper).
 - [X] Decide in a proper name (CHIO?)
 - [X] Decide on the ontology term conventions, maybe use identifiers with the following form "CHIO_XXXXXXXX"

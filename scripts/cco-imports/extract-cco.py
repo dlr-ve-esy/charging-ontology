@@ -35,7 +35,7 @@ merge --input {input} extract \
 annotate --annotation rdfs:comment "{annotation}" \
 --output {output}'
 
-    annotation = "This class was extracted from the EventOntology because the newest BFO does not have it. Extracted from: https://github.com/CommonCoreOntology/CommonCoreOntologies"
+    annotation = "These axioms were extracted from the common core ontology: https://github.com/CommonCoreOntology/CommonCoreOntologies"
     sp.call(
         extract_call.format(
             jar=Path(ROBOT_PATH).resolve().as_posix(),
