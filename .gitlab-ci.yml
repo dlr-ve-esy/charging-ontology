@@ -10,8 +10,14 @@ before_script:
   - source ${POETRY_ENV}/bin/activate
 
 test:
+  stage: test
   script:
-    - pytest -vv
+    - mkdocs build --strict --verbose --site-dir test
+  artifacts:
+    paths:
+      - test
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
 
 pages:
   stage: deploy

@@ -2,14 +2,12 @@ from glob import glob
 import subprocess as sp
 from pathlib import Path
 import os
-import shutil
 
 CWD = os.getcwd()
 with open(Path(CWD).joinpath("VERSION").as_posix()) as version_file:
     __version__ = version_file.readlines()[0].strip()
 
 ROBOT_JAR = Path(CWD).joinpath("robot.jar").as_posix()
-JAVA_PATH = Path(shutil.which("java"))
 CATALOG_PATH = Path(CWD).joinpath("src/catalog-v001.xml")
 ONTOLOGY_PATH = Path(CWD).joinpath("src").joinpath("chio.ttl").as_posix()
 COMPETENCY_QUESTION_DIRECTORY = Path(CWD).joinpath("tests/cqs")
