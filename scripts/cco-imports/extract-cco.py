@@ -50,4 +50,39 @@ annotate --annotation rdfs:comment "{annotation}" \
     )
 else:
     print(f"The file {TARGET} already exists, you are good to go.")
+
+# %% [markdown]
+# A bunch of renames.
+# %%
+if Path(TARGET).exists():
+    rename_call = "java -jar {jar} \
+rename --input {input} \
+--mappings {mappings} \
+--output {output}"
+
+    sp.call(
+        rename_call.format(
+            jar=Path(ROBOT_PATH).resolve().as_posix(),
+            input=Path(TARGET).resolve().as_posix(),
+            mappings=Path("definition-mapping.tsv").resolve().as_posix(),
+            output=Path(TARGET).resolve().as_posix(),
+        ),
+        shell=True,
+    )
+# %%
+rename_mappings_call = "java -jar {jar} \
+rename --input {input} \
+--prefix-mappings {prefix_map} \
+--allow-missing-entities true \
+--output {output}"
+sp.call(
+    rename_mappings_call.format(
+        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        input=Path(TARGET).resolve().as_posix(),
+        prefix_map=Path("prefix-mappings.tsv").resolve().as_posix(),
+        output=Path(TARGET).resolve().as_posix(),
+    ),
+    shell=True,
+)
+
 # %%
