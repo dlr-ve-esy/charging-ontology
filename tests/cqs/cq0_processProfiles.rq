@@ -1,0 +1,14 @@
+# Test question
+# Can a process have a process profile as parts?
+
+
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix obo: <http://purl.obolibrary.org/obo/>
+prefix : <http://openenergy-platform.org/ontology/chio/>
+
+ask
+where
+{
+obo:BFO_0000144 rdfs:subClassOf obo:BFO_0000015 .
+}
