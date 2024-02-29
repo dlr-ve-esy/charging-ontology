@@ -1,0 +1,136 @@
+@prefix : <http://www.ontologyrepository.com/CommonCoreOntologies/Mid/MergedAllCoreOntology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.ontologyrepository.com/CommonCoreOntologies/Mid/MergedAllCoreOntology> .
+
+<http://www.ontologyrepository.com/CommonCoreOntologies/Mid/MergedAllCoreOntology> rdf:type owl:Ontology ;
+                                                                                    owl:versionIRI <http://www.ontologyrepository.com/CommonCoreOntologies/Mid/2024-02-14/MergedAllCoreOntology> ;
+                                                                                    rdfs:comment "This class was extracted from the EventOntology because the newest BFO does not have it. Extracted from: https://github.com/CommonCoreOntology/CommonCoreOntologies" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/identifier
+<http://purl.org/dc/elements/1.1/identifier> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/definition
+<http://www.ontologyrepository.com/CommonCoreOntologies/definition> rdf:type owl:AnnotationProperty ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A natural language explication of the meaning of the term."@en ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ExtendedRelationOntology"^^xsd:anyURI ;
+                                                                    rdfs:label "definition"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/elucidation
+<http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> rdf:type owl:AnnotationProperty ;
+                                                                     <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A clarification or further explanation of a term beyond what is included in the Definition or which is used when the term is primitive such that no non-circular definition can be given for it."@en ;
+                                                                     <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ExtendedRelationOntology"^^xsd:anyURI ;
+                                                                     rdfs:label "elucidation"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage
+<http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> rdf:type owl:AnnotationProperty ;
+                                                                          <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A phrase, sentence or set of terms intended to convey the conventional usage of the term."@en ;
+                                                                          <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ExtendedRelationOntology"^^xsd:anyURI ;
+                                                                          rdfs:label "example of usage"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology
+<http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> rdf:type owl:AnnotationProperty ;
+                                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "An annotation property that links a class, property, or named individual to the URI of the ontology where it is located."@en ;
+                                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ExtendedRelationOntology"^^xsd:anyURI ;
+                                                                                rdfs:label "is curated in ontology"@en .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+<http://www.w3.org/2004/02/skos/core#example> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.obolibrary.org/obo/BFO_0000001
+<http://purl.obolibrary.org/obo/BFO_0000001> rdf:type owl:Class ;
+                                             rdfs:subClassOf owl:Thing ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "001-BFO" ;
+                                             rdfs:label "entity"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "(Elucidation) An entity is anything that exists or has existed or will exist"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "Julius Caesar; the Second World War; your body mass index; Verdi's Requiem"@en .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000002
+<http://purl.obolibrary.org/obo/BFO_0000002> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000001> ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "008-BFO" ;
+                                             rdfs:label "continuant"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "(Elucidation) A continuant is an entity that persists, endures, or continues to exist through time while maintaining its identity"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "A human being; a tennis ball; a cave; a region of space; someone's temperature"@en .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000003
+<http://purl.obolibrary.org/obo/BFO_0000003> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000001> ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "077-BFO" ;
+                                             rdfs:label "occurrent"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "(Elucidation) An occurrent is an entity that unfolds itself in time or it is the start or end of such an entity or it is a temporal or spatiotemporal region"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "As for process, history, process boundary, spatiotemporal region, zero-dimensional temporal region, one-dimensional temporal region, temporal interval, temporal instant."@en .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000004
+<http://purl.obolibrary.org/obo/BFO_0000004> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000002> ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "017-BFO" ;
+                                             rdfs:label "independent continuant"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "b is an independent continuant =Def b is a continuant & there is no c such that b specifically depends on c or b generically depends on c"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "An atom; a molecule; an organism; a heart; a chair; the bottom right portion of a human torso; a leg; the interior of your mouth; a spatial region; an orchestra"@en .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000040
+<http://purl.obolibrary.org/obo/BFO_0000040> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000004> ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "019-BFO" ;
+                                             rdfs:label "material entity"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "(Elucidation) A material entity is an independent continuant has some portion of matter as continuant part"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "A human being; the undetached arm of a human being; an aggregate of human beings"@en .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000144
+<http://purl.obolibrary.org/obo/BFO_0000144> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000003> ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "An occurrent that is an occurrent part of some process by virtue of the rate, or pattern, or amplitude of change in an attribute of one or more participants of said process."@en ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> "b process_profile_of c holds when b proper_occurrent_part_of c& there is some proper_occurrent_part d of c which has no parts in common with b & is mutually dependent on b& is such that b, c and d occupy the same temporal region (axiom label in BFO2 Reference: [094-005])"@en ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> "On a somewhat higher level of complexity are what we shall call rate process profiles, which are the targets of selective abstraction focused not on determinate quality magnitudes plotted over time, but rather on certain ratios between these magnitudes and elapsed times. A speed process profile, for example, is represented by a graph plotting against time the ratio of distance covered per unit of time. Since rates may change, and since such changes, too, may have rates of change, we have to deal here with a hierarchy of process profile universals at successive levels; One important sub-family of rate process profiles is illustrated by the beat or frequency profiles of cyclical processes, illustrated by the 60 beats per minute beating process of John’s heart, or the 120 beats per minute drumming process involved in one of John’s performances in a rock band, and so on. Each such process includes what we shall call a beat process profile instance as part, a subtype of rate process profile in which the salient ratio is not distance covered but rather number of beat cycles per unit of time. Each beat process profile instance instantiates the determinable universal beat process profile. But it also instantiates multiple more specialized universals at lower levels of generality, selected from rate process profilebeat process profileregular beat process profile3 bpm beat process profile4 bpm beat process profileirregular beat process profileincreasing beat process profileand so on.In the case of a regular beat process profile, a rate can be assigned in the simplest possible fashion by dividing the number of cycles by the length of the temporal region occupied by the beating process profile as a whole. Irregular process profiles of this sort, for example as identified in the clinic, or in the readings on an aircraft instrument panel, are often of diagnostic significance.; The simplest type of process profiles are what we shall call ‘quality process profiles’, which are the process profiles which serve as the foci of the sort of selective abstraction that is involved when measurements are made of changes in single qualities, as illustrated, for example, by process profiles of mass, temperature, aortic pressure, and so on."@en ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
+                                             rdfs:label "Process Profile"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/Artifact
+<http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
+                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Entity that was designed by some Agent to realize a certain Function."@en ;
+                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
+                                                                  rdfs:label "Material Artifact"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/Facility
+<http://www.ontologyrepository.com/CommonCoreOntologies/Facility> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> ;
+                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Artifact that is designed as a building or campus dedicated to some specific purpose."@en ;
+                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
+                                                                  rdfs:label "Facility"@en .
+
+
+###  Generated by the OWL API (version 4.5.26) https://github.com/owlcs/owlapi

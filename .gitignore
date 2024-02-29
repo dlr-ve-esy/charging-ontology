@@ -1,5 +1,5 @@
 robot.jar
-*/tmp/*
+**/tmp/*
 poetry.lock
 .vscode
 build/*

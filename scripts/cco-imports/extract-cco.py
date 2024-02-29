@@ -3,32 +3,35 @@ import requests
 import subprocess as sp
 from pathlib import Path
 
-CCO_COMMIT = "a9e8c72eda3e01acbfca3eaaa837b7385d853c8a"
-ONTOLOGY_BASE = "https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/{}/EventOntology.ttl"
-UPPER_TERM = "http://purl.obolibrary.org/obo/BFO_0000015"
+# NOTE: Versioning in CCO is confusing, is very tricky to import the latest
+# released version, that is why we have to bind it to a commit
+COMMIT = "a99731c59859047e84253d15f8eba438b0aa71da"
+NAME = "MergedAllCoreOntology-v1.5-2024-02-14.ttl"
+ONTOLOGY_BASE = f"https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/{COMMIT}/cco-merged/{NAME}"
+UPPER_TERM = "http://purl.obolibrary.org/obo/BFO_0000003"
 CLASS_IRI = "http://purl.obolibrary.org/obo/BFO_0000144"
-
+TERM_FILE = "cco-w-hierarchy.txt"
 # Change these paths according to your setup.
-ROBOT_PATH = "../robot.jar"
-EVENT_ONTOLOGY = "tmp/EventOntology.ttl"
-TARGET = "../src/imports/process-profile.ttl"
+ROBOT_PATH = "../../robot.jar"
+CCO = "tmp/MergedAllCoreOntology.ttl"
+TARGET = "../../src/imports/cco-extracted.ttl"
 Path("tmp").mkdir(exist_ok=True)
 # %%
-if not Path(EVENT_ONTOLOGY).exists():
-    with open(EVENT_ONTOLOGY, "wb") as local:
-        response = requests.get(ONTOLOGY_BASE.format(CCO_COMMIT))
+if not Path(CCO).exists():
+    with open(CCO, "wb") as local:
+        response = requests.get(ONTOLOGY_BASE)
         if response.status_code == 200:
             local.write(response.content)
 else:
-    print(f"The file {EVENT_ONTOLOGY} already exists, you are good to go.")
+    print(f"The file {CCO} already exists, you are good to go.")
 # %%
 if not Path(TARGET).exists():
     extract_call = 'java -jar {jar} \
-extract --input {input} \
+merge --input {input} extract \
 --method {method} \
---lower-term {lower_term} \
---intermediates none \
---upper-term {upper_term} \
+--lower-terms {term_file} \
+--intermediates all \
+--upper-term owl:Class \
 annotate --annotation rdfs:comment "{annotation}" \
 --output {output}'
 
@@ -36,9 +39,9 @@ annotate --annotation rdfs:comment "{annotation}" \
     sp.call(
         extract_call.format(
             jar=Path(ROBOT_PATH).resolve().as_posix(),
-            input=Path(EVENT_ONTOLOGY).resolve().as_posix(),
+            input=Path(CCO).resolve().as_posix(),
             method="MIREOT",
-            lower_term=CLASS_IRI,
+            term_file=TERM_FILE,
             upper_term=UPPER_TERM,
             annotation=annotation,
             output=Path(TARGET).resolve().as_posix(),
