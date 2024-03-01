@@ -10,5 +10,5 @@ prefix : <http://openenergy-platform.org/ontology/chio/>
 ask
 where
 {
-obo:BFO_0000144 rdfs:subClassOf obo:BFO_0000015 .
+obo:BFO_0000144 rdfs:subClassOf obo:BFO_0000003 .
 }
