@@ -10,6 +10,10 @@ NAME = "MergedAllCoreOntology-v1.5-2024-02-14.ttl"
 ONTOLOGY_BASE = f"https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/{COMMIT}/cco-merged/{NAME}"
 UPPER_TERM = "http://purl.obolibrary.org/obo/BFO_0000003"
 CLASS_IRI = "http://purl.obolibrary.org/obo/BFO_0000144"
+NEW_IRI = "http://openenergy-platform.org/ontology/chio/imports/cco-extracted.ttl"
+VERSION_IRI = (
+    "http://openenergy-platform.org/ontology/chio/dev/imports/cco-extracted.ttl"
+)
 TERM_FILE = "cco-w-hierarchy.txt"
 # Change these paths according to your setup.
 ROBOT_PATH = "../../robot.jar"
@@ -85,4 +89,20 @@ sp.call(
     shell=True,
 )
 
+# %%
+annotate_call = "java -jar {jar} \
+annotate --input {input} \
+--ontology-iri {ontology_iri} \
+--version-iri {version_iri} \
+--output {output}"
+sp.call(
+    annotate_call.format(
+        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        input=Path(TARGET).resolve().as_posix(),
+        ontology_iri=NEW_IRI,
+        version_iri=VERSION_IRI,
+        output=Path(TARGET).resolve().as_posix(),
+    ),
+    shell=True,
+)
 # %%

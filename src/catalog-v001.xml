@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="Imports Wizard Entry" name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/2024-02-14/MergedAllCoreOntology" uri="imports/cco-extracted.ttl"/>
+<catalog prefer="public"
+    xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl" uri="imports/bfo-core.ttl"/>
-    <uri id="Imports Wizard Entry" name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/MergedAllCoreOntology" uri="imports/cco-extracted.ttl"/>
+    <uri id="Imports Wizard Entry" name="http://openenergy-platform.org/ontology/chio/dev/imports/cco-extracted.ttl" uri="imports/cco-extracted.ttl"/>
+    <uri id="Imports Wizard Entry" name="http://openenergy-platform.org/ontology/chio/dev/chio-core.ttl" uri="edits/chio-core.ttl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
 </catalog>
