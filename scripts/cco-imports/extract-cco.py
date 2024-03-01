@@ -5,15 +5,18 @@ from pathlib import Path
 
 # NOTE: Versioning in CCO is confusing, is very tricky to import the latest
 # released version, that is why we have to bind it to a commit
+
+BASE_IRI = "http://openenergy-platform.org/ontology"
 COMMIT = "a99731c59859047e84253d15f8eba438b0aa71da"
 NAME = "MergedAllCoreOntology-v1.5-2024-02-14.ttl"
-ONTOLOGY_BASE = f"https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/{COMMIT}/cco-merged/{NAME}"
+ONTOLOGY_BASE = (
+    "https://raw.githubusercontent.com/CommonCoreOntology/"
+    f"CommonCoreOntologies/{COMMIT}/cco-merged/{NAME}"
+)
 UPPER_TERM = "http://purl.obolibrary.org/obo/BFO_0000003"
 CLASS_IRI = "http://purl.obolibrary.org/obo/BFO_0000144"
-NEW_IRI = "http://openenergy-platform.org/ontology/chio/imports/cco-extracted.ttl"
-VERSION_IRI = (
-    "http://openenergy-platform.org/ontology/chio/dev/imports/cco-extracted.ttl"
-)
+NEW_IRI = f"{BASE_IRI}/chio/imports/cco-extracted.ttl"
+VERSION_IRI = f"{BASE_IRI}/chio/dev/imports/cco-extracted.ttl"
 TERM_FILE = "cco-w-hierarchy.txt"
 # Change these paths according to your setup.
 ROBOT_PATH = "../../robot.jar"
@@ -39,7 +42,10 @@ merge --input {input} extract \
 annotate --annotation rdfs:comment "{annotation}" \
 --output {output}'
 
-    annotation = "These axioms were extracted from the common core ontology: https://github.com/CommonCoreOntology/CommonCoreOntologies"
+    annotation = (
+        "These axioms were extracted from the common core ontology:"
+        " https://github.com/CommonCoreOntology/CommonCoreOntologies"
+    )
     sp.call(
         extract_call.format(
             jar=Path(ROBOT_PATH).resolve().as_posix(),
