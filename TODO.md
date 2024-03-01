@@ -1,5 +1,16 @@
 # TODO and development roadmap
 
+## 01.03.2024
+
+Implemented the imports from CCO and the IAO (used the imports from OEO), I had
+to manually add the sub-class relation between the information entities and
+BFO. Realized that there are numerous classes from CCO that can be valuable for
+this ontology. 
+
+ - [ ] I should implement a script that automatically extracts and collects
+   subclasses of `change`, `GeographicalLocations` and others.
+ - [ ] I should add correct attribution to the imported modules.
+
 ## 29.02.2024
 
 Imported some concepts from the Common Core Ontologies. This might need an
