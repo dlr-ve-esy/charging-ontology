@@ -4,7 +4,5 @@
     <uri id="Imports Wizard Entry" name="http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/iao-extracted.owl" uri="imports/iao-extracted.ttl"/>
     <uri id="Imports Wizard Entry" name="http://openenergy-platform.org/ontology/chio/dev/imports/cco-extracted.ttl" uri="imports/cco-extracted.ttl"/>
     <uri id="Imports Wizard Entry" name="http://openenergy-platform.org/ontology/chio/dev/chio-core.ttl" uri="edits/chio-core.ttl"/>
-    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1709296195528" name="http://openenergy-platform.org/ontology/oeo/imports/iao-extracted.owl" uri="imports/iao-extracted.ttl"/>
-    </group>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
 </catalog>

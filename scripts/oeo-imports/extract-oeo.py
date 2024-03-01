@@ -29,3 +29,35 @@ if not Path(IAO).exists():
             local.write(response.content)
 else:
     print(f"The file {IAO} already exists, you are good to go.")
+# %% [markdown]
+# Acquire the OEO Physical modules.
+# %%
+OEO_PHYSICAL_TEMP = "tmp/oeo-physical.omn"
+if not Path(OEO_PHYSICAL_TEMP).exists():
+    with open(OEO_PHYSICAL_TEMP, "wb") as local:
+        response = requests.get(ONTOLOGY_BASE.format(VERSION, "oeo-physical.omn"))
+        if response.status_code == 200:
+            local.write(response.content)
+else:
+    print(f"The file {OEO_PHYSICAL_TEMP} already exists, you are good to go.")
+# %%
+IAO_DROPPED = "iao-dropped.txt"
+if Path(IAO).exists():
+    extract_call = 'java -jar {jar} \
+remove --input {input}  \
+--term-file {term_file} \
+--select "self" \
+--exclude-term http://purl.obolibrary.org/obo/BFO_0000031 \
+--output {output}'
+
+    sp.call(
+        extract_call.format(
+            jar=Path(ROBOT_PATH).resolve().as_posix(),
+            input=Path(IAO).resolve().as_posix(),
+            term_file=IAO_DROPPED,
+            output=Path(IAO).resolve().as_posix(),
+        ),
+        shell=True,
+    )
+
+# %%
