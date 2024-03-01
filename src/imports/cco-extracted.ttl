@@ -55,6 +55,31 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_1000003
+<http://openenergy-platform.org/ontology/chio/CHIO_1000003> rdf:type owl:ObjectProperty ;
+                                                            rdfs:subPropertyOf <http://purl.obolibrary.org/obo/BFO_0000132> ;
+                                                            <http://openenergy-platform.org/ontology/chio/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ExtendedRelationOntology"^^xsd:anyURI ;
+                                                            rdfs:label "is part of process"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "x is_part_of_process y iff x and y are instances of Process, such that x occurs during the temporal interval of y, and x either provides an input to y or receives an output of y."@en .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000132
+<http://purl.obolibrary.org/obo/BFO_0000132> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf owl:topObjectProperty ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "003-BFO" ;
+                                             rdfs:label "occurrent part of"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "(Elucidation) occurrent part of is a relation between occurrents b and c when b is part of c"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "Mary's 5th birthday is an occurrent part of Mary's life; the first set of the tennis match is an occurrent part of the tennis match"@en .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdf:type owl:ObjectProperty .
+
+
+#################################################################
 #    Classes
 #################################################################
 

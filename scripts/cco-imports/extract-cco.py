@@ -38,7 +38,6 @@ merge --input {input} extract \
 --method {method} \
 --lower-terms {term_file} \
 --intermediates all \
---upper-term owl:Class \
 annotate --annotation rdfs:comment "{annotation}" \
 --output {output}'
 

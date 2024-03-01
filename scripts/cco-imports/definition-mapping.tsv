@@ -2,3 +2,4 @@ Old IRI	New IRI
 http://www.ontologyrepository.com/CommonCoreOntologies/definition	http://www.w3.org/2004/02/skos/core#definition
 http://www.ontologyrepository.com/CommonCoreOntologies/Facility	http://openenergy-platform.org/ontology/chio/CHIO_1000001
 http://www.ontologyrepository.com/CommonCoreOntologies/Artifact	http://openenergy-platform.org/ontology/chio/CHIO_1000002
+http://www.ontologyrepository.com/CommonCoreOntologies/is_part_of_process	http://openenergy-platform.org/ontology/chio/CHIO_1000003
