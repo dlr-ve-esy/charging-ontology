@@ -19,6 +19,66 @@ IAO = "../../src/imports/iao-extracted.ttl"
 TARGET = "../../src/imports/cco-extracted.ttl"
 Path("tmp").mkdir(exist_ok=True)
 # %%
+
+
+def download_ontology_if_missing(ONTOLOGY):
+    """Helper function to download raw ontologies in a temporary folder.
+
+    Args:
+        ONTOLOGY (str): Name of the CCO module to be downloaded.
+    """
+    temporary_path = Path("tmp").joinpath(f"{ONTOLOGY}.ttl")
+    if not Path(temporary_path).exists():
+        with open(temporary_path, "wb") as local:
+            response = requests.get(ONTOLOGY_BASE.format(VERSION, ONTOLOGY))
+            if response.status_code == 200:
+                local.write(response.content)
+    else:
+        print(f"The file {temporary_path} already exists, you are good to go.")
+    return temporary_path
+
+
+# %%
+def extract_mireot(
+    input: str,
+    output: str,
+    lower_terms: str,
+    intermediates="all",
+    upper_term: str = "owl:Thing",
+):
+    """Call robot to do a MIREOT extraction"""
+    extract_call = (
+        "java -jar {jar} extract "
+        "--input {input} "
+        "--method MIREOT "
+        "--upper-term {upper_term} "
+        "--lower-terms {lower_terms} "
+        "--intermediates {intermediates} "
+        "--output {output}"
+    )
+    with open(Path("tmp").joinpath("temp.txt"), "w") as fp:
+        for term in lower_terms:
+            fp.write(term + "\n")
+    debug_string = extract_call.format(
+        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        input=Path(input).resolve().as_posix(),
+        lower_terms=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        upper_term=upper_term,
+        intermediates=intermediates,
+        output=Path(output).resolve().as_posix(),
+    )
+    code = sp.call(
+        debug_string,
+        shell=True,
+    )
+    if code != 0:
+        print(debug_string)
+        raise IOError(f"Something went wrong with call: {debug_string}")
+    return code
+
+
+
+# %%
 # Get IAO imports
 if not Path(IAO).exists():
     with open(IAO, "wb") as local:

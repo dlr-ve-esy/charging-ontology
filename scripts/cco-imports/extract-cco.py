@@ -31,7 +31,7 @@ def download_ontology_if_missing(ONTOLOGY):
     """Helper function to download raw ontologies in a temporary folder.
 
     Args:
-        ONTOLOGY (_type_): _description_
+        ONTOLOGY (str): Name of the CCO module to be downloaded.
     """
     temporary_path = Path("tmp").joinpath(f"{ONTOLOGY}.ttl")
     if not Path(temporary_path).exists():
@@ -45,13 +45,14 @@ def download_ontology_if_missing(ONTOLOGY):
 
 
 # %%
-def extract_mierot(
+def extract_mireot(
     input: str,
     output: str,
     lower_terms: str,
     intermediates="all",
     upper_term: str = "owl:Thing",
 ):
+    """Call robot to do a MIREOT extraction"""
     extract_call = (
         "java -jar {jar} extract "
         "--input {input} "
@@ -97,7 +98,7 @@ if not Path("tmp").joinpath("eo_stasis.ttl").exists():
         "http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfFunction",
         "http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRole",
     ]
-    extract_mierot(
+    extract_mireot(
         input=event_ontology,
         output=Path("tmp").joinpath("eo_stasis.ttl"),
         lower_terms=lower_terms,
@@ -110,14 +111,14 @@ if not Path("tmp").joinpath("eo_process_profiles.ttl").exists():
     lower_terms = [
         "http://www.ontologyrepository.com/CommonCoreOntologies/MaximumPower"
     ]
-    extract_mierot(
+    extract_mireot(
         input=event_ontology,
         output=Path("tmp").joinpath("eo_process_profiles.ttl"),
         lower_terms=lower_terms,
         upper_term=upper_term,
     )
 # %% [markdown]
-# ## Exrract vehicle classes
+# ## Extract vehicle classes
 # These axioms are very close to the ones from the OEO. I have to do some
 # adjustments to ensure compatibility.
 # Vehicle taxonomy from CCO
@@ -131,7 +132,21 @@ if not Path("tmp").joinpath("eo_artifacts.ttl").exists():
         "http://www.ontologyrepository.com/CommonCoreOntologies/CompressionIgnitionEngine",
         "http://www.ontologyrepository.com/CommonCoreOntologies/SparkIgnitionEngine",
     ]
-    extract_mierot(
+    extract_mireot(
+        input=artifact_ontology,
+        output=Path("tmp").joinpath("eo_artifacts.ttl"),
+        lower_terms=lower_terms,
+        upper_term=upper_term,
+    )
+# %%
+if not Path("tmp").joinpath("eo_artifacts.ttl").exists():
+    upper_term = "http://purl.obolibrary.org/obo/BFO_0000040"
+    lower_terms = [
+        "http://www.ontologyrepository.com/CommonCoreOntologies/ElectricMotor",
+        "http://www.ontologyrepository.com/CommonCoreOntologies/CompressionIgnitionEngine",
+        "http://www.ontologyrepository.com/CommonCoreOntologies/SparkIgnitionEngine",
+    ]
+    extract_mireot(
         input=artifact_ontology,
         output=Path("tmp").joinpath("eo_artifacts.ttl"),
         lower_terms=lower_terms,
