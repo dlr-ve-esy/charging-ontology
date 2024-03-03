@@ -27,7 +27,8 @@ def download_ontology_if_missing(ONTOLOGY):
     Args:
         ONTOLOGY (str): Name of the CCO module to be downloaded.
     """
-    temporary_path = Path("tmp").joinpath(f"{ONTOLOGY}.ttl")
+    temporary_path = Path("tmp").joinpath(f"{ONTOLOGY}")
+    Path("tmp").joinpath(f"{ONTOLOGY}").parent.mkdir(exist_ok=True)
     if not Path(temporary_path).exists():
         with open(temporary_path, "wb") as local:
             response = requests.get(ONTOLOGY_BASE.format(VERSION, ONTOLOGY))
@@ -77,7 +78,105 @@ def extract_mireot(
     return code
 
 
+# %%
+def extract_star(
+    input: str,
+    output: str,
+    terms: str
+):
+    """Call robot to do a subset extraction"""
+    extract_call = (
+        "java -jar {jar} extract "
+        "--input {input} "
+        "--method STAR "
+        "--term-file {term_file} "
+        "--imports exclude "
+        # "filter --term-file {term_file_filter} " 
+        # "--select \"annotations self equivalents object-properties\" "
+        "--output {output}"
+    )
+    with open(Path("tmp").joinpath("temp.txt"), "w") as fp:
+        for term in terms:
+            fp.write(term + "\n")
+    debug_string = extract_call.format(
+        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        input=Path(input).resolve().as_posix(),
+        term_file=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        # term_file_filter=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        output=Path(output).resolve().as_posix(),
+    )
+    code = sp.call(
+        debug_string,
+        shell=True,
+    )
+    if code != 0:
+        print(debug_string)
+        raise IOError(f"Something went wrong with call: {debug_string}")
+    return code
+# %%
 
+def extract_subset(
+    input: str,
+    output: str,
+    terms: str
+):
+    """Call robot to do a subset extraction"""
+    extract_call = (
+        "java -jar {jar} extract "
+        "--input {input} "
+        "--method subset "
+        "--term-file {term_file} "
+        "--imports exclude "
+        # "filter --term-file {term_file_filter} " 
+        # "--select \"annotations self equivalents object-properties\" "
+        "--output {output}"
+    )
+    with open(Path("tmp").joinpath("temp.txt"), "w") as fp:
+        for term in terms:
+            fp.write(term + "\n")
+    debug_string = extract_call.format(
+        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        input=Path(input).resolve().as_posix(),
+        term_file=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        # term_file_filter=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        output=Path(output).resolve().as_posix(),
+    )
+    code = sp.call(
+        debug_string,
+        shell=True,
+    )
+    if code != 0:
+        print(debug_string)
+        raise IOError(f"Something went wrong with call: {debug_string}")
+    return code
+# %% [markdown]
+## OEO Vehicle axioms
+# The main axioms of electric vehicle are extracted from OEO, whereas the 
+# vehicle taxonomy comes from the CCO.
+# %%
+oeo_physical = download_ontology_if_missing("imports/oeo-physical.omn")
+terms = ["http://openenergy-platform.org/ontology/oeo/OEO_00010024",
+         "http://purl.obolibrary.org/obo/BFO_0000051",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00010026",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00000146",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00010028",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00010027",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00000068",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00010026"]
+code =extract_subset(oeo_physical,"tmp/oeo_vehicle.ttl",terms=terms)
+# %% [markdown]
+## OEO grid axioms
+# %%
+terms = ["http://openenergy-platform.org/ontology/oeo/OEO_00320065",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00320040",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00000144",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00020006",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00000200",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00000143",
+         "http://purl.obolibrary.org/obo/BFO_0000051",
+         "http://purl.obolibrary.org/obo/BFO_0000027",
+         "http://openenergy-platform.org/ontology/oeo/OEO_00320064"]
+code =extract_subset(oeo_physical,"tmp/oeo_grid.ttl",terms=terms)
 # %%
 # Get IAO imports
 if not Path(IAO).exists():
