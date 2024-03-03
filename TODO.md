@@ -1,5 +1,14 @@
 # TODO and development roadmap
 
+## 03.04.2024
+
+Implemented a strong basis for imports coming from the CCO and the OEO. There
+are still some classes that have to be redefined and added to the ontology as
+possible equivalents via annotation properties.
+
+  - [ ] Implement key classes from scenario 1
+  - [ ] Add potential associations using "may be identical to"
+
 ## 01.03.2024
 
 Implemented the imports from CCO and the IAO (used the imports from OEO), I had
@@ -7,9 +16,9 @@ to manually add the sub-class relation between the information entities and
 BFO. Realized that there are numerous classes from CCO that can be valuable for
 this ontology. 
 
- - [ ] I should implement a script that automatically extracts and collects
+ - [X] I should implement a script that automatically extracts and collects
    subclasses of `change`, `GeographicalLocations` and others.
- - [ ] I should add correct attribution to the imported modules.
+ - [X] I should add correct attribution to the imported modules.
 
 ## 29.02.2024
 
@@ -50,4 +59,4 @@ serve as practice for ontology development. Initial setup requirements:
 - [ ] Write down the use case scenarios (these are also going in the paper).
 - [X] Decide in a proper name (CHIO?)
 - [X] Decide on the ontology term conventions, maybe use identifiers with the following form "CHIO_XXXXXXXX"
-- [ ] Import the necessary OEO Terms.
+- [X] Import the necessary OEO Terms.
