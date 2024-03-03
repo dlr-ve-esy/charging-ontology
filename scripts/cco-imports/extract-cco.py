@@ -13,11 +13,8 @@ ONTOLOGY_BASE = (
     "https://raw.githubusercontent.com/CommonCoreOntology/"
     "CommonCoreOntologies/{}/{}.ttl"
 )
-UPPER_TERM = "http://purl.obolibrary.org/obo/BFO_0000003"
-CLASS_IRI = "http://purl.obolibrary.org/obo/BFO_0000144"
 NEW_IRI = "{}/chio/imports/{}.ttl"
 VERSION_IRI = "{}/chio/dev/imports/{}.ttl"
-TERM_FILE = "cco-w-hierarchy.txt"
 
 # Change these paths according to your setup.
 ROBOT_PATH = "../../robot.jar"
@@ -204,6 +201,19 @@ if not Path("tmp").joinpath("eo_stasis.ttl").exists():
         upper_term=upper_term,
     )
 # %%
+# Change
+if not Path("tmp").joinpath("eo_change.ttl").exists():
+    upper_term = "http://purl.obolibrary.org/obo/BFO_0000015"
+    lower_terms = [
+        "http://www.ontologyrepository.com/CommonCoreOntologies/Change"
+    ]
+    extract_mireot(
+        input=event_ontology,
+        output=Path("tmp").joinpath("eo_change.ttl"),
+        lower_terms=lower_terms,
+        upper_term=upper_term,
+    )
+# %%
 # Process profiles
 if not Path("tmp").joinpath("eo_process_profiles.ttl").exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000144"
@@ -333,7 +343,7 @@ if not Path("tmp").joinpath("geo_tree.ttl").exists():
 input_string =""
 for element in ["geo_tree.ttl", "geo_base.ttl", "ao_artifacts.ttl",
                 "ao_vehicles.ttl","ao_facitlity.ttl", "eo_stasis.ttl",
-                "eo_process_profiles.ttl"]:
+                "eo_process_profiles.ttl", "eo_change.ttl"]:
     input_string += f"--input tmp/{element} "
 # %%
 if not Path(TARGET).exists():

@@ -1,0 +1,172 @@
+@prefix : <http://openenergy-platform.org/ontology/chio/imports/oeo-extracted.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://openenergy-platform.org/ontology/chio/imports/oeo-extracted.ttl> .
+
+<http://openenergy-platform.org/ontology/chio/imports/oeo-extracted.ttl> rdf:type owl:Ontology ;
+                                                                          owl:versionIRI <http://openenergy-platform.org/ontology/chio/dev/imports/oeo-extracted.ttl> ;
+                                                                          rdfs:comment "This is an extract of the Open Energy Ontology: https://github.com/OpenEnergyPlatform/ontology " .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/IAO_0000115
+<http://purl.obolibrary.org/obo/IAO_0000115> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000118
+<http://purl.obolibrary.org/obo/IAO_0000118> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000233
+<http://purl.obolibrary.org/obo/IAO_0000233> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/BFO_0000051
+<http://purl.obolibrary.org/obo/BFO_0000051> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
+<http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdf:type owl:Class ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000115> "A battery is an energy storage object using different chemical or physical reactions to store energy."@en ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000233> """issue: https://github.com/OpenEnergyPlatform/ontology/issues/773
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/801""" ;
+                                                           rdfs:label "battery"@en .
+
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00000143
+<http://openenergy-platform.org/ontology/oeo/OEO_00000143> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <http://openenergy-platform.org/ontology/oeo/OEO_00000200> ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000115> "An electricity grid is a supply grid that distributes electrical energy / electricity."@en ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000233> """issue: https://github.com/OpenEnergyPlatform/ontology/issues/138
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/165
+
+Move to oeo-shared:
+https://github.com/OpenEnergyPlatform/ontology/pull/1360
+
+updated part relation between electricity grid and power line to have simple restrictions:
+
+replace min 1 restriction by some restriction
+issue: https://github.com/OpenEnergyPlatform/ontology/issues/1430
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/1479
+
+rework module structure 
+issue: https://github.com/OpenEnergyPlatform/ontology/issues/1592
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/1652""" ;
+                                                           rdfs:label "electricity grid"@en .
+
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00000146
+<http://openenergy-platform.org/ontology/oeo/OEO_00000146> rdf:type owl:Class ;
+                                                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000051> ;
+                                                                             owl:someValuesFrom <http://openenergy-platform.org/ontology/oeo/OEO_00010028>
+                                                                           ] ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000115> "An electric vehicle (abbreviated as EV) is a vehicle that uses one or more electric traction motors."@en ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000118> "EV" ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000233> """https://github.com/OpenEnergyPlatform/ontology/issues/425
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/431
+
+change uses energy axiom to 'has energy input':
+issue: https://github.com/OpenEnergyPlatform/ontology/issues/994
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/1006
+
+Adapt definition and convert to equivalent class:
+issue: https://github.com/OpenEnergyPlatform/ontology/issues/1311
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/1315""" ;
+                                                           rdfs:label "electric vehicle"@en .
+
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00000200
+<http://openenergy-platform.org/ontology/oeo/OEO_00000200> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000027> ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000115> "A supply grid is an object aggregate of systematically connected artificial objects that can work as a supply system." ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000118> "grid" ,
+                                                                                                        "network" ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000233> """issue: https://github.com/OpenEnergyPlatform/ontology/issues/36
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/385
+
+issue: https://github.com/OpenEnergyPlatform/ontology/issues/114
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/137
+
+rework module structure 
+issue: https://github.com/OpenEnergyPlatform/ontology/issues/1592
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/1652""" ;
+                                                           rdfs:label "supply grid"@en .
+
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00010024
+<http://openenergy-platform.org/ontology/oeo/OEO_00010024> rdf:type owl:Class ;
+                                                           owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/oeo/OEO_00000146>
+                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000051> ;
+                                                                                                        owl:someValuesFrom <http://openenergy-platform.org/ontology/oeo/OEO_00010026>
+                                                                                                      ]
+                                                                                                    ) ;
+                                                                                 rdf:type owl:Class
+                                                                               ] ;
+                                                           rdfs:subClassOf <http://openenergy-platform.org/ontology/oeo/OEO_00000146> ,
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000051> ;
+                                                                             owl:someValuesFrom <http://openenergy-platform.org/ontology/oeo/OEO_00010026>
+                                                                           ] ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000115> "A battery electric vehicle (BEV) is an electric vehicle that stores energy in a traction battery." ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000118> "BEV" ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000233> """issue: https://github.com/OpenEnergyPlatform/ontology/issues/425
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/453
+
+issue: https://github.com/OpenEnergyPlatform/ontology/issues/637
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/655
+
+Adapt definition and convert to equivalent class:
+issue: https://github.com/OpenEnergyPlatform/ontology/issues/1311
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/1315""" ;
+                                                           rdfs:label "battery electric vehicle"@en .
+
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00010026
+<http://openenergy-platform.org/ontology/oeo/OEO_00010026> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <http://openenergy-platform.org/ontology/oeo/OEO_00000068> ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000115> "A traction battery is a battery that is used in vehicles for propulsion." ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000233> """issue: https://github.com/OpenEnergyPlatform/ontology/issues/425
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/453""" ;
+                                                           rdfs:label "traction battery"@en .
+
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00010028
+<http://openenergy-platform.org/ontology/oeo/OEO_00010028> rdf:type owl:Class ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000115> "An electric traction motor is an electric motor used for propulsion."@en ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000233> """issue: https://github.com/OpenEnergyPlatform/ontology/issues/425
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/453
+
+relabel and add axiom:
+issue: https://github.com/OpenEnergyPlatform/ontology/issues/1029
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/1135""" ;
+                                                           rdfs:label "electric traction motor"@en .
+
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00320064
+<http://openenergy-platform.org/ontology/oeo/OEO_00320064> rdf:type owl:Class ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000115> "Charging is an electrical energy transfer where the transferred energy is stored in a battery." ;
+                                                           <http://purl.obolibrary.org/obo/IAO_0000233> """issue: https://github.com/OpenEnergyPlatform/ontology/issues/1368
+pull request: https://github.com/OpenEnergyPlatform/ontology/pull/1394""" ;
+                                                           rdfs:label "charging"@en .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000027
+<http://purl.obolibrary.org/obo/BFO_0000027> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.26) https://github.com/owlcs/owlapi

@@ -4,19 +4,16 @@ import subprocess as sp
 from pathlib import Path
 
 BASE_IRI = "http://openenergy-platform.org/ontology"
-# http://openenergy-platform.org/ontology/oeo/releases/2.1.0/iao-imports.omn
-# http://openenergy-platform.org/ontology/oeo/releases/2.1.0/oeo-physical.omn
-# http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/iao-extracted.owl
 VERSION = "2.1.0"
 ONTOLOGY_BASE = "http://openenergy-platform.org/ontology/oeo/releases/{}/{}"
-UPPER_TERM = "http://purl.obolibrary.org/obo/BFO_0000003"
-CLASS_IRI = "http://purl.obolibrary.org/obo/BFO_0000144"
-
-TERM_FILE = "oeo-w-hierarchy.txt"
 # Change these paths according to your setup.
 ROBOT_PATH = "../../robot.jar"
 IAO = "../../src/imports/iao-extracted.ttl"
-TARGET = "../../src/imports/cco-extracted.ttl"
+
+NEW_IRI = "{}/chio/imports/{}.ttl"
+VERSION_IRI = "{}/chio/dev/imports/{}.ttl"
+
+TARGET = "../../src/imports/oeo-extracted.ttl"
 Path("tmp").mkdir(exist_ok=True)
 # %%
 
@@ -160,23 +157,59 @@ terms = ["http://openenergy-platform.org/ontology/oeo/OEO_00010024",
          "http://openenergy-platform.org/ontology/oeo/OEO_00010026",
          "http://openenergy-platform.org/ontology/oeo/OEO_00000146",
          "http://openenergy-platform.org/ontology/oeo/OEO_00010028",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00010027",
          "http://openenergy-platform.org/ontology/oeo/OEO_00000068",
          "http://openenergy-platform.org/ontology/oeo/OEO_00010026"]
 code =extract_subset(oeo_physical,"tmp/oeo_vehicle.ttl",terms=terms)
 # %% [markdown]
 ## OEO grid axioms
 # %%
-terms = ["http://openenergy-platform.org/ontology/oeo/OEO_00320065",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00320040",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00000144",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00020006",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00000200",
+terms = ["http://openenergy-platform.org/ontology/oeo/OEO_00000200",
          "http://openenergy-platform.org/ontology/oeo/OEO_00000143",
          "http://purl.obolibrary.org/obo/BFO_0000051",
          "http://purl.obolibrary.org/obo/BFO_0000027",
          "http://openenergy-platform.org/ontology/oeo/OEO_00320064"]
 code =extract_subset(oeo_physical,"tmp/oeo_grid.ttl",terms=terms)
+# %%
+input_string =""
+for element in ["oeo_grid.ttl", "oeo_vehicle.ttl"]:
+    input_string += f"--input tmp/{element} "
+# %%
+if not Path(TARGET).exists():
+    merge_call = ("java -jar {jar} merge " +  input_string +
+                     "annotate --annotation "
+                     "rdfs:comment \"{annotation} \" "
+                     "--output {output}" )
+    annotation = (
+        "This is an extract of the Open Energy Ontology: "
+        "https://github.com/OpenEnergyPlatform/ontology"
+    )
+    sp.call(
+        merge_call.format(
+            jar=Path(ROBOT_PATH).resolve().as_posix(),
+            annotation=annotation,
+            output=Path(TARGET).resolve().as_posix(),
+        ),
+        shell=True,
+    )
+    # Annotate with new iri
+    annotate_call = "java -jar {jar} \
+    annotate --input {input} \
+    --ontology-iri {ontology_iri} \
+    --version-iri {version_iri} \
+    --output {output}"
+    sp.call(
+        annotate_call.format(
+            jar=Path(ROBOT_PATH).resolve().as_posix(),
+            input=Path(TARGET).resolve().as_posix(),
+            ontology_iri=NEW_IRI.format(BASE_IRI, "oeo-extracted"),
+            version_iri=VERSION_IRI.format(BASE_IRI, "oeo-extracted"),
+            output=Path(TARGET).resolve().as_posix(),
+        ),
+        shell=True,
+    )
+else:
+    print(f"The file {TARGET} already exists, you are good to go.")
+# %%
 # %%
 # Get IAO imports
 if not Path(IAO).exists():
@@ -188,17 +221,6 @@ if not Path(IAO).exists():
             local.write(response.content)
 else:
     print(f"The file {IAO} already exists, you are good to go.")
-# %% [markdown]
-# Acquire the OEO Physical modules.
-# %%
-OEO_PHYSICAL_TEMP = "tmp/oeo-physical.omn"
-if not Path(OEO_PHYSICAL_TEMP).exists():
-    with open(OEO_PHYSICAL_TEMP, "wb") as local:
-        response = requests.get(ONTOLOGY_BASE.format(VERSION, "oeo-physical.omn"))
-        if response.status_code == 200:
-            local.write(response.content)
-else:
-    print(f"The file {OEO_PHYSICAL_TEMP} already exists, you are good to go.")
 # %%
 IAO_DROPPED = "iao-dropped.txt"
 if Path(IAO).exists():
@@ -218,5 +240,4 @@ remove --input {input}  \
         ),
         shell=True,
     )
-
 # %%

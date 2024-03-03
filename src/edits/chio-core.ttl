@@ -10,12 +10,29 @@
 <http://openenergy-platform.org/ontology/chio/chio-core/> rdf:type owl:Ontology ;
                                                            owl:versionIRI <http://openenergy-platform.org/ontology/chio/dev/chio-core.ttl> ;
                                                            owl:imports <http://openenergy-platform.org/ontology/chio/dev/imports/cco-extracted.ttl> ,
+                                                                       <http://openenergy-platform.org/ontology/chio/dev/imports/oeo-extracted.ttl> ,
                                                                        <http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/iao-extracted.owl> ,
                                                                        <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl> .
 
 #################################################################
 #    Classes
 #################################################################
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
+<http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> .
+
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00000146
+<http://openenergy-platform.org/ontology/oeo/OEO_00000146> rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Vehicle> .
+
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00010028
+<http://openenergy-platform.org/ontology/oeo/OEO_00010028> rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/ElectricMotor> .
+
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00320064
+<http://openenergy-platform.org/ontology/oeo/OEO_00320064> rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> .
+
 
 ###  http://purl.obolibrary.org/obo/BFO_0000003
 <http://purl.obolibrary.org/obo/BFO_0000003> rdf:type owl:Class .
