@@ -116,7 +116,69 @@ such conditions are explored in other scenarios.
 
     A charging station has a maximum vehicle capacity.
 
-## Scenario 2 - My awesome scenario
+
+## Scenario 2 - iCity Project Smart Parking Applications
+
+### Summary
+
+This scenario is an extract of the [iCity
+project](https://enterpriseintegrationlab.github.io/icity/iCityOntologyReport_1.2.pdf)
+by Katsumi and Fox. Particularly the section smart parking applications. This
+subset of questions is relevant to us because charging infrastructure is
+intimately connected with parking infrastructure. These queries rely a lot in
+geographical queries and may ovelap with scenario 1, but they have a
+perspective more in line with daily operation of the stations. For more details
+on the ontology [visit its
+repository](https://github.com/EnterpriseIntegrationLab/icity).
+
+### Description
+
+The iCity Transportation Planning Suite of Ontologies was conceived to aid city
+wide Transportation research in the City of Toronto. It has a very wide scope
+across the field of transportation planning. Their competency questions related
+to parking are a strong starting point to implement its associated commitments
+in BFO. Since the structure of the foundational ontology used in that
+particular project is significantly different, we are not taking over 100% the
+SPARQL implementation of the questions. Some parking questions were excluded
+because they are beyond the scope of this ontology and not becasue they are
+irrelevant. One example is "Is it accessible by disabled people, and if so how
+many parking spots are for disabled vehicles?"
+
+### Competency questions
+
+???+ question "Competency question 2.0"
+
+    What is the address of the parking lot P?
+
+???+ question "Competency question 2.1"
+
+    What is the (vehicle) capacity of parking lot P?
+
+???+ question "Competency question 2.2"
+
+    What are the geographic coordinates for parking lot P?
+
+???+ question "Competency question 2.3"
+
+    Is there a height limit for vehicles for a parking lot P?
+
+???+ question "Competency question 2.4"
+
+    What building is a particular parking lot located in?
+
+???+ question "Competency question 2.5"
+
+    Is a particular parking lot open to the public at a given time?
+
+???+ question "Competency question 2.6"
+
+    How many parking spots are designated for electric vehicles in a particular parking lot?
+
+???+ question "Competency question 2.7"
+
+    What types of electric vehicle chargers are available in a particular parking lot?
+
+## Scenario X - My awesome scenario
 
 ### Summary
 

@@ -1,6 +1,12 @@
 # TODO and development roadmap
 
-## 03.04.2024
+## 04.03.2024
+
+- [X] Considering importing parking related competency questions from the [iCity
+project
+report](https://enterpriseintegrationlab.github.io/icity/iCityOntologyReport_1.2.pdf)
+
+## 03.03.2024
 
 Implemented a strong basis for imports coming from the CCO and the OEO. There
 are still some classes that have to be redefined and added to the ontology as
