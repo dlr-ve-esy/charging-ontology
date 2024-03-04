@@ -139,10 +139,10 @@ across the field of transportation planning. Their competency questions related
 to parking are a strong starting point to implement its associated commitments
 in BFO. Since the structure of the foundational ontology used in that
 particular project is significantly different, we are not taking over 100% the
-SPARQL implementation of the questions. Some parking questions were excluded
-because they are beyond the scope of this ontology and not becasue they are
-irrelevant. One example is "Is it accessible by disabled people, and if so how
-many parking spots are for disabled vehicles?"
+SPARQL implementation of the questions. Some parking questions like "Is it
+accessible by disabled people, and if so how many parking spots are for
+disabled vehicles?" were excluded because they are beyond the scope of this
+ontology and not because they are irrelevant.
 
 ### Competency questions
 
