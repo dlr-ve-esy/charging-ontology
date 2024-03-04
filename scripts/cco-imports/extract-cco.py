@@ -78,13 +78,12 @@ def extract_mireot(
         print(debug_string)
         raise IOError(f"Something went wrong with call: {debug_string}")
     return code
+
+
 # %%
 
-def extract_star(
-    input: str,
-    output: str,
-    terms: str
-):
+
+def extract_star(input: str, output: str, terms: str):
     """Call robot to do a STAR extraction"""
     extract_call = (
         "java -jar {jar} extract "
@@ -111,6 +110,8 @@ def extract_star(
         print(debug_string)
         raise IOError(f"Something went wrong with call: {debug_string}")
     return code
+
+
 # %%
 
 
@@ -144,19 +145,15 @@ def extract_tree(
     return code
 
 
-def extract_subset(
-    input: str,
-    output: str,
-    terms: str
-):
+def extract_subset(input: str, output: str, terms: str):
     """Call robot to do a subset extraction"""
     extract_call = (
         "java -jar {jar} extract "
         "--input {input} "
         "--method subset "
         "--term-file {term_file} "
-        "--imports exclude "
-        # "filter --term-file {term_file_filter} " 
+        "--imports include "
+        # "filter --term-file {term_file_filter} "
         # "--select \"annotations self equivalents object-properties\" "
         "--output {output}"
     )
@@ -178,6 +175,8 @@ def extract_subset(
         print(debug_string)
         raise IOError(f"Something went wrong with call: {debug_string}")
     return code
+
+
 # %% [markdown]
 # ## Extract classes from the event ontology
 # %%
@@ -192,7 +191,7 @@ if not Path("tmp").joinpath("eo_stasis.ttl").exists():
         "http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfDisposition",
         "http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfFunction",
         "http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRole",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/ActiveStasis"
+        "http://www.ontologyrepository.com/CommonCoreOntologies/ActiveStasis",
     ]
     extract_mireot(
         input=event_ontology,
@@ -204,9 +203,7 @@ if not Path("tmp").joinpath("eo_stasis.ttl").exists():
 # Change
 if not Path("tmp").joinpath("eo_change.ttl").exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000015"
-    lower_terms = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Change"
-    ]
+    lower_terms = ["http://www.ontologyrepository.com/CommonCoreOntologies/Change"]
     extract_mireot(
         input=event_ontology,
         output=Path("tmp").joinpath("eo_change.ttl"),
@@ -249,27 +246,47 @@ if not Path("tmp").joinpath("ao_artifacts.ttl").exists():
     )
 # %%
 # Facility
-if not Path("tmp").joinpath("ao_facitlity.ttl").exists():
+if not Path("tmp").joinpath("ao_facility.ttl").exists():
     terms = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/TransportationFacilitys",
+        "http://purl.obolibrary.org/obo/BFO_0000040",
+        "http://purl.obolibrary.org/obo/BFO_0000171",
         "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact",
         "http://www.ontologyrepository.com/CommonCoreOntologies/Facility",
         "http://www.ontologyrepository.com/CommonCoreOntologies/PortionOfGeosphere",
-        "http://purl.obolibrary.org/obo/BFO_0000171",
-        "http://purl.obolibrary.org/obo/BFO_0000023",
-        "http://purl.obolibrary.org/obo/BFO_0000024"
-        "http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement",
-        "http://purl.obolibrary.org/obo/BFO_0000040",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/TransportationInfrastructure",
-        "http://purl.obolibrary.org/obo/BFO_0000196"
-
     ]
     extract_subset(
         input=artifact_ontology,
-        output=Path("tmp").joinpath("ao_facitlity.ttl"),
-        terms=terms
+        output=Path("tmp").joinpath("ao_facility.ttl"),
+        terms=terms,
+    )
+# %%
+# Infrastructure
+if not Path("tmp").joinpath("ao_infrastructure.ttl").exists():
+    terms = [
+        "http://purl.obolibrary.org/obo/BFO_0000196",
+        "http://purl.obolibrary.org/obo/BFO_0000023",
+        "http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole",
+        "http://purl.obolibrary.org/obo/BFO_0000040",
+        "http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement",
+        "http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure",
+        "http://www.ontologyrepository.com/CommonCoreOntologies/TransportationInfrastructure",
+    ]
+    extract_subset(
+        input=artifact_ontology,
+        output=Path("tmp").joinpath("ao_infrastructure.ttl"),
+        terms=terms,
+    )
+# %%
+facility_ontology = download_ontology_if_missing("FacilityOntology")
+if not Path("tmp").joinpath("ao_facility_classes.ttl").exists():
+    terms = [
+        "http://www.ontologyrepository.com/CommonCoreOntologies/TransportationFacility",
+        "http://www.ontologyrepository.com/CommonCoreOntologies/Facility",
+    ]
+    extract_subset(
+        input=facility_ontology,
+        output=Path("tmp").joinpath("ao_facility_classes.ttl"),
+        terms=terms,
     )
 # %%
 if not Path("tmp").joinpath("ao_vehicles.ttl").exists():
@@ -279,13 +296,13 @@ if not Path("tmp").joinpath("ao_vehicles.ttl").exists():
         "http://www.ontologyrepository.com/CommonCoreOntologies/Motorcycle",
         "http://www.ontologyrepository.com/CommonCoreOntologies/Bus",
         "http://www.ontologyrepository.com/CommonCoreOntologies/Automobile",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Bicycle"
+        "http://www.ontologyrepository.com/CommonCoreOntologies/Bicycle",
     ]
     extract_mireot(
         input=artifact_ontology,
         output=Path("tmp").joinpath("ao_vehicles.ttl"),
         upper_term=upper_term,
-        lower_terms=lower_terms
+        lower_terms=lower_terms,
     )
 # %%
 # %%
@@ -321,7 +338,9 @@ if not Path("tmp").joinpath("geo_base.ttl").exists():
 # %%
 agent_ontology = download_ontology_if_missing("AgentOntology")
 if not Path("tmp").joinpath("geo_tree.ttl").exists():
-    upper_term = "http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion"
+    upper_term = (
+        "http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion"
+    )
     lower_terms = [
         "http://www.ontologyrepository.com/CommonCoreOntologies/County",
         "http://www.ontologyrepository.com/CommonCoreOntologies/State",
@@ -331,7 +350,7 @@ if not Path("tmp").joinpath("geo_tree.ttl").exists():
         "http://www.ontologyrepository.com/CommonCoreOntologies/Town",
         "http://www.ontologyrepository.com/CommonCoreOntologies/Village",
         "http://www.ontologyrepository.com/CommonCoreOntologies/SecondOrderAdministrativeRegion",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/ThirdOrderAdministrativeRegion"
+        "http://www.ontologyrepository.com/CommonCoreOntologies/ThirdOrderAdministrativeRegion",
     ]
     extract_mireot(
         input=agent_ontology,
@@ -340,17 +359,27 @@ if not Path("tmp").joinpath("geo_tree.ttl").exists():
         upper_term=upper_term,
     )
 # %%
-input_string =""
-for element in ["geo_tree.ttl", "geo_base.ttl", "ao_artifacts.ttl",
-                "ao_vehicles.ttl","ao_facitlity.ttl", "eo_stasis.ttl",
-                "eo_process_profiles.ttl", "eo_change.ttl"]:
+input_string = ""
+for element in [
+    "geo_tree.ttl",
+    "geo_base.ttl",
+    "ao_artifacts.ttl",
+    "ao_vehicles.ttl",
+    "ao_facility.ttl",
+    "ao_facility_classes.ttl",
+    "eo_stasis.ttl",
+    "eo_process_profiles.ttl",
+    "eo_change.ttl",
+    "ao_infrastructure.ttl",
+]:
     input_string += f"--input tmp/{element} "
 # %%
 if not Path(TARGET).exists():
-    merge_call = ("java -jar {jar} merge " +  input_string +
-                     "annotate --annotation "
-                     "rdfs:comment \"{annotation} \" "
-                     "--output {output}" )
+    merge_call = (
+        "java -jar {jar} merge " + input_string + "annotate --annotation "
+        'rdfs:comment "{annotation} " '
+        "--output {output}"
+    )
     annotation = (
         "This is an extract of the Common Core Ontologies: "
         "https://github.com/CommonCoreOntology/CommonCoreOntologies"

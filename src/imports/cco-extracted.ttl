@@ -316,14 +316,32 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement
 <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement> rdf:type owl:Class ;
+                                                                               owl:equivalentClass [ owl:intersectionOf ( <http://purl.obolibrary.org/obo/BFO_0000040>
+                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                                                            owl:someValuesFrom <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole>
+                                                                                                                          ]
+                                                                                                                        ) ;
+                                                                                                     rdf:type owl:Class
+                                                                                                   ] ;
                                                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ,
                                                                                                [ rdf:type owl:Restriction ;
                                                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
-                                                                                                 owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000023>
+                                                                                                 owl:someValuesFrom <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole>
                                                                                                ] ;
                                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Entity that bears an Infrastructure Role."@en ;
                                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
                                                                                rdfs:label "Infrastructure Element"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole
+<http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000023> ;
+                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Role that inheres in the bearer of a Disposition and has been assigned to an Infrastructure System such that the realization of that Disposition is sometimes part of the functioning of the Infrastructure System."@en ;
+                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://archive.org/details/economicsprincip00osul/page/n489/mode/2up"^^xsd:anyURI ;
+                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
+                                                                            rdfs:comment "The disposition will typically be a function of an artifact, which is often designed to be part of some Infrastructure system. But not always. In some cases an entity may be repurposed to be an element of some Infrastructure. In those cases it is a capability of that entity that supports the functioning of the system."@en ;
+                                                                            rdfs:label "Infrastructure Role"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/InternalCombustionEngine
@@ -508,6 +526,15 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://www.dictionary.com/browse/town" ;
                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
                                                               rdfs:label "Town"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/TransportationFacility
+<http://www.ontologyrepository.com/CommonCoreOntologies/TransportationFacility> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Facility> ;
+                                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Facility that is designed for commencing or concluding the transportation of transportation artifacts, or for housing transportation artifacts."@en ;
+                                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Transport&oldid=1063526665"^^xsd:anyURI ;
+                                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/FacilityOntology"^^xsd:anyURI ;
+                                                                                rdfs:label "Transportation Facility"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/TransportationInfrastructure

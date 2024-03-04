@@ -1,8 +1,0 @@
-http://www.ontologyrepository.com/CommonCoreOntologies/TransportationInfrastructure
-http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure
-http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement
-http://purl.obolibrary.org/obo/BFO_0000144
-http://www.ontologyrepository.com/CommonCoreOntologies/is_part_of_process
-http://www.ontologyrepository.com/CommonCoreOntologies/Change
-http://www.ontologyrepository.com/CommonCoreOntologies/Stasis
-http://www.ontologyrepository.com/CommonCoreOntologies/ArtifactLocation
