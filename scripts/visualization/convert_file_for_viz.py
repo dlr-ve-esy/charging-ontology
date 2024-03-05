@@ -45,5 +45,7 @@ robot_convert(
 robot_convert("../../src/imports/bfo-core.ttl", f"{TMP}/bfo.owx")
 robot_convert("../oeo-imports/tmp/oeo_vehicle.ttl", f"{TMP}/oeo_vehicle.owx")
 robot_convert("../cco-imports/tmp/ao_vehicles.ttl", f"{TMP}/ao_vehicles.owx")
-
+robot_convert(
+    "../oeo-imports/tmp/oeo_vehicle_lv_tax.ttl", f"{TMP}/oeo_vehicle_lv_tax.owx"
+)
 # %%

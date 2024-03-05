@@ -13,6 +13,12 @@ RDFSLABEL = "http://www.w3.org/2000/01/rdf-schema#label"
 DROPLIST = [
     "http://purl.obolibrary.org/obo/BFO_0000023",
     "http://openenergy-platform.org/ontology/oeo/OEO_00000068",
+    # "http://openenergy-platform.org/ontology/oeo/OEO_00010278",  # truck
+    "http://openenergy-platform.org/ontology/oeo/OEO_00320051",  # ve truck
+    "http://openenergy-platform.org/ontology/oeo/OEO_00320053",  # cg truck
+    "http://openenergy-platform.org/ontology/oeo/OEO_00320044",  # di truck
+    "http://openenergy-platform.org/ontology/oeo/OEO_00320052",  # truck
+    "http://openenergy-platform.org/ontology/oeo/OEO_00320054",
 ]
 
 BFO2020_MAPPINGS = {
@@ -202,10 +208,10 @@ for aa in oeo_vehicle_imports.get_axioms_for_iri(
         )
     if isinstance(aa.axiom, EquivalentClasses):
         render_equivalent_class_axiom(OG, aa.axiom, oeo_vehicle_imports)
-OG.write("OEOVehicle.dot")
+OG.write("OEOEV.dot")
 # %% [markdown]
 # ## Render Vehicle Taxonomy
-# Render the taxonomy from CCO
+# Render the taxonomy from CCO vs OEO
 # %%
 vehicle_tax_cco = pho.open_ontology("tmp/ao_vehicles.owx")
 VG = pgv.AGraph(
@@ -228,5 +234,28 @@ add_taxonomy(
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
 )
 VG.write("CCOVehicles.dot")
+
+# %%
+land_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_lv_tax.owx")
+OLVG = pgv.AGraph(
+    strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
+)
+OLVG.graph_attr["ratio"] = "compressed"
+OLVG.graph_attr["nodesep"] = "0.1"
+OLVG.graph_attr["ranksep"] = "0.1"
+OLVG.node_attr["fontsize"] = "10"
+OLVG.node_attr["fontname"] = "CMU Serif Roman"
+OLVG.node_attr["shape"] = "ellipse"
+OLVG.edge_attr["fontsize"] = "10"
+OLVG.edge_attr["fontname"] = "CMU Serif Roman"
+OLVG.edge_attr["arrowsize"] = "0.5"
+
+edge_attrs = dict(style="dashed", arrowsize=0.5, penwidth=0.59)
+add_taxonomy(
+    OVG,
+    land_vehicle_tax_oeo,
+    edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
+)
+OVG.write("OEOLVehicles.dot")
 
 # %%

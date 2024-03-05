@@ -37,10 +37,10 @@ def download_ontology_if_missing(ONTOLOGY):
 
 
 # %%
-def extract_mireot(
+def extract_mireot_tree(
     input: str,
     output: str,
-    lower_terms: str,
+    branch: str,
     intermediates="all",
     upper_term: str = "owl:Thing",
 ):
@@ -49,19 +49,14 @@ def extract_mireot(
         "java -jar {jar} extract "
         "--input {input} "
         "--method MIREOT "
-        "--upper-term {upper_term} "
-        "--lower-terms {lower_terms} "
+        "--branch-from-term {branch} "
         "--intermediates {intermediates} "
         "--output {output}"
     )
-    with open(Path("tmp").joinpath("temp.txt"), "w") as fp:
-        for term in lower_terms:
-            fp.write(term + "\n")
     debug_string = extract_call.format(
         jar=Path(ROBOT_PATH).resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
-        lower_terms=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
-        upper_term=upper_term,
+        branch=branch,
         intermediates=intermediates,
         output=Path(output).resolve().as_posix(),
     )
@@ -76,11 +71,7 @@ def extract_mireot(
 
 
 # %%
-def extract_star(
-    input: str,
-    output: str,
-    terms: str
-):
+def extract_star(input: str, output: str, terms: str):
     """Call robot to do a subset extraction"""
     extract_call = (
         "java -jar {jar} extract "
@@ -88,7 +79,7 @@ def extract_star(
         "--method STAR "
         "--term-file {term_file} "
         "--imports exclude "
-        # "filter --term-file {term_file_filter} " 
+        # "filter --term-file {term_file_filter} "
         # "--select \"annotations self equivalents object-properties\" "
         "--output {output}"
     )
@@ -110,13 +101,12 @@ def extract_star(
         print(debug_string)
         raise IOError(f"Something went wrong with call: {debug_string}")
     return code
+
+
 # %%
 
-def extract_subset(
-    input: str,
-    output: str,
-    terms: str
-):
+
+def extract_subset(input: str, output: str, terms: str):
     """Call robot to do a subset extraction"""
     extract_call = (
         "java -jar {jar} extract "
@@ -124,7 +114,7 @@ def extract_subset(
         "--method subset "
         "--term-file {term_file} "
         "--imports exclude "
-        # "filter --term-file {term_file_filter} " 
+        # "filter --term-file {term_file_filter} "
         # "--select \"annotations self equivalents object-properties\" "
         "--output {output}"
     )
@@ -146,39 +136,46 @@ def extract_subset(
         print(debug_string)
         raise IOError(f"Something went wrong with call: {debug_string}")
     return code
+
+
 # %% [markdown]
 ## OEO Vehicle axioms
-# The main axioms of electric vehicle are extracted from OEO, whereas the 
+# The main axioms of electric vehicle are extracted from OEO, whereas the
 # vehicle taxonomy comes from the CCO.
 # %%
 oeo_physical = download_ontology_if_missing("imports/oeo-physical.omn")
-terms = ["http://openenergy-platform.org/ontology/oeo/OEO_00010024",
-         "http://purl.obolibrary.org/obo/BFO_0000051",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00010026",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00000146",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00010028",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00000068",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00010026"]
-code =extract_subset(oeo_physical,"tmp/oeo_vehicle.ttl",terms=terms)
+terms = [
+    "http://openenergy-platform.org/ontology/oeo/OEO_00010024",
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://openenergy-platform.org/ontology/oeo/OEO_00010026",
+    "http://openenergy-platform.org/ontology/oeo/OEO_00000146",
+    "http://openenergy-platform.org/ontology/oeo/OEO_00010028",
+    "http://openenergy-platform.org/ontology/oeo/OEO_00000068",
+    "http://openenergy-platform.org/ontology/oeo/OEO_00010026",
+]
+code = extract_subset(oeo_physical, "tmp/oeo_vehicle.ttl", terms=terms)
 # %% [markdown]
 ## OEO grid axioms
 # %%
-terms = ["http://openenergy-platform.org/ontology/oeo/OEO_00000200",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00000143",
-         "http://purl.obolibrary.org/obo/BFO_0000051",
-         "http://purl.obolibrary.org/obo/BFO_0000027",
-         "http://openenergy-platform.org/ontology/oeo/OEO_00320064"]
-code =extract_subset(oeo_physical,"tmp/oeo_grid.ttl",terms=terms)
+terms = [
+    "http://openenergy-platform.org/ontology/oeo/OEO_00000200",
+    "http://openenergy-platform.org/ontology/oeo/OEO_00000143",
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/BFO_0000027",
+    "http://openenergy-platform.org/ontology/oeo/OEO_00320064",
+]
+code = extract_subset(oeo_physical, "tmp/oeo_grid.ttl", terms=terms)
 # %%
-input_string =""
+input_string = ""
 for element in ["oeo_grid.ttl", "oeo_vehicle.ttl"]:
     input_string += f"--input tmp/{element} "
 # %%
 if not Path(TARGET).exists():
-    merge_call = ("java -jar {jar} merge " +  input_string +
-                     "annotate --annotation "
-                     "rdfs:comment \"{annotation} \" "
-                     "--output {output}" )
+    merge_call = (
+        "java -jar {jar} merge " + input_string + "annotate --annotation "
+        'rdfs:comment "{annotation} " '
+        "--output {output}"
+    )
     annotation = (
         "This is an extract of the Open Energy Ontology: "
         "https://github.com/OpenEnergyPlatform/ontology"
@@ -239,5 +236,22 @@ remove --input {input}  \
             output=Path(IAO).resolve().as_posix(),
         ),
         shell=True,
+    )
+# %%
+## OEO Vehicle taxonomy (for paper)
+# %%
+if not Path("tmp").joinpath("oeo_vehicle_ev_tax.ttl").exists():
+    parent = "http://openenergy-platform.org/ontology/oeo/OEO_00000146"
+    extract_mireot_tree(
+        input=oeo_physical,
+        output=Path("tmp").joinpath("oeo_vehicle_ev_tax.ttl"),
+        branch=parent,
+    )
+if not Path("tmp").joinpath("oeo_vehicle_lv_tax.ttl").exists():
+    parent = "http://openenergy-platform.org/ontology/oeo/OEO_00010273"
+    extract_mireot_tree(
+        input=oeo_physical,
+        output=Path("tmp").joinpath("oeo_vehicle_lv_tax.ttl"),
+        branch=parent,
     )
 # %%
