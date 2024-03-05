@@ -139,4 +139,5 @@ for prop in props:
         if isinstance(aa.axiom, EquivalentClasses):
             render_equivalent_class_axiom(PG, aa.axiom, parking)
 PG.write("tmp/PARKING.dot")
+PG.draw("tmp/svg/PARKING.svg", prog="dot")
 # %%

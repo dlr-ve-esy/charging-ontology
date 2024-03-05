@@ -2,7 +2,7 @@
 import pygraphviz as pgv
 import pyhornedowl as pho
 from pyhornedowl.model import *
-
+from pathlib import Path
 PREFIX_MAPPINGS = {
     "http://www.ontologyrepository.com/CommonCoreOntologies/": "CCO:",
     "http://purl.obolibrary.org/obo/": "BFO:",
@@ -25,6 +25,8 @@ DROPLIST = [
 BFO2020_MAPPINGS = {
     "http://purl.obolibrary.org/obo/BFO_0000051": "http://purl.obolibrary.org/obo/BFO_0000178"
 }
+
+Path("tmp/svg").mkdir(exist_ok=True)
 # %%
 bfo = pho.open_ontology("tmp/bfo.owx")
 ontology = pho.open_ontology("tmp/ao_infrastructure.owx")
@@ -174,6 +176,7 @@ render_equivalent_class_axiom(
     ),
 )
 G.write("tmp/infrastructureSystem.dot")
+G.draw("tmp/svg/infrastructureSystem.svg", prog="dot")
 # %% [markdown]
 # ## Render OEO imported commitments
 # Imported classes like battery
@@ -210,6 +213,7 @@ for aa in oeo_vehicle_imports.get_axioms_for_iri(
     if isinstance(aa.axiom, EquivalentClasses):
         render_equivalent_class_axiom(OG, aa.axiom, oeo_vehicle_imports)
 OG.write("tmp/OEOEV.dot")
+OG.draw("tmp/svg/OEOEV.svg", prog="dot")
 # %% [markdown]
 # ## Render Vehicle Taxonomy
 # Render the taxonomy from CCO vs OEO
@@ -234,7 +238,17 @@ add_taxonomy(
     vehicle_tax_cco,
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
 )
+linear_tax = [
+        "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact",
+    "http://www.ontologyrepository.com/CommonCoreOntologies/Vehicle",
+    "http://www.ontologyrepository.com/CommonCoreOntologies/GroundVehicle",
+
+]
+SG = VG.add_subgraph(rank="same", rankdir="TB")
+for i in linear_tax:
+    SG.add_node(get_label(i,vehicle_tax_cco))
 VG.write("tmp/CCOVehicles.dot")
+VG.draw("tmp/svg/CCOVehicles.svg", prog="dot")
 # %%
 ev_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_ev_tax.owx")
 OVG = pgv.AGraph(
@@ -257,6 +271,7 @@ add_taxonomy(
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
 )
 OVG.write("tmp/OEOVehicles.dot")
+OVG.draw("tmp/svg/OEOVehicles.svg", prog="dot")
 # %%
 land_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_lv_tax.owx")
 OLVG = pgv.AGraph(
@@ -279,6 +294,6 @@ add_taxonomy(
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
 )
 OLVG.write("tmp/OEOLVehicles.dot")
-
+OLVG.draw("tmp/svg/OEOLVehicles.svg", prog="dot")
 # %% [markdown]
 # ## Viz from iCity Parking ontology
