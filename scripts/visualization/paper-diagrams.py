@@ -7,6 +7,7 @@ PREFIX_MAPPINGS = {
     "http://www.ontologyrepository.com/CommonCoreOntologies/": "CCO:",
     "http://purl.obolibrary.org/obo/": "BFO:",
     "http://openenergy-platform.org/ontology/oeo/": "OEO",
+    "http://ontology.eil.utoronto.ca/icity/Parking/": "IC:",
 }
 RDFSLABEL = "http://www.w3.org/2000/01/rdf-schema#label"
 
@@ -43,9 +44,9 @@ def get_label(iri, ontology):
     if label is None:
         label = iri
     if " " in label:
-        label = " ".join([p.lower() for p in label.split(" ")])
+        label = " ".join([p for p in label.split(" ")])
     if len(label) > 10:
-        label = "\\n".join([p.lower() for p in label.split(" ")])
+        label = "\\n".join([p for p in label.split(" ")])
     return label
 
 
@@ -172,7 +173,7 @@ render_equivalent_class_axiom(
         shape="ellipse", style="dashed", fixedsize=False, fontsize=8, color="grey"
     ),
 )
-G.write("infrastructureSystem.dot")
+G.write("tmp/infrastructureSystem.dot")
 # %% [markdown]
 # ## Render OEO imported commitments
 # Imported classes like battery
@@ -208,7 +209,7 @@ for aa in oeo_vehicle_imports.get_axioms_for_iri(
         )
     if isinstance(aa.axiom, EquivalentClasses):
         render_equivalent_class_axiom(OG, aa.axiom, oeo_vehicle_imports)
-OG.write("OEOEV.dot")
+OG.write("tmp/OEOEV.dot")
 # %% [markdown]
 # ## Render Vehicle Taxonomy
 # Render the taxonomy from CCO vs OEO
@@ -233,8 +234,29 @@ add_taxonomy(
     vehicle_tax_cco,
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
 )
-VG.write("CCOVehicles.dot")
+VG.write("tmp/CCOVehicles.dot")
+# %%
+ev_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_ev_tax.owx")
+OVG = pgv.AGraph(
+    strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
+)
+OVG.graph_attr["ratio"] = "compressed"
+OVG.graph_attr["nodesep"] = "0.1"
+OVG.graph_attr["ranksep"] = "0.1"
+OVG.node_attr["fontsize"] = "10"
+OVG.node_attr["fontname"] = "CMU Serif Roman"
+OVG.node_attr["shape"] = "ellipse"
+OVG.edge_attr["fontsize"] = "10"
+OVG.edge_attr["fontname"] = "CMU Serif Roman"
+OVG.edge_attr["arrowsize"] = "0.5"
 
+edge_attrs = dict(style="dashed", arrowsize=0.5, penwidth=0.59)
+add_taxonomy(
+    OVG,
+    ev_vehicle_tax_oeo,
+    edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
+)
+OVG.write("tmp/OEOVehicles.dot")
 # %%
 land_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_lv_tax.owx")
 OLVG = pgv.AGraph(
@@ -252,10 +274,11 @@ OLVG.edge_attr["arrowsize"] = "0.5"
 
 edge_attrs = dict(style="dashed", arrowsize=0.5, penwidth=0.59)
 add_taxonomy(
-    OVG,
+    OLVG,
     land_vehicle_tax_oeo,
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
 )
-OVG.write("OEOLVehicles.dot")
+OLVG.write("tmp/OEOLVehicles.dot")
 
-# %%
+# %% [markdown]
+# ## Viz from iCity Parking ontology
