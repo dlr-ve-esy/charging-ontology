@@ -3,7 +3,6 @@ import requests
 import subprocess as sp
 from pathlib import Path
 
-INPUT_ONTOLOGY = "../cco-imports/tmp/ao_infrastructure.ttl"
 # %%
 ROBOT_PATH = "../../robot.jar"
 TMP = "tmp"
@@ -40,7 +39,11 @@ def robot_convert(
 
 
 # %%
-robot_convert(INPUT_ONTOLOGY, f"{TMP}/ao_infrastructure.owx")
+robot_convert(
+    "../cco-imports/tmp/ao_infrastructure.ttl", f"{TMP}/ao_infrastructure.owx"
+)
 robot_convert("../../src/imports/bfo-core.ttl", f"{TMP}/bfo.owx")
+robot_convert("../oeo-imports/tmp/oeo_vehicle.ttl", f"{TMP}/oeo_vehicle.owx")
+robot_convert("../cco-imports/tmp/ao_vehicles.ttl", f"{TMP}/ao_vehicles.owx")
 
 # %%
