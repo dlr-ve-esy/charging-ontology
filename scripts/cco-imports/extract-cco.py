@@ -4,7 +4,16 @@
 import requests
 import subprocess as sp
 from pathlib import Path
-import tempfile
+import os
+
+CWD = Path(os.getcwd())
+FILEPATH = Path(os.path.dirname(os.path.realpath(__file__)))
+
+# Clunky search for the basedir
+if FILEPATH == CWD:
+    BASEDIR = Path("../..")
+elif "VERSION" in [p.name for p in CWD.iterdir()]:
+    BASEDIR = Path(".")
 
 BASE_IRI = "http://openenergy-platform.org/ontology"
 VERSION = "master"
@@ -17,10 +26,11 @@ NEW_IRI = "{}/chio/imports/{}.ttl"
 VERSION_IRI = "{}/chio/dev/imports/{}.ttl"
 
 # Change these paths according to your setup.
-ROBOT_PATH = "../../robot.jar"
+ROBOT_PATH = BASEDIR.joinpath("robot.jar")
 CCO = "tmp/MergedAllCoreOntology.ttl"
-TARGET = "../../src/imports/cco-extracted.ttl"
-Path("tmp").mkdir(exist_ok=True)
+TARGET = BASEDIR.joinpath("src/imports/cco-extracted.ttl")
+TMP = BASEDIR.joinpath("tmp")
+TMP.mkdir(exist_ok=True)
 # %%
 
 
@@ -30,7 +40,7 @@ def download_ontology_if_missing(ONTOLOGY):
     Args:
         ONTOLOGY (str): Name of the CCO module to be downloaded.
     """
-    temporary_path = Path("tmp").joinpath(f"{ONTOLOGY}.ttl")
+    temporary_path = TMP.joinpath(f"{ONTOLOGY}.ttl")
     if not Path(temporary_path).exists():
         with open(temporary_path, "wb") as local:
             response = requests.get(ONTOLOGY_BASE.format(VERSION, ONTOLOGY))
@@ -59,13 +69,13 @@ def extract_mireot(
         "--intermediates {intermediates} "
         "--output {output}"
     )
-    with open(Path("tmp").joinpath("temp.txt"), "w") as fp:
+    with open(TMP.joinpath("temp.txt"), "w") as fp:
         for term in lower_terms:
             fp.write(term + "\n")
     debug_string = extract_call.format(
-        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
-        lower_terms=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        lower_terms=TMP.joinpath("temp.txt").resolve().as_posix(),
         upper_term=upper_term,
         intermediates=intermediates,
         output=Path(output).resolve().as_posix(),
@@ -93,13 +103,13 @@ def extract_star(input: str, output: str, terms: str):
         "--imports exclude "
         "--output {output}"
     )
-    with open(Path("tmp").joinpath("temp.txt"), "w") as fp:
+    with open(TMP.joinpath("temp.txt"), "w") as fp:
         for term in terms:
             fp.write(term + "\n")
     debug_string = extract_call.format(
-        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
-        term_file=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        term_file=TMP.joinpath("temp.txt").resolve().as_posix(),
         output=Path(output).resolve().as_posix(),
     )
     code = sp.call(
@@ -130,7 +140,7 @@ def extract_tree(
         "--output {output}"
     )
     debug_string = extract_call.format(
-        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
         term=term,
         output=Path(output).resolve().as_posix(),
@@ -161,7 +171,7 @@ def extract_subset(input: str, output: str, terms: str):
         for term in terms:
             fp.write(term + "\n")
     debug_string = extract_call.format(
-        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
         term_file=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
         # term_file_filter=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
@@ -184,7 +194,8 @@ event_ontology = "EventOntology"
 event_ontology = download_ontology_if_missing("EventOntology")
 # %%
 # Stasis
-if not Path("tmp").joinpath("eo_stasis.ttl").exists():
+eo_stasis = TMP.joinpath("eo_stasis.ttl")
+if not eo_stasis.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000015"
     lower_terms = [
         "http://www.ontologyrepository.com/CommonCoreOntologies/StableOrientation",
@@ -195,31 +206,33 @@ if not Path("tmp").joinpath("eo_stasis.ttl").exists():
     ]
     extract_mireot(
         input=event_ontology,
-        output=Path("tmp").joinpath("eo_stasis.ttl"),
+        output=eo_stasis,
         lower_terms=lower_terms,
         upper_term=upper_term,
     )
 # %%
 # Change
-if not Path("tmp").joinpath("eo_change.ttl").exists():
+eo_change = TMP.joinpath("eo_change.ttl")
+if not eo_change.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000015"
     lower_terms = ["http://www.ontologyrepository.com/CommonCoreOntologies/Change"]
     extract_mireot(
         input=event_ontology,
-        output=Path("tmp").joinpath("eo_change.ttl"),
+        output=eo_change,
         lower_terms=lower_terms,
         upper_term=upper_term,
     )
 # %%
 # Process profiles
-if not Path("tmp").joinpath("eo_process_profiles.ttl").exists():
+eo_process_profiles=TMP.joinpath("eo_process_profiles.ttl")
+if not eo_process_profiles.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000144"
     lower_terms = [
         "http://www.ontologyrepository.com/CommonCoreOntologies/MaximumPower"
     ]
     extract_mireot(
         input=event_ontology,
-        output=Path("tmp").joinpath("eo_process_profiles.ttl"),
+        output=eo_process_profiles,
         lower_terms=lower_terms,
         upper_term=upper_term,
     )
@@ -231,7 +244,8 @@ if not Path("tmp").joinpath("eo_process_profiles.ttl").exists():
 # Vehicle IRI from OEO and electric/ICE definitions from the OEO
 # %%
 artifact_ontology = download_ontology_if_missing("ArtifactOntology")
-if not Path("tmp").joinpath("ao_artifacts.ttl").exists():
+ao_artifacts = Path("tmp").joinpath("ao_artifacts.ttl")
+if not ao_artifacts.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000040"
     lower_terms = [
         "http://www.ontologyrepository.com/CommonCoreOntologies/ElectricMotor",
@@ -240,13 +254,14 @@ if not Path("tmp").joinpath("ao_artifacts.ttl").exists():
     ]
     extract_mireot(
         input=artifact_ontology,
-        output=Path("tmp").joinpath("ao_artifacts.ttl"),
+        output=ao_artifacts,
         lower_terms=lower_terms,
         upper_term=upper_term,
     )
 # %%
 # Facility
-if not Path("tmp").joinpath("ao_facility.ttl").exists():
+ao_facility = TMP.joinpath("ao_facility.ttl")
+if not ao_facility.exists():
     terms = [
         "http://purl.obolibrary.org/obo/BFO_0000040",
         "http://purl.obolibrary.org/obo/BFO_0000171",
@@ -256,12 +271,13 @@ if not Path("tmp").joinpath("ao_facility.ttl").exists():
     ]
     extract_subset(
         input=artifact_ontology,
-        output=Path("tmp").joinpath("ao_facility.ttl"),
+        output=ao_facility,
         terms=terms,
     )
 # %%
 # Infrastructure
-if not Path("tmp").joinpath("ao_infrastructure.ttl").exists():
+ao_infrastructure = TMP.joinpath("ao_infrastructure.ttl")
+if not ao_infrastructure.exists():
     terms = [
         "http://purl.obolibrary.org/obo/BFO_0000196",
         "http://purl.obolibrary.org/obo/BFO_0000023",
@@ -273,23 +289,25 @@ if not Path("tmp").joinpath("ao_infrastructure.ttl").exists():
     ]
     extract_subset(
         input=artifact_ontology,
-        output=Path("tmp").joinpath("ao_infrastructure.ttl"),
+        output=ao_infrastructure,
         terms=terms,
     )
 # %%
 facility_ontology = download_ontology_if_missing("FacilityOntology")
-if not Path("tmp").joinpath("ao_facility_classes.ttl").exists():
+ao_facility_classes = TMP.joinpath("ao_facility_classes.ttl")
+if not ao_facility_classes.exists():
     terms = [
         "http://www.ontologyrepository.com/CommonCoreOntologies/TransportationFacility",
         "http://www.ontologyrepository.com/CommonCoreOntologies/Facility",
     ]
     extract_subset(
         input=facility_ontology,
-        output=Path("tmp").joinpath("ao_facility_classes.ttl"),
+        output=ao_facility_classes,
         terms=terms,
     )
 # %%
-if not Path("tmp").joinpath("ao_vehicles.ttl").exists():
+ao_vehicles = TMP.joinpath("ao_vehicles.ttl")
+if not ao_vehicles.exists():
     upper_term = "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact"
     lower_terms = [
         "http://www.ontologyrepository.com/CommonCoreOntologies/Truck",
@@ -300,14 +318,15 @@ if not Path("tmp").joinpath("ao_vehicles.ttl").exists():
     ]
     extract_mireot(
         input=artifact_ontology,
-        output=Path("tmp").joinpath("ao_vehicles.ttl"),
+        output=ao_vehicles,
         upper_term=upper_term,
         lower_terms=lower_terms,
     )
 # %%
 # %%
 artifact_ontology = download_ontology_if_missing("ArtifactOntology")
-if not Path("tmp").joinpath("ao_artifacts.ttl").exists():
+ao_artifacts = TMP.joinpath("ao_artifacts.ttl")
+if not ao_artifacts.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000040"
     lower_terms = [
         "http://www.ontologyrepository.com/CommonCoreOntologies/ElectricMotor",
@@ -316,13 +335,14 @@ if not Path("tmp").joinpath("ao_artifacts.ttl").exists():
     ]
     extract_mireot(
         input=artifact_ontology,
-        output=Path("tmp").joinpath("ao_artifacts.ttl"),
+        output=ao_artifacts,
         lower_terms=lower_terms,
         upper_term=upper_term,
     )
 # %%
 geo_ontology = download_ontology_if_missing("GeospatialOntology")
-if not Path("tmp").joinpath("geo_base.ttl").exists():
+geo_base = TMP.joinpath("geo_base.ttl")
+if not geo_base.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000029"
     lower_terms = [
         "http://www.ontologyrepository.com/CommonCoreOntologies/Continent",
@@ -331,13 +351,14 @@ if not Path("tmp").joinpath("geo_base.ttl").exists():
     ]
     extract_mireot(
         input=geo_ontology,
-        output=Path("tmp").joinpath("geo_base.ttl"),
+        output=geo_base,
         lower_terms=lower_terms,
         upper_term=upper_term,
     )
 # %%
 agent_ontology = download_ontology_if_missing("AgentOntology")
-if not Path("tmp").joinpath("geo_tree.ttl").exists():
+geo_tree = TMP.joinpath("geo_tree.ttl")
+if not geo_tree.exists():
     upper_term = (
         "http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion"
     )
@@ -354,7 +375,7 @@ if not Path("tmp").joinpath("geo_tree.ttl").exists():
     ]
     extract_mireot(
         input=agent_ontology,
-        output=Path("tmp").joinpath("geo_tree.ttl"),
+        output=geo_tree,
         lower_terms=lower_terms,
         upper_term=upper_term,
     )
@@ -372,9 +393,9 @@ for element in [
     "eo_change.ttl",
     "ao_infrastructure.ttl",
 ]:
-    input_string += f"--input tmp/{element} "
+    input_string += f"--input {TMP.joinpath(element).resolve().as_posix()} "
 # %%
-if not Path(TARGET).exists():
+if not TARGET.exists():
     merge_call = (
         "java -jar {jar} merge " + input_string + "annotate --annotation "
         'rdfs:comment "{annotation} " '
@@ -386,9 +407,9 @@ if not Path(TARGET).exists():
     )
     sp.call(
         merge_call.format(
-            jar=Path(ROBOT_PATH).resolve().as_posix(),
+            jar=ROBOT_PATH.resolve().as_posix(),
             annotation=annotation,
-            output=Path(TARGET).resolve().as_posix(),
+            output=TARGET.resolve().as_posix(),
         ),
         shell=True,
     )
@@ -400,11 +421,11 @@ if not Path(TARGET).exists():
     --output {output}"
     sp.call(
         annotate_call.format(
-            jar=Path(ROBOT_PATH).resolve().as_posix(),
-            input=Path(TARGET).resolve().as_posix(),
+            jar=ROBOT_PATH.resolve().as_posix(),
+            input=TARGET.resolve().as_posix(),
             ontology_iri=NEW_IRI.format(BASE_IRI, "cco-extracted"),
             version_iri=VERSION_IRI.format(BASE_IRI, "cco-extracted"),
-            output=Path(TARGET).resolve().as_posix(),
+            output=TARGET.resolve().as_posix(),
         ),
         shell=True,
     )

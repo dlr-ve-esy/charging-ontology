@@ -3,6 +3,7 @@ MKDIR_P = mkdir -p
 VERSION:= $(shell cat VERSION)
 VERSIONDIR := build/chio/$(VERSION)
 ONTOLOGY_SOURCE := src
+BFOCOMMIT := d9aa636303766bfb6a7a6d46265873f96cdd8584
 
 subst_paths =	${subst $(ONTOLOGY_SOURCE),$(VERSIONDIR),${patsubst $(ONTOLOGY_SOURCE)/edits/%,$(ONTOLOGY_SOURCE)/modules/%,$(1)}}
 
@@ -28,7 +29,7 @@ ROBOT_PATH := robot.jar
 ROBOT := java -jar $(ROBOT_PATH)
 
 HERMIT_PATH := hermit.jar
-HERMIT :- java -jar $(HERMIT_PATH)
+HERMIT := java -jar $(HERMIT_PATH)
 
 define replace_devs
 	sed -i -E "s/$(OEP_BASE)\/dev\/([a-zA-Z/\.\-]+)/$(OEP_BASE)\/releases\/$(VERSION)\/\1/m" $1
@@ -71,6 +72,8 @@ endef
 
 all: base merge closure
 
+imports: src/imports/bfo-core.ttl
+
 base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar $(OWL_COPY) $(TTL_COPY) $(TTL_TRANSLATE)
 
 merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
@@ -81,6 +84,9 @@ clean:
 	- $(RM) -r $(VERSIONDIR)
 
 directories: ${VERSIONDIR}/imports ${VERSIONDIR}/modules
+
+src/imports/bfo-core.ttl:
+	curl -L -o $@ https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/$(BFOCOMMIT)/imports/bfo-core.ttl
 
 ${VERSIONDIR}/imports:
 	${MKDIR_P} ${VERSIONDIR}/imports
@@ -94,7 +100,7 @@ $(VERSIONDIR)/catalog-v001.xml: $(ONTOLOGY_SOURCE)/catalog-v001.xml
 	sed -i -E "s/edits\//modules\//m" $@
 
 $(ROBOT_PATH): | build
-	curl -L -o $@ https://github.com/ontodev/robot/releases/download/v1.9.2/robot.jar
+	curl -L -o $@ https://github.com/ontodev/robot/releases/download/v1.9.5/robot.jar
 
 $(HERMIT_PATH): | build
 	curl -L -o $@ https://github.com/owlcs/releases/raw/master/HermiT/org.semanticweb.hermit-packaged-1.4.6.519-SNAPSHOT.jar
