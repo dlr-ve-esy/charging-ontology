@@ -38,24 +38,23 @@ pages:
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
 
-figures:
-  stage: paper
-  <<: *deploy-test
-  image: etsinfra/docker-python-graphviz:3.10.7
-  script:
-    - cd paper
-    - latexmk -pdf paper.tex
-  artifacts:
-    paths:
-      - paper/paper.pdf
+# figures:
+#   stage: paper
+#   <<: *deploy-test
+#   image: etsinfra/docker-python-graphviz:3.10.7
+#   script:
+#     - cd paper
+#     - latexmk -pdf paper.tex
+#   artifacts:
+#     paths:
+#       - paper/paper.pdf
 
 paper:
   stage: paper
   image: tumi5/latex
   script:
     - cd paper
-    - make clean
-    - make
+    - latexmk -pdf paper.tex
   artifacts:
     paths:
       - paper/paper.pdf
