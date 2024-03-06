@@ -1,5 +1,5 @@
 # LATEX: pdflatex | xelatex | lualatex
-LATEX = lualatex
+LATEX = pdflatex
 LATEX_FLAGS = -shell-escape -interaction nonstopmode 
 BIBTEX = bibtex
 
