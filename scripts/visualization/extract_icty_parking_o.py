@@ -2,20 +2,28 @@
 import requests
 from pathlib import Path
 import subprocess as sp
-
+import os
 ONTOLOGY_BASE = (
     "https://enterpriseintegrationlab.github.io/icity/Parking/doc/ontology.ttl"
 )
 # Change this path according to your setup.
 
+CWD = Path(os.getcwd())
+FILEPATH = Path(os.path.dirname(os.path.realpath(__file__)))
 
-ROBOT_PATH = "../../robot.jar"
-TMP = "tmp"
-Path(TMP).mkdir(exist_ok=True)
+# Clunky search for the basedir
+if FILEPATH == CWD:
+    BASEDIR = Path("../..")
+elif "VERSION" in [p.name for p in CWD.iterdir()]:
+    BASEDIR = Path(".")
 
-TARGET = Path(TMP).joinpath("Parking.ttl")
+TMP = BASEDIR.joinpath("tmp")
+TMP.mkdir(exist_ok=True)
+ROBOT_PATH = BASEDIR.joinpath("robot.jar")
+
+TARGET = TMP.joinpath("Parking.ttl")
 # %%
-if not Path(TARGET).exists():
+if not TARGET.exists():
     with open(TARGET, "wb") as local:
         response = requests.get(ONTOLOGY_BASE)
         if response.status_code == 200:
@@ -35,13 +43,14 @@ def extract_subset(input: str, output: str, terms: str):
         "--imports include "
         "--output {output}"
     )
-    with open(Path("tmp").joinpath("temp.txt"), "w") as fp:
+    current_temp = TMP.joinpath("temp.txt")
+    with open(current_temp, "w") as fp:
         for term in terms:
             fp.write(term + "\n")
     debug_string = extract_call.format(
-        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
-        term_file=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        term_file=current_temp.resolve().as_posix(),
         # term_file_filter=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
         output=Path(output).resolve().as_posix(),
     )
@@ -69,7 +78,7 @@ def robot_convert(
         "--format {formt}"
     )
     debug_string = convert_call.format(
-        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
         output=Path(output).resolve().as_posix(),
         formt=formt,
@@ -82,12 +91,33 @@ def robot_convert(
         print(debug_string)
         raise IOError(f"Something went wrong with call: {debug_string}")
     return code
+# %%
+# Ugly fix, not even ROBOT can open the file
+botched_parking_ontology = TMP.joinpath("parking_botched.ttl")
+if TARGET.exists():
+    IMPORT_BLOCK = """ <http://ontology.eil.utoronto.ca/icity/Building/1.2/> ,
+                                                              <http://ontology.eil.utoronto.ca/icity/Change/1.1/> ,
+                                                              <http://ontology.eil.utoronto.ca/icity/Contact/1.0/> ,
+                                                              <http://ontology.eil.utoronto.ca/icity/Mereology/1.0/> ,
+                                                              <http://ontology.eil.utoronto.ca/icity/OM/1.2/> ,
+                                                              <http://ontology.eil.utoronto.ca/icity/Organization/1.2/> ,
+                                                              <http://ontology.eil.utoronto.ca/icity/Person/1.2/> ,
+                                                              <http://ontology.eil.utoronto.ca/icity/RecurringEvent/1.0/> ,
+                                                              <http://ontology.eil.utoronto.ca/icity/SpatialLoc/1.2/> ,
+                                                              <http://ontology.eil.utoronto.ca/icity/Vehicle/1.2/> ;"""
+    REDUCED_BLOCK ="""<http://ontology.eil.utoronto.ca/icity/Change/1.1/> ;"""
+    with open(TARGET, "r") as original:
+        text = original.read()
+        new_text = text.replace(IMPORT_BLOCK, REDUCED_BLOCK)
 
-
+    with open(botched_parking_ontology, "w", encoding="utf-8") as new:
+        new.write(new_text)
+        
 # %%
 # For this to work imports have to be manually removed from the Parking
 # ontology. Something is going wrong with robot
-if not Path(TMP).joinpath("parking_space.ttl").exists():
+parking_space = TMP.joinpath("parking_space.ttl")
+if not parking_space.exists():
     terms = [
         "http://ontology.eil.utoronto.ca/icity/Change/manifestationOf",
         "http://ontology.eil.utoronto.ca/icity/Parking/ParkingAreaPD",
@@ -105,9 +135,9 @@ if not Path(TMP).joinpath("parking_space.ttl").exists():
         "http://ontology.eil.utoronto.ca/icity/Parking/StandardEVCharger",
     ]
     extract_subset(
-        input=TARGET,
-        output=Path(TMP).joinpath("parking_space.ttl"),
+        input=botched_parking_ontology,
+        output=parking_space,
         terms=terms,
     )
-robot_convert("tmp/parking_space.ttl", "tmp/parking_space.owx")
+robot_convert(TMP.joinpath("parking_space.ttl"), TMP.joinpath("parking_space.owx"))
 # %%

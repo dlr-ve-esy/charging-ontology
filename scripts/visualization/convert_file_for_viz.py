@@ -1,14 +1,20 @@
 # %%
-import requests
 import subprocess as sp
 from pathlib import Path
+import os
 
+CWD = Path(os.getcwd())
+FILEPATH = Path(os.path.dirname(os.path.realpath(__file__)))
+
+# Clunky search for the basedir
+if FILEPATH == CWD:
+    BASEDIR = Path("../..")
+elif "VERSION" in [p.name for p in CWD.iterdir()]:
+    BASEDIR = Path(".")
 # %%
-ROBOT_PATH = "../../robot.jar"
-TMP = "tmp"
-Path(TMP).mkdir(exist_ok=True)
-
-
+ROBOT_PATH = BASEDIR.joinpath("robot.jar")
+TMP = BASEDIR.joinpath("tmp")
+TMP.mkdir(exist_ok=True)
 # %%
 def robot_convert(
     input: str,
@@ -23,7 +29,7 @@ def robot_convert(
         "--format {formt}"
     )
     debug_string = convert_call.format(
-        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
         output=Path(output).resolve().as_posix(),
         formt=formt,
@@ -40,15 +46,15 @@ def robot_convert(
 
 # %%
 robot_convert(
-    "../cco-imports/tmp/ao_infrastructure.ttl", f"{TMP}/ao_infrastructure.owx"
+    TMP.joinpath("ao_infrastructure.ttl"), TMP.joinpath("ao_infrastructure.owx")
 )
-robot_convert("../../src/imports/bfo-core.ttl", f"{TMP}/bfo.owx")
-robot_convert("../oeo-imports/tmp/oeo_vehicle.ttl", f"{TMP}/oeo_vehicle.owx")
-robot_convert("../cco-imports/tmp/ao_vehicles.ttl", f"{TMP}/ao_vehicles.owx")
+robot_convert(BASEDIR.joinpath("src/imports/bfo-core.ttl"), TMP.joinpath("bfo.owx"))
+robot_convert(TMP.joinpath("oeo_vehicle.ttl"), TMP.joinpath("oeo_vehicle.owx"))
+robot_convert(TMP.joinpath("ao_vehicles.ttl"), TMP.joinpath("ao_vehicles.owx"))
 robot_convert(
-    "../oeo-imports/tmp/oeo_vehicle_ev_tax.ttl", f"{TMP}/oeo_vehicle_ev_tax.owx"
+    TMP.joinpath("oeo_vehicle_ev_tax.ttl"), TMP.joinpath("oeo_vehicle_ev_tax.owx")
 )
 robot_convert(
-    "../oeo-imports/tmp/oeo_vehicle_lv_tax.ttl", f"{TMP}/oeo_vehicle_lv_tax.owx"
+    TMP.joinpath("oeo_vehicle_lv_tax.ttl"), TMP.joinpath("oeo_vehicle_lv_tax.owx")
 )
 # %%

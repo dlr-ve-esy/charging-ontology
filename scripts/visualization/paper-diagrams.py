@@ -3,6 +3,23 @@ import pygraphviz as pgv
 import pyhornedowl as pho
 from pyhornedowl.model import *
 from pathlib import Path
+import os
+
+CWD = Path(os.getcwd())
+FILEPATH = Path(os.path.dirname(os.path.realpath(__file__)))
+
+# Clunky search for the basedir
+if FILEPATH == CWD:
+    BASEDIR = Path("../..")
+elif "VERSION" in [p.name for p in CWD.iterdir()]:
+    BASEDIR = Path(".")
+
+TMP = BASEDIR.joinpath("tmp")
+TMP.mkdir(exist_ok=True)
+
+SVG = TMP.joinpath("svg")
+SVG.mkdir(exist_ok=True)
+
 PREFIX_MAPPINGS = {
     "http://www.ontologyrepository.com/CommonCoreOntologies/": "CCO:",
     "http://purl.obolibrary.org/obo/": "BFO:",
@@ -26,10 +43,9 @@ BFO2020_MAPPINGS = {
     "http://purl.obolibrary.org/obo/BFO_0000051": "http://purl.obolibrary.org/obo/BFO_0000178"
 }
 
-Path("tmp/svg").mkdir(exist_ok=True)
 # %%
-bfo = pho.open_ontology("tmp/bfo.owx")
-ontology = pho.open_ontology("tmp/ao_infrastructure.owx")
+bfo = pho.open_ontology(TMP.joinpath("bfo.owx").as_posix())
+ontology = pho.open_ontology(TMP.joinpath("ao_infrastructure.owx").as_posix())
 
 NL_RENDER = "\\n"  #  \\n for dot to png, \\\\ for dot2tex
 
@@ -177,8 +193,8 @@ render_equivalent_class_axiom(
         shape="ellipse", style="dashed", fixedsize=False, fontsize=8, color="grey"
     ),
 )
-G.write("tmp/infrastructureSystem.dot")
-G.draw("tmp/svg/infrastructureSystem.svg", prog="dot")
+G.write(TMP.joinpath("infrastructureSystem.dot").as_posix())
+G.draw(SVG.joinpath("infrastructureSystem.svg").as_posix(), prog="dot")
 # %% [markdown]
 # ## Render OEO imported commitments
 # Imported classes like battery
@@ -214,8 +230,8 @@ for aa in oeo_vehicle_imports.get_axioms_for_iri(
         )
     if isinstance(aa.axiom, EquivalentClasses):
         render_equivalent_class_axiom(OG, aa.axiom, oeo_vehicle_imports)
-OG.write("tmp/OEOEV.dot")
-OG.draw("tmp/svg/OEOEV.svg", prog="dot")
+OG.write(TMP.joinpath("OEOEV.dot").as_posix())
+OG.draw(SVG.joinpath("OEOEV.svg").as_posix(), prog="dot")
 # %% [markdown]
 # ## Render Vehicle Taxonomy
 # Render the taxonomy from CCO vs OEO
@@ -249,8 +265,8 @@ linear_tax = [
 SG = VG.add_subgraph(rank="same", rankdir="TB")
 for i in linear_tax:
     SG.add_node(get_label(i,vehicle_tax_cco))
-VG.write("tmp/CCOVehicles.dot")
-VG.draw("tmp/svg/CCOVehicles.svg", prog="dot")
+VG.write(TMP.joinpath("CCOVehicles.dot").as_posix())
+VG.draw(SVG.joinpath("CCOVehicles.svg").as_posix(), prog="dot")
 # %%
 ev_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_ev_tax.owx")
 OVG = pgv.AGraph(
@@ -272,8 +288,8 @@ add_taxonomy(
     ev_vehicle_tax_oeo,
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
 )
-OVG.write("tmp/OEOVehicles.dot")
-OVG.draw("tmp/svg/OEOVehicles.svg", prog="dot")
+OVG.write(TMP.joinpath("OEOVehicles.dot").as_posix())
+OVG.draw(SVG.joinpath("OEOVehicles.svg").as_posix(), prog="dot")
 # %%
 land_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_lv_tax.owx")
 OLVG = pgv.AGraph(
@@ -295,7 +311,7 @@ add_taxonomy(
     land_vehicle_tax_oeo,
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
 )
-OLVG.write("tmp/OEOLVehicles.dot")
-OLVG.draw("tmp/svg/OEOLVehicles.svg", prog="dot")
+OLVG.write(TMP.joinpath("OEOLVehicles.dot").as_posix())
+OLVG.draw(SVG.joinpath("OEOLVehicles.svg").as_posix(), prog="dot")
 # %% [markdown]
 # ## Viz from iCity Parking ontology

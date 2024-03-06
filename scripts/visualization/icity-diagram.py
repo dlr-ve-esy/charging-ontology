@@ -2,6 +2,23 @@
 import pygraphviz as pgv
 import pyhornedowl as pho
 from pyhornedowl.model import *
+from pathlib import Path
+import os
+
+CWD = Path(os.getcwd())
+FILEPATH = Path(os.path.dirname(os.path.realpath(__file__)))
+
+# Clunky search for the basedir
+if FILEPATH == CWD:
+    BASEDIR = Path("../..")
+elif "VERSION" in [p.name for p in CWD.iterdir()]:
+    BASEDIR = Path(".")
+
+TMP = BASEDIR.joinpath("tmp")
+TMP.mkdir(exist_ok=True)
+
+SVG = TMP.joinpath("svg")
+SVG.mkdir(exist_ok=True)
 
 DROPLIST = []
 
@@ -105,7 +122,7 @@ def get_label(iri, ontology):
 
 
 # %%
-parking = pho.open_ontology("tmp/parking_space.owx")
+parking = pho.open_ontology(TMP.joinpath("parking_space.owx").as_posix())
 
 PG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
@@ -140,6 +157,6 @@ for prop in props:
             )
         if isinstance(aa.axiom, EquivalentClasses):
             render_equivalent_class_axiom(PG, aa.axiom, parking)
-PG.write("tmp/PARKING.dot")
-PG.draw("tmp/svg/PARKING.svg", prog="dot")
+PG.write(TMP.joinpath("PARKING.dot").as_posix())
+PG.draw(SVG.joinpath("PARKING.svg").as_posix(), prog="dot")
 # %%

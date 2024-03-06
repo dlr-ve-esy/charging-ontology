@@ -2,19 +2,32 @@
 import requests
 import subprocess as sp
 from pathlib import Path
+import os
+
+CWD = Path(os.getcwd())
+FILEPATH = Path(os.path.dirname(os.path.realpath(__file__)))
+
+# Clunky search for the basedir
+if FILEPATH == CWD:
+    BASEDIR = Path("../..")
+elif "VERSION" in [p.name for p in CWD.iterdir()]:
+    BASEDIR = Path(".")
 
 BASE_IRI = "http://openenergy-platform.org/ontology"
 VERSION = "2.1.0"
 ONTOLOGY_BASE = "http://openenergy-platform.org/ontology/oeo/releases/{}/{}"
 # Change these paths according to your setup.
-ROBOT_PATH = "../../robot.jar"
-IAO = "../../src/imports/iao-extracted.ttl"
+ROBOT_PATH = BASEDIR.joinpath("robot.jar")
+IAO = BASEDIR.joinpath("src/imports/iao-extracted.ttl")
+
+TMP = Path("tmp")
+TMP.mkdir(exist_ok=True)
 
 NEW_IRI = "{}/chio/imports/{}.ttl"
 VERSION_IRI = "{}/chio/dev/imports/{}.ttl"
 
-TARGET = "../../src/imports/oeo-extracted.ttl"
-Path("tmp").mkdir(exist_ok=True)
+TARGET = BASEDIR.joinpath("src/imports/oeo-extracted.ttl")
+
 # %%
 
 
@@ -24,9 +37,9 @@ def download_ontology_if_missing(ONTOLOGY):
     Args:
         ONTOLOGY (str): Name of the CCO module to be downloaded.
     """
-    temporary_path = Path("tmp").joinpath(f"{ONTOLOGY}")
-    Path("tmp").joinpath(f"{ONTOLOGY}").parent.mkdir(exist_ok=True)
-    if not Path(temporary_path).exists():
+    temporary_path = TMP.joinpath(f"{ONTOLOGY}")
+    TMP.joinpath(f"{ONTOLOGY}").parent.mkdir(exist_ok=True)
+    if not temporary_path.exists():
         with open(temporary_path, "wb") as local:
             response = requests.get(ONTOLOGY_BASE.format(VERSION, ONTOLOGY))
             if response.status_code == 200:
@@ -54,7 +67,7 @@ def extract_mireot_tree(
         "--output {output}"
     )
     debug_string = extract_call.format(
-        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
         branch=branch,
         intermediates=intermediates,
@@ -83,14 +96,14 @@ def extract_star(input: str, output: str, terms: str):
         # "--select \"annotations self equivalents object-properties\" "
         "--output {output}"
     )
-    with open(Path("tmp").joinpath("temp.txt"), "w") as fp:
+    with open(TMP.joinpath("temp.txt"), "w") as fp:
         for term in terms:
             fp.write(term + "\n")
     debug_string = extract_call.format(
-        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
-        term_file=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
-        # term_file_filter=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        term_file=TMP.joinpath("temp.txt").resolve().as_posix(),
+        # term_file_filter=TMP.joinpath("temp.txt").resolve().as_posix(),
         output=Path(output).resolve().as_posix(),
     )
     code = sp.call(
@@ -118,14 +131,14 @@ def extract_subset(input: str, output: str, terms: str):
         # "--select \"annotations self equivalents object-properties\" "
         "--output {output}"
     )
-    with open(Path("tmp").joinpath("temp.txt"), "w") as fp:
+    with open(TMP.joinpath("temp.txt"), "w") as fp:
         for term in terms:
             fp.write(term + "\n")
     debug_string = extract_call.format(
-        jar=Path(ROBOT_PATH).resolve().as_posix(),
+        jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
-        term_file=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
-        # term_file_filter=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        term_file=TMP.joinpath("temp.txt").resolve().as_posix(),
+        # term_file_filter=TMP.joinpath("temp.txt").resolve().as_posix(),
         output=Path(output).resolve().as_posix(),
     )
     code = sp.call(
@@ -170,7 +183,7 @@ input_string = ""
 for element in ["oeo_grid.ttl", "oeo_vehicle.ttl"]:
     input_string += f"--input tmp/{element} "
 # %%
-if not Path(TARGET).exists():
+if not TARGET.exists():
     merge_call = (
         "java -jar {jar} merge " + input_string + "annotate --annotation "
         'rdfs:comment "{annotation} " '
@@ -182,9 +195,9 @@ if not Path(TARGET).exists():
     )
     sp.call(
         merge_call.format(
-            jar=Path(ROBOT_PATH).resolve().as_posix(),
+            jar=ROBOT_PATH.resolve().as_posix(),
             annotation=annotation,
-            output=Path(TARGET).resolve().as_posix(),
+            output=TARGET.resolve().as_posix(),
         ),
         shell=True,
     )
@@ -196,11 +209,11 @@ if not Path(TARGET).exists():
     --output {output}"
     sp.call(
         annotate_call.format(
-            jar=Path(ROBOT_PATH).resolve().as_posix(),
-            input=Path(TARGET).resolve().as_posix(),
+            jar=ROBOT_PATH.resolve().as_posix(),
+            input=TARGET.resolve().as_posix(),
             ontology_iri=NEW_IRI.format(BASE_IRI, "oeo-extracted"),
             version_iri=VERSION_IRI.format(BASE_IRI, "oeo-extracted"),
-            output=Path(TARGET).resolve().as_posix(),
+            output=TARGET.resolve().as_posix(),
         ),
         shell=True,
     )
@@ -209,7 +222,7 @@ else:
 # %%
 # %%
 # Get IAO imports
-if not Path(IAO).exists():
+if not IAO.exists():
     with open(IAO, "wb") as local:
         response = requests.get(
             ONTOLOGY_BASE.format(VERSION, "imports/iao-extracted.owl")
@@ -219,8 +232,8 @@ if not Path(IAO).exists():
 else:
     print(f"The file {IAO} already exists, you are good to go.")
 # %%
-IAO_DROPPED = "iao-dropped.txt"
-if Path(IAO).exists():
+IAO_DROPPED = BASEDIR.joinpath("scripts/oeo-imports/iao-dropped.txt")
+if IAO.exists():
     extract_call = 'java -jar {jar} \
 remove --input {input}  \
 --term-file {term_file} \
@@ -230,28 +243,30 @@ remove --input {input}  \
 
     sp.call(
         extract_call.format(
-            jar=Path(ROBOT_PATH).resolve().as_posix(),
-            input=Path(IAO).resolve().as_posix(),
+            jar=ROBOT_PATH.resolve().as_posix(),
+            input=IAO.resolve().as_posix(),
             term_file=IAO_DROPPED,
-            output=Path(IAO).resolve().as_posix(),
+            output=IAO.resolve().as_posix(),
         ),
         shell=True,
     )
 # %%
 ## OEO Vehicle taxonomy (for paper)
 # %%
-if not Path("tmp").joinpath("oeo_vehicle_ev_tax.ttl").exists():
+oeo_vehicle_ev_tax = TMP.joinpath("oeo_vehicle_ev_tax.ttl")
+if not oeo_vehicle_ev_tax.exists():
     parent = "http://openenergy-platform.org/ontology/oeo/OEO_00000146"
     extract_mireot_tree(
         input=oeo_physical,
-        output=Path("tmp").joinpath("oeo_vehicle_ev_tax.ttl"),
+        output=oeo_vehicle_ev_tax,
         branch=parent,
     )
-if not Path("tmp").joinpath("oeo_vehicle_lv_tax.ttl").exists():
+oeo_vehicle_lv_tax = TMP.joinpath("oeo_vehicle_lv_tax.ttl")
+if not oeo_vehicle_lv_tax.exists():
     parent = "http://openenergy-platform.org/ontology/oeo/OEO_00010273"
     extract_mireot_tree(
         input=oeo_physical,
-        output=Path("tmp").joinpath("oeo_vehicle_lv_tax.ttl"),
+        output=oeo_vehicle_lv_tax,
         branch=parent,
     )
 # %%
