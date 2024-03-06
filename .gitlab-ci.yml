@@ -1,5 +1,5 @@
 default:
-  image: openjdk:17
+  image: python:3.10
   tags:
     - docker
 
@@ -12,11 +12,6 @@ stages:
 
 .before_script_template: &deploy-test
   before_script:
-    - apt-get -yq update
-    - apt-get -yq install software-properties-common
-    - add-apt-repository -y ppa:deadsnakes/ppa
-    - apt-get -yq update
-    - apt-get -yq install python3.10
     - pip install poetry==1.8.1
     - poetry install
     - POETRY_ENV=$(poetry env info -p)
@@ -53,14 +48,14 @@ pages:
   rules:
     - !reference [.doc_rules, rules]
 
-figures:
+ontology:
   stage: build
-  <<: *deploy-test
+  image: openjdk:23-slim-bullseye
   script:
-    - make
+    - make all
   artifacts:
     paths:
-      - paper/paper.pdf
+      - build/*
 
 # figures:
 #   stage: paper
