@@ -20,6 +20,9 @@ py-horned-owl = "^0.3.2"
 pygraphviz = {version = "^1.12", optional = true}
 
 
+[tool.poetry.extras]
+figures = ["pygraphviz"]
+
 [tool.poetry.group.paper.dependencies]
 pygments = "^2.17.2"
 
