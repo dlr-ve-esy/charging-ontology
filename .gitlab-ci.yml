@@ -17,6 +17,15 @@ stages:
     - POETRY_ENV=$(poetry env info -p)
     - source ${POETRY_ENV}/bin/activate
 
+.doc_rules:
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+      changes:
+        - docs/**/*
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_REF_NAME =~ /^pages/
+      changes:
+        - docs/**/*
+
 test:
   stage: test
   script:
@@ -58,3 +67,5 @@ paper:
   artifacts:
     paths:
       - paper/paper.pdf
+  rules:
+    - !reference [.doc_rules, rules]
