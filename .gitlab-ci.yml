@@ -2,8 +2,6 @@ default:
   image: python:3.10
   tags:
     - docker
-  before_script:
-    - docker info
 
 stages:
   - deploy
@@ -65,7 +63,6 @@ paper:
   stage: paper
   image: tumi5/latex
   script:
-    - docker info
     - cd paper
     - latexmk -pdf -shell-escape paper.tex
   artifacts:
