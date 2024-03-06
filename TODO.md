@@ -1,5 +1,12 @@
 # TODO and development roadmap
 
+## 05.03.2024
+
+Produced first version of paper diagrams. These show the commitments of
+existing ontologies. 
+
+- [ ] Produce diagrams of implementations from this ontology.
+
 ## 04.03.2024
 
 - [X] Considering importing parking related competency questions from the [iCity

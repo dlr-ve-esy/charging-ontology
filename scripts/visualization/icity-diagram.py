@@ -14,6 +14,8 @@ PREFIX_MAPPINGS = {
 }
 RDFSLABEL = "http://www.w3.org/2000/01/rdf-schema#label"
 
+NL_RENDER = "\\n"  #  \\n for dot to png, \\\\ for dot2tex
+
 
 # %%
 def render_equivalent_class_axiom(G, axiom, ontology, edge_attrs={}, node_attrs={}):
@@ -98,7 +100,7 @@ def get_label(iri, ontology):
     if " " in label:
         label = " ".join([p for p in label.split(" ")])
     if len(label) > 10:
-        label = "\\n".join([p for p in label.split(" ")])
+        label = f"{NL_RENDER}".join([p for p in label.split(" ")])
     return label
 
 

@@ -31,6 +31,8 @@ Path("tmp/svg").mkdir(exist_ok=True)
 bfo = pho.open_ontology("tmp/bfo.owx")
 ontology = pho.open_ontology("tmp/ao_infrastructure.owx")
 
+NL_RENDER = "\\n"  #  \\n for dot to png, \\\\ for dot2tex
+
 
 # %%
 def get_label(iri, ontology):
@@ -48,7 +50,7 @@ def get_label(iri, ontology):
     if " " in label:
         label = " ".join([p for p in label.split(" ")])
     if len(label) > 10:
-        label = "\\n".join([p for p in label.split(" ")])
+        label = f"{NL_RENDER}".join([p for p in label.split(" ")])
     return label
 
 
