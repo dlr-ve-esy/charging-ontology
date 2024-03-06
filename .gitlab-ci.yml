@@ -8,6 +8,7 @@ stages:
   - paper
   - build
   - test
+  - figures
 
 .before_script_template: &deploy-test
   before_script:
@@ -36,6 +37,17 @@ pages:
       - public
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+
+figures:
+  stage: paper
+  <<: *deploy-test
+  image: etsinfra/docker-python-graphviz:3.10.7
+  script:
+    - cd paper
+    - latexmk -pdf paper.tex
+  artifacts:
+    paths:
+      - paper/paper.pdf
 
 paper:
   stage: paper
