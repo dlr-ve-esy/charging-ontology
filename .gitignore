@@ -5,3 +5,17 @@ poetry.lock
 build/*
 hermit.jar
 __pycache__
+*.abs
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*paper.pdf
+*.xmpdata
+*.xmpi
+*/sources
+*/local
+
+# Remove later when images are ready
+paper/images

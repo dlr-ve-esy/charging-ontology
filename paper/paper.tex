@@ -1,0 +1,86 @@
+\documentclass[hf]{ceurart}
+
+\usepackage{minted}
+\usepackage{longtable}
+\usepackage{booktabs}
+\setminted{breaklines=true}
+\pagenumbering{gobble}
+ \pagestyle{empty}
+\usepackage{listings}
+
+\begin{document}
+
+\makeatletter
+
+\newlength\oriarrayrulewidth  
+\newcount\orilowpenalty
+\newcommand\nobreakmidrule{%
+ \noalign{\global\oriarrayrulewidth\arrayrulewidth\relax
+          \global\orilowpenalty\@lowpenalty\relax  
+          \global\@lowpenalty=\numexpr-10000\relax%
+          \global\arrayrulewidth\lightrulewidth\relax}
+ \hline
+ \noalign{\global\@lowpenalty=\orilowpenalty\relax%
+          \global\arrayrulewidth\oriarrayrulewidth\relax}}
+
+\makeatother
+%%
+%% Rights management information.
+%% CC-BY is default license.
+\copyrightyear{2022}
+\copyrightclause{Copyright for this paper by its authors.
+  Use permitted under Creative Commons License Attribution 4.0
+  International (CC BY 4.0).}
+
+\conference{The Tenth Joint Ontology Workshops (JOWO’24), July 15-19, 2024, Enschede, Netherlands}
+
+%% old: \title{Competence Questions in the context of energy systems analysis}
+\title{A BFO based battery electric vehicle charging infrastructure ontology}
+
+\author[1]{Eugenio S. Arellano R.}[%
+orcid=0000-0003-2508-3976,
+email=eugenio.arellanoruiz@dlr.de,
+]
+\author[1]{Carsten Hoyer-Klick}[%
+email=carsten.hoyer-klick@dlr.de,
+]
+
+
+\address[1]{German Aerospace Center (DLR), Department of Energy Systems Analysis, Institute of Networked
+	Energy Systems, Stuttgart, Germany}
+
+
+\input{assets/abstract.tex}
+
+\input{assets/keywords.tex}
+
+
+\maketitle
+
+\input{sections/introduction.tex}
+
+\input{sections/context.tex}
+
+\input{sections/oeo.tex}
+
+\input{sections/other_ontologies.tex}
+\input{sections/methodology.tex}
+\input{sections/achievments.tex}
+\input{sections/conclusion.tex}
+
+\input{sections/acknowledgments.tex}
+
+%% Define the bibliography file to be used
+\bibliography{bibliography}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+\newpage
+\appendix
+
+
+
+\end{document}
+
+%%
+%% End of file
