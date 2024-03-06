@@ -45,7 +45,8 @@ pages:
     paths:
       - public
   rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  rules:
+    - !reference [.doc_rules, rules]
 
 # figures:
 #   stage: paper
@@ -67,5 +68,3 @@ paper:
   artifacts:
     paths:
       - paper/paper.pdf
-  rules:
-    - !reference [.doc_rules, rules]
