@@ -28,3 +28,14 @@ pages:
       - public
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+
+paper:
+  stage: build
+  image: tumi5/latex
+  script:
+    - cd paper
+    - make clean
+    - make
+  artifacts:
+    paths:
+      - paper/paper.pdf
