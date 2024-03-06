@@ -72,7 +72,7 @@ endef
 
 all: base merge closure
 
-imports: src/imports/bfo-core.ttl
+imports: src/imports/bfo-core.ttl src/imports/cco-extracted.ttl src/imports/oeo-extracted.ttl src/imports/iao-extracted.ttl
 
 base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar $(OWL_COPY) $(TTL_COPY) $(TTL_TRANSLATE)
 
@@ -83,10 +83,22 @@ closure: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.owl
 clean:
 	- $(RM) -r $(VERSIONDIR)
 
+clean-imports:
+	- $(RM) -r src/imports/*
+
 directories: ${VERSIONDIR}/imports ${VERSIONDIR}/modules
 
 src/imports/bfo-core.ttl:
 	curl -L -o $@ https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/$(BFOCOMMIT)/imports/bfo-core.ttl
+
+src/imports/cco-extracted.ttl:
+	python scripts/cco-imports/extract-cco.py
+
+src/imports/oeo-extracted.ttl:
+	python scripts/oeo-imports/extract-oeo.py
+
+src/imports/iao-extracted.ttl:
+	python scripts/oeo-imports/extract-oeo.py
 
 ${VERSIONDIR}/imports:
 	${MKDIR_P} ${VERSIONDIR}/imports
