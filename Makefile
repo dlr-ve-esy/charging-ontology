@@ -76,7 +76,7 @@ all: base merge closure
 
 imports: $(IMPORTS)/bfo-core.ttl $(IMPORTS)/cco-extracted.ttl $(IMPORTS)/oeo-extracted.ttl $(IMPORTS)/iao-extracted.ttl
 
-base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar $(OWL_COPY) $(TTL_COPY) $(TTL_TRANSLATE)
+base: | directories imports $(VERSIONDIR)/catalog-v001.xml robot.jar $(OWL_COPY) $(TTL_COPY) $(TTL_TRANSLATE)
 
 merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 
@@ -93,14 +93,14 @@ directories: ${VERSIONDIR}/imports ${VERSIONDIR}/modules ${TMP}
 $(IMPORTS)/bfo-core.ttl:
 	curl -L -o $@ https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/$(BFOCOMMIT)/imports/bfo-core.ttl
 
-$(IMPORTS)/cco-extracted.ttl: $(TMP)/EventOntology.ttl
+$(IMPORTS)/cco-extracted.ttl: $(ROBOT_PATH)
 	bash scripts/cco-imports/cco-extracted.sh
 
-$(IMPORTS)/oeo-extracted.ttl:
-	python scripts/oeo-imports/extract-oeo.py
+$(IMPORTS)/oeo-extracted.ttl: $(ROBOT_PATH)
+	bash scripts/oeo-imports/oeo-extracted.sh
 
-$(IMPORTS)/iao-extracted.ttl:
-	python scripts/oeo-imports/extract-oeo.py
+$(IMPORTS)/iao-extracted.ttl: $(ROBOT_PATH)
+	bash scripts/oeo-imports/iao-extracted.sh
 
 ${TMP}:
 	${MKDIR_P} ${TMP}

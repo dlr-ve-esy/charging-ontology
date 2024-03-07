@@ -27,3 +27,9 @@ java -jar robot.jar extract --input ${tmpdir}/oeo-physical.omn --method subset -
 java -jar robot.jar merge --input ${tmpdir}/oeo_grid.ttl --input ${tmpdir}/oeo_vehicle.ttl annotate --annotation rdfs:comment "This is an extract of the Open Energy Ontology: https://github.com/OpenEnergyPlatform/ontology " --output ${imports}/oeo-extracted.ttl
 
 java -jar robot.jar annotate --input ${imports}/oeo-extracted.ttl --ontology-iri ${iri_base}${oeo_new_iri}/oeo-extracted.ttl --version-iri ${iri_base}${oeo_new_version_iri}/oeo-extracted.ttl --output ${imports}/oeo-extracted.ttl
+
+# Not necessary for imports but for the paper
+
+java -jar robot.jar extract --input ${tmpdir}/oeo-physical.omn --method MIREOT --branch-from-term http://openenergy-platform.org/ontology/oeo/OEO_00000146 --intermediates all --output ${tmpdir}/oeo_vehicle_ev_tax.ttl
+
+java -jar robot.jar extract --input ${tmpdir}/oeo-physical.omn --method MIREOT --branch-from-term http://openenergy-platform.org/ontology/oeo/OEO_00010273 --intermediates all --output ${tmpdir}/oeo_vehicle_lv_tax.ttl
