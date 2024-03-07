@@ -38,8 +38,9 @@ pages:
 
 ontology:
   stage: build
-  image: eclipse-temurin:latest
+  image: eclipse-temurin:8u402-b06-jre-focal
   script:
+    - apt-get update && apt-get install make
     - make all
   artifacts:
     paths:
