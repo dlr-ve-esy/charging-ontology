@@ -64,6 +64,7 @@ figures:
   stage: paper
   needs:
     - job: figures-reqs
+      artifacts: true
   image: etsinfra/docker-python-graphviz:3.10.7
   script:
     - pip install py-horned-owl pygraphviz
@@ -78,6 +79,7 @@ paper:
   stage: paper
   needs:
     - job: figures
+      artifacts: true
   image: tumi5/latex
   script:
     - cd paper
