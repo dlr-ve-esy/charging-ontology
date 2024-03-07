@@ -84,7 +84,7 @@ closure: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.owl
 
 clean:
 	- $(RM) -r $(VERSIONDIR)
-
+	- $(RM) -r ${TMP}
 clean-imports:
 	- $(RM) -r $(IMPORTS)/*
 
