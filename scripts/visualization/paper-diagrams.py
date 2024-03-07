@@ -44,6 +44,7 @@ BFO2020_MAPPINGS = {
 }
 
 # %%
+print(list(TMP.iterdir()))
 bfo = pho.open_ontology(TMP.joinpath("bfo.owx").as_posix())
 ontology = pho.open_ontology(TMP.joinpath("ao_infrastructure.owx").as_posix())
 
