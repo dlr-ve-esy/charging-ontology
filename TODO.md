@@ -1,5 +1,9 @@
 # TODO and development roadmap
 
+## 07.03.2024
+
+- [ ] Follow this to avoid botching parking ontology: https://github.com/ontodev/robot/issues/1150
+
 ## 05.03.2024
 
 Produced first version of paper diagrams. These show the commitments of
