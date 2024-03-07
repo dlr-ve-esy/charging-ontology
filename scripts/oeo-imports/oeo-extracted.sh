@@ -18,6 +18,11 @@ oeo_new_version_iri="${ontology_name}/dev/imports"
 echo "downloading ${oeo_base}/oeo-physical.omn"
 test -f ${tmpdir}/oeo-physical.omn && echo "${tmpdir}/oeo-physical.omn already exists." || curl -L -o ${tmpdir}/oeo-physical.omn ${oeo_base}/oeo-physical.omn
 
+# Extractions from AgentOntology Ontology
+echo "downloading ${oeo_base}/oeo-shared.omn"
+test -f ${tmpdir}/oeo-shared.omn && echo "${tmpdir}/oeo-shared.omn already exists." || curl -L -o ${tmpdir}/oeo-shared.omn ${oeo_base}/oeo-shared.omn
+
+
 java -jar robot.jar remove --input ${tmpdir}/oeo-physical.omn --select imports extract --method subset --term-file ${this_wd}/oeo_vehicle.txt --imports exclude --output ${tmpdir}/oeo_vehicle.ttl
 
 java -jar robot.jar remove --input ${tmpdir}/oeo-physical.omn --select imports extract --method subset --term-file ${this_wd}/oeo_grid.txt --imports exclude --output ${tmpdir}/oeo_grid.ttl

@@ -23,59 +23,37 @@ cco_new_version_iri="${ontology_name}/dev/imports"
 
 # Extractions from Event Ontology
 test -f ${tmpdir}/EventOntology.ttl && echo "${tmpdir}/EventOntology.ttl already exists." || curl -L -o ${tmpdir}/EventOntology.ttl ${cco_base}/EventOntology.ttl
-eo_catalog='    <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology" uri="EventOntology.ttl"/>
-'
 
 # Extractions from Information EntityOntology
 test -f ${tmpdir}/InformationEntityOntology.ttl && echo "${tmpdir}/InformationEntityOntology.ttl already exists." || curl -L -o ${tmpdir}/InformationEntityOntology.ttl ${cco_base}/InformationEntityOntology.ttl
-io_catalog='        <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology" uri="InformationEntityOntology.ttl"/>
-'
+
 
 # Extractions from Information EntityOntology
 test -f ${tmpdir}/InformationEntityOntology.ttl && echo "${tmpdir}/InformationEntityOntology.ttl already exists." || curl -L -o ${tmpdir}/InformationEntityOntology.ttl ${cco_base}/InformationEntityOntology.ttl
-io_catalog='        <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology" uri="InformationEntityOntology.ttl"/>
-'
 
 # Extractions from Artifact Ontology
 echo "downloading ${cco_base}/ArtifactOntology.ttl"
 test -f ${tmpdir}/ArtifactOntology.ttl && echo "${tmpdir}/ArtifactOntology.ttl already exists." || curl -L -o ${tmpdir}/ArtifactOntology.ttl ${cco_base}/ArtifactOntology.ttl
-ao_catalog='        <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology" uri="ArtifactOntology.ttl"/>
-'
 
 # Extractions from ExtendedRelationOntology
 echo "downloading ${cco_base}/ExtendedRelationOntology.ttl"
 test -f ${tmpdir}/ExtendedRelationOntology.ttl && echo "${tmpdir}/ExtendedRelationOntology.ttl already exists." || curl -L -o ${tmpdir}/ExtendedRelationOntology.ttl ${cco_base}/ExtendedRelationOntology.ttl
-eao_catalog='        <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ExtendedRelationOntology" uri="ExtendedRelationOntology.ttl"/>
-'
+
 # Extractions from Facility Ontology
 echo "downloading ${cco_base}/FacilityOntology.ttl"
 test -f ${tmpdir}/FacilityOntology.ttl && echo "${tmpdir}/FacilityOntology.ttl already exists." || curl -L -o ${tmpdir}/FacilityOntology.ttl ${cco_base}/FacilityOntology.ttl
-fo_catalog='        <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/FacilityOntology" uri="FacilityOntology.ttl"/>
-'
 
 # Extractions from GeospatialOntology Ontology
 echo "downloading ${cco_base}/GeospatialOntology.ttl"
 test -f ${tmpdir}/GeospatialOntology.ttl && echo "${tmpdir}/GeospatialOntology.ttl already exists." || curl -L -o ${tmpdir}/GeospatialOntology.ttl ${cco_base}/GeospatialOntology.ttl
-geo_catalog='        <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology" uri="GeospatialOntology.ttl"/>
-'
-
 
 # Extractions from AgentOntology Ontology
 echo "downloading ${cco_base}/AgentOntology.ttl"
 test -f ${tmpdir}/AgentOntology.ttl && echo "${tmpdir}/AgentOntology.ttl already exists." || curl -L -o ${tmpdir}/AgentOntology.ttl ${cco_base}/AgentOntology.ttl
-ago_catalog='        <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology" uri="AgentOntology.ttl"/>
-'
 
 # Extractions from TimeOntology Ontology
 echo "downloading ${cco_base}/TimeOntology.ttl"
 test -f ${tmpdir}/TimeOntology.ttl && echo "${tmpdir}/TimeOntology.ttl already exists." || curl -L -o ${tmpdir}/TimeOntology.ttl ${cco_base}/TimeOntology.ttl
-to_catalog='        <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/TimeOntology" uri="TimeOntology.ttl"/>
-'
-
-bfo_catalog='        <uri name="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl" uri="../src/imports/bfo-core.ttl"/>
-'
-
-printf '%s\n' "${catalog_head}${eo_catalog}${io_catalog}${ao_catalog}${eao_catalog}${ago_catalog}${fo_catalog}${geo_catalog}${to_catalog}${bfo_catalog}${catalog_tail}" >${tmpdir}/catalog.xml
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/EventOntology.ttl --select imports extract --method MIREOT --upper-term "http://purl.obolibrary.org/obo/BFO_0000015" --lower-terms ${this_wd}/eo_stasis.txt --intermediates all --output ${tmpdir}/eo_stasis.ttl
 
@@ -92,7 +70,6 @@ java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/Art
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/ArtifactOntology.ttl --select imports extract --method MIREOT --upper-term http://www.ontologyrepository.com/CommonCoreOntologies/Artifact --lower-terms ${this_wd}/ao_vehicles.txt --intermediates all --output ${tmpdir}/ao_vehicles.ttl
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/FacilityOntology.ttl --select imports extract --method subset --term-file ${this_wd}/ao_facility_classes.txt --imports exclude --output ${tmpdir}/ao_facility_classes.ttl
-
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/GeospatialOntology.ttl --select imports extract  --method MIREOT --upper-term http://purl.obolibrary.org/obo/BFO_0000029 --lower-terms ${this_wd}/geo_base.txt --intermediates all --output ${tmpdir}/geo_base.ttl
 

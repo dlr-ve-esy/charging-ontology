@@ -257,7 +257,7 @@ if not ao_artifacts.exists():
 # Facility
 ao_facility = TMP.joinpath("ao_facility.ttl")
 if not ao_facility.exists():
-    lower_terms = load_terms(FILEPATH.joinpath("ao_facility.txt"))
+    terms = load_terms(FILEPATH.joinpath("ao_facility.txt"))
     extract_subset(
         input=artifact_ontology,
         output=ao_facility,
@@ -267,7 +267,7 @@ if not ao_facility.exists():
 # Infrastructure
 ao_infrastructure = TMP.joinpath("ao_infrastructure.ttl")
 if not ao_infrastructure.exists():
-    lower_terms = load_terms(FILEPATH.joinpath("ao_infrastructure.txt"))
+    terms = load_terms(FILEPATH.joinpath("ao_infrastructure.txt"))
     extract_subset(
         input=artifact_ontology,
         output=ao_infrastructure,
@@ -277,7 +277,7 @@ if not ao_infrastructure.exists():
 facility_ontology = download_ontology_if_missing("FacilityOntology")
 ao_facility_classes = TMP.joinpath("ao_facility_classes.ttl")
 if not ao_facility_classes.exists():
-    lower_terms = load_terms(FILEPATH.joinpath("ao_facility_classes.txt"))
+    terms = load_terms(FILEPATH.joinpath("ao_facility_classes.txt"))
     extract_subset(
         input=facility_ontology,
         output=ao_facility_classes,

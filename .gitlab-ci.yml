@@ -49,6 +49,7 @@ figures-reqs:
   stage: paper
   image: openjdk:17
   script:
+    - cp assets/catalog.xml  tmp/catalog.xml
     - curl -L -o robot.jar https://github.com/ontodev/robot/releases/download/v1.9.5/robot.jar
     - bash scripts/cco-imports/cco-extracted.sh
     - bash scripts/oeo-imports/oeo-extracted.sh

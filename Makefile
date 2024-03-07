@@ -74,7 +74,7 @@ endef
 
 all: base merge closure
 
-imports: $(IMPORTS)/bfo-core.ttl $(IMPORTS)/cco-extracted.ttl $(IMPORTS)/oeo-extracted.ttl $(IMPORTS)/iao-extracted.ttl
+imports: directories ${TMP}/catalog.xml $(IMPORTS)/bfo-core.ttl $(IMPORTS)/cco-extracted.ttl $(IMPORTS)/oeo-extracted.ttl $(IMPORTS)/iao-extracted.ttl
 
 base: | directories imports $(VERSIONDIR)/catalog-v001.xml robot.jar $(OWL_COPY) $(TTL_COPY) $(TTL_TRANSLATE)
 
@@ -104,6 +104,9 @@ $(IMPORTS)/iao-extracted.ttl: $(ROBOT_PATH)
 
 ${TMP}:
 	${MKDIR_P} ${TMP}
+
+${TMP}/catalog.xml:
+	cp assets/catalog.xml  $@
 
 ${VERSIONDIR}/imports:
 	${MKDIR_P} ${VERSIONDIR}/imports
