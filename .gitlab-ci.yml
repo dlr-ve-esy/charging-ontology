@@ -38,7 +38,7 @@ pages:
 
 ontology:
   stage: build
-  image: openjdk:23-slim-bullseye
+  image: openjdk:17
   script:
     - make all
   artifacts:
@@ -47,9 +47,9 @@ ontology:
 
 figures-reqs:
   stage: paper
-  image: openjdk:23-slim-bullseye
+  image: openjdk:17
   script:
-    - make robot.jar
+    - curl -L -o robot.jar https://github.com/ontodev/robot/releases/download/v1.9.5/robot.jar
     - bash scripts/cco-imports/cco-extracted.sh
     - bash scripts/oeo-imports/oeo-extracted.sh
     - bash scripts/visualization/icity-extract.sh
