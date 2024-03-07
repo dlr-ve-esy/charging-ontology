@@ -46,17 +46,17 @@ pages:
   rules:
     - !reference [.doc_rules, rules]
 
-ontology:
-  stage: build
-  image: ubuntu:latest
-  services:
-    - name: eclipse-temurin:latest
-      alias: java
-  script:
-    - make all
-  artifacts:
-    paths:
-      - build/*
+# ontology:
+#   stage: build
+#   image: ubuntu:latest
+#   services:
+#     - name: eclipse-temurin:latest
+#       alias: java
+#   script:
+#     - make all
+#   artifacts:
+#     paths:
+#       - build/*
 
 figures-reqs:
   stage: paper
