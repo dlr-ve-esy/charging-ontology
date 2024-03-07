@@ -2,6 +2,10 @@
 
 ## 07.03.2024
 
+- [ ] Reworked pipeline
+
+## 07.03.2024
+
 - [ ] Follow this to avoid botching parking ontology: https://github.com/ontodev/robot/issues/1150
 
 ## 05.03.2024
