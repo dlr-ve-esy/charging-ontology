@@ -1,0 +1,5 @@
+http://openenergy-platform.org/ontology/oeo/OEO_00000200
+http://openenergy-platform.org/ontology/oeo/OEO_00000143
+http://purl.obolibrary.org/obo/BFO_0000051
+http://purl.obolibrary.org/obo/BFO_0000027
+http://openenergy-platform.org/ontology/oeo/OEO_00320064

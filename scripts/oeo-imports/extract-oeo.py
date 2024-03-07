@@ -29,6 +29,10 @@ VERSION_IRI = "{}/chio/dev/imports/{}.ttl"
 TARGET = BASEDIR.joinpath("src/imports/oeo-extracted.ttl")
 
 # %%
+def load_terms(term_file):
+    with open(term_file, "r") as terms:
+        term_list = [l for l in terms.readlines()]
+    return term_list
 
 
 def download_ontology_if_missing(ONTOLOGY):
@@ -157,31 +161,19 @@ def extract_subset(input: str, output: str, terms: str):
 # vehicle taxonomy comes from the CCO.
 # %%
 oeo_physical = download_ontology_if_missing("imports/oeo-physical.omn")
-terms = [
-    "http://openenergy-platform.org/ontology/oeo/OEO_00010024",
-    "http://purl.obolibrary.org/obo/BFO_0000051",
-    "http://openenergy-platform.org/ontology/oeo/OEO_00010026",
-    "http://openenergy-platform.org/ontology/oeo/OEO_00000146",
-    "http://openenergy-platform.org/ontology/oeo/OEO_00010028",
-    "http://openenergy-platform.org/ontology/oeo/OEO_00000068",
-    "http://openenergy-platform.org/ontology/oeo/OEO_00010026",
-]
-code = extract_subset(oeo_physical, "tmp/oeo_vehicle.ttl", terms=terms)
+oeo_vehicle = TMP.joinpath("oeo_vehicle.ttl")
+terms = load_terms(FILEPATH.joinpath("oeo_vehicle.txt"))
+code = extract_subset(oeo_physical, oeo_vehicle, terms=terms)
 # %% [markdown]
 ## OEO grid axioms
 # %%
-terms = [
-    "http://openenergy-platform.org/ontology/oeo/OEO_00000200",
-    "http://openenergy-platform.org/ontology/oeo/OEO_00000143",
-    "http://purl.obolibrary.org/obo/BFO_0000051",
-    "http://purl.obolibrary.org/obo/BFO_0000027",
-    "http://openenergy-platform.org/ontology/oeo/OEO_00320064",
-]
-code = extract_subset(oeo_physical, "tmp/oeo_grid.ttl", terms=terms)
+oeo_grid = TMP.joinpath("oeo_grid.ttl")
+terms = load_terms(FILEPATH.joinpath("oeo_grid.txt"))
+code = extract_subset(oeo_physical, oeo_grid, terms=terms)
 # %%
 input_string = ""
 for element in ["oeo_grid.ttl", "oeo_vehicle.ttl"]:
-    input_string += f"--input tmp/{element} "
+    input_string += f"--input {TMP.joinpath(element).as_posix()} "
 # %%
 if not TARGET.exists():
     merge_call = (
