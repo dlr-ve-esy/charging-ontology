@@ -18,9 +18,9 @@ oeo_new_version_iri="${ontology_name}/dev/imports"
 echo "downloading ${oeo_base}/oeo-physical.omn"
 test -f ${tmpdir}/oeo-physical.omn && echo "${tmpdir}/oeo-physical.omn already exists." || curl -L -o ${tmpdir}/oeo-physical.omn ${oeo_base}/oeo-physical.omn
 
-java -jar robot.jar extract --input ${tmpdir}/oeo-physical.omn --method subset --term-file ${this_wd}/oeo_vehicle.txt --imports exclude --output ${tmpdir}/oeo_vehicle.ttl
+java -jar robot.jar remove --input ${tmpdir}/oeo-physical.omn --select imports extract --method subset --term-file ${this_wd}/oeo_vehicle.txt --imports exclude --output ${tmpdir}/oeo_vehicle.ttl
 
-java -jar robot.jar extract --input ${tmpdir}/oeo-physical.omn --method subset --term-file ${this_wd}/oeo_grid.txt --imports exclude --output ${tmpdir}/oeo_grid.ttl
+java -jar robot.jar remove --input ${tmpdir}/oeo-physical.omn --select imports extract --method subset --term-file ${this_wd}/oeo_grid.txt --imports exclude --output ${tmpdir}/oeo_grid.ttl
 
 # Merging together
 
@@ -30,6 +30,6 @@ java -jar robot.jar annotate --input ${imports}/oeo-extracted.ttl --ontology-iri
 
 # Not necessary for imports but for the paper
 
-java -jar robot.jar extract --input ${tmpdir}/oeo-physical.omn --method MIREOT  --imports exclude --branch-from-term http://openenergy-platform.org/ontology/oeo/OEO_00000146 --intermediates all --output ${tmpdir}/oeo_vehicle_ev_tax.ttl
+java -jar robot.jar remove --input ${tmpdir}/oeo-physical.omn --select imports extract --method MIREOT  --imports exclude --branch-from-term http://openenergy-platform.org/ontology/oeo/OEO_00000146 --intermediates all --output ${tmpdir}/oeo_vehicle_ev_tax.ttl
 
-java -jar robot.jar extract --input ${tmpdir}/oeo-physical.omn --method MIREOT  --imports exclude --branch-from-term http://openenergy-platform.org/ontology/oeo/OEO_00010273 --intermediates all --output ${tmpdir}/oeo_vehicle_lv_tax.ttl
+java -jar robot.jar remove --input ${tmpdir}/oeo-physical.omn --select imports extract --method MIREOT  --imports exclude --branch-from-term http://openenergy-platform.org/ontology/oeo/OEO_00010273 --intermediates all --output ${tmpdir}/oeo_vehicle_lv_tax.ttl
