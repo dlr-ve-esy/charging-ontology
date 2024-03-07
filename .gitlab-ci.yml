@@ -49,6 +49,7 @@ figures-reqs:
   stage: paper
   image: openjdk:23-slim-bullseye
   script:
+    - make robot.jar
     - bash scripts/cco-imports/cco-extracted.sh
     - bash scripts/oeo-imports/oeo-extracted.sh
     - bash scripts/visualization/icity-extract.sh
@@ -63,7 +64,7 @@ figures:
     - figures-reqs
   image: etsinfra/docker-python-graphviz:3.10.7
   script:
-    - pip install py-horned-owl
+    - pip install py-horned-owl pygraphviz
     - python scripts/visualization/paper-diagrams.py
     - python scripts/visualization/icity-diagram.py
   artifacts:
