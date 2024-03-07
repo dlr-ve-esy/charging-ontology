@@ -32,10 +32,10 @@ pages:
     - !reference [.doc_rules, rules]
 
 ontology:
-image: ubuntu:latest
-services:
-  - eclipse-temurin:latest
-    alias: java
+  image: ubuntu:latest
+  services:
+    - name: eclipse-temurin:latest
+      alias: java
   stage: build
   script:
     - make all
