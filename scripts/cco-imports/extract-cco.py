@@ -202,7 +202,7 @@ event_ontology = download_ontology_if_missing("EventOntology")
 eo_stasis = TMP.joinpath("eo_stasis.ttl")
 if not eo_stasis.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000015"
-    lower_terms = load_terms(eo_stasis.with_suffix(".txt"))
+    lower_terms = load_terms(FILEPATH.joinpath("eo_stasis.txt"))
     extract_mireot(
         input=event_ontology,
         output=eo_stasis,
@@ -246,7 +246,7 @@ artifact_ontology = download_ontology_if_missing("ArtifactOntology")
 ao_artifacts = Path("tmp").joinpath("ao_artifacts.ttl")
 if not ao_artifacts.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000040"
-    lower_terms = load_terms(ao_artifacts.with_suffix(".txt"))
+    lower_terms = load_terms(FILEPATH.joinpath("ao_artifacts.txt"))
     extract_mireot(
         input=artifact_ontology,
         output=ao_artifacts,
@@ -257,7 +257,7 @@ if not ao_artifacts.exists():
 # Facility
 ao_facility = TMP.joinpath("ao_facility.ttl")
 if not ao_facility.exists():
-    lower_terms = load_terms(ao_facility.with_suffix(".txt"))
+    lower_terms = load_terms(FILEPATH.joinpath("ao_facility.txt"))
     extract_subset(
         input=artifact_ontology,
         output=ao_facility,
@@ -267,7 +267,7 @@ if not ao_facility.exists():
 # Infrastructure
 ao_infrastructure = TMP.joinpath("ao_infrastructure.ttl")
 if not ao_infrastructure.exists():
-    lower_terms = load_terms(ao_infrastructure.with_suffix(".txt"))
+    lower_terms = load_terms(FILEPATH.joinpath("ao_infrastructure.txt"))
     extract_subset(
         input=artifact_ontology,
         output=ao_infrastructure,
@@ -277,7 +277,7 @@ if not ao_infrastructure.exists():
 facility_ontology = download_ontology_if_missing("FacilityOntology")
 ao_facility_classes = TMP.joinpath("ao_facility_classes.ttl")
 if not ao_facility_classes.exists():
-    lower_terms = load_terms(ao_facility_classes.with_suffix(".txt"))
+    lower_terms = load_terms(FILEPATH.joinpath("ao_facility_classes.txt"))
     extract_subset(
         input=facility_ontology,
         output=ao_facility_classes,
@@ -287,7 +287,7 @@ if not ao_facility_classes.exists():
 ao_vehicles = TMP.joinpath("ao_vehicles.ttl")
 if not ao_vehicles.exists():
     upper_term = "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact"
-    lower_terms = load_terms(ao_vehicles.with_suffix(".txt"))
+    lower_terms = load_terms(FILEPATH.joinpath("ao_vehicles.txt"))
     extract_mireot(
         input=artifact_ontology,
         output=ao_vehicles,
@@ -300,7 +300,7 @@ geo_ontology = download_ontology_if_missing("GeospatialOntology")
 geo_base = TMP.joinpath("geo_base.ttl")
 if not geo_base.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000029"
-    lower_terms = load_terms(geo_base.with_suffix(".txt"))
+    lower_terms = load_terms(FILEPATH.joinpath("geo_base.txt"))
     extract_mireot(
         input=geo_ontology,
         output=geo_base,
@@ -314,7 +314,7 @@ if not geo_tree.exists():
     upper_term = (
         "http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion"
     )
-    lower_terms = load_terms(geo_tree.with_suffix(".txt"))
+    lower_terms = load_terms(FILEPATH.joinpath("geo_tree.txt"))
     extract_mireot(
         input=agent_ontology,
         output=geo_tree,
