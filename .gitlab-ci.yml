@@ -19,6 +19,17 @@ stages:
       changes:
         - docs/**/*
 
+.paper_rules:
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+      changes:
+        - paper/**/*
+        - scripts/visualization
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_REF_NAME =~ /^pages/
+      changes:
+        - paper/**/*
+        - scripts/visualization
+
 pages:
   stage: deploy
   <<: *deploy-test
@@ -27,7 +38,6 @@ pages:
   artifacts:
     paths:
       - public
-  rules:
   rules:
     - !reference [.doc_rules, rules]
 
@@ -57,6 +67,8 @@ figures-reqs:
   artifacts:
     paths:
       - tmp/*
+  rules:
+    - !reference [.paper_rules, rules]
 
 figures:
   stage: paper
@@ -72,6 +84,8 @@ figures:
     paths:
       - tmp/*.dot
       - tmp/svg/*.svg
+  rules:
+    - !reference [.paper_rules, rules]
 
 paper:
   stage: paper
@@ -85,3 +99,5 @@ paper:
   artifacts:
     paths:
       - paper/paper.pdf
+  rules:
+    - !reference [.paper_rules, rules]
