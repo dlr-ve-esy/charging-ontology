@@ -18,10 +18,17 @@ oeo_new_version_iri="${ontology_name}/dev/imports"
 echo "downloading ${oeo_base}/oeo-physical.omn"
 test -f ${tmpdir}/oeo-physical.omn && echo "${tmpdir}/oeo-physical.omn already exists." || curl -L -o ${tmpdir}/oeo-physical.omn ${oeo_base}/oeo-physical.omn
 
-# Extractions from AgentOntology Ontology
 echo "downloading ${oeo_base}/oeo-shared.omn"
 test -f ${tmpdir}/oeo-shared.omn && echo "${tmpdir}/oeo-shared.omn already exists." || curl -L -o ${tmpdir}/oeo-shared.omn ${oeo_base}/oeo-shared.omn
 
+echo "downloading ${oeo_base}/oeo-import-edits.owl"
+test -f ${tmpdir}/oeo-import-edits.owl && echo "${tmpdir}/oeo-import-edits.owl already exists." || curl -L -o ${tmpdir}/oeo-import-edits.owl ${oeo_base}/oeo-import-edits.owl
+
+echo "downloading ${oeo_base}/imports/ro-extracted.owl"
+test -f ${tmpdir}/ro-extracted.owl && echo "${tmpdir}/ro-extracted.owl already exists." || curl -L -o ${tmpdir}/ro-extracted.owl ${oeo_base}/imports/ro-extracted.owl
+
+echo "downloading ${oeo_base}/imports/uo-extracted.owl"
+test -f ${tmpdir}/uo-extracted.owl && echo "${tmpdir}/uo-extracted.owl already exists." || curl -L -o ${tmpdir}/uo-extracted.owl ${oeo_base}/imports/uo-extracted.owl
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/oeo-physical.omn --select imports extract --method subset --term-file ${this_wd}/oeo_vehicle.txt --imports exclude --output ${tmpdir}/oeo_vehicle.ttl
 

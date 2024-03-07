@@ -11,5 +11,10 @@
         <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/TimeOntology" uri="TimeOntology.ttl"/>
         <uri name="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl" uri="../src/imports/bfo-core.ttl"/>
         <uri name="http://openenergy-platform.org/ontology/oeo/releases/2.1.0/oeo-shared.omn" uri="oeo-shared.omn"/>
+        <uri name="http://openenergy-platform.org/ontology/oeo/releases/2.1.0/oeo-import-edits.owl" uri="oeo-import-edits.owl"/>
+        <uri name="https://raw.githubusercontent.com/BFO-ontology/BFO/v2.0/bfo.owl" uri="../src/imports/bfo-core.ttl"/>
+        <uri name="http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/iao-extracted.owl" uri="../src/imports/iao-extracted.ttl"/>
+        <uri name="http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/uo-extracted.owl" uri="uo-extracted.owl"/>
+        <uri name="http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/ro-extracted.owl" uri="ro-extracted.owl"/>
     </group>
 </catalog>
