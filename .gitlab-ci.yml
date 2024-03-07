@@ -38,7 +38,7 @@ pages:
 
 ontology:
   stage: build
-  image: openjdk:17
+  image: eclipse-temurin:latest
   script:
     - make all
   artifacts:
@@ -47,7 +47,7 @@ ontology:
 
 figures-reqs:
   stage: paper
-  image: openjdk:17
+  image: eclipse-temurin:latest
   script:
     - mkdir tmp
     - cp assets/catalog.xml  tmp/catalog.xml
