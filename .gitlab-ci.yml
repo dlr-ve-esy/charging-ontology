@@ -1,12 +1,7 @@
-default:
-  image: python:3.10
-  tags:
-    - docker
-
 stages:
+  - build
   - deploy
   - paper
-  - build
 
 .before_script_template: &deploy-test
   before_script:
@@ -37,10 +32,12 @@ pages:
     - !reference [.doc_rules, rules]
 
 ontology:
+image: ubuntu:latest
+services:
+  - eclipse-temurin:latest
+    alias: java
   stage: build
-  image: eclipse-temurin:8u402-b06-jre-focal
   script:
-    - apt-get update && apt-get install make
     - make all
   artifacts:
     paths:
