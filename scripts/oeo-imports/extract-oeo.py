@@ -20,7 +20,7 @@ ONTOLOGY_BASE = "http://openenergy-platform.org/ontology/oeo/releases/{}/{}"
 ROBOT_PATH = BASEDIR.joinpath("robot.jar")
 IAO = BASEDIR.joinpath("src/imports/iao-extracted.ttl")
 
-TMP = Path("tmp")
+TMP = BASEDIR.joinpath("tmp")
 TMP.mkdir(exist_ok=True)
 
 NEW_IRI = "{}/chio/imports/{}.ttl"
@@ -214,18 +214,19 @@ else:
 # %%
 # %%
 # Get IAO imports
-if not IAO.exists():
-    with open(IAO, "wb") as local:
+iao_temp = TMP.joinpath("iao-extracted.owl")
+if not iao_temp.exists():
+    with open(iao_temp, "wb") as local:
         response = requests.get(
             ONTOLOGY_BASE.format(VERSION, "imports/iao-extracted.owl")
         )
         if response.status_code == 200:
             local.write(response.content)
 else:
-    print(f"The file {IAO} already exists, you are good to go.")
+    print(f"The file {iao_temp} already exists, you are good to go.")
 # %%
 IAO_DROPPED = BASEDIR.joinpath("scripts/oeo-imports/iao-dropped.txt")
-if IAO.exists():
+if iao_temp.exists():
     extract_call = 'java -jar {jar} \
 remove --input {input}  \
 --term-file {term_file} \
@@ -236,7 +237,7 @@ remove --input {input}  \
     sp.call(
         extract_call.format(
             jar=ROBOT_PATH.resolve().as_posix(),
-            input=IAO.resolve().as_posix(),
+            input=iao_temp.resolve().as_posix(),
             term_file=IAO_DROPPED,
             output=IAO.resolve().as_posix(),
         ),
