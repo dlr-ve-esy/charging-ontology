@@ -4,6 +4,8 @@ VERSION:= $(shell cat VERSION)
 VERSIONDIR := build/chio/$(VERSION)
 ONTOLOGY_SOURCE := src
 BFOCOMMIT := d9aa636303766bfb6a7a6d46265873f96cdd8584
+TMP := tmp
+IMPORTS := $(ONTOLOGY_SOURCE)/imports
 
 subst_paths =	${subst $(ONTOLOGY_SOURCE),$(VERSIONDIR),${patsubst $(ONTOLOGY_SOURCE)/edits/%,$(ONTOLOGY_SOURCE)/modules/%,$(1)}}
 
@@ -72,7 +74,7 @@ endef
 
 all: base merge closure
 
-imports: src/imports/bfo-core.ttl src/imports/cco-extracted.ttl src/imports/oeo-extracted.ttl src/imports/iao-extracted.ttl
+imports: $(IMPORTS)/bfo-core.ttl $(IMPORTS)/cco-extracted.ttl $(IMPORTS)/oeo-extracted.ttl $(IMPORTS)/iao-extracted.ttl
 
 base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar $(OWL_COPY) $(TTL_COPY) $(TTL_TRANSLATE)
 
@@ -84,21 +86,24 @@ clean:
 	- $(RM) -r $(VERSIONDIR)
 
 clean-imports:
-	- $(RM) -r src/imports/*
+	- $(RM) -r $(IMPORTS)/*
 
-directories: ${VERSIONDIR}/imports ${VERSIONDIR}/modules
+directories: ${VERSIONDIR}/imports ${VERSIONDIR}/modules ${TMP}
 
-src/imports/bfo-core.ttl:
+$(IMPORTS)/bfo-core.ttl:
 	curl -L -o $@ https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/$(BFOCOMMIT)/imports/bfo-core.ttl
 
-src/imports/cco-extracted.ttl:
-	python scripts/cco-imports/extract-cco.py
+$(IMPORTS)/cco-extracted.ttl: $(TMP)/EventOntology.ttl
+	bash scripts/cco-imports/cco-extracted.sh
 
-src/imports/oeo-extracted.ttl:
+$(IMPORTS)/oeo-extracted.ttl:
 	python scripts/oeo-imports/extract-oeo.py
 
-src/imports/iao-extracted.ttl:
+$(IMPORTS)/iao-extracted.ttl:
 	python scripts/oeo-imports/extract-oeo.py
+
+${TMP}:
+	${MKDIR_P} ${TMP}
 
 ${VERSIONDIR}/imports:
 	${MKDIR_P} ${VERSIONDIR}/imports

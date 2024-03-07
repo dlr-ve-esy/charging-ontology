@@ -1,0 +1,3 @@
+http://www.ontologyrepository.com/CommonCoreOntologies/ElectricMotor
+http://www.ontologyrepository.com/CommonCoreOntologies/CompressionIgnitionEngine
+http://www.ontologyrepository.com/CommonCoreOntologies/SparkIgnitionEngine

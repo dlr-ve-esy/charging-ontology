@@ -1,0 +1,2 @@
+http://www.ontologyrepository.com/CommonCoreOntologies/TransportationFacility
+http://www.ontologyrepository.com/CommonCoreOntologies/Facility

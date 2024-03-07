@@ -1,0 +1,5 @@
+http://www.ontologyrepository.com/CommonCoreOntologies/Truck
+http://www.ontologyrepository.com/CommonCoreOntologies/Motorcycle
+http://www.ontologyrepository.com/CommonCoreOntologies/Bus
+http://www.ontologyrepository.com/CommonCoreOntologies/Automobile
+http://www.ontologyrepository.com/CommonCoreOntologies/Bicycle

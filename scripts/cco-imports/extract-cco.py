@@ -33,6 +33,11 @@ TMP = BASEDIR.joinpath("tmp")
 TMP.mkdir(exist_ok=True)
 # %%
 
+def load_terms(term_file):
+    with open(term_file, "r") as terms:
+        term_list = [l for l in terms.readlines()]
+    return term_list
+
 
 def download_ontology_if_missing(ONTOLOGY):
     """Helper function to download raw ontologies in a temporary folder.
@@ -197,13 +202,7 @@ event_ontology = download_ontology_if_missing("EventOntology")
 eo_stasis = TMP.joinpath("eo_stasis.ttl")
 if not eo_stasis.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000015"
-    lower_terms = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/StableOrientation",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfDisposition",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfFunction",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRole",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/ActiveStasis",
-    ]
+    lower_terms = load_terms(eo_stasis.with_suffix(".txt"))
     extract_mireot(
         input=event_ontology,
         output=eo_stasis,
@@ -247,11 +246,7 @@ artifact_ontology = download_ontology_if_missing("ArtifactOntology")
 ao_artifacts = Path("tmp").joinpath("ao_artifacts.ttl")
 if not ao_artifacts.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000040"
-    lower_terms = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/ElectricMotor",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/CompressionIgnitionEngine",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/SparkIgnitionEngine",
-    ]
+    lower_terms = load_terms(ao_artifacts.with_suffix(".txt"))
     extract_mireot(
         input=artifact_ontology,
         output=ao_artifacts,
@@ -262,13 +257,7 @@ if not ao_artifacts.exists():
 # Facility
 ao_facility = TMP.joinpath("ao_facility.ttl")
 if not ao_facility.exists():
-    terms = [
-        "http://purl.obolibrary.org/obo/BFO_0000040",
-        "http://purl.obolibrary.org/obo/BFO_0000171",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Facility",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/PortionOfGeosphere",
-    ]
+    lower_terms = load_terms(ao_facility.with_suffix(".txt"))
     extract_subset(
         input=artifact_ontology,
         output=ao_facility,
@@ -278,15 +267,7 @@ if not ao_facility.exists():
 # Infrastructure
 ao_infrastructure = TMP.joinpath("ao_infrastructure.ttl")
 if not ao_infrastructure.exists():
-    terms = [
-        "http://purl.obolibrary.org/obo/BFO_0000196",
-        "http://purl.obolibrary.org/obo/BFO_0000023",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole",
-        "http://purl.obolibrary.org/obo/BFO_0000040",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/TransportationInfrastructure",
-    ]
+    lower_terms = load_terms(ao_infrastructure.with_suffix(".txt"))
     extract_subset(
         input=artifact_ontology,
         output=ao_infrastructure,
@@ -296,10 +277,7 @@ if not ao_infrastructure.exists():
 facility_ontology = download_ontology_if_missing("FacilityOntology")
 ao_facility_classes = TMP.joinpath("ao_facility_classes.ttl")
 if not ao_facility_classes.exists():
-    terms = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/TransportationFacility",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Facility",
-    ]
+    lower_terms = load_terms(ao_facility_classes.with_suffix(".txt"))
     extract_subset(
         input=facility_ontology,
         output=ao_facility_classes,
@@ -309,13 +287,7 @@ if not ao_facility_classes.exists():
 ao_vehicles = TMP.joinpath("ao_vehicles.ttl")
 if not ao_vehicles.exists():
     upper_term = "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact"
-    lower_terms = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Truck",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Motorcycle",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Bus",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Automobile",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Bicycle",
-    ]
+    lower_terms = load_terms(ao_vehicles.with_suffix(".txt"))
     extract_mireot(
         input=artifact_ontology,
         output=ao_vehicles,
@@ -324,31 +296,11 @@ if not ao_vehicles.exists():
     )
 # %%
 # %%
-artifact_ontology = download_ontology_if_missing("ArtifactOntology")
-ao_artifacts = TMP.joinpath("ao_artifacts.ttl")
-if not ao_artifacts.exists():
-    upper_term = "http://purl.obolibrary.org/obo/BFO_0000040"
-    lower_terms = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/ElectricMotor",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/CompressionIgnitionEngine",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/SparkIgnitionEngine",
-    ]
-    extract_mireot(
-        input=artifact_ontology,
-        output=ao_artifacts,
-        lower_terms=lower_terms,
-        upper_term=upper_term,
-    )
-# %%
 geo_ontology = download_ontology_if_missing("GeospatialOntology")
 geo_base = TMP.joinpath("geo_base.ttl")
 if not geo_base.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000029"
-    lower_terms = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Continent",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialLocation",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Subcontinent",
-    ]
+    lower_terms = load_terms(geo_base.with_suffix(".txt"))
     extract_mireot(
         input=geo_ontology,
         output=geo_base,
@@ -362,17 +314,7 @@ if not geo_tree.exists():
     upper_term = (
         "http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion"
     )
-    lower_terms = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/County",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/State",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Province",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/FourthOrderAdministrativeRegion",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/City",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Town",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Village",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/SecondOrderAdministrativeRegion",
-        "http://www.ontologyrepository.com/CommonCoreOntologies/ThirdOrderAdministrativeRegion",
-    ]
+    lower_terms = load_terms(geo_tree.with_suffix(".txt"))
     extract_mireot(
         input=agent_ontology,
         output=geo_tree,

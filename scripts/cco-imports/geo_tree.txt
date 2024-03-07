@@ -1,0 +1,9 @@
+http://www.ontologyrepository.com/CommonCoreOntologies/County
+http://www.ontologyrepository.com/CommonCoreOntologies/State
+http://www.ontologyrepository.com/CommonCoreOntologies/Province
+http://www.ontologyrepository.com/CommonCoreOntologies/FourthOrderAdministrativeRegion
+http://www.ontologyrepository.com/CommonCoreOntologies/City
+http://www.ontologyrepository.com/CommonCoreOntologies/Town
+http://www.ontologyrepository.com/CommonCoreOntologies/Village
+http://www.ontologyrepository.com/CommonCoreOntologies/SecondOrderAdministrativeRegion
+http://www.ontologyrepository.com/CommonCoreOntologies/ThirdOrderAdministrativeRegion

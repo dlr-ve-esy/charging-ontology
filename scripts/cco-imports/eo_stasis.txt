@@ -1,0 +1,5 @@
+http://www.ontologyrepository.com/CommonCoreOntologies/StableOrientation
+http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfDisposition
+http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfFunction
+http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRole
+http://www.ontologyrepository.com/CommonCoreOntologies/ActiveStasis
