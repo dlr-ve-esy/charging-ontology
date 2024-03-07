@@ -1,0 +1,14 @@
+http://ontology.eil.utoronto.ca/icity/Change/manifestationOf
+http://ontology.eil.utoronto.ca/icity/Parking/ParkingAreaPD
+http://ontology.eil.utoronto.ca/icity/Parking/ParkingArea
+http://ontology.eil.utoronto.ca/icity/Parking/ParkingSpace
+http://ontology.eil.utoronto.ca/icity/Parking/GreenVehicleParkingSpace
+http://ontology.eil.utoronto.ca/icity/Change/hasManifestation
+http://ontology.eil.utoronto.ca/icity/Parking/EVParkingSpace
+http://ontology.eil.utoronto.ca/icity/Parking/EVParkingPolicy
+http://ontology.eil.utoronto.ca/icity/Parking/hasParkingPolicy
+http://ontology.eil.utoronto.ca/icity/Parking/hasEVCharger
+http://ontology.eil.utoronto.ca/icity/Parking/EVCharger
+http://ontology.eil.utoronto.ca/icity/Parking/MediumEVCharger
+http://ontology.eil.utoronto.ca/icity/Parking/QuickEVCharger
+http://ontology.eil.utoronto.ca/icity/Parking/StandardEVCharger

@@ -7,8 +7,6 @@ stages:
   - deploy
   - paper
   - build
-  - test
-  - figures
 
 .before_script_template: &deploy-test
   before_script:
@@ -25,16 +23,6 @@ stages:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_REF_NAME =~ /^pages/
       changes:
         - docs/**/*
-
-test:
-  stage: test
-  script:
-    - mkdocs build --strict --verbose --site-dir test
-  artifacts:
-    paths:
-      - test
-  rules:
-    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
 
 pages:
   stage: deploy
@@ -57,19 +45,36 @@ ontology:
     paths:
       - build/*
 
-# figures:
-#   stage: paper
-#   <<: *deploy-test
-#   image: etsinfra/docker-python-graphviz:3.10.7
-#   script:
-#     - cd paper
-#     - latexmk -pdf paper.tex
-#   artifacts:
-#     paths:
-#       - paper/paper.pdf
+figures-reqs:
+  stage: paper
+  image: openjdk:23-slim-bullseye
+  script:
+    - bash scripts/cco-imports/cco-extracted.sh
+    - bash scripts/oeo-imports/oeo-extracted.sh
+    - bash scripts/visualization/icity-extract.sh
+    - bash scripts/visualization/viz-transformations.sh
+  artifacts:
+    paths:
+      - tmp/*
+
+figures:
+  stage: paper
+  dependencies:
+    - figures-reqs
+  image: etsinfra/docker-python-graphviz:3.10.7
+  script:
+    - pip install py-horned-owl
+    - python scripts/visualization/paper-diagrams.py
+    - python scripts/visualization/icity-diagram.py
+  artifacts:
+    paths:
+      - tmp/*.dot
+      - tmp/svg/*.svg
 
 paper:
   stage: paper
+  dependencies:
+    - figures
   image: tumi5/latex
   script:
     - cd paper

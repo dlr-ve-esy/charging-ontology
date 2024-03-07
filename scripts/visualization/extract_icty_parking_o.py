@@ -33,6 +33,12 @@ else:
 
 
 # %%
+    
+def load_terms(term_file):
+    with open(term_file, "r") as terms:
+        term_list = [l for l in terms.readlines()]
+    return term_list
+
 def extract_subset(input: str, output: str, terms: str):
     """Call robot to do a subset extraction"""
     extract_call = (
@@ -118,22 +124,7 @@ if TARGET.exists():
 # ontology. Something is going wrong with robot
 parking_space = TMP.joinpath("parking_space.ttl")
 if not parking_space.exists():
-    terms = [
-        "http://ontology.eil.utoronto.ca/icity/Change/manifestationOf",
-        "http://ontology.eil.utoronto.ca/icity/Parking/ParkingAreaPD",
-        "http://ontology.eil.utoronto.ca/icity/Parking/ParkingArea",
-        "http://ontology.eil.utoronto.ca/icity/Parking/ParkingSpace",
-        "http://ontology.eil.utoronto.ca/icity/Parking/GreenVehicleParkingSpace",
-        "http://ontology.eil.utoronto.ca/icity/Change/hasManifestation",
-        "http://ontology.eil.utoronto.ca/icity/Parking/EVParkingSpace",
-        "http://ontology.eil.utoronto.ca/icity/Parking/EVParkingPolicy",
-        "http://ontology.eil.utoronto.ca/icity/Parking/hasParkingPolicy",
-        "http://ontology.eil.utoronto.ca/icity/Parking/hasEVCharger",
-        "http://ontology.eil.utoronto.ca/icity/Parking/EVCharger",
-        "http://ontology.eil.utoronto.ca/icity/Parking/MediumEVCharger",
-        "http://ontology.eil.utoronto.ca/icity/Parking/QuickEVCharger",
-        "http://ontology.eil.utoronto.ca/icity/Parking/StandardEVCharger",
-    ]
+    terms = load_terms(FILEPATH.joinpath("parking_space.txt"))
     extract_subset(
         input=botched_parking_ontology,
         output=parking_space,
