@@ -66,10 +66,16 @@ test -f ${tmpdir}/AgentOntology.ttl && echo "${tmpdir}/AgentOntology.ttl already
 ago_catalog='        <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology" uri="AgentOntology.ttl"/>
 '
 
+# Extractions from TimeOntology Ontology
+echo "downloading ${cco_base}/TimeOntology.ttl"
+test -f ${tmpdir}/TimeOntology.ttl && echo "${tmpdir}/TimeOntology.ttl already exists." || curl -L -o ${tmpdir}/TimeOntology.ttl ${cco_base}/TimeOntology.ttl
+to_catalog='        <uri name="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/TimeOntology" uri="TimeOntology.ttl"/>
+'
+
 bfo_catalog='        <uri name="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl" uri="../src/imports/bfo-core.ttl"/>
 '
 
-printf '%s\n' "${catalog_head}${eo_catalog}${io_catalog}${ao_catalog}${eao_catalog}${ago_catalog}${fo_catalog}${geo_catalog}${bfo_catalog}${catalog_tail}" >${tmpdir}/catalog.xml
+printf '%s\n' "${catalog_head}${eo_catalog}${io_catalog}${ao_catalog}${eao_catalog}${ago_catalog}${fo_catalog}${geo_catalog}${to_catalog}${bfo_catalog}${catalog_tail}" >${tmpdir}/catalog.xml
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/EventOntology.ttl --select imports extract --method MIREOT --upper-term "http://purl.obolibrary.org/obo/BFO_0000015" --lower-terms ${this_wd}/eo_stasis.txt --intermediates all --output ${tmpdir}/eo_stasis.ttl
 
