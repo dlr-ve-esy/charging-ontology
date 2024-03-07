@@ -10,7 +10,8 @@ icity_parking="https://enterpriseintegrationlab.github.io/icity/Parking/doc/onto
 echo "downloading ${icity_parking}"
 test -f ${tmpdir}/Parking.ttl && echo "${tmpdir}/Parking.ttl already exists." || curl -L -o ${tmpdir}/Parking.ttl ${icity_parking}
 
-oldsec=' <http://ontology.eil.utoronto.ca/icity/Building/1.2/> ,
+oldsec='
+                                                  owl:imports <http://ontology.eil.utoronto.ca/icity/Building/1.2/> ,
                                                               <http://ontology.eil.utoronto.ca/icity/Change/1.1/> ,
                                                               <http://ontology.eil.utoronto.ca/icity/Contact/1.0/> ,
                                                               <http://ontology.eil.utoronto.ca/icity/Mereology/1.0/> ,
@@ -21,7 +22,7 @@ oldsec=' <http://ontology.eil.utoronto.ca/icity/Building/1.2/> ,
                                                               <http://ontology.eil.utoronto.ca/icity/SpatialLoc/1.2/> ,
                                                               <http://ontology.eil.utoronto.ca/icity/Vehicle/1.2/> ;'
 
-newsec=' <http://ontology.eil.utoronto.ca/icity/Change/1.1/> ;'
+newsec=''
 
 old_file_contents=$(< ${tmpdir}/Parking.ttl)
 new_file_contents=${old_file_contents//"$oldsec"/"$newsec"}
