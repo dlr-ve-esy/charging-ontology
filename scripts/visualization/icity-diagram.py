@@ -17,8 +17,14 @@ elif "VERSION" in [p.name for p in CWD.iterdir()]:
 TMP = BASEDIR.joinpath("tmp")
 TMP.mkdir(exist_ok=True)
 
+PAPER = BASEDIR.joinpath("paper/images")
+PAPER.mkdir(exist_ok=True)
+
 SVG = TMP.joinpath("svg")
 SVG.mkdir(exist_ok=True)
+
+PNG = PAPER
+PNG.mkdir(exist_ok=True)
 
 DROPLIST = []
 
@@ -127,13 +133,16 @@ parking = pho.open_ontology(TMP.joinpath("parking_space.owx").as_posix())
 PG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
-PG.graph_attr["ratio"] = "compressed"
+# 4.70
+# PG.graph_attr["ratio"] = "compressed"
+PG.graph_attr["size"] = "8.24,5.78"
+PG.graph_attr["dpi"] = "300"
 PG.graph_attr["nodesep"] = "0.1"
 PG.graph_attr["ranksep"] = "0.1"
-PG.node_attr["fontsize"] = "12"
+PG.node_attr["fontsize"] = "10"
 PG.node_attr["fontname"] = "CMU Serif Roman"
 PG.node_attr["shape"] = "ellipse"
-PG.edge_attr["fontsize"] = "12"
+PG.edge_attr["fontsize"] = "10"
 PG.edge_attr["fontname"] = "CMU Serif Roman"
 PG.edge_attr["arrowsize"] = "0.5"
 
@@ -159,4 +168,6 @@ for prop in props:
             render_equivalent_class_axiom(PG, aa.axiom, parking)
 PG.write(TMP.joinpath("PARKING.dot").as_posix())
 PG.draw(SVG.joinpath("PARKING.svg").as_posix(), prog="dot")
+PG.draw(PNG.joinpath("PARKING.png").as_posix(), prog="dot")
+
 # %%

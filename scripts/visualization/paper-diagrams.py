@@ -17,8 +17,14 @@ elif "VERSION" in [p.name for p in CWD.iterdir()]:
 TMP = BASEDIR.joinpath("tmp")
 TMP.mkdir(exist_ok=True)
 
+PAPER = BASEDIR.joinpath("paper/images")
+PAPER.mkdir(exist_ok=True)
+
 SVG = TMP.joinpath("svg")
 SVG.mkdir(exist_ok=True)
+
+PNG = PAPER
+PNG.mkdir(exist_ok=True)
 
 PREFIX_MAPPINGS = {
     "http://www.ontologyrepository.com/CommonCoreOntologies/": "CCO:",
@@ -169,6 +175,7 @@ object_properties = ontology.get_object_properties()
 # %%
 G = pgv.AGraph(strict=True, directed=True, name="G", layout="dot", splines=True)
 G.graph_attr["ratio"] = "0.52"
+G.graph_attr["dpi"] = "300"
 G.graph_attr["nodesep"] = "0.4"
 G.graph_attr["ranksep"] = "0.1"
 G.node_attr["fontsize"] = "10"
@@ -196,6 +203,7 @@ render_equivalent_class_axiom(
 )
 G.write(TMP.joinpath("infrastructureSystem.dot").as_posix())
 G.draw(SVG.joinpath("infrastructureSystem.svg").as_posix(), prog="dot")
+G.draw(PNG.joinpath("infrastructureSystem.png").as_posix(), prog="dot")
 # %% [markdown]
 # ## Render OEO imported commitments
 # Imported classes like battery
@@ -207,6 +215,7 @@ OG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="LR"
 )
 OG.graph_attr["ratio"] = "compressed"
+OG.graph_attr["dpi"] = "300"
 OG.graph_attr["nodesep"] = "0.4"
 OG.graph_attr["ranksep"] = "0.1"
 OG.node_attr["fontsize"] = "10"
@@ -233,6 +242,7 @@ for aa in oeo_vehicle_imports.get_axioms_for_iri(
         render_equivalent_class_axiom(OG, aa.axiom, oeo_vehicle_imports)
 OG.write(TMP.joinpath("OEOEV.dot").as_posix())
 OG.draw(SVG.joinpath("OEOEV.svg").as_posix(), prog="dot")
+OG.draw(PNG.joinpath("OEOEV.png").as_posix(), prog="dot")
 # %% [markdown]
 # ## Render Vehicle Taxonomy
 # Render the taxonomy from CCO vs OEO
@@ -242,6 +252,7 @@ VG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
 VG.graph_attr["ratio"] = "compressed"
+VG.graph_attr["dpi"] = "300"
 VG.graph_attr["nodesep"] = "0.4"
 VG.graph_attr["ranksep"] = "0.1"
 VG.node_attr["fontsize"] = "10"
@@ -258,22 +269,23 @@ add_taxonomy(
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
 )
 linear_tax = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact",
+    "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact",
     "http://www.ontologyrepository.com/CommonCoreOntologies/Vehicle",
     "http://www.ontologyrepository.com/CommonCoreOntologies/GroundVehicle",
-
 ]
 SG = VG.add_subgraph(rank="same", rankdir="TB")
 for i in linear_tax:
-    SG.add_node(get_label(i,vehicle_tax_cco))
+    SG.add_node(get_label(i, vehicle_tax_cco))
 VG.write(TMP.joinpath("CCOVehicles.dot").as_posix())
 VG.draw(SVG.joinpath("CCOVehicles.svg").as_posix(), prog="dot")
+VG.draw(PNG.joinpath("CCOVehicles.png").as_posix(), prog="dot")
 # %%
 ev_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_ev_tax.owx")
 OVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
 OVG.graph_attr["ratio"] = "compressed"
+OVG.graph_attr["dpi"] = "300"
 OVG.graph_attr["nodesep"] = "0.1"
 OVG.graph_attr["ranksep"] = "0.1"
 OVG.node_attr["fontsize"] = "10"
@@ -291,11 +303,14 @@ add_taxonomy(
 )
 OVG.write(TMP.joinpath("OEOVehicles.dot").as_posix())
 OVG.draw(SVG.joinpath("OEOVehicles.svg").as_posix(), prog="dot")
+OVG.draw(PNG.joinpath("OEOVehicles.png").as_posix(), prog="dot")
 # %%
 land_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_lv_tax.owx")
 OLVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
+OLVG.graph_attr["size"] = "8.24,5.78"
+OLVG.graph_attr["dpi"] = "300"
 OLVG.graph_attr["ratio"] = "compressed"
 OLVG.graph_attr["nodesep"] = "0.1"
 OLVG.graph_attr["ranksep"] = "0.1"
@@ -314,5 +329,6 @@ add_taxonomy(
 )
 OLVG.write(TMP.joinpath("OEOLVehicles.dot").as_posix())
 OLVG.draw(SVG.joinpath("OEOLVehicles.svg").as_posix(), prog="dot")
+OLVG.draw(PNG.joinpath("OEOLVehicles.png").as_posix(), prog="dot")
 # %% [markdown]
 # ## Viz from iCity Parking ontology
