@@ -178,6 +178,47 @@ ontology and not because they are irrelevant.
 
     What types of electric vehicle chargers are available in a particular parking lot?
 
+
+## Scenario 3 - Drive2X working package 5 scenario
+
+### Summary
+
+In this scenario, individual charging sessions at spatially allocated charging
+stations are being described. Charging flexibility within these charging
+sessions are part of the application context. 
+
+### Description
+
+This scenarios is based on work in the EU project Drive2X, specifically working
+package 5. There, a tool shall be developped that provides a short-term
+forecasting for individual charging stations' electricity demand for the next
+day. The tool shall also be capable of aggregating the electric load from a
+variety of charging stations e.g. within a spatial region. The tool will
+use openly available data and APIs where possible and use machine learning
+methods to estimate electric vehicle arrival times and battery levels upon
+arrival. However, it will also build on historically known data of charging
+station electric loads in order to provide default values where insufficient
+data is available for the machine learning predictions.
+
+There will be a user interface that gives a visual representation of charging
+station locations on a map, lets users define the spatial shape of the scope and
+other factors such as charging scenarios (as soon as possible, as late as
+possible, price-oriented etc.). The user can then select a range of indicators
+that they want to receive as forecasts from the defined scope and that are then
+displayed in the graphical user interface. Indicator outputs as well as 
+intermediary data is provided to the user in graphical and tabular form. A
+measure for uncertainty of the respective output will be provided to the user as
+well. 
+
+### Competency questions
+
+List of competency questions in plain text, they don't need to be strictly
+questions, they can also be affirmations. For example:
+
+> - Is a dog considered a passenger?
+> - A shopping trip is a leisure trip
+
+
 ## Scenario X - My awesome scenario
 
 ### Summary
