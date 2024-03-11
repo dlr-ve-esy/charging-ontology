@@ -126,7 +126,7 @@ project](https://enterpriseintegrationlab.github.io/icity/iCityOntologyReport_1.
 by Katsumi and Fox. Particularly the section smart parking applications. This
 subset of questions is relevant to us because charging infrastructure is
 intimately connected with parking infrastructure. These queries rely a lot in
-geographical queries and may ovelap with scenario 1, but they have a
+geographical queries and may overlap with scenario 1, but they have a
 perspective more in line with daily operation of the stations. For more details
 on the ontology [visit its
 repository](https://github.com/EnterpriseIntegrationLab/icity).
@@ -177,6 +177,45 @@ ontology and not because they are irrelevant.
 ???+ question "Competency question 2.7"
 
     What types of electric vehicle chargers are available in a particular parking lot?
+
+
+## Scenario 3 - Drive2X working package 5 scenario
+
+### Summary
+
+This scenarios is based on work in the EU project Drive2X, specifically working
+package 5. In this context, a forecasting method is being developed providing 
+aggregated electric load of all charging stations in a defined spatial scope
+(e.g. a quarter, a couple of streets, a sub-part of a distribution grid system).
+Additionally, the temporal flexibility of this load is given.
+
+### Description
+
+The forecast will be provided for two temporal scopes: For the next day in high
+temporal resolution and for the next month in lower resolution. 
+The tool will use openly available static data and dynamic data via APIs where
+possible and sensible. However, it will also build on historically known data of
+charging station electric loads to provide default values where insufficient
+live-data is available.
+
+The application will offer a front-end in form of a graphical user interface in
+which the users will provide spatial constraints (polygons, points, routes) and
+may select charging strategies (as soon as possible, as late as possible, price
+oriented etc.). The produced data will consist of indicators describing the
+forecast load for the spatial scope, scenarios and associated parameters.
+
+Indicator outputs as well as intermediary data is provided to the user in
+graphical and tabular form. A measure for uncertainty of the respective output
+will be provided to the user as well. 
+
+### Competency questions
+
+List of competency questions in plain text, they don't need to be strictly
+questions, they can also be affirmations. For example:
+
+> - Is a dog considered a passenger?
+> - A shopping trip is a leisure trip
+
 
 ## Scenario X - My awesome scenario
 
