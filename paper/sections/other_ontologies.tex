@@ -44,28 +44,21 @@ ramifications, one associated to its energy consumption mode like `electric
 vehicle', `internal combustion vehicle' and `gas turbine vehicle' and another
 associated to its operational medium such as `land vehicle', `aircraft' or
 `watercraft'. The former has axiomatization significant for electric grid and
-energy systems models which can be seen in figure \ref{evcommitments} the
-latter lacks its own axioms and relies on mainly on the former. To our
-application is only interesting to use the taxonomy of electric vehicles
-(Figure \ref{evtax}). Its land vehicle taxonomy is very rich (figure
+energy systems models which can be seen in figure \ref{oeoev:b} the latter
+lacks its own axioms and relies on mainly on the former. To our application is
+only interesting to use the taxonomy of electric vehicles (Figure
+\ref{oeoev:a}). Its land vehicle taxonomy is very rich (figure
 \ref{landvehicletaxoeo}) and contains elements that might have conflicts with
 any future implementation in a transport ontology. Because of this we rely on
-the Common Core Ontologies (CCO), this will be clarified in its respective
-section.
+the Common Core Ontologies (CCO) for a ligther vehicle taxonomy, this will be
+clarified in its respective section.
 
-
-\begin{figure}[h]\label{evtax}
-    \caption{Open energy ontology electric vehicle taxonomy.}
+\begin{figure}
     \centering
-    \includegraphics[width=0.6\textwidth]{images/OEOVehicles}
+    \subfigure[OEO electric vehicle taxonomy]{\label{oeoev:a}\includegraphics[width=0.45\textwidth]{images/OEOVehicles}}
+    \subfigure[OEO electric vehicle commitments]{\label{oeoev:b}\includegraphics[width=0.45\textwidth]{images/OEOEV}}
+    \caption{OEO ontological commitments relevant to the context of charging infrastructure. Note that we exclude grid related commitments, mostly because we have yet to define a scenario for that case.}
 \end{figure}
-
-\begin{figure}[h]\label{evcommitments}
-    \caption{Open energy ontology electric vehicle commitments.}
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/OEOEV}
-\end{figure}
-
 
 \subsection{The Common Core Ontologies}
 
