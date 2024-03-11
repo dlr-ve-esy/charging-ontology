@@ -175,7 +175,7 @@ object_properties = ontology.get_object_properties()
 # %%
 G = pgv.AGraph(strict=True, directed=True, name="G", layout="dot", splines=True)
 G.graph_attr["ratio"] = "0.52"
-G.graph_attr["dpi"] = "300"
+G.graph_attr["dpi"] = "500"
 G.graph_attr["nodesep"] = "0.4"
 G.graph_attr["ranksep"] = "0.1"
 G.node_attr["fontsize"] = "10"
@@ -215,7 +215,7 @@ OG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="LR"
 )
 OG.graph_attr["ratio"] = "compressed"
-OG.graph_attr["dpi"] = "300"
+OG.graph_attr["dpi"] = "500"
 OG.graph_attr["nodesep"] = "0.4"
 OG.graph_attr["ranksep"] = "0.1"
 OG.node_attr["fontsize"] = "10"
@@ -252,7 +252,7 @@ VG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
 VG.graph_attr["ratio"] = "compressed"
-VG.graph_attr["dpi"] = "300"
+VG.graph_attr["dpi"] = "500"
 VG.graph_attr["nodesep"] = "0.4"
 VG.graph_attr["ranksep"] = "0.1"
 VG.node_attr["fontsize"] = "10"
@@ -285,7 +285,7 @@ OVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
 OVG.graph_attr["ratio"] = "compressed"
-OVG.graph_attr["dpi"] = "300"
+OVG.graph_attr["dpi"] = "500"
 OVG.graph_attr["nodesep"] = "0.1"
 OVG.graph_attr["ranksep"] = "0.1"
 OVG.node_attr["fontsize"] = "10"
@@ -310,7 +310,7 @@ OLVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
 OLVG.graph_attr["size"] = "8.24,5.78"
-OLVG.graph_attr["dpi"] = "300"
+OLVG.graph_attr["dpi"] = "500"
 OLVG.graph_attr["ratio"] = "compressed"
 OLVG.graph_attr["nodesep"] = "0.1"
 OLVG.graph_attr["ranksep"] = "0.1"
