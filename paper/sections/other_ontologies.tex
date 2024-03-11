@@ -45,7 +45,7 @@ vehicle', `internal combustion vehicle' and `gas turbine vehicle' and another
 associated to its operational medium such as `land vehicle', `aircraft' or
 `watercraft'. The former has axiomatization significant for electric grid and
 energy systems models which can be seen in figure \ref{oeoev:b} the latter
-lacks its own axioms and relies on mainly on the former. To our application is
+lacks its own axioms and relies on mainly on the former. For our application is
 only interesting to use the taxonomy of electric vehicles (Figure
 \ref{oeoev:a}). Its land vehicle taxonomy is very rich (figure
 \ref{landvehicletaxoeo}) and contains elements that might have conflicts with
@@ -62,37 +62,111 @@ clarified in its respective section.
 
 \subsection{The Common Core Ontologies}
 
-CCO section keywords: Infrastructure, Facilities Vehicle taxonomy
+The CCO are 12 mid-level ontologies built as an extension of BFO and the
+Relations Ontology (RO) intended to be used as a basis to model domains of
+interest such as transportation infrastructure spacecrafts
+\cite{Rudnicki.23September2020}. Like BFO, it is a realist ontology, which
+means that it intends to model entities and data alike. The ontology avoids
+being prescriptive, instead lets data modellers decide which asserted class
+axioms are relevant for their particular applications. The ontology comes with
+a guide that lets non ontology experts understand how to implement terms in the
+ontology which is very helpful to involve domain experts of other fields in
+ontology development.
 
-\begin{figure}[h]\label{landvehicletaxoeo}
-    \caption{OEO Vehicle Taxonomy.}
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/OEOLVehicles}
-\end{figure}
+We import a small subset of terms coming from these ontologies. Indeed, we
+avoid importing whole ontologies by opting to do punctual extractions. This was
+decided to avoid convolution of the final product, since we are expecting
+developers to work with Protégé, if we imported all the classes they would have
+a harder time finding where to place their new terms. We extract multiple
+taxonomies and some axioms from these ontologies. These are listed during the
+rest of this section.
+
+\subsubsection{Vehicle taxonomy}
+
+From the artifact ontology we extract terminology associated with vehicles. We
+consider that their non-prescriptive approach offers a more manageable taxonomy
+of vehicles that can be utilized across different fields of application. The
+OEO classifies vehicles based on their energy consumption which is practical
+for their applications but since we are not interested in non-electric vehicles
+these become superfluous. Other reason to use the artifacts ontology
+axiomatization is to profit from the other declarations coming from the same
+suite of ontologies, particularly the axioms that allow `material artifacts'
+with `sites' which will be helpful to handle concepts associated with parking.
+The top upper levels of both taxonomies, besides both using BFO are slightly
+different. The OEO classifies vehicles as artificial objects whereas the CCO as
+`material artifacts'. The lower levels, despite being developed independently
+are very similar, so similar  that they are practically already interoperable.
+The taxonomies can be compared by looking at figures \ref{ccovectax} and
+\ref{landvehicletaxoeo}.
 
 \begin{figure}[h]
-    \caption{Common Core Ontologies Vehicle Taxonomy.}
     \centering
     \includegraphics[width=0.9\textwidth]{images/CCOVehicles}
+    \caption{The CCO vehicle taxonomy is slimmer and more streamlined to the concept of a vehicle.}
+    \label{ccovectax}
+\end{figure}
+\begin{figure}[h]
+    
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/OEOLVehicles}
+    \caption{The OEO Land vehicle taxonomy is rich of axioms associated to the vehicles' energy consumption.}
+    \label{landvehicletaxoeo}
 \end{figure}
 
+\subsubsection{Infrastructure}
+
+The CCO offers a construct that aids to classify material artifacts as
+infrastructure. It uses what in BFO are called `roles'. This allows arbitrary
+assignment of the class. This is practical to us because charging stations in
+reality are not always infrastructure, they are only in virtue of the agents
+who assign them this role. In this sense a home wall box is not infrastructure
+for a government agency but a public column is. Infrastructure rarely comes as
+units but as  complex aggregates of artifacts, this is way we opt to import the
+concept of infrastructure system. These axioms can be visualized in figure
+\ref{infrastructurefigs}.
 
 \begin{figure}[h]
-    \caption{Common Core Ontologies infrastructure constraints.}
     \centering
-    \includegraphics[width=1.0\textwidth]{images/infrastructureSystem}
+    \includegraphics[width=0.8\textwidth]{images/infrastructureSystem}
+    \caption{Common Core Ontologies infrastructure constraints.}
+    \label{infrastructurefigs} 
 \end{figure}
 
+\subsubsection{Facilities}
+
+As an only exception to our `scenario first' rule we import the facility
+ontology to handle concepts like parking lots and dedicated charging stations.
+An alternative would be to stick to using material entities, but we consider
+this differentiation practical in the long run. Specially when considering
+interoperability with future transportation research ontologies
 
 
 \subsection{iCity Parking ontology}
 
-Parking section, keywords: Application specific, different Spatio-temopral assumptions
+The TPSO has a module for terminology associated with parking which provides
+concepts like parking spaces, areas and fees. It also offers definitions for
+charging stations, but these are too shallow for our applications as they are
+at most features of parking spaces. The subclassification of charging stations
+are `standard', `medium' and `fast' which are defined based on the definitions
+of the Honk Kong Environmental Protection Department. This classification is
+too shallow for our application, so we opt not to adopt it (we have yet to
+figure out if such classification is even meaningful). The TPSO has its own
+upper level ontology modules which supply axiom definitions for change,
+mereology and time. These modules are fundamentally incompatible with the BFO.
+The Change module of the ontology relies on the utilization of a 4 dimensional
+approach to model time changing concepts. This means that every object has a
+perdurant and its manifestations bear their changes. Since we are not intending
+to axiomatize time relations in OWL and instead opt to delegate that to data
+modellers we opt not to share that approach. All the axioms that are
+interesting to us from the Parking ontology can be visualized in figure
+\ref{parkingfig}. BFO has its own approach to handle descriptions of change,
+this will be addressed in its respective section.
 
 \begin{figure}[h]
-    \caption{iCity parking ontology commitments associated to charging infrastructure.}
     \centering
     \includegraphics[width=1.0\textwidth]{images/PARKING}
+    \caption{iCity parking ontology commitments associated to charging infrastructure.}
+    \label{parkingfig}
 \end{figure}
 
 \subsection{The virtues of using Upper Level Ontologies}
@@ -101,7 +175,7 @@ Parking section, keywords: Application specific, different Spatio-temopral assum
 
 \subsubsection{The Basic Formal Ontology}
 
-BFO has its own mereology where objects ocupying the same spatiotemporal place
+BFO has its own mereology where objects occupying the same spatio-temporal place
 are the same. BFO is bad for materials because it does not consider constitution.
-BFO has advantages in regards to object aggreagates, it is relatively easy to represent
+BFO has advantages in regard to object aggregates, it is relatively easy to represent
 membership with it. 
