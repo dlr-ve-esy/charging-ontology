@@ -1,14 +1,29 @@
 \documentclass[hf]{ceurart}
 
+\usepackage{subfigure}
+\usepackage{float}
 \usepackage{minted}
 \usepackage{longtable}
 \usepackage{booktabs}
+\usepackage{graphicx}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{subsection}.\arabic{figure}}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \setminted{breaklines=true}
 \pagenumbering{gobble}
  \pagestyle{empty}
 \usepackage{listings}
+
+\usepackage{ntheorem}
+\theoremstyle{empty}
+\theoremheaderfont{\bfseries\upshape} 
+\theorembodyfont{\itshape}
+\setlength{\labelsep}{0pt}
+\newtheorem{named}{}
+
+\theoremstyle{emptybreak}
+\newtheorem{namedbreak}{}
+
 
 \begin{document}
 
@@ -29,7 +44,7 @@
 %%
 %% Rights management information.
 %% CC-BY is default license.
-\copyrightyear{2022}
+\copyrightyear{2024}
 \copyrightclause{Copyright for this paper by its authors.
   Use permitted under Creative Commons License Attribution 4.0
   International (CC BY 4.0).}
@@ -63,11 +78,10 @@ email=carsten.hoyer-klick@dlr.de,
 
 \input{sections/context.tex}
 
-\input{sections/oeo.tex}
-
 \input{sections/other_ontologies.tex}
+
 \input{sections/methodology.tex}
-\input{sections/achievments.tex}
+\input{sections/achievement.tex}
 \input{sections/conclusion.tex}
 
 \input{sections/acknowledgments.tex}

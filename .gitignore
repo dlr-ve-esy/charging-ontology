@@ -16,6 +16,9 @@ __pycache__
 *.xmpi
 */sources
 */local
+*.fdb_latexmk
+*.fls
+svg-inkscape
+*.synctex.gz
 
 # Remove later when images are ready
-paper/images

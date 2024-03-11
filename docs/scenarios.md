@@ -1,7 +1,7 @@
-# Application scenarios
+# Motivating scenarios
 
 To aid the ontology development and setting the boundaries on what belongs what
-doesn't we rely in application scenarios which are textual descriptions of
+doesn't we rely in motivating scenarios which are textual descriptions of
 situations in which the ontology might be used. These descriptions are then
 complemented with [competency
 questions (CQs)](https://doi.org/10.1016/j.websem.2019.100534) derived from them.

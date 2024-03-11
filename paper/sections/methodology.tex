@@ -1,6 +1,82 @@
 ﻿\section{Methodology}
+\label{methodology}
 
-BFO has its own mereology where objects ocupying the same spatiotemporal place
-are the same. BFO is bad for materials because it does not consider constitution.
-BFO has advantages in regards to object aggreagates, it is relatively easy to represent
-membership with it. 
+The ontology development loop is inspired by the approach used by the OEO
+developing team. This consists on having user needs as primary driving force of
+ontology development. This was not decided based on some detailed evaluation of
+ontology development methods but out of experience and satisfactory results
+that manifest in the OEO relatively consistent release cycle. The main
+difference consists of a stricter approach in regard to new terminology coming
+into the ontology. Instead of implementing single terms per request, we will
+expect users and developers to either adjust their proposed terms to existing
+applications or to propose a new complete motivating scenario. This is to
+overcome scoping issues that have arisen during the development of OEO. 
+
+
+\subsection{Motivating Scenarios}
+
+Motivating scenarios are descriptions of potential real or theoretical
+applications of the ontology which comprise the kind of questions that the
+ontology is intended to address.  They were first proposed as a method used for
+the Toronto Virtual Enterprise (TOVE) ontology development
+\cite{Gruninger.1995}. We take inspiration on the original approach but adapt
+it to a modern context where we take advantage of ticket systems and public
+version control based development. Competency questions are the smallest
+component of a scenario and in our development approach they are first-class
+citizens. The rest of this section will show the first motivating scenarios
+considered for this ontology along some exemplary competency questions. Please
+notice that the numeration of the competency questions is not sequential, this
+is intended as they are excerpts of the full list of questions which can be
+found in the documentation of the ontology \footnote{Once the documentation is
+published it will appear here.}.
+
+\subsubsection*{Scenario 1: The charging infrastructure register}
+
+This scenario is heavily inspired by the German charging infrastructure
+register \cite{Bundesnetzagentur.27Oct2023}, and it probably captures most of
+the requirements of this ontology. The scenario covers terminology and axioms
+necessary to perform descriptions in regard to where infrastructure is found,
+which power they are able to deliver and what kind of connector they have.
+
+\begin{namedbreak}[Competency question 1.0]
+    Charging station is a type of infrastructure.
+\end{namedbreak}
+
+\begin{namedbreak}[Competency question 1.1]
+    A charging station has charging columns as parts that can change during its lifetime.
+\end{namedbreak}
+\begin{namedbreak}[Competency question 1.3]
+    A charging point is compatible with some plugs.
+\end{namedbreak}
+
+\begin{namedbreak}[Competency question 1.5]
+    A charging station has commissioning and decommissioning dates which delimit its lifetime.
+\end{namedbreak}
+
+\subsubsection*{Scenario 2: iCity Project Smart Parking Applications}
+
+This scenario is an extract of the iCity project by Katsumi and Fox.
+Particularly the section smart parking applications \cite{Katsumi.2020}. These
+are selected examples of the subset of questions relevant to us. They are
+interesting because charging infrastructure is intimately connected with
+parking infrastructure. These queries rely on a lot in geographical queries and
+may overlap with scenario 1, but they have a perspective more in line with
+daily operation of the stations. For more details on the ontology visit its
+repository\footnote{https://github.com/EnterpriseIntegrationLab/icity}.
+
+
+\begin{namedbreak}[Competency question 2.0]
+    What is the address of the parking lot P?
+\end{namedbreak}
+
+\begin{namedbreak}[Competency question 2.5]
+    Is a particular parking lot open to the public at a given time?
+\end{namedbreak}
+
+\begin{namedbreak}[Competency question 2.6]
+    How many parking spots are designated for electric vehicles in a particular parking lot?
+\end{namedbreak}
+
+\begin{namedbreak}[Competency question 2.7]
+    What types of electric vehicle chargers are available in a particular parking lot?
+\end{namedbreak}
