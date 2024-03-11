@@ -2,8 +2,15 @@
 \section{Existing ontology work}
 \label{existingontologies}
 
-One of the key aspects of FAIR ontologies is the active reusability of existing
-ontologies.
+One of the key aspects of FAIR ontologies is that they are reusable and profit
+from the reusability of existing ontologies \cite{PovedaVillalon.2020}. We did
+an extensive analysis of existing ontologies with infrastructure, charging
+stations, electric vehicles and electricity grid in scope. We also rely
+strongly on the review performed by Katsumi and Fox regarding transport
+planning vocabularies \cite{Katsumi.2018}. In this section we summarize the
+ontologies we considered for reutilization and justify the situations in which
+we decide not to reutilize existing concepts.
+
 
 \subsection{The Open Energy Ontology}
 
@@ -23,30 +30,48 @@ important work on the inclusion of concepts coming from the transport sector
 was performed by \cite{Mittermeier.2023}, who did several implementations
 associated to the topic. However since the size of the task is larger than what
 can be achieved during a master thesis, many implementations were left open in
-the form of Github Issues. In some of these issues it was made clear that the
+the form of GitHub Issues. In some of these issues it was made clear that the
 scope of the OEO is in some cases beyond what is often necessary to represent
-phenomena in the transport sector. During the rest of this section we will
-proceed to describe what is already in the ontology that is relevant to our
-subject, what kind of discussion has been done and
+phenomena in the transport sector.
 
 
-\begin{figure}[h]
-    \caption{Open energy ontology electric vehicle commitments.}
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/OEOEV}
-\end{figure}
+In our charging infrastructure ontology we need a way of describing vehicles,
+particularly electric vehicles. The OEO has a rich taxonomy of vehicles that
+rest on the definition of artificial objects which are in the context of BFO
+`causally unified material entities deliberately manufactured by humans to
+address a particular porpoise'. The taxonomy has multiple parallel
+ramifications, one associated to its energy consumption mode like `electric
+vehicle', `internal combustion vehicle' and `gas turbine vehicle' and another
+associated to its operational medium such as `land vehicle', `aircraft' or
+`watercraft'. The former has axiomatization significant for electric grid and
+energy systems models which can be seen in figure \ref{evcommitments} the
+latter lacks its own axioms and relies on mainly on the former. To our
+application is only interesting to use the taxonomy of electric vehicles
+(Figure \ref{evtax}). Its land vehicle taxonomy is very rich (figure
+\ref{landvehicletaxoeo}) and contains elements that might have conflicts with
+any future implementation in a transport ontology. Because of this we rely on
+the Common Core Ontologies (CCO), this will be clarified in its respective
+section.
 
-\begin{figure}[h]
+
+\begin{figure}[h]\label{evtax}
     \caption{Open energy ontology electric vehicle taxonomy.}
     \centering
     \includegraphics[width=0.6\textwidth]{images/OEOVehicles}
 \end{figure}
 
+\begin{figure}[h]\label{evcommitments}
+    \caption{Open energy ontology electric vehicle commitments.}
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/OEOEV}
+\end{figure}
+
+
 \subsection{The Common Core Ontologies}
 
 CCO section keywords: Infrastructure, Facilities Vehicle taxonomy
 
-\begin{figure}[h]
+\begin{figure}[h]\label{landvehicletaxoeo}
     \caption{OEO Vehicle Taxonomy.}
     \centering
     \includegraphics[width=0.9\textwidth]{images/OEOLVehicles}
