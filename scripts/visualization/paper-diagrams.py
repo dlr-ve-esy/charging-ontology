@@ -107,7 +107,9 @@ def render_simple_class(G, cls, left_label, ontology, edge_attrs={}):
     return label
 
 
-def render_equivalent_class_axiom(G, axiom, ontology, edge_attrs={}, node_attrs={}):
+def render_equivalent_class_axiom(
+    G, axiom, ontology, fontsize=8, edge_attrs={}, node_attrs={}
+):
     # This assumes that the left sides are likely classes
     # probably breaks with general axioms
     left_class, right_part = axiom.first
@@ -127,7 +129,7 @@ def render_equivalent_class_axiom(G, axiom, ontology, edge_attrs={}, node_attrs=
                 style="rounded,dotted",
                 label="Equivalence restriction",
                 fontcolor="grey",
-                fontsize="8",
+                fontsize=f"{fontsize}",
                 labeljust="l",
                 name="cluster_restriction",
                 rank="same",
@@ -214,14 +216,15 @@ oeo_vehicle_imports = pho.open_ontology("tmp/oeo_vehicle.owx")
 OG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="LR"
 )
+OG.graph_attr["size"] = "3.149,5.78"
 OG.graph_attr["ratio"] = "compressed"
 OG.graph_attr["dpi"] = "500"
 OG.graph_attr["nodesep"] = "0.4"
 OG.graph_attr["ranksep"] = "0.1"
-OG.node_attr["fontsize"] = "10"
+OG.node_attr["fontsize"] = "14"
 OG.node_attr["fontname"] = "CMU Serif Roman"
 OG.node_attr["shape"] = "ellipse"
-OG.edge_attr["fontsize"] = "10"
+OG.edge_attr["fontsize"] = "14"
 OG.edge_attr["fontname"] = "CMU Serif Roman"
 OG.edge_attr["arrowsize"] = "0.5"
 
@@ -239,7 +242,7 @@ for aa in oeo_vehicle_imports.get_axioms_for_iri(
             OG, aa.axiom, oeo_vehicle_imports, edge_attrs=edge_attrs
         )
     if isinstance(aa.axiom, EquivalentClasses):
-        render_equivalent_class_axiom(OG, aa.axiom, oeo_vehicle_imports)
+        render_equivalent_class_axiom(OG, aa.axiom, oeo_vehicle_imports, fontsize=14)
 OG.write(TMP.joinpath("OEOEV.dot").as_posix())
 OG.draw(SVG.joinpath("OEOEV.svg").as_posix(), prog="dot")
 OG.draw(PNG.joinpath("OEOEV.png").as_posix(), prog="dot")
@@ -284,14 +287,14 @@ ev_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_ev_tax.owx")
 OVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
-OVG.graph_attr["ratio"] = "compressed"
+OG.graph_attr["size"] = "3.149,5.78"
 OVG.graph_attr["dpi"] = "500"
 OVG.graph_attr["nodesep"] = "0.1"
 OVG.graph_attr["ranksep"] = "0.1"
-OVG.node_attr["fontsize"] = "10"
+OVG.node_attr["fontsize"] = "8"
 OVG.node_attr["fontname"] = "CMU Serif Roman"
 OVG.node_attr["shape"] = "ellipse"
-OVG.edge_attr["fontsize"] = "10"
+OVG.edge_attr["fontsize"] = "8"
 OVG.edge_attr["fontname"] = "CMU Serif Roman"
 OVG.edge_attr["arrowsize"] = "0.5"
 
