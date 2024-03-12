@@ -148,19 +148,19 @@ concepts like parking spaces, areas and fees. It also offers definitions for
 charging stations, but these are too shallow for our applications as they are
 at most features of parking spaces. The subclassification of charging stations
 are `standard', `medium' and `fast' which are defined based on the definitions
-of the Honk Kong Environmental Protection Department. This classification is
-too shallow for our application, so we opt not to adopt it (we have yet to
-figure out if such classification is even meaningful). The TPSO has its own
-upper level ontology modules which supply axiom definitions for change,
-mereology and time. These modules are fundamentally incompatible with the BFO.
-The Change module of the ontology relies on the utilization of a 4 dimensional
-approach to model time changing concepts. This means that every object has a
-perdurant and its manifestations bear their changes. Since we are not intending
-to axiomatize time relations in OWL and instead opt to delegate that to data
-modellers we opt not to share that approach. All the axioms that are
-interesting to us from the Parking ontology can be visualized in figure
-\ref{parkingfig}. BFO has its own approach to handle descriptions of change,
-this will be addressed in its respective section.
+of the Environmental Protection Department whose source was not explicitly
+pointed. If having such a classification is meaningful to our applications is
+yet to be defined. The TPSO has its own upper level ontology modules which
+supply axiom definitions for change, mereology and time. These modules are
+fundamentally incompatible with the BFO. The Change module of the ontology
+relies on the utilization of a 4 dimensional approach to model time changing
+concepts. This means that every object has a perdurant and its manifestations
+bear their changes. Since we are not intending to axiomatize time relations in
+OWL and instead opt to delegate that to data modellers we opt not to share that
+approach. All the axioms that are interesting to us from the Parking ontology
+can be visualized in figure \ref{parkingfig}. BFO has its own approach to
+handle descriptions of change, this will be addressed in its respective
+section.
 
 \begin{figure}[h]
     \centering
@@ -169,13 +169,39 @@ this will be addressed in its respective section.
     \label{parkingfig}
 \end{figure}
 
-\subsection{The virtues of using Upper Level Ontologies}
+\subsubsection{The Basic Formal Ontology}
 \label{upperlevel}
 
+Top-level ontologies or foundational ontologies intend to model domain neutral
+categories and relations \cite{Arp.2015}. These are not a hard requirement to
+build an ontology but can make the difference regarding its interoperability.
+Choosing (or developing) a top-level ontology is not an easy task because a
+modeller needs to have a deep understanding of their domain and the possible
+applications. In 2022 a special issue of applied ontology \cite{Borgo.2022}
+allowed ontology developers to exemplify the usage of multiple prominent
+top-level ontologies. In theory, we would select our ontology by following the
+motivating scenarios defined in section \ref{methodology}. But since we are
+intending to build on the efforts from the OEO we streamlined to using BFO.
+This decision comes not without compromises. 
 
-\subsubsection{The Basic Formal Ontology}
+BFO sacrifices expressivity for a simpler modelling intuition. It has
+weaknesses in the field of modal propositions which are prominent in both
+transportation research en energy systems analysis, particularly in the context
+of forecasts and simulation\footnote{However this weakness is addressed by CCO
+with their ModalRelationOntology which we consider importing. }. Unlike the
+TPSO foundational modules, BFO delegates its time indexing to the applications
+by keeping it outside the OWL implementation. BFO has a rather simple initial
+learning curve that can be used to facilitate the inclusion of new developers.
+But still becomes very steep when dealing some of its more complex terms (i.e.
+`process profile', `disposition' vs `quality'), this can lead to frustrations
+or miss-uses.
 
-BFO has its own mereology where objects occupying the same spatio-temporal place
-are the same. BFO is bad for materials because it does not consider constitution.
-BFO has advantages in regard to object aggregates, it is relatively easy to represent
-membership with it. 
+There are some important features of BFO that we intend to take advantage of.
+The first is that it allows the existence of `sites' in the same dimension as
+`material entities'. This is because charging events depend on the dynamics of
+vehicles being present and absent. We also need it to characterize the
+mereotopology of charging stations. A second important feature are `process
+profiles', since we consider that the charging event can have multiple
+dimensions that can describe it that have to be associated with each other.
+Using those we can describe events in virtue of their occupancy, power rates
+and energy transfers.
