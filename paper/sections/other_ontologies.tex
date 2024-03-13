@@ -28,7 +28,7 @@ fact that it is being openly developed in a shared
 repository\footnote{https://github.com/OpenEnergyPlatform/ontology}. An
 important work on the inclusion of concepts coming from the transport sector
 was performed by \cite{Mittermeier.2023}, who did several implementations
-associated to the topic. However since the size of the task is larger than what
+associated to the topic. However, since the size of the task is larger than what
 can be achieved during a master thesis, many implementations were left open in
 the form of GitHub Issues. In some of these issues it was made clear that the
 scope of the OEO is in some cases beyond what is often necessary to represent
@@ -39,19 +39,19 @@ In our charging infrastructure ontology we need a way of describing vehicles,
 particularly electric vehicles. The OEO has a rich taxonomy of vehicles that
 rest on the definition of artificial objects which are in the context of BFO
 `causally unified material entities deliberately manufactured by humans to
-address a particular porpoise'. The taxonomy has multiple parallel
-ramifications, one associated to its energy consumption mode like `electric
-vehicle', `internal combustion vehicle' and `gas turbine vehicle' and another
-associated to its operational medium such as `land vehicle', `aircraft' or
-`watercraft'. The former has axiomatization significant for electric grid and
-energy systems models which can be seen in figure \ref{oeoev:b} the latter
-lacks its own axioms and relies on mainly on the former. For our application is
-only interesting to use the taxonomy of electric vehicles (Figure
-\ref{oeoev:a}). Its land vehicle taxonomy is very rich (figure
-\ref{landvehicletaxoeo}) and contains elements that might have conflicts with
-any future implementation in a transport ontology. Because of this we rely on
-the Common Core Ontologies (CCO) for a ligther vehicle taxonomy, this will be
-clarified in its respective section.
+address a particular porpoise'. The taxonomy has two parallel ramifications,
+one associated to its energy consumption mode like `electric vehicle',
+`internal combustion vehicle' and `gas turbine vehicle' and another associated
+to its operational medium such as `land vehicle', `aircraft' or `watercraft'.
+The former has axiomatization significant for electric grid and energy systems
+models which can be seen in figure \ref{oeoev:b} the latter lacks its own
+axioms and relies on mainly on the former. For our application is only
+interesting to use the taxonomy of electric vehicles (Figure \ref{oeoev:a}).
+Its land vehicle taxonomy is very rich (figure \ref{landvehicletaxoeo}) and
+contains elements that might have conflicts with any future implementation in a
+transport ontology. Because of this we rely on the Common Core Ontologies (CCO)
+for a ligther vehicle taxonomy, this will be clarified in its respective
+section.
 
 \begin{figure}
     \centering
@@ -62,16 +62,16 @@ clarified in its respective section.
 
 \subsection{The Common Core Ontologies}
 
-The CCO are 12 mid-level ontologies built as an extension of BFO and the
+The CCO are twelve mid-level ontologies built as an extension of BFO and the
 Relations Ontology (RO) intended to be used as a basis to model domains of
 interest such as transportation infrastructure spacecrafts
 \cite{Rudnicki.23September2020}. Like BFO, it is a realist ontology, which
 means that it intends to model entities and data alike. The ontology avoids
 being prescriptive, instead lets data modellers decide which asserted class
 axioms are relevant for their particular applications. The ontology comes with
-a guide that lets non ontology experts understand how to implement terms in the
-ontology which is very helpful to involve domain experts of other fields in
-ontology development.
+a guide that lets non ontology experts understand how to implement terms which
+is very helpful to involve domain experts of other fields in ontology
+development.
 
 We import a small subset of terms coming from these ontologies. Indeed, we
 avoid importing whole ontologies by opting to do punctual extractions. This was
@@ -90,14 +90,12 @@ OEO classifies vehicles based on their energy consumption which is practical
 for their applications but since we are not interested in non-electric vehicles
 these become superfluous. Other reason to use the artifacts ontology
 axiomatization is to profit from the other declarations coming from the same
-suite of ontologies, particularly the axioms that allow `material artifacts'
-with `sites' which will be helpful to handle concepts associated with parking.
-The top upper levels of both taxonomies, besides both using BFO are slightly
-different. The OEO classifies vehicles as artificial objects whereas the CCO as
-`material artifacts'. The lower levels, despite being developed independently
-are very similar, so similar  that they are practically already interoperable.
-The taxonomies can be compared by looking at figures \ref{ccovectax} and
-\ref{landvehicletaxoeo}.
+suite of ontologies. The top upper levels of both taxonomies are slightly
+different besides both using BFO. The OEO classifies vehicles as artificial
+objects whereas the CCO as `material artifacts'. The lower levels, despite
+being developed independently are very similar, so similar  that they are
+practically already interoperable. The taxonomies can be compared by looking at
+figures \ref{ccovectax} and \ref{landvehicletaxoeo}.
 
 \begin{figure}[h]
     \centering
@@ -134,11 +132,11 @@ concept of infrastructure system. These axioms can be visualized in figure
 
 \subsubsection{Facilities}
 
-As an only exception to our `scenario first' rule we import the facility
-ontology to handle concepts like parking lots and dedicated charging stations.
-An alternative would be to stick to using material entities, but we consider
-this differentiation practical in the long run. Specially when considering
-interoperability with future transportation research ontologies
+As an only exception to our `scenario first' rule we import terms from the
+facility ontology to handle concepts like parking lots and dedicated charging
+stations. An alternative would be to stick to using material entities, but we
+consider this differentiation practical in the long run. Specially when
+considering interoperability with future transportation research ontologies
 
 
 \subsection{iCity Parking ontology}
@@ -153,7 +151,7 @@ pointed. If having such a classification is meaningful to our applications is
 yet to be defined. The TPSO has its own upper level ontology modules which
 supply axiom definitions for change, mereology and time. These modules are
 fundamentally incompatible with the BFO. The Change module of the ontology
-relies on the utilization of a 4 dimensional approach to model time changing
+relies on the utilization of a four dimensional approach to model time changing
 concepts. This means that every object has a perdurant and its manifestations
 bear their changes. Since we are not intending to axiomatize time relations in
 OWL and instead opt to delegate that to data modellers we opt not to share that
@@ -201,7 +199,9 @@ The first is that it allows the existence of `sites' in the same dimension as
 `material entities'. This is because charging events depend on the dynamics of
 vehicles being present and absent. We also need these entities to characterize
 the mereotopology of charging stations which usually consider parking spaces as
-their parts. A second important feature are `process profiles', since we
-consider that the charging event can have multiple dimensions that can describe
-it that have to be associated with each other. Using those we can describe
-events in virtue of their occupancy, power rates and energy transfers.
+their parts which in place can be part of parking lots along other parking
+spaces. To address this, we will rely on reinterpreting the axioms from the
+TPSO in the context of BFO. A second important feature are `process profiles',
+since we consider that the charging event can have multiple dimensions that can
+describe it that have to be associated with each other. Using those we can
+describe events in virtue of their occupancy, power rates and energy transfers.
