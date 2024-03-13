@@ -2,7 +2,7 @@
 
 ## 07.03.2024
 
-- [ ] Reworked pipeline
+- [X] Reworked pipeline
 
 ## 07.03.2024
 
@@ -77,7 +77,7 @@ serve as practice for ontology development. Initial setup requirements:
 
 - [X] Set documentation environment up using [mkdocs](https://www.mkdocs.org/)~~, and probably the [gitbook theme](https://gitlab.com/lramage/mkdocs-gitbook-theme)~~.
 - [X] Setup of the testing framework using competency questions.
-- [ ] Write down the use case scenarios (these are also going in the paper).
+- [X] Write down the use case scenarios (these are also going in the paper).
 - [X] Decide in a proper name (CHIO?)
 - [X] Decide on the ontology term conventions, maybe use identifiers with the following form "CHIO_XXXXXXXX"
 - [X] Import the necessary OEO Terms.
