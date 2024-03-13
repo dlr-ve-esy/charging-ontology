@@ -23,8 +23,8 @@ PAPER.mkdir(exist_ok=True)
 SVG = TMP.joinpath("svg")
 SVG.mkdir(exist_ok=True)
 
-PNG = PAPER
-PNG.mkdir(exist_ok=True)
+PDF = PAPER
+PDF.mkdir(exist_ok=True)
 
 DROPLIST = []
 
@@ -41,7 +41,9 @@ NL_RENDER = "\\n"  #  \\n for dot to png, \\\\ for dot2tex
 
 
 # %%
-def render_equivalent_class_axiom(G, axiom, ontology, edge_attrs={}, node_attrs={}):
+def render_equivalent_class_axiom(
+    G, axiom, ontology, fontsize=8, edge_attrs={}, node_attrs={}
+):
     # This assumes that the left sides are likely classes
     # probably breaks with general axioms
     left_class, right_part = axiom.first
@@ -62,7 +64,7 @@ def render_equivalent_class_axiom(G, axiom, ontology, edge_attrs={}, node_attrs=
                 style="rounded,dotted",
                 label="Equivalence restriction",
                 fontcolor="grey",
-                fontsize="8",
+                fontsize=fontsize,
                 labeljust="l",
                 name="cluster_restriction",
                 rank="same",
@@ -101,15 +103,15 @@ def render_subclass_restriction_axiom(G, axiom, ontology, edge_attrs={}):
                 G.graph_attr["rank"] = "same"
 
 
-def add_taxonomy(G, ontology, edge_attrs={}):
+def add_taxonomy(G, ontology, edge_attrs={}, node_attrs={}):
     for c in ontology.get_classes():
         if c not in DROPLIST:
             main_label = get_label(c, ontology)
-            G.add_node(main_label)
+            G.add_node(main_label, **node_attrs)
             for sc in ontology.get_subclasses(c):
                 if sc not in DROPLIST:
                     sc_label = get_label(sc, ontology)
-                    G.add_node(sc_label)
+                    G.add_node(sc_label, **node_attrs)
                     G.add_edge(main_label, sc_label, **edge_attrs)
 
 
@@ -135,8 +137,9 @@ PG = pgv.AGraph(
 )
 # 4.70
 # PG.graph_attr["ratio"] = "compressed"
-PG.graph_attr["size"] = "8.24,5.78"
-PG.graph_attr["dpi"] = "400"
+PG.graph_attr["size"] = "4.12,2.89"  # "8.24,5.78"  # "4.12,2.89"  #
+PG.graph_attr["dpi"] = "100"
+PG.graph_attr["margin"] = "0"
 PG.graph_attr["nodesep"] = "0.1"
 PG.graph_attr["ranksep"] = "0.1"
 PG.node_attr["fontsize"] = "10"
@@ -165,9 +168,9 @@ for prop in props:
                 PG, aa.axiom, parking, edge_attrs=edge_attrs
             )
         if isinstance(aa.axiom, EquivalentClasses):
-            render_equivalent_class_axiom(PG, aa.axiom, parking)
+            render_equivalent_class_axiom(PG, aa.axiom, parking, fontsize=10)
 PG.write(TMP.joinpath("PARKING.dot").as_posix())
 PG.draw(SVG.joinpath("PARKING.svg").as_posix(), prog="dot")
-PG.draw(PNG.joinpath("PARKING.png").as_posix(), prog="dot")
+PG.draw(PDF.joinpath("PARKING.pdf").as_posix(), prog="dot")
 
 # %%

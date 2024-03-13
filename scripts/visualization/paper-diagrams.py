@@ -23,8 +23,8 @@ PAPER.mkdir(exist_ok=True)
 SVG = TMP.joinpath("svg")
 SVG.mkdir(exist_ok=True)
 
-PNG = PAPER
-PNG.mkdir(exist_ok=True)
+PDF = PAPER
+PDF.mkdir(exist_ok=True)
 
 PREFIX_MAPPINGS = {
     "http://www.ontologyrepository.com/CommonCoreOntologies/": "CCO:",
@@ -77,15 +77,15 @@ def get_label(iri, ontology):
     return label
 
 
-def add_taxonomy(G, ontology, edge_attrs={}):
+def add_taxonomy(G, ontology, edge_attrs={}, node_attrs={}):
     for c in ontology.get_classes():
         if c not in DROPLIST:
             main_label = get_label(c, ontology)
-            G.add_node(main_label)
+            G.add_node(main_label, **node_attrs)
             for sc in ontology.get_subclasses(c):
                 if sc not in DROPLIST:
                     sc_label = get_label(sc, ontology)
-                    G.add_node(sc_label)
+                    G.add_node(sc_label, **node_attrs)
                     G.add_edge(main_label, sc_label, **edge_attrs)
 
 
@@ -176,20 +176,22 @@ object_properties = ontology.get_object_properties()
 # combination of py-horned-owl and py-graphviz.
 # %%
 G = pgv.AGraph(strict=True, directed=True, name="G", layout="dot", splines=True)
-G.graph_attr["ratio"] = "0.52"
-G.graph_attr["dpi"] = "500"
+# G.graph_attr["ratio"] = "0.52"
+G.graph_attr["size"] = "2.06,1.445"  # "4.12,2.89"
+G.graph_attr["dpi"] = "96"
+G.graph_attr["margin"] = "0"
 G.graph_attr["nodesep"] = "0.4"
 G.graph_attr["ranksep"] = "0.1"
-G.node_attr["fontsize"] = "10"
+G.node_attr["fontsize"] = "14"
 G.node_attr["fontname"] = "CMU Serif Roman"
 G.node_attr["shape"] = "ellipse"
-G.edge_attr["fontsize"] = "10"
+G.edge_attr["fontsize"] = "14"
 G.edge_attr["fontname"] = "CMU Serif Roman"
 G.edge_attr["arrowsize"] = "0.5"
 add_taxonomy(
     G,
     ontology,
-    edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
+    edge_attrs={"color": "black", "splines": "curved", "penwidth": "1"},
 )
 axiom = find_equivalent_class_axioms(
     "http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement",
@@ -200,12 +202,12 @@ render_equivalent_class_axiom(
     axiom,
     ontology,
     node_attrs=dict(
-        shape="ellipse", style="dashed", fixedsize=False, fontsize=8, color="grey"
+        shape="ellipse", style="dashed", fixedsize=False, fontsize=14, color="grey"
     ),
 )
 G.write(TMP.joinpath("infrastructureSystem.dot").as_posix())
 G.draw(SVG.joinpath("infrastructureSystem.svg").as_posix(), prog="dot")
-G.draw(PNG.joinpath("infrastructureSystem.png").as_posix(), prog="dot")
+G.draw(PDF.joinpath("infrastructureSystem.pdf").as_posix(), prog="dot")
 # %% [markdown]
 # ## Render OEO imported commitments
 # Imported classes like battery
@@ -216,15 +218,16 @@ oeo_vehicle_imports = pho.open_ontology("tmp/oeo_vehicle.owx")
 OG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="LR"
 )
-OG.graph_attr["size"] = "3.149,5.78"
-OG.graph_attr["ratio"] = "compressed"
-OG.graph_attr["dpi"] = "500"
+OG.graph_attr["size"] = "2.06,1.445"  # "4.12,2.89"
+# OG.graph_attr["ratio"] = "compressed"
+OG.graph_attr["dpi"] = "100"
+OG.graph_attr["margin"] = "0"
 OG.graph_attr["nodesep"] = "0.4"
 OG.graph_attr["ranksep"] = "0.1"
-OG.node_attr["fontsize"] = "14"
+OG.node_attr["fontsize"] = "20"
 OG.node_attr["fontname"] = "CMU Serif Roman"
 OG.node_attr["shape"] = "ellipse"
-OG.edge_attr["fontsize"] = "14"
+OG.edge_attr["fontsize"] = "20"
 OG.edge_attr["fontname"] = "CMU Serif Roman"
 OG.edge_attr["arrowsize"] = "0.5"
 
@@ -232,7 +235,8 @@ edge_attrs = dict(style="dashed", arrowsize=0.5, penwidth=0.59)
 add_taxonomy(
     OG,
     oeo_vehicle_imports,
-    edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
+    edge_attrs={"color": "black", "splines": "curved", "penwidth": "1.5"},
+    node_attrs={"penwidth": "1.5"},
 )
 for aa in oeo_vehicle_imports.get_axioms_for_iri(
     "http://purl.obolibrary.org/obo/BFO_0000051"
@@ -242,10 +246,10 @@ for aa in oeo_vehicle_imports.get_axioms_for_iri(
             OG, aa.axiom, oeo_vehicle_imports, edge_attrs=edge_attrs
         )
     if isinstance(aa.axiom, EquivalentClasses):
-        render_equivalent_class_axiom(OG, aa.axiom, oeo_vehicle_imports, fontsize=14)
+        render_equivalent_class_axiom(OG, aa.axiom, oeo_vehicle_imports, fontsize=20)
 OG.write(TMP.joinpath("OEOEV.dot").as_posix())
 OG.draw(SVG.joinpath("OEOEV.svg").as_posix(), prog="dot")
-OG.draw(PNG.joinpath("OEOEV.png").as_posix(), prog="dot")
+OG.draw(PDF.joinpath("OEOEV.pdf").as_posix(), prog="dot")
 # %% [markdown]
 # ## Render Vehicle Taxonomy
 # Render the taxonomy from CCO vs OEO
@@ -254,8 +258,10 @@ vehicle_tax_cco = pho.open_ontology("tmp/ao_vehicles.owx")
 VG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
-VG.graph_attr["ratio"] = "compressed"
-VG.graph_attr["dpi"] = "500"
+# VG.graph_attr["ratio"] = "compressed"
+VG.graph_attr["size"] = "3.29,2.31"
+VG.graph_attr["dpi"] = "100"
+VG.graph_attr["margin"] = "0"
 VG.graph_attr["nodesep"] = "0.4"
 VG.graph_attr["ranksep"] = "0.1"
 VG.node_attr["fontsize"] = "10"
@@ -270,6 +276,7 @@ add_taxonomy(
     VG,
     vehicle_tax_cco,
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
+    node_attrs={"penwidth": "0.8"},
 )
 linear_tax = [
     "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact",
@@ -281,14 +288,15 @@ for i in linear_tax:
     SG.add_node(get_label(i, vehicle_tax_cco))
 VG.write(TMP.joinpath("CCOVehicles.dot").as_posix())
 VG.draw(SVG.joinpath("CCOVehicles.svg").as_posix(), prog="dot")
-VG.draw(PNG.joinpath("CCOVehicles.png").as_posix(), prog="dot")
+VG.draw(PDF.joinpath("CCOVehicles.pdf").as_posix(), prog="dot")
 # %%
 ev_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_ev_tax.owx")
 OVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
-OG.graph_attr["size"] = "3.149,5.78"
-OVG.graph_attr["dpi"] = "500"
+OVG.graph_attr["size"] = "1.64,1.445"
+OVG.graph_attr["dpi"] = "100"
+OVG.graph_attr["margin"] = "0"
 OVG.graph_attr["nodesep"] = "0.1"
 OVG.graph_attr["ranksep"] = "0.1"
 OVG.node_attr["fontsize"] = "8"
@@ -306,21 +314,22 @@ add_taxonomy(
 )
 OVG.write(TMP.joinpath("OEOVehicles.dot").as_posix())
 OVG.draw(SVG.joinpath("OEOVehicles.svg").as_posix(), prog="dot")
-OVG.draw(PNG.joinpath("OEOVehicles.png").as_posix(), prog="dot")
+OVG.draw(PDF.joinpath("OEOVehicles.pdf").as_posix(), prog="dot")
 # %%
 land_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_lv_tax.owx")
 OLVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
-OLVG.graph_attr["size"] = "8.24,5.78"
-OLVG.graph_attr["dpi"] = "500"
-OLVG.graph_attr["ratio"] = "compressed"
+OLVG.graph_attr["size"] = "4.12,2.89"
+OLVG.graph_attr["dpi"] = "100"
+OLVG.graph_attr["margin"] = "0"
+# OLVG.graph_attr["ratio"] = "compressed"
 OLVG.graph_attr["nodesep"] = "0.1"
 OLVG.graph_attr["ranksep"] = "0.1"
-OLVG.node_attr["fontsize"] = "14"
+OLVG.node_attr["fontsize"] = "12"
 OLVG.node_attr["fontname"] = "CMU Serif Roman"
 OLVG.node_attr["shape"] = "ellipse"
-OLVG.edge_attr["fontsize"] = "14"
+OLVG.edge_attr["fontsize"] = "12"
 OLVG.edge_attr["fontname"] = "CMU Serif Roman"
 OLVG.edge_attr["arrowsize"] = "0.5"
 
@@ -332,6 +341,6 @@ add_taxonomy(
 )
 OLVG.write(TMP.joinpath("OEOLVehicles.dot").as_posix())
 OLVG.draw(SVG.joinpath("OEOLVehicles.svg").as_posix(), prog="dot")
-OLVG.draw(PNG.joinpath("OEOLVehicles.png").as_posix(), prog="dot")
+OLVG.draw(PDF.joinpath("OEOLVehicles.pdf").as_posix(), prog="dot")
 # %% [markdown]
 # ## Viz from iCity Parking ontology
