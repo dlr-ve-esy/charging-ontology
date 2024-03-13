@@ -43,6 +43,7 @@ pages:
   artifacts:
     paths:
       - public
+    expire_in: 3 days
   rules:
     - !reference [.doc_rules, rules]
 
@@ -72,6 +73,7 @@ figures-reqs:
   artifacts:
     paths:
       - tmp/*
+    expire_in: 1 hour
   rules:
     - !reference [.paper_rules, rules]
 
@@ -89,6 +91,7 @@ figures:
     paths:
       - tmp/*.dot
       - tmp/svg/*.svg
+    expire_in: 1 hour
   rules:
     - !reference [.paper_rules, rules]
 
@@ -104,5 +107,6 @@ paper:
   artifacts:
     paths:
       - paper/paper.pdf
+    expire_in: 1 week
   rules:
     - !reference [.paper_rules, rules]
