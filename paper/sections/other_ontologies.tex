@@ -47,17 +47,17 @@ The former has axiomatization significant for electric grid and energy systems
 models which can be seen in figure \ref{oeoev:b} the latter lacks its own
 axioms and relies on mainly on the former. For our application is only
 interesting to use the taxonomy of electric vehicles (Figure \ref{oeoev:a}).
-Its land vehicle taxonomy is very rich (figure \ref{landvehicletaxoeo}) and
-contains elements that might have conflicts with any future implementation in a
+Its land vehicle taxonomy is rich (figure \ref{landvehicletaxoeo}) and contains
+elements that might have conflicts with any future implementation in a
 transport ontology. Because of this we rely on the Common Core Ontologies (CCO)
 for a ligther vehicle taxonomy, this will be clarified in its respective
 section.
 
 \begin{figure}
     \centering
-    \subfigure[OEO electric vehicle taxonomy]{\label{oeoev:a}\includegraphics{images/OEOVehicles.pdf}}
+    \subfigure[OEO electric vehicle taxonomy.]{\label{oeoev:a}\includegraphics{images/OEOVehicles.pdf}}
     \subfigure[OEO electric vehicle commitments]{\label{oeoev:b}\includegraphics{images/OEOEV.pdf}}
-    \caption{OEO ontological commitments relevant to the context of charging infrastructure. Note that we exclude grid related commitments, mostly because we have yet to define a scenario for that case.}
+    \caption{OEO ontological commitments relevant to the context of charging infrastructure. Note that we exclude grid related commitments, mostly because we have yet to define a scenario for that case. Solid arrows represent super-class relations.}
 \end{figure}
 
 \subsection{The Common Core Ontologies}
@@ -66,67 +66,67 @@ The CCO are twelve mid-level ontologies built as an extension of BFO and the
 Relations Ontology (RO) intended to be used as a basis to model domains of
 interest such as transportation infrastructure spacecrafts
 \cite{Rudnicki.23September2020}. Like BFO, it is a realist ontology, which
-means that it intends to model entities and data alike. The ontology avoids
-being prescriptive, instead lets data modellers decide which asserted class
-axioms are relevant for their particular applications. The ontology comes with
-a guide that lets non ontology experts understand how to implement terms which
-is very helpful to involve domain experts of other fields in ontology
-development.
+means that it intends to model the entities data intends to represent. The
+ontology avoids being prescriptive, instead lets data modellers decide which
+asserted class axioms are relevant for their particular applications. The
+ontology comes with a guide that lets non ontology experts understand how to
+implement terms which is helpful to involve domain experts of other fields in
+ontology development.
 
 We import a small subset of terms coming from these ontologies. Indeed, we
 avoid importing whole ontologies by opting to do punctual extractions. This was
 decided to avoid convolution of the final product, since we are expecting
 developers to work with Protégé, if we imported all the classes they would have
 a harder time finding where to place their new terms. We extract multiple
-taxonomies and some axioms from these ontologies. These are listed during the
+taxonomies and some axioms from these ontologies. These are explained during the
 rest of this section.
 
 \subsubsection{Vehicle taxonomy}
 
-From the artifact ontology we extract terminology associated with vehicles. We
-consider that their non-prescriptive approach offers a more manageable taxonomy
-of vehicles that can be utilized across different fields of application. The
-OEO classifies vehicles based on their energy consumption which is practical
-for their applications but since we are not interested in non-electric vehicles
-these become superfluous. Other reason to use the artifacts ontology
+From the `Artifact Ontology' we extract terminology associated with vehicles.
+We consider that they offer a more manageable and expandable taxonomy of
+vehicles that can be utilized across different fields of application. The OEO
+classifies vehicles based on their energy consumption which is practical for
+their applications but, since we are not interested in non-electric vehicles,
+these become superfluous. Other reason to use the `Artifact Ontology'
 axiomatization is to profit from the other declarations coming from the same
 suite of ontologies. The top upper levels of both taxonomies are slightly
-different besides both using BFO. The OEO classifies vehicles as artificial
-objects whereas the CCO as `material artifacts'. The lower levels, despite
-being developed independently are very similar, so similar  that they are
-practically already interoperable. The taxonomies can be compared by looking at
-figures \ref{ccovectax} and \ref{landvehicletaxoeo}.
+different besides both using BFO. The OEO classifies vehicles as `artificial
+objects' whereas the CCO as `material artifacts'. The lower levels, despite
+being developed independently, are so similar  that they are practically
+already interoperable. The taxonomies can be compared by looking at figures
+\ref{ccovectax} and \ref{landvehicletaxoeo}.
 
 \begin{figure}[h]
     \centering
     \includegraphics{images/CCOVehicles.pdf}
-    \caption{The CCO vehicle taxonomy is slim and has less asserted axioms.}
+    \caption{The CCO vehicle taxonomy is slim and has less asserted axioms. Solid arrows represent super-class relations.}
     \label{ccovectax}
 \end{figure}
 \begin{figure}[h]
     
     \centering
     \includegraphics{images/OEOLVehicles.pdf}
-    \caption{The OEO Land vehicle taxonomy is rich of axioms associated to the vehicles' energy consumption.}
+    \caption{The OEO Land vehicle taxonomy is rich of axioms associated to the vehicles' energy consumption. Solid arrows represent super-class relations.}
     \label{landvehicletaxoeo}
 \end{figure}
 
 \subsubsection{Infrastructure}
 
-The CCO offers a construct that aids to classify material artifacts as
+The CCO offers a construct that aids to classify `material artifacts' as
 infrastructure. It uses what in BFO are called `roles'. This allows arbitrary
 assignment of the class. This is practical to us because charging stations in
 reality are not always infrastructure, they are only in virtue of the agents
 who assign them this role. In this sense a home wall box is not infrastructure
 for a government agency but a public column is. Infrastructure rarely comes as
-units but as  complex aggregates of artifacts, this is way we opt to import the
-concept of infrastructure system. These axioms can be visualized in figure
+units but as  complex aggregates of `artifacts', this is way we opt to import the
+concept `infrastructure system'. These axioms can be visualized in figure
 \ref{infrastructurefigs}.
 
 \begin{figure}[h]
     \centering
     \includegraphics{images/infrastructureSystem.pdf}
-    \caption{Common Core Ontologies infrastructure constraints.}
+    \caption{Common Core Ontologies infrastructure constraints. Solid arrows represent super-class relations}
     \label{infrastructurefigs} 
 \end{figure}
 
@@ -154,16 +154,16 @@ fundamentally incompatible with the BFO. The Change module of the ontology
 relies on the utilization of a four dimensional approach to model time changing
 concepts. This means that every object has a perdurant and its manifestations
 bear their changes. Since we are not intending to axiomatize time relations in
-OWL and instead opt to delegate that to data modellers we opt not to share that
-approach. All the axioms that are interesting to us from the Parking ontology
-can be visualized in figure \ref{parkingfig}. BFO has its own approach to
-handle descriptions of change, this will be addressed in its respective
-section.
+OWL and instead delegate that to data modellers we opt not to share that
+approach. Some axioms that are interesting to us from the Parking ontology,
+excluding mereology of parking areas, can be visualized in figure
+\ref{parkingfig}. BFO has its own approach to handle descriptions of change,
+this will be addressed in its respective section.
 
 \begin{figure}[h]
     \centering
     \includegraphics{images/PARKING.pdf}
-    \caption{iCity parking ontology commitments associated to charging infrastructure.}
+    \caption{iCity parking ontology commitments associated to charging infrastructure. Solid arrows represent super-class relations.}
     \label{parkingfig}
 \end{figure}
 
@@ -190,7 +190,7 @@ with their ModalRelationOntology which we consider importing. }. Unlike the
 TPSO foundational modules, BFO delegates its time indexing to the applications
 by keeping it outside the OWL implementation. BFO has a rather simple initial
 learning curve that can be used to facilitate the inclusion of new developers.
-But still becomes very steep when dealing some of its more complex terms (i.e.
+But still becomes steep when dealing some of its more complex terms (i.e.
 `process profile', `disposition' vs `quality'), this can lead to frustrations
 or miss-uses.
 
@@ -201,7 +201,9 @@ vehicles being present and absent. We also need these entities to characterize
 the mereotopology of charging stations which usually consider parking spaces as
 their parts which in place can be part of parking lots along other parking
 spaces. To address this, we will rely on reinterpreting the axioms from the
-TPSO in the context of BFO. A second important feature are `process profiles',
-since we consider that the charging event can have multiple dimensions that can
-describe it that have to be associated with each other. Using those we can
-describe events in virtue of their occupancy, power rates and energy transfers.
+TPSO in the context of BFO, in some future stage we intend to explore the
+possibility of unintended models (i.e. a vehicle becoming infrastructure). A
+second important feature are `process profiles', since we consider that the
+charging event can have multiple dimensions that can describe it that have to
+be associated with each other. Using those we can describe events in virtue of
+their occupancy, power rates and energy transfers.
