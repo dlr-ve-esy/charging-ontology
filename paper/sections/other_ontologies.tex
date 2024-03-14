@@ -48,9 +48,9 @@ models which can be seen in figure \ref{oeoev:b} the latter lacks its own
 axioms and relies on mainly on the former. For our application is only
 interesting to use the taxonomy of electric vehicles (Figure \ref{oeoev:a}).
 Its land vehicle taxonomy is rich (figure \ref{landvehicletaxoeo}) and contains
-elements that might have conflicts with any future implementation in a
+elements that might produce conflicts with any future implementation in a
 transport ontology. Because of this we rely on the Common Core Ontologies (CCO)
-for a ligther vehicle taxonomy, this will be clarified in its respective
+for a lighter vehicle taxonomy, this will be clarified in its respective
 section.
 
 \begin{figure}
@@ -66,12 +66,11 @@ The CCO are twelve mid-level ontologies built as an extension of BFO and the
 Relations Ontology (RO) intended to be used as a basis to model domains of
 interest such as transportation infrastructure spacecrafts
 \cite{Rudnicki.23September2020}. Like BFO, it is a realist ontology, which
-means that it intends to model the entities data intends to represent. The
-ontology avoids being prescriptive, instead lets data modellers decide which
-asserted class axioms are relevant for their particular applications. The
-ontology comes with a guide that lets non ontology experts understand how to
-implement terms which is helpful to involve domain experts of other fields in
-ontology development.
+means that it intends to model the entities data represents. The ontology
+avoids being prescriptive, instead lets data modellers decide which asserted
+class axioms are relevant for their particular applications. It also comes with
+a guide that lets non ontology experts understand how to implement terms which
+is helpful to involve domain experts of other fields in ontology development.
 
 We import a small subset of terms coming from these ontologies. Indeed, we
 avoid importing whole ontologies by opting to do punctual extractions. This was
@@ -119,8 +118,8 @@ assignment of the class. This is practical to us because charging stations in
 reality are not always infrastructure, they are only in virtue of the agents
 who assign them this role. In this sense a home wall box is not infrastructure
 for a government agency but a public column is. Infrastructure rarely comes as
-units but as  complex aggregates of `artifacts', this is way we opt to import the
-concept `infrastructure system'. These axioms can be visualized in figure
+units but as  complex aggregates of `artifacts', this is way we opt to import
+the concept `infrastructure system'. These axioms can be visualized in figure
 \ref{infrastructurefigs}.
 
 \begin{figure}[h]
@@ -150,15 +149,15 @@ of the Environmental Protection Department whose source was not explicitly
 pointed. If having such a classification is meaningful to our applications is
 yet to be defined. The TPSO has its own upper level ontology modules which
 supply axiom definitions for change, mereology and time. These modules are
-fundamentally incompatible with the BFO. The Change module of the ontology
-relies on the utilization of a four dimensional approach to model time changing
-concepts. This means that every object has a perdurant and its manifestations
-bear their changes. Since we are not intending to axiomatize time relations in
-OWL and instead delegate that to data modellers we opt not to share that
-approach. Some axioms that are interesting to us from the Parking ontology,
-excluding mereology of parking areas, can be visualized in figure
-\ref{parkingfig}. BFO has its own approach to handle descriptions of change,
-this will be addressed in its respective section.
+incompatible with the BFO. The Change module of the ontology relies on the
+utilization of a four dimensional approach to model time changing concepts.
+This means that every object has a perdurant and its manifestations bear their
+changes. Since we are not intending to axiomatize time relations in OWL and
+instead delegate that to data modellers we opt not to share that approach. Some
+axioms that are interesting to us from the Parking ontology, excluding
+mereology of parking areas, can be visualized in figure \ref{parkingfig}. BFO
+has its own approach to handle descriptions of change, this will be addressed
+in its respective section.
 
 \begin{figure}[h]
     \centering
@@ -174,13 +173,15 @@ Top-level ontologies or foundational ontologies intend to model domain neutral
 categories and relations \cite{Arp.2015}. These are not a hard requirement to
 build an ontology but can make the difference regarding its interoperability.
 Choosing (or developing) a top-level ontology is not an easy task because a
-modeller needs to have a deep understanding of their domain and the possible
-applications. In 2022 a special issue of applied ontology \cite{Borgo.2022}
-allowed ontology developers to exemplify the usage of multiple prominent
-top-level ontologies. In theory, we would select our ontology by following the
-motivating scenarios defined in section \ref{methodology}. But since we are
-intending to build on the efforts from the OEO we streamlined to using BFO.
-This decision comes not without compromises. 
+modeller needs to have a deep understanding not only of their domain and the
+possible applications, but also any possible adjacent domains that may operate
+with the same data. In 2022 a special issue of applied ontology
+\cite{Borgo.2022} allowed expert users and developers to exemplify the usage of
+multiple prominent top-level ontologies. In theory, we would select a top-level
+ontology using these examples as a way to implement the motivating scenarios
+defined in section \ref{methodology}. But since we are intending to build on
+the efforts from the OEO we streamlined to using BFO. This decision comes not
+without compromises. 
 
 BFO sacrifices expressivity for a simpler modelling intuition. It has
 weaknesses in the field of modal propositions which are prominent in both
@@ -192,7 +193,7 @@ by keeping it outside the OWL implementation. BFO has a rather simple initial
 learning curve that can be used to facilitate the inclusion of new developers.
 But still becomes steep when dealing some of its more complex terms (i.e.
 `process profile', `disposition' vs `quality'), this can lead to frustrations
-or miss-uses.
+and miss-uses.
 
 There are some important features of BFO that we intend to take advantage of.
 The first is that it allows the existence of `sites' in the same dimension as
@@ -206,4 +207,4 @@ possibility of unintended models (i.e. a vehicle becoming infrastructure). A
 second important feature are `process profiles', since we consider that the
 charging event can have multiple dimensions that can describe it that have to
 be associated with each other. Using those we can describe events in virtue of
-their occupancy, power rates and energy transfers.
+their occupancy, power rates and energy transfers among other characteristics.
