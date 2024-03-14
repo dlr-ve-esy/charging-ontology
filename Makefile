@@ -8,10 +8,11 @@ TMP := tmp
 IMPORTS := $(ONTOLOGY_SOURCE)/imports
 
 subst_paths =	${subst $(ONTOLOGY_SOURCE),$(VERSIONDIR),${patsubst $(ONTOLOGY_SOURCE)/edits/%,$(ONTOLOGY_SOURCE)/modules/%,$(1)}}
+subst_paths_owl =	${subst $(VERSIONDIR),$(VERSIONDIR)/owl,${patsubst %.ttl,%.owl,$(1)}}
 
 OWL_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)/* -type f -name "*.owl"))
 OMN_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)/* -type f -name "*.omn"))
-TTL_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)/* -type f -name "*.ttl"))
+TTL_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)* -type f -name "*.ttl"))
 
 IRI_BASE := http:\/\/openenergy-platform\.org\/ontology\/
 IRI_ONTOLOGY := $(IRI_BASE)$(ONTOLOGY_NAME)
@@ -24,7 +25,8 @@ OMN_COPY :=	$(OMN_FILES)
 TTL_COPY :=	$(TTL_FILES)
 
 OMN_TRANSLATE := ${patsubst %.omn,%.owl,$(OMN_FILES)}
-TTL_TRANSLATE := ${patsubst %.ttl,%.owl,$(TTL_FILES)}
+TTL_TRANSLATE := $(call subst_paths_owl,$(TTL_COPY))
+
 
 RM=/bin/rm
 ROBOT_PATH := robot.jar
@@ -72,15 +74,17 @@ endef
 
 .PHONY: all clean base merge directories
 
-all: base merge closure
+all: base merge profiles closure
 
 imports: directories ${TMP}/catalog.xml $(IMPORTS)/bfo-core.ttl $(IMPORTS)/cco-extracted.ttl $(IMPORTS)/oeo-extracted.ttl $(IMPORTS)/iao-extracted.ttl
 
-base: | directories imports $(VERSIONDIR)/catalog-v001.xml robot.jar $(OWL_COPY) $(TTL_COPY) $(TTL_TRANSLATE)
+base: | directories imports $(VERSIONDIR)/catalog-v001.xml robot.jar  $(TTL_COPY) $(OWL_COPY) $(OWLVERSION) $(TTL_TRANSLATE)
 
-merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
+merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl 
 
-closure: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.owl
+closure: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.ttl
+
+profiles: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-el.ttl
 
 clean:
 	- $(RM) -r $(VERSIONDIR)
@@ -88,7 +92,7 @@ clean:
 clean-imports:
 	- $(RM) -r $(IMPORTS)/*
 
-directories: ${VERSIONDIR}/imports ${VERSIONDIR}/modules ${TMP}
+directories: ${VERSIONDIR}/imports ${VERSIONDIR}/modules ${TMP} $(VERSIONDIR)/owl
 
 $(IMPORTS)/bfo-core.ttl:
 	curl -L -o $@ https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/$(BFOCOMMIT)/imports/bfo-core.ttl
@@ -108,6 +112,9 @@ ${TMP}:
 ${TMP}/catalog.xml:
 	cp assets/catalog.xml  $@
 
+$(VERSIONDIR)/owl:
+	${MKDIR_P} $(VERSIONDIR)/owl
+
 ${VERSIONDIR}/imports:
 	${MKDIR_P} ${VERSIONDIR}/imports
 
@@ -125,17 +132,17 @@ $(ROBOT_PATH): | build
 $(HERMIT_PATH): | build
 	curl -L -o $@ https://github.com/owlcs/releases/raw/master/HermiT/org.semanticweb.hermit-packaged-1.4.6.519-SNAPSHOT.jar
 
-$(VERSIONDIR)/%.owl: $(VERSIONDIR)/%.ttl
+$(VERSIONDIR)/owl/%.owl: $(VERSIONDIR)/%.ttl
 	$(call translate_to_owl,$@,$<)
 
-$(VERSIONDIR)/modules/%.owl: $(VERSIONDIR)/edits/%.ttl
+$(VERSIONDIR)/owl/modules/%.owl: $(VERSIONDIR)/edits/%.ttl
 	$(call translate_to_owl,$@,$<)
 
-$(VERSIONDIR)/%.owl: $(ONTOLOGY_SOURCE)/%.owl
+$(VERSIONDIR)/owl/%.owl: $(ONTOLOGY_SOURCE)/%.owl
 	cp -a $< $@
 	$(call replace_devs,$@)
 
-$(VERSIONDIR)/modules/%.owl: $(ONTOLOGY_SOURCE)/edits/%.owl
+$(VERSIONDIR)/owl/modules/%.owl: $(ONTOLOGY_SOURCE)/edits/%.owl
 	cp -a $< $@
 	$(call replace_devs,$@)
 
@@ -148,13 +155,16 @@ $(VERSIONDIR)/%.ttl: $(ONTOLOGY_SOURCE)/%.ttl
 	$(call replace_devs,$@)
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl : | base
-	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml $(foreach f, $(VERSIONDIR)/$(ONTOLOGY_NAME).owl $(TTL_COPY) $(OWL_COPY), --input $(f)) annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
+	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml $(foreach f, $(VERSIONDIR)/$(ONTOLOGY_NAME).ttl $(TTL_COPY) $(OWL_COPY), --input $(f)) annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
 	$(call replace_ttls,$@)
 
-$(VERSIONDIR)/$(ONTOLOGY_NAME)-full.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
+$(VERSIONDIR)/owl/$(ONTOLOGY_NAME)-full.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(call translate_to_ttl,$@,$<)
 	$(call replace_owls,$@)
 
-$(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.owl
+$(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(ROBOT) reason --input $< --reasoner hermit --catalog $(VERSIONDIR)/catalog-v001.xml --axiom-generators "SubClass EquivalentClass DataPropertyCharacteristic EquivalentDataProperties SubDataProperty ClassAssertion EquivalentObjectProperty InverseObjectProperties ObjectPropertyCharacteristic SubObjectProperty ObjectPropertyRange ObjectPropertyDomain" --include-indirect true annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
 	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml --input $< --input $@ annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
+
+$(VERSIONDIR)/$(ONTOLOGY_NAME)-el.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
+	$(ROBOT) remove --input $< --catalog $(VERSIONDIR)/catalog-v001.xml --select "anonymous" remove --axioms "InverseObjectProperties FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
