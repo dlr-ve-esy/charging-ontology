@@ -1,4 +1,3 @@
-http://purl.obolibrary.org/obo/BFO_0000040
 http://purl.obolibrary.org/obo/BFO_0000171
 http://www.ontologyrepository.com/CommonCoreOntologies/Artifact
 http://www.ontologyrepository.com/CommonCoreOntologies/Facility

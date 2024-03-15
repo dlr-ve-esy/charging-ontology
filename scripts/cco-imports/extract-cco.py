@@ -33,6 +33,7 @@ TMP = BASEDIR.joinpath("tmp")
 TMP.mkdir(exist_ok=True)
 # %%
 
+
 def load_terms(term_file):
     with open(term_file, "r") as terms:
         term_list = [l for l in terms.readlines()]
@@ -65,23 +66,28 @@ def extract_mireot(
     upper_term: str = "owl:Thing",
 ):
     """Call robot to do a MIREOT extraction"""
+    if Path(upper_term).exists():
+        upper_term_string = f"--upper-terms {upper_term} "
+    else:
+        upper_term_string = "--upper-term {upper_term} "
     extract_call = (
         "java -jar {jar} extract "
         "--input {input} "
-        "--method MIREOT "
-        "--upper-term {upper_term} "
+        "--method MIREOT {upper_term_string}"
         "--lower-terms {lower_terms} "
         "--intermediates {intermediates} "
         "--output {output}"
     )
+
     with open(TMP.joinpath("temp.txt"), "w") as fp:
         for term in lower_terms:
             fp.write(term + "\n")
+
     debug_string = extract_call.format(
         jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
         lower_terms=TMP.joinpath("temp.txt").resolve().as_posix(),
-        upper_term=upper_term,
+        upper_term_string=upper_term_string,
         intermediates=intermediates,
         output=Path(output).resolve().as_posix(),
     )
@@ -223,7 +229,7 @@ if not eo_change.exists():
     )
 # %%
 # Process profiles
-eo_process_profiles=TMP.joinpath("eo_process_profiles.ttl")
+eo_process_profiles = TMP.joinpath("eo_process_profiles.ttl")
 if not eo_process_profiles.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000144"
     lower_terms = [
@@ -299,13 +305,13 @@ if not ao_vehicles.exists():
 geo_ontology = download_ontology_if_missing("GeospatialOntology")
 geo_base = TMP.joinpath("geo_base.ttl")
 if not geo_base.exists():
-    upper_term = "http://purl.obolibrary.org/obo/BFO_0000029"
+    upper_terms = FILEPATH.joinpath("geo_base_upper.txt")
     lower_terms = load_terms(FILEPATH.joinpath("geo_base.txt"))
     extract_mireot(
         input=geo_ontology,
         output=geo_base,
         lower_terms=lower_terms,
-        upper_term=upper_term,
+        upper_term=upper_terms,
     )
 # %%
 agent_ontology = download_ontology_if_missing("AgentOntology")

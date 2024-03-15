@@ -82,6 +82,10 @@ rdfs:label rdf:type owl:AnnotationProperty .
 <http://purl.obolibrary.org/obo/BFO_0000023> rdf:type owl:Class .
 
 
+###  http://purl.obolibrary.org/obo/BFO_0000024
+<http://purl.obolibrary.org/obo/BFO_0000024> rdf:type owl:Class .
+
+
 ###  http://purl.obolibrary.org/obo/BFO_0000029
 <http://purl.obolibrary.org/obo/BFO_0000029> rdf:type owl:Class .
 
@@ -381,7 +385,12 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/PortionOfGeosphere
-<http://www.ontologyrepository.com/CommonCoreOntologies/PortionOfGeosphere> rdf:type owl:Class .
+<http://www.ontologyrepository.com/CommonCoreOntologies/PortionOfGeosphere> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
+                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A fiat object part that is composed of one or more portions of the atmosphere, cryosphere, hydrosphere, or lithosphere"@en ;
+                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Geosphere&oldid=1137306949"^^xsd:anyURI ;
+                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
+                                                                            rdfs:label "Portion of Geosphere"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/Power

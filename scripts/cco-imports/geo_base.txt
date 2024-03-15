@@ -1,3 +1,4 @@
 http://www.ontologyrepository.com/CommonCoreOntologies/Continent
 http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialLocation
 http://www.ontologyrepository.com/CommonCoreOntologies/Subcontinent
+http://www.ontologyrepository.com/CommonCoreOntologies/PortionOfGeosphere
