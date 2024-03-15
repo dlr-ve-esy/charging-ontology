@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl" uri="file:/D:/Work/03_Promotion/01_Repositories/charging-ontology/src/imports/bfo-core.ttl"/>
+    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl" uri="../imports/bfo-core.ttl"/>
     <uri id="Imports Wizard Entry" name="http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/iao-extracted.owl" uri="../imports/iao-extracted.ttl"/>
     <uri id="User Entered Import Resolution" name="http://openenergy-platform.org/ontology/chio/dev/imports/cco-extracted.ttl" uri="../imports/cco-extracted.ttl"/>
     <uri id="User Entered Import Resolution" name="http://openenergy-platform.org/ontology/chio/dev/imports/oeo-extracted.ttl" uri="../imports/oeo-extracted.ttl"/>
