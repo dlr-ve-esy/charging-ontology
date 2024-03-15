@@ -69,7 +69,7 @@ def extract_mireot(
     if Path(upper_term).exists():
         upper_term_string = f"--upper-terms {upper_term} "
     else:
-        upper_term_string = "--upper-term {upper_term} "
+        upper_term_string = f"--upper-term {upper_term} "
     extract_call = (
         "java -jar {jar} extract "
         "--input {input} "
@@ -197,7 +197,33 @@ def extract_subset(input: str, output: str, terms: str):
         raise IOError(f"Something went wrong with call: {debug_string}")
     return code
 
-
+def map_ontologies(
+    input: str,
+    mappings: str,
+    output: str,
+):
+    """Call robot to do a TOP extraction of a tree."""
+    extract_call = (
+        "java -jar {jar} rename "
+        "--input {input} "
+        "--mappings {mappings} "
+        "--allow-missing-entities true "
+        "--output {output}"
+    )
+    debug_string = extract_call.format(
+        jar=ROBOT_PATH.resolve().as_posix(),
+        input=Path(input).resolve().as_posix(),
+        mappings=Path(mappings).resolve().as_posix(),
+        output=Path(output).resolve().as_posix(),
+    )
+    code = sp.call(
+        debug_string,
+        shell=True,
+    )
+    if code != 0:
+        print(debug_string)
+        raise IOError(f"Something went wrong with call: {debug_string}")
+    return code
 # %% [markdown]
 # ## Extract classes from the event ontology
 # %%
@@ -328,6 +354,24 @@ if not geo_tree.exists():
         upper_term=upper_term,
     )
 # %%
+# %%
+ieo_ontology = download_ontology_if_missing("InformationEntityOntology")
+ieo_ops = TMP.joinpath("ieo_ops.ttl")
+if not ieo_ops.exists():
+    terms = load_terms(FILEPATH.joinpath("ieo_ops.txt"))
+    mappings = FILEPATH.joinpath("ieo_ops_mappings.csv")
+    ieo_ops_base = TMP.joinpath("ieo_ops_base.ttl")
+    extract_subset(
+        input=ieo_ontology,
+        output=ieo_ops_base,
+        terms=terms
+    )
+    map_ontologies(
+        input=ieo_ops_base,
+        mappings=mappings,
+        output=ieo_ops
+    )
+# %%
 input_string = ""
 for element in [
     "geo_tree.ttl",
@@ -340,6 +384,7 @@ for element in [
     "eo_process_profiles.ttl",
     "eo_change.ttl",
     "ao_infrastructure.ttl",
+    "ieo_ops.ttl"
 ]:
     input_string += f"--input {TMP.joinpath(element).resolve().as_posix()} "
 # %%

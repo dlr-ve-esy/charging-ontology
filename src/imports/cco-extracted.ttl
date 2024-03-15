@@ -58,6 +58,10 @@ rdfs:label rdf:type owl:AnnotationProperty .
 <http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+<http://www.w3.org/2004/02/skos/core#scopeNote> rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Object Properties
 #################################################################
@@ -70,9 +74,115 @@ rdfs:label rdf:type owl:AnnotationProperty .
 <http://purl.obolibrary.org/obo/BFO_0000196> rdf:type owl:ObjectProperty .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000136
+<http://purl.obolibrary.org/obo/IAO_0000136> rdf:type owl:ObjectProperty ;
+                                             owl:inverseOf <http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> ;
+                                             rdfs:domain <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                                             rdfs:range <http://purl.obolibrary.org/obo/BFO_0000001> ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A primitive relationship between an Information Content Entity and some Entity."@en ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://purl.obolibrary.org/obo/IAO_0000136" ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                             rdfs:label "is about"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/described_by
+<http://www.ontologyrepository.com/CommonCoreOntologies/described_by> rdf:type owl:ObjectProperty ;
+                                                                      rdfs:subPropertyOf <http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> ;
+                                                                      owl:inverseOf <http://www.ontologyrepository.com/CommonCoreOntologies/describes> ;
+                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x described_by y iff y is an instance of Information Content Entity, and x is an instance of Entity, such that y is about the characteristics by which y can be recognized or visualized."@en ;
+                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                                                      rdfs:label "described by"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/describes
+<http://www.ontologyrepository.com/CommonCoreOntologies/describes> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
+                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x describes y iff x is an instance of Information Content Entity, and y is an instance of Entity, such that x is about the characteristics by which y can be recognized or visualized."@en ;
+                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> "the content of a newspaper article describes some current event" ,
+                                                                                                                                             "the content of a visitor's log describes some facility visit" ,
+                                                                                                                                             "the content of an accident report describes some accident" ;
+                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                                                   rdfs:comment "It is possible that this relation should be a functional property, that is for all x, y, z if x describes y and x describes z then y = z. For example, if a financial report x describes the quarterly results of a company y and that same financial report describes the quarterly results of a company z, then it should be inferred that companies y and z are the same. We refrained from classifying the relation as a functional property on the concern that descriptions are multifaceted and so consequently it may be that the same report would contain descriptions of multiple entities."@en ;
+                                                                   rdfs:label "describes"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/designated_by
+<http://www.ontologyrepository.com/CommonCoreOntologies/designated_by> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:subPropertyOf <http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> ;
+                                                                       owl:inverseOf <http://www.ontologyrepository.com/CommonCoreOntologies/designates> ;
+                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x designated_by y iff y is an instance of Information Content Entity and x is an instance of Entity, such that given some context, y uniquely distinguishes x from other entities."@en ;
+                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                                                       rdfs:label "designated by"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/designates
+<http://www.ontologyrepository.com/CommonCoreOntologies/designates> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x designates y iff x is an instance of an Information Content Entity, and y is an instance of an Entity, such that given some context, x uniquely distinguishes y from other entities."@en ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> "a URL designates the location of a Web Page on the internet" ,
+                                                                                                                                              "a person's name designates that person" ,
+                                                                                                                                              "a vehicle identification number designates some vehicle" ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                                                    rdfs:label "designates"@en ;
+                                                                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Given a stronger temporal interpretation, this property may be functional. For more info please refer to https://github.com/BFO-ontology/BFO-2020/tree/master/src/owl/temporal%20extensions."@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of
+<http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:range <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A primitive relationship between an instance of an Entity and an instance of an Information Content Entity."@en ;
+                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                                                       rdfs:label "is subject of"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by
+<http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:subPropertyOf <http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> ;
+                                                                       owl:inverseOf <http://www.ontologyrepository.com/CommonCoreOntologies/prescribes> ;
+                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x prescribed_by y iff y is an instance of Information Content Entity and x is an instance of Entity, such that y serves as a rule or guide for x if x is an Occurrent, or y serves as a model for x if x is a Continuant."@en ;
+                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                                                       rdfs:label "prescribed by"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/prescribes
+<http://www.ontologyrepository.com/CommonCoreOntologies/prescribes> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x prescribes y iff x is an instance of Information Content Entity and y is an instance of Entity, such that x serves as a rule or guide for y if y an Occurrent, or x serves as a model for y if y is a Continuant."@en ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> "a blueprint serves as a model of some Artifact or Facility" ,
+                                                                                                                                              "a professional code of conduct serves as a set of rules to be followed while acting in a role within that profession" ,
+                                                                                                                                              "an Operations Plan serves as a guide for the tasks that need to be performed to achieve the Objectives of the Operation" ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                                                    rdfs:label "prescribes"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/represented_by
+<http://www.ontologyrepository.com/CommonCoreOntologies/represented_by> rdf:type owl:ObjectProperty ;
+                                                                        rdfs:subPropertyOf <http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> ;
+                                                                        owl:inverseOf <http://www.ontologyrepository.com/CommonCoreOntologies/represents> ;
+                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "y represented_by x iff x is an instance of Information Content Entity, and y is an instance of Entity, and z is carrier of x, such that x is about y in virtue of there existing an isomorphism between characteristics of z and y."@en ;
+                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                                                        rdfs:comment "See notes for inverse property." ;
+                                                                        rdfs:label "represented by"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/represents
+<http://www.ontologyrepository.com/CommonCoreOntologies/represents> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x represents y iff x is an instance of Information Content Entity, y is an instance of Entity, and z is carrier of x, such that x is about y in virtue of there existing an isomorphism between characteristics of z and y."@en ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> "The relationship that is being defined here is that between the content of a photographic image and its object, between the content of a video and its objects and events, between the content of an audio recording and the sounds or events generating those sounds, or between the content of a written transcript and the verbal event that it transcribes."@en ;
+                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                                                    rdfs:comment "Isomorphism between the carrier of x and the represented entity can be via a direct similarity relation, e.g., grooves in a vinyl record corresponding to sound waves, or linguistic convention, e.g., a court stenographer's transcription of spoken words, as well as others, such as encoding processes for images."@en ;
+                                                                    rdfs:label "represents"@en ;
+                                                                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Given a stronger temporal interpretation, this property may be functional. For more info please refer to https://github.com/BFO-ontology/BFO-2020/tree/master/src/owl/temporal%20extensions."@en .
+
+
 #################################################################
 #    Classes
 #################################################################
+
+###  http://purl.obolibrary.org/obo/BFO_0000001
+<http://purl.obolibrary.org/obo/BFO_0000001> rdf:type owl:Class .
+
 
 ###  http://purl.obolibrary.org/obo/BFO_0000015
 <http://purl.obolibrary.org/obo/BFO_0000015> rdf:type owl:Class .
@@ -101,6 +211,20 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                              <http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> "On a somewhat higher level of complexity are what we shall call rate process profiles, which are the targets of selective abstraction focused not on determinate quality magnitudes plotted over time, but rather on certain ratios between these magnitudes and elapsed times. A speed process profile, for example, is represented by a graph plotting against time the ratio of distance covered per unit of time. Since rates may change, and since such changes, too, may have rates of change, we have to deal here with a hierarchy of process profile universals at successive levels; One important sub-family of rate process profiles is illustrated by the beat or frequency profiles of cyclical processes, illustrated by the 60 beats per minute beating process of John’s heart, or the 120 beats per minute drumming process involved in one of John’s performances in a rock band, and so on. Each such process includes what we shall call a beat process profile instance as part, a subtype of rate process profile in which the salient ratio is not distance covered but rather number of beat cycles per unit of time. Each beat process profile instance instantiates the determinable universal beat process profile. But it also instantiates multiple more specialized universals at lower levels of generality, selected from rate process profilebeat process profileregular beat process profile3 bpm beat process profile4 bpm beat process profileirregular beat process profileincreasing beat process profileand so on.In the case of a regular beat process profile, a rate can be assigned in the simplest possible fashion by dividing the number of cycles by the length of the temporal region occupied by the beating process profile as a whole. Irregular process profiles of this sort, for example as identified in the clinic, or in the readings on an aircraft instrument panel, are often of diagnostic significance.; The simplest type of process profiles are what we shall call ‘quality process profiles’, which are the process profiles which serve as the foci of the sort of selective abstraction that is involved when measurements are made of changes in single qualities, as illustrated, for example, by process profiles of mass, temperature, aortic pressure, and so on."@en ;
                                              <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
                                              rdfs:label "Process Profile"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000030
+<http://purl.obolibrary.org/obo/IAO_0000030> rdf:type owl:Class ;
+                                             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                               owl:onProperty <http://purl.obolibrary.org/obo/IAO_0000136> ;
+                                                               owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000001>
+                                                             ] ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> "ICE"@en ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Generically Dependent Continuant that generically depends on some Information Bearing Entity and stands in relation of aboutness to some Entity."@en ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://purl.obolibrary.org/obo/IAO_0000030" ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> "Information Content Entity is here intended to be a class of Entities whose instances are the informational content of Information Bearing Entities. For example, three instances of information bearers -- such as a bar chart, color-coded map, and a written report -- each of which lists the GDP of Countries for the year 2010 are each different carriers of the same information content. It is this content that is generically dependent upon its carrier. This treatment of Informational Content Entity (cf. the Information Artifact Ontology) leads to a principle of subtyping based upon the relationship that ICE's have with the Entity they are about rather than characteristics such as format, language, measurement scale, or media. The latter are treated here as being Qualities of bearers."@en ;
+                                             <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
+                                             rdfs:label "Information Content Entity"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/ActiveStasis

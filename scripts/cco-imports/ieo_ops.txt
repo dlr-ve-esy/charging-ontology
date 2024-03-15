@@ -1,0 +1,12 @@
+http://www.ontologyrepository.com/CommonCoreOntologies/is_about
+http://www.ontologyrepository.com/CommonCoreOntologies/designates
+http://www.ontologyrepository.com/CommonCoreOntologies/describes
+http://www.ontologyrepository.com/CommonCoreOntologies/prescribes
+http://www.ontologyrepository.com/CommonCoreOntologies/represents
+http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of
+http://www.ontologyrepository.com/CommonCoreOntologies/designated_by
+http://www.ontologyrepository.com/CommonCoreOntologies/described_by
+http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by
+http://www.ontologyrepository.com/CommonCoreOntologies/represented_by
+http://www.ontologyrepository.com/CommonCoreOntologies/InformationContentEntity
+http://purl.obolibrary.org/obo/BFO_0000001
