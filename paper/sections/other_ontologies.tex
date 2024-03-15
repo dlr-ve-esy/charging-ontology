@@ -30,7 +30,7 @@ important work on the inclusion of concepts coming from the transport sector
 was performed by \cite{Mittermeier.2023}, who did several implementations
 associated to the topic. However, since the size of the task is larger than what
 can be achieved during a master thesis, many implementations were left open in
-the form of GitHub Issues. In some of these issues it was made clear that the
+the form of GitHub issues. In some of these issues it was made clear that the
 scope of the OEO is in some cases beyond what is often necessary to represent
 phenomena in the transport sector.
 
@@ -135,8 +135,8 @@ As an only exception to our `scenario first' rule (section \label{methodology})
 we import terms from the facility ontology to handle concepts like parking lots
 and dedicated charging stations. An alternative would be to stick to using
 material entities, but we consider this differentiation practical in the long
-run. Specially when considering interoperability with future transportation
-research ontologies
+run, especially when considering interoperability with future transportation
+research ontologies.
 
 
 \subsection{iCity Parking ontology}
@@ -145,20 +145,21 @@ The TPSO has a module for terminology associated with parking which provides
 concepts like parking spaces, areas and fees. It also offers axioms for
 charging stations, but these are too shallow for our applications as they are
 at most features of parking spaces. The subclassification of charging stations
-are `standard', `medium' and `fast' which are based on the definitions of the
-Environmental Protection Department whose source was not explicitly pointed. If
-having such a classification is meaningful to our applications is yet to be
+are `standard', `medium' and `fast' which are based on the definitions of some
+`Environmental Protection Department' whose source was not explicitly pointed.
+If having such a classification is meaningful to our applications is yet to be
 defined. The TPSO has its own top-level ontology modules which supply axiom
 definitions for change, mereology and time. These modules are incompatible with
 the BFO. The Change module of the ontology relies on the utilization of a four
 dimensional approach to model time changing concepts. This means that every
 object has a perdurant and its manifestations bear their changes. Since we are
 not intending to axiomatize time relations in OWL and instead delegate that to
-data modellers we opt not to share that approach. Some axioms that are
-interesting to us from the Parking ontology, excluding mereology of parking
-areas, can be visualized in figure \ref{parkingfig}. BFO has its own approach
-to handle descriptions of change, this will be addressed in its respective
-section.
+data modellers we opt not to share that approach. BFO has its own approach to
+handle descriptions of change, this will be addressed in its respective
+section. Some axioms that are interesting to us from the TPSO Parking ontology,
+excluding mereology of parking areas, can be visualized in figure
+\ref{parkingfig}. Our approach to reutilize them consist in doing an
+implementation in BFO and then add mappings to this ontology. 
 
 \begin{figure}[h]
     \centering
@@ -194,7 +195,7 @@ by keeping it outside the OWL implementation. BFO has a rather simple initial
 learning curve that can be used to facilitate the inclusion of new developers.
 But still becomes steep when dealing some of its more complex terms (i.e.
 `process profile', `disposition' vs `quality'), this can lead to frustrations
-and miss-uses.
+and misuses.
 
 There are some important features of BFO that we intend to take advantage of.
 The first is that it allows the existence of `sites' in the same dimension as
