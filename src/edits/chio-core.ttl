@@ -62,6 +62,13 @@
                                                              rdfs:label "parking facility"@en .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000004
+<http://openenergy-platform.org/ontology/chio/CHIO_00000004> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000003> ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A parking facility with the purpose of charging battery electric vehicles." ;
+                                                             rdfs:label "charging station"@de .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> .
 
