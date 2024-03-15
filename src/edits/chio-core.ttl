@@ -64,9 +64,21 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000004
 <http://openenergy-platform.org/ontology/chio/CHIO_00000004> rdf:type owl:Class ;
-                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000003> ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000003> ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000178> ;
+                                                                               owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000005>
+                                                                             ] ;
                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A parking facility with the purpose of charging battery electric vehicles." ;
-                                                             rdfs:label "charging station"@de .
+                                                             rdfs:label "charging station"@en .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000005
+<http://openenergy-platform.org/ontology/chio/CHIO_00000005> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/ElectricalPowerSource> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0006011> "http://openenergy-platform.org/ontology/oeo/OEO_00320040" ;
+                                                             rdfs:comment "An electrical power source designed to transfer power into the traction battery of a battery electric vehicle." ;
+                                                             rdfs:label "charging column"@en .
 
 
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
