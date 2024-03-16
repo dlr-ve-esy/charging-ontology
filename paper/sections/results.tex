@@ -10,7 +10,7 @@ introduction for developers is also part of this documentation. This
 documentation is written using exclusively markdown files which can be rendered
 into webpages with different packages, we opt for using
 MkDocs\footnote{https://www.mkdocs.org/} because of its simplicity. For the
-ontology documentation and the iri resolution we are still exploring solutions.
+ontology documentation and the IRI resolution we are still exploring solutions.
 We are tending towards Widoco\footnote{https://github.com/dgarijo/Widoco}.
 
 We implemented a python test suite that allows the incremental development of
@@ -20,28 +20,43 @@ and those that act on the individual level (ABox) like \hyperref[CQ2.0]{CQ 2.0}.
 To handle the ABox queries we rewrite the natural language questions as ASK
 SPARQL queries that return either true or false values and declare a model in
 Turtle Syntax that instantiates the referred classes. For example
-\hyperref[CQ2.0]{CQ 2.0} is written as listing \ref{lst:1}.
+\hyperref[CQ2.0]{CQ 2.0} is written as listing \ref{lst:1} and its corresponding
+model \ref{lst:2} populates the ABox. The TBox questions are evaluated by
+evaluating entailment using DL queries such as the one in listing \ref{lst:3}
+which corresponds to \hyperref[CQ1.1]{CQ 1.1}.
 
 \begin{listing}[h]
     
     \begin{minted}[fontsize=\small]{sparql}
-        ASK
-        WHERE
-        {
+        ASK WHERE {
             SELECT (COUNT(?parkingSpaces) AS ?vehicleCapacity)  
             WHERE  {  :SomeParkingArea obo:BFO_0000178 ?parkingSpaces . }
-            HAVING ( ?vehicleCapacity = 2 )
-        }
+            HAVING ( ?vehicleCapacity = 2 ) }
     \end{minted}
+    \caption{Example ABox query. (Given a parking area with two parking places) What is the (vehicle) capacity of parking lot P? (2). The namespaces are omitted.}
     \label{lst:1}
-    \caption{Example ABox query.(Given a parking area with two parking places). What is the (vehicle) capacity of parking lot P? (2). The namespaces are omitted.}
-
 \end{listing}
 
-Infrastructure
-for automatic evaluation of competency questions as well as consistency checks
-are implemented. We device two types of evaluations, th
+\begin{listing}[h]
+    \begin{minted}[fontsize=\small]{turtle}
+        :SomeParkingSpaceA a chio:CHIO_00000002 .
+        :SomeParkingSpaceB a chio:CHIO_00000002 .
+        :SomeParkingArea a chio:CHIO_00000001 ;
+                         obo:BFO_0000178 :SomeParkingSpaceA,
+                                         :SomeParkingSpaceB .
+    \end{minted}
+    \caption{Example ABox instances. Two charging spaces (that can hold at most one car at the time) are part of some parking area.The chio namespace refers to the charging ontology.}
+    \label{lst:2}
+\end{listing}
 
+\begin{listing}[h]
+    \begin{minted}[fontsize=\small]{text}
+        'charging station' SubClassOf 'parking facility' 
+            and 'has continuant part' some 'charging column'
+    \end{minted}
+    \caption{Example DL Query used to evaluate TBox competency. A charging station is a kind of parking facility and has charging columns as parts.}
+    \label{lst:3}
+\end{listing}
 
 We also import the entire CCO version of the BFO which already
 includes basic RO axioms. We import  the excerpts from OEO and CCO to be

@@ -20,5 +20,7 @@ __pycache__
 *.fls
 svg-inkscape
 *.synctex.gz
-
+*.pygtex
+*.pygstyle
+*.thm
 # Remove later when images are ready
