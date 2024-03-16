@@ -1,14 +1,31 @@
-\section{Development status and future roadmap}
-\label{achievment}
+\section{Results}
+\label{results}
 
 At the time of this publication the ontology has an open git
 repository\footnote{Note for the editors: The publishing of the repository is
 being subject to export control, we would update the links accordingly in the
-camera ready version. }. This repository has a documentation where the
+camera ready version. }. This repository has a developer documentation where the
 motivating scenarios along their competency questions are written. A quick
-introduction for developers is also part of this documentation. Infrastructure
+introduction for developers is also part of this documentation. This
+documentation is written using exclusively markdown files which can be rendered
+into webpages with different packages, we opt for using
+MkDocs\footnote{https://www.mkdocs.org/} because of its simplicity. For the
+ontology documentation and the iri resolution we are still exploring solutions.
+We are tending towards Widoco\footnote{https://github.com/dgarijo/Widoco}.
+
+We implemented a python test suite that allows the incremental development of
+the ontology using competency questions. This suite classifies the queries in
+two types. Those who act on the class level (TBox) like \hyperref[CQ1.1]{CQ 1.1}
+and those that act on the individual level (ABox) like \hyperref[CQ2.0]{CQ 2.0}.
+To handle the TBox queries we rewrite the natural language questions as ASK
+SPARQL queries that return either true or false values. For example 
+
+Infrastructure
 for automatic evaluation of competency questions as well as consistency checks
-are implemented. We also import the entire CCO version of the BFO which already
+are implemented. We device two types of evaluations, th
+
+
+We also import the entire CCO version of the BFO which already
 includes basic RO axioms. We import  the excerpts from OEO and CCO to be
 reutilized using scripts to increase transparency and reproducibility. These
 steps point to specific versions of the ontologies that can be updated based on
