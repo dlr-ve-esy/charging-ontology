@@ -70,6 +70,7 @@ figures-reqs:
     - bash scripts/oeo-imports/oeo-extracted.sh
     - bash scripts/visualization/icity-extract.sh
     - bash scripts/visualization/viz-transformations.sh
+    - bash scripts/visualization/chio-extract-viz.sh
   artifacts:
     paths:
       - tmp/*
