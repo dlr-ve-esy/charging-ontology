@@ -22,7 +22,8 @@ SPARQL queries that return either true or false values and declare a model in
 Turtle Syntax that instantiates the referred classes. For example
 \hyperref[CQ2.0]{CQ 2.0} is written as listing \ref{lst:1}.
 
-\begin{listing}[H]
+\begin{listing}[h]
+    
     \begin{minted}[fontsize=\small]{sparql}
         ASK
         WHERE
@@ -32,8 +33,9 @@ Turtle Syntax that instantiates the referred classes. For example
             HAVING ( ?vehicleCapacity = 2 )
         }
     \end{minted}
-    \caption{Example ABox query.(Given a parking area with two parking places). What is the (vehicle) capacity of parking lot P? (2). The namespaces are omitted.}
     \label{lst:1}
+    \caption{Example ABox query.(Given a parking area with two parking places). What is the (vehicle) capacity of parking lot P? (2). The namespaces are omitted.}
+
 \end{listing}
 
 Infrastructure

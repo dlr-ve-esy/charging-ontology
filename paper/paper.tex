@@ -10,10 +10,12 @@
 \renewcommand{\thefigure}{\arabic{section}.\arabic{subsection}.\arabic{figure}}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{chngcntr}
+\usepackage[labelfont=bf,justification=justified,format=plain]{caption}
 \setminted{breaklines=true}
 \pagenumbering{gobble}
  \pagestyle{empty}
-\usepackage{listings}
+
 
 \usepackage{ntheorem}
 \theoremstyle{empty}
@@ -25,9 +27,8 @@
 \theoremstyle{emptybreak}
 \newtheorem{namedbreak}{}
 
-
-\begin{document}
-
+\begin{document}  
+\counterwithin{listing}{section}
 \makeatletter
 
 \newlength\oriarrayrulewidth  
