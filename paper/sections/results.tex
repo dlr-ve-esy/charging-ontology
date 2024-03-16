@@ -17,8 +17,24 @@ We implemented a python test suite that allows the incremental development of
 the ontology using competency questions. This suite classifies the queries in
 two types. Those who act on the class level (TBox) like \hyperref[CQ1.1]{CQ 1.1}
 and those that act on the individual level (ABox) like \hyperref[CQ2.0]{CQ 2.0}.
-To handle the TBox queries we rewrite the natural language questions as ASK
-SPARQL queries that return either true or false values. For example 
+To handle the ABox queries we rewrite the natural language questions as ASK
+SPARQL queries that return either true or false values and declare a model in
+Turtle Syntax that instantiates the referred classes. For example
+\hyperref[CQ2.0]{CQ 2.0} is written as listing \ref{lst:1}.
+
+\begin{listing}[H]
+    \begin{minted}[fontsize=\small]{sparql}
+        ASK
+        WHERE
+        {
+            SELECT (COUNT(?parkingSpaces) AS ?vehicleCapacity)  
+            WHERE  {  :SomeParkingArea obo:BFO_0000178 ?parkingSpaces . }
+            HAVING ( ?vehicleCapacity = 2 )
+        }
+    \end{minted}
+    \caption{Example ABox query.(Given a parking area with two parking places). What is the (vehicle) capacity of parking lot P? (2). The namespaces are omitted.}
+    \label{lst:1}
+\end{listing}
 
 Infrastructure
 for automatic evaluation of competency questions as well as consistency checks
@@ -42,3 +58,8 @@ consider it part of the scope of their project. One alternative could be
 upcoming repository of ontologies often mentioned in the discussion board of
 the CCO. At the time of writing this paper we propose having this discussion
 during the workshops of these proceedings.
+
+
+
+
+    
