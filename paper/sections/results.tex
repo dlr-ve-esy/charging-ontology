@@ -58,16 +58,31 @@ which corresponds to \hyperref[CQ1.1]{CQ 1.1}.
     \label{lst:3}
 \end{listing}
 
-We also import the entire CCO version of the BFO which already
-includes basic RO axioms. We import  the excerpts from OEO and CCO to be
-reutilized using scripts to increase transparency and reproducibility. These
-steps point to specific versions of the ontologies that can be updated based on
-developing needs. 
+Since we aim to a high rate of reusability, most of the efforts have been aimed
+towards finding concepts from existing ontologies. We import the entire CCO
+version of the BFO which already includes basic RO axioms. We import  the
+excerpts from OEO and CCO mentioned in section \ref{methodology}, we do this by
+providing scripts that ensure transparency and reproducibility. These scripts
+point to specific versions of the ontologies that can be updated based on
+developing needs. In some cases we reimplemented terms and pointed out the ones
+from other ontologies by using mappings. This was the case for the axioms from
+the TPSO Parking Ontology (figure \ref{parkingfig}). Our interpretation of
+parking areas and spaces is similar, but we rely on the mereology of BFO,
+instead of assign the charging stations to parking spaces directly we opt for
+utilizing the facility axioms from CCO These implementations can be visualized
+in figure \ref{parkingchio}.
 
-The next milestone is to have implemented the terminology associated with the
-first two scenarios. Followed by a demonstration application based on scenario
-one using the FAIR version of the German network agency data that we extracted
-for \cite{ArellanoRuiz.2024}.
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/CHIOParking.pdf}
+    \caption{Parking area, place and facility implementations in our ontology. Solid arrows represent super-class relations.}
+    \label{parkingchio}
+\end{figure}
+
+The next milestone is to complete the terminology associated with the first two
+scenarios. Followed by a demonstration application based on scenario one using
+the FAIR version of the German network agency data that we extracted for
+\cite{ArellanoRuiz.2024}.
 
 One important open issue is hosting of the ontology. Currently, we use the
 namespace of the Open Energy Platform, but we are not sure if they would

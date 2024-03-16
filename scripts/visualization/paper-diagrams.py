@@ -169,7 +169,6 @@ def render_subclass_restriction_axiom(G, axiom, ontology, edge_attrs={}):
 # %%
 object_properties = ontology.get_object_properties()
 
-
 # %% [markdown]
 # ## Test rendering
 # This script renders the axioms from "infrastructure system" as a test of the
@@ -213,7 +212,7 @@ G.draw(PDF.joinpath("infrastructureSystem.pdf").as_posix(), prog="dot")
 # Imported classes like battery
 # combination of py-horned-owl and py-graphviz.
 # %%
-oeo_vehicle_imports = pho.open_ontology("tmp/oeo_vehicle.owx")
+oeo_vehicle_imports = pho.open_ontology(TMP.joinpath("oeo_vehicle.owx").as_posix())
 
 OG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="LR"
@@ -254,7 +253,7 @@ OG.draw(PDF.joinpath("OEOEV.pdf").as_posix(), prog="dot")
 # ## Render Vehicle Taxonomy
 # Render the taxonomy from CCO vs OEO
 # %%
-vehicle_tax_cco = pho.open_ontology("tmp/ao_vehicles.owx")
+vehicle_tax_cco = pho.open_ontology(TMP.joinpath("ao_vehicles.owx").as_posix())
 VG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
@@ -290,7 +289,7 @@ VG.write(TMP.joinpath("CCOVehicles.dot").as_posix())
 VG.draw(SVG.joinpath("CCOVehicles.svg").as_posix(), prog="dot")
 VG.draw(PDF.joinpath("CCOVehicles.pdf").as_posix(), prog="dot")
 # %%
-ev_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_ev_tax.owx")
+ev_vehicle_tax_oeo = pho.open_ontology(TMP.joinpath("oeo_vehicle_ev_tax.owx").as_posix())
 OVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
@@ -316,7 +315,7 @@ OVG.write(TMP.joinpath("OEOVehicles.dot").as_posix())
 OVG.draw(SVG.joinpath("OEOVehicles.svg").as_posix(), prog="dot")
 OVG.draw(PDF.joinpath("OEOVehicles.pdf").as_posix(), prog="dot")
 # %%
-land_vehicle_tax_oeo = pho.open_ontology("tmp/oeo_vehicle_lv_tax.owx")
+land_vehicle_tax_oeo = pho.open_ontology(TMP.joinpath("oeo_vehicle_lv_tax.owx").as_posix())
 OLVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
@@ -342,5 +341,47 @@ add_taxonomy(
 OLVG.write(TMP.joinpath("OEOLVehicles.dot").as_posix())
 OLVG.draw(SVG.joinpath("OEOLVehicles.svg").as_posix(), prog="dot")
 OLVG.draw(PDF.joinpath("OEOLVehicles.pdf").as_posix(), prog="dot")
-# %% [markdown]
-# ## Viz from iCity Parking ontology
+# %%
+chio_parking = pho.open_ontology(TMP.joinpath("chio_parking.owx").as_posix())
+CG = pgv.AGraph(
+    strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="LR"
+)
+CG.graph_attr["size"] = "4.12,2.89"
+CG.graph_attr["dpi"] = "100"
+CG.graph_attr["margin"] = "0"
+CG.graph_attr["nodesep"] = "0.1"
+CG.graph_attr["ranksep"] = "0.1"
+CG.node_attr["fontsize"] = "10"
+CG.node_attr["fontname"] = "CMU Serif Roman"
+CG.node_attr["shape"] = "ellipse"
+CG.edge_attr["fontsize"] = "10"
+CG.edge_attr["fontname"] = "CMU Serif Roman"
+CG.edge_attr["arrowsize"] = "0.5"
+
+edge_attrs = dict(style="dashed", arrowsize=0.5, penwidth=0.59)
+add_taxonomy(
+    CG,
+    chio_parking,
+    edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
+)
+for aa in chio_parking.get_axioms_for_iri(
+    "http://purl.obolibrary.org/obo/BFO_0000176"
+):
+    if isinstance(aa.axiom, SubClassOf):
+        render_subclass_restriction_axiom(
+            CG, aa.axiom, chio_parking, edge_attrs=edge_attrs
+        )
+    if isinstance(aa.axiom, EquivalentClasses):
+        render_equivalent_class_axiom(CG, aa.axiom, chio_parking, fontsize=10)
+for aa in chio_parking.get_axioms_for_iri(
+    "http://purl.obolibrary.org/obo/BFO_0000178"
+):
+    if isinstance(aa.axiom, SubClassOf):
+        render_subclass_restriction_axiom(
+            CG, aa.axiom, chio_parking, edge_attrs=edge_attrs
+        )
+    if isinstance(aa.axiom, EquivalentClasses):
+        render_equivalent_class_axiom(OG, aa.axiom, chio_parking, fontsize=10)
+CG.write(TMP.joinpath("CHIOParking.dot").as_posix())
+CG.draw(SVG.joinpath("CHIOParking.svg").as_posix(), prog="dot")
+CG.draw(PDF.joinpath("CHIOParking.pdf").as_posix(), prog="dot")

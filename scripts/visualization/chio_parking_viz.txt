@@ -1,0 +1,7 @@
+http://openenergy-platform.org/ontology/chio/CHIO_00000001
+http://openenergy-platform.org/ontology/chio/CHIO_00000002
+http://openenergy-platform.org/ontology/chio/CHIO_00000003
+http://openenergy-platform.org/ontology/chio/CHIO_00000004
+http://openenergy-platform.org/ontology/chio/CHIO_00000005
+http://purl.obolibrary.org/obo/BFO_0000176
+http://purl.obolibrary.org/obo/BFO_0000178
