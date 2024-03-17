@@ -7,10 +7,10 @@ outweigh the drawbacks as the outputs are ensured to be concise without much
 further validation, as the validation occurs during the question definition
 (think Test Driven Development \cite{ArellanoRuiz.2022}). Sometimes is
 challenging to come up with competency questions when there are no
-implementations to refer to. The CCO provides a clear documentation that we can
-turn to in such cases. Other problem is that the actual software implementation
-relies in calling java as a subprocess from python. The alternative would have
-been to use clojure. But we are optimistic that thanks to new OWL aware
+implementations to refer to. The CCO provides clear documentation that we can
+turn to in such cases. Another problem is that the actual software implementation
+relies on calling java as a subprocess from Python. The alternative would have
+been to use Clojure. But we are optimistic that thanks to new OWL-aware
 tools like horned-owl and its respective python embedding
 py-horned-owl\footnote{https://github.com/phillord/horned-owl,
 https://github.com/jannahastings/py-horned-owl} we will eventually be able to
@@ -20,17 +20,17 @@ directly is that they have yet to support some DL reasoner.
 The next milestone is to complete the terminology associated with the first two
 scenarios. As well as designing two further scenarios, each associated with a
 service. The first consists of a day-ahead stochastic forecasting application
-for individual and groups of stations. The second is for the aggregated
+for single and groups of stations. The second is for the aggregated
 estimation of bidirectional charging potentials and charging flexibility
 calculated by the tool {venco.py} \cite{Miorelli.2024}.  
 We intend to do practical demonstrations  by adjusting data models based on
 scenario one using the FAIR version of the German network agency data that we
 extracted for \cite{ArellanoRuiz.2024}.
 
-One important open issue is hosting of the ontology. Currently, we use the
+One important open issue is the hosting of the ontology. Currently, we use the
 namespace of the Open Energy Platform, but we are not sure if they would
-consider it part of the scope of their project. One alternative could be
+consider it part of the scope of their project. One alternative could be an
 upcoming repository of ontologies often mentioned in the discussion board of the
 CCO. Our last alternative is to prepare some form of self-hosting. At the time
-of writing this paper we propose having this discussion during the workshops of
+of writing this paper, we propose having this discussion during the workshops of
 these proceedings.
