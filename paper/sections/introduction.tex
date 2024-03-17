@@ -4,50 +4,51 @@ Energy systems analysis is a discipline where specialized software tools are
 used to study the development of possible future energy systems. One modern
 example of such studies is \cite{Victoria.2022} which uses a European instance
 of the energy systems optimization model PyPSA \cite{Brown.2018} to evaluate
-decarbonization pathways. In such publications, particularly those associated to
-German contexts, the concept of `sector-coupling' is often used to state that
-the analysis comprises the evaluation of phenomena in multiple energy consuming
-and producing sectors \cite{Fridgen.2020}. This concept is prone to ambiguity.
-Depending on the publication it may refer to the active process of replacing
-fossil energy consuming processes with renewable alternatives, the integration
-of energy consuming and producing sector infrastructure or simply the
-co-analysis of two or more energy consuming or producing sectors. In general the
-concept tends to encompass some sort of interaction between energy consumers and
-producers. \cite{Ramsebner.2021} provides an extensive analysis of the concept
-but does not propose an ultimate definition, instead they propose their own
-interpretation\footnote{The discussion on how to axiomatize a concept such as
-sector-coupling is beyond the scope of this paper, but it can be followed at:
+decarbonization pathways. In such publications, particularly those associated
+with German contexts, the concept of `sector-coupling' is often used to state
+that the analysis comprises the evaluation of phenomena in multiple
+energy-consuming and producing sectors \cite{Fridgen.2020}. This concept is
+prone to ambiguity. Depending on the publication it may refer to the active
+process of replacing fossil energy-consuming processes with renewable
+alternatives, the integration of energy-consuming and producing sector
+infrastructure or simply the co-analysis of two or more energy-consuming or
+producing sectors. In general, the concept tends to encompass some sort of
+interaction between energy consumers and producers. \cite{Ramsebner.2021}
+provides an extensive analysis of the concept but does not propose an ultimate
+definition, instead, they propose their interpretation\footnote{The discussion
+on how to axiomatize a concept such as sector-coupling is beyond the scope of
+this paper, but it can be followed at:
 https://github.com/OpenEnergyPlatform/ontology/issues/1521}. The
-transport-energy nexus is often a subject on such sector-coupling discussions,
-for example \cite{Robinius.2017} reviews multiple studies where transport and
-power are co-analysed and interprets them based on their chosen definition of
-sector-coupling. The difficulty of concretizing such a term comes from the fact
+transport-energy nexus is often a subject of such sector-coupling discussions.
+For example, \cite{Robinius.2017} reviews multiple studies where transport and
+power are co-analyzed and interprets them based on their chosen definition of
+sector coupling. The difficulty of concretizing such a term comes from the fact
 that these disciplines deal with systems like electricity grids and transport
-networks which are instances of complex systems. One of the first barriers of
-co-analysing  such systems lies on the terminology used in the disciplines
+networks which are instances of complex systems. One of the first barriers to
+co-analysing such systems lies in the terminology used in the disciplines
 studying them. It is hard to properly interpret such sector-coupling analyses
 without a solid common semantic basis. To address this and other similar
 problems the Open Energy Ontology (OEO) \cite{Booshehri.2021} was conceived, but
 once the analyses go too deeply into the field of transport research its
 usability dwindles. There are many points of interaction between an energy
 system and a transport system. One of the most relevant is the battery electric
-vehicle charging infrastructure, because it is directly associated with the
+vehicle charging infrastructure because it is directly associated with the
 process of electrification of the fulfillment of transport needs which accounted
 globally in 2018 for around 8 Gton of CO\textsubscript{2} emissions
 \cite{IEA.2023}. In this paper, we propose an ontology as an initial
 interoperability layer between energy systems analysis and transportation
-research that allows to represent concepts associated to the process of charging
-an electric vehicle from the point of view of a grid and a transport network.
-The rest of this paper is divided in six sections. Section \ref{statementofneed}
-consists of the justification, philosophy and approach for the designing of an
-ontology that allows the description of concepts and phenomena associated to
-charging of battery electric vehicles. Section \ref{existingontologies} is an
-the summary of an extensive review of existing ontologies dealing with the
-topic, during this section the shortcoming and advantages of utilizing the Basic
-Formal Ontology (BFO) \cite{Arp.2015} as an top-level ontology. Section
-\ref{methodology} describes the concrete needs, proposed methodology and
-competency questions. Section \ref{results} will be a description of current
-achievments and implementations. Section \ref{discussion} points out the
-challenges and provides a description of the future roadmap. We conclude our
-paper in section \ref{conclusion}.
+research that allows us to represent concepts associated with the process of
+charging an electric vehicle from the point of view of a grid and a transport
+network. The rest of this paper is divided into six sections. Section
+\ref{statementofneed} consists of the justification, philosophy and approach for
+the designing of an ontology that allows the description of concepts and
+phenomena associated with the charging of battery electric vehicles. Section
+\ref{existingontologies} is a summary of an extensive review of existing
+ontologies dealing with the topic, during this section the shortcomings and
+advantages of utilizing the Basic Formal Ontology (BFO) \cite{Arp.2015} as a
+top-level ontology. Section \ref{methodology} describes the concrete needs,
+proposed methodology and competency questions. Section \ref{results} will be a
+description of current achievements and implementations. Section
+\ref{discussion} points out the challenges and describes the future roadmap. We
+conclude our paper in section \ref{conclusion}.
 
