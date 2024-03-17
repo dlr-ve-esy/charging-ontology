@@ -41,30 +41,31 @@ installation. Please refer to the installation instructions from
 !!! note
 
     There is an alternative API called
-    [horned-owl](https://github.com/phillord/horned-owl) which is written in rust
-    and can be made compatible with python. It is however still in development but
-    we may have the chance in the future to move away from java into a pure python
+    [horned-owl](https://github.com/phillord/horned-owl) which is written in Rust
+    and can be made compatible with Python. It is however still in development but
+    we may have the chance in the future to move away from Java into a pure Python
     environment.
 
 ### 4. Protégé
 
-[Protégé](https://protege.stanford.edu/) is basically the industry standard OWL
-ontology development tool. You will be dealing with it 80% of the time so
-please install it using the [official
+[Protégé](https://protege.stanford.edu/) is the industry standard OWL ontology
+development tool. You will be dealing with it 80% of the time so please install
+it using the [official
 channel](https://protege.stanford.edu/software.php#desktop-protege). We may
 consider moving to [tawny-owl](https://github.com/phillord/tawny-owl) but since
-it requires setting up Clojure, and we already add many dependencies we
-postpone this. Also, the point and click pattern of Protégé, while not
-efficient is easier to introduce to non-programmers.
+it requires setting up Clojure, and we already add many dependencies we postpone
+this. Also, the point-and-click pattern of Protégé, while not efficient is
+easier to introduce to non-programmers.
 
 ### 4. Git
 
 Cooperative development workflows require version control software. In this
-project we rely on git. If you are not familiar with git please do before you even
-think about doing changes to the ontology. There is a lot of resources out
-there, such as the [official git
-tutorial](https://git-scm.com/docs/gittutorial). Git can be installed using
-[the instructions in their official downloads
+project, we rely on git. If you are not familiar with git please do before you
+even think about making changes to the ontology. There are a lot of resources
+out there, such as the [official git
+tutorial](https://git-scm.com/docs/gittutorial). Git can be installed using [the
+instructions ](https://git-scm.com/downloads)on[ their
+official](https://git-scm.com/downloads) downloads
 webpage](https://git-scm.com/downloads).
 
 
@@ -90,7 +91,7 @@ poetry by running:
 poetry install
 ```
 
-You can proceed to get the ROBOT dependency by calling the provided python script:
+You can proceed to get the ROBOT dependency by calling the provided Python script:
 
 ```bash
 python scripts/get-robot.py
@@ -103,7 +104,7 @@ To become a contributor you have to create a new branch from dev.
 git checkout -b new-contributor-<your handle>
 ```
 
-Open Protégé and go to the **Active Ontology** tab, then click in the **+**
+Open Protégé and go to the **Active Ontology** tab, then click on the **+****
 button next to annotations:
 
 ![new user](images/add_new_user.png)
@@ -117,7 +118,7 @@ following format:
 
 ![new user](images/contributor_name_and_handle.png)
 
-Save the file and your changes should show in the rendered file, something like:
+Save the file and your changes should show in the rendered file, something such as:
 
 ```
 <http://purl.org/dc/elements/1.1/contributor> "(0000) Eugenio Salvador Arellano Ruiz (@arel_eu)" ,
@@ -130,13 +131,13 @@ Add the changes with git:
 git add src/chio.ttl
 ```
 
-And then push making a new branch in gitlab:
+And then push making a new branch in GitLab:
 
 ```bash
 git push --set-upstream origin new-contributor-<your handle>
 ```
 
-At last create a merge request, and we will review your submission.
+At last, create a merge request, and we will review your submission.
 
 ## Protégé settings
 
