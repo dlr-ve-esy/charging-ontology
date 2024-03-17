@@ -12,6 +12,7 @@ __pycache__
 *.log
 *.out
 *paper.pdf
+*paper_ios.pdf
 *.xmpdata
 *.xmpi
 */sources

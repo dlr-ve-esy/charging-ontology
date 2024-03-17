@@ -319,7 +319,7 @@ land_vehicle_tax_oeo = pho.open_ontology(TMP.joinpath("oeo_vehicle_lv_tax.owx").
 OLVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
-OLVG.graph_attr["size"] = "4.12,2.89"
+OLVG.graph_attr["size"] = "3.29,2.89"
 OLVG.graph_attr["dpi"] = "100"
 OLVG.graph_attr["margin"] = "0"
 # OLVG.graph_attr["ratio"] = "compressed"

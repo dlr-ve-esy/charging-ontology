@@ -1,0 +1,87 @@
+
+\documentclass{IOS-Book-Article}
+
+\usepackage{hyperref}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{minted}
+\usemintedstyle{tango}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{subsection}.\arabic{figure}}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{chngcntr}
+\usepackage[labelfont=bf,justification=justified,format=plain]{caption}
+
+\usepackage{mathptmx}
+\usepackage{soul}\setuldepth{article}
+%\usepackage{times}
+%\normalfont
+%\usepackage[T1]{fontenc}
+%\usepackage[mtplusscr,mtbold]{mathtime}
+%
+
+\usepackage{ntheorem}
+\theoremstyle{empty}
+\theoremheaderfont{\bfseries\upshape} 
+\theorembodyfont{\itshape}
+\setlength{\labelsep}{0pt}
+\newtheorem{named}{}
+
+\theoremstyle{emptybreak}
+\newtheorem{namedbreak}{}
+
+\def\hb{\hbox to 11.5 cm{}}
+
+\begin{document}
+\counterwithin{listing}{section}
+\pagestyle{headings}
+\def\thepage{}
+\begin{frontmatter}              % The preamble begins here.
+
+
+%\pretitle{Pretitle}
+\title{A battery electric vehicle charging infrastructure ontology for interdisciplinary research}
+
+% \markboth{}{April 2024\hb}
+%\subtitle{Subtitle}
+
+\author[A]{\fnms{Eugenio Salvador} \snm{Arellano Ruiz}\orcid{0000-0003-2508-3976}}%
+% \thanks{Corresponding Author: Author Name, contact details.}},
+\author[A]{\fnms{Fabia} \snm{Miorelli}\orcid{0000-0001-5095-5401}}
+and
+\author[A]{\fnms{Niklas} \snm{Wulff}\orcid{0000-0002-4659-6984}}
+\author[A]{\fnms{Carsten} \snm{Hoyer-Klick}\orcid{0000-0002-7273-9176}}
+
+% \runningauthor{B.P. Manager et al.}
+\address[A]{German Aerospace Center (DLR), Department of Energy Systems Analysis, Institute of Networked
+Energy Systems, Stuttgart, Germany}
+
+\input{assets/abstract.tex}
+\begin{keyword}
+\input{assets/keywords.tex}
+\end{keyword}
+\end{frontmatter}
+% \markboth{April 2022\hb}{April 2022\hb}
+%\thispagestyle{empty}
+%\pagestyle{empty}
+
+\input{sections/introduction.tex}
+
+\input{sections/context.tex}
+
+\input{sections/other_ontologies.tex}
+
+\input{sections/methodology.tex}
+\input{sections/results.tex}
+
+\input{sections/discussion.tex}
+\input{sections/conclusion.tex}
+
+% \begin{thebibliography}{99}
+\bibliography{bibliography}
+\bibliographystyle{vancouver}
+% \end{thebibliography}
+\end{document}

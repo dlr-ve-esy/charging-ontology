@@ -137,7 +137,7 @@ PG = pgv.AGraph(
 )
 # 4.70
 # PG.graph_attr["ratio"] = "compressed"
-PG.graph_attr["size"] = "4.12,2.89"  # "8.24,5.78"  # "4.12,2.89"  #
+PG.graph_attr["size"] = "3.29,2.89"  # "8.24,5.78"  # "4.12,2.89"  #
 PG.graph_attr["dpi"] = "100"
 PG.graph_attr["margin"] = "0"
 PG.graph_attr["nodesep"] = "0.1"

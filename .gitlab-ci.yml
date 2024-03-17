@@ -104,7 +104,7 @@ paper:
   image: tumi5/latex
   script:
     - cd paper
-    - latexmk -pdf -shell-escape paper.tex
+    - latexmk -pdf -shell-escape paper_ios.tex
   artifacts:
     paths:
       - paper/paper.pdf
