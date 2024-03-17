@@ -217,7 +217,7 @@ oeo_vehicle_imports = pho.open_ontology(TMP.joinpath("oeo_vehicle.owx").as_posix
 OG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="LR"
 )
-OG.graph_attr["size"] = "2.06,1.445"  # "4.12,2.89"
+OG.graph_attr["size"] = "1.974,1.445"  # "4.12,2.89"
 # OG.graph_attr["ratio"] = "compressed"
 OG.graph_attr["dpi"] = "100"
 OG.graph_attr["margin"] = "0"
@@ -293,15 +293,15 @@ ev_vehicle_tax_oeo = pho.open_ontology(TMP.joinpath("oeo_vehicle_ev_tax.owx").as
 OVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
-OVG.graph_attr["size"] = "1.64,1.445"
+OVG.graph_attr["size"] = "1.316,1.445"
 OVG.graph_attr["dpi"] = "100"
 OVG.graph_attr["margin"] = "0"
 OVG.graph_attr["nodesep"] = "0.1"
 OVG.graph_attr["ranksep"] = "0.1"
-OVG.node_attr["fontsize"] = "8"
+OVG.node_attr["fontsize"] = "12"
 OVG.node_attr["fontname"] = "CMU Serif Roman"
 OVG.node_attr["shape"] = "ellipse"
-OVG.edge_attr["fontsize"] = "8"
+OVG.edge_attr["fontsize"] = "12"
 OVG.edge_attr["fontname"] = "CMU Serif Roman"
 OVG.edge_attr["arrowsize"] = "0.5"
 
