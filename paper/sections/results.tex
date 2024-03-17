@@ -15,10 +15,10 @@ We are tending towards Widoco\footnote{https://github.com/dgarijo/Widoco}.
 
 We implemented a python test suite that allows the incremental development of
 the ontology using competency questions. This suite classifies the queries in
-two types. Those who act on the class level (TBox) like \hyperref[CQ1.1]{CQ 1.1}
-and those that act on the individual level (ABox) like \hyperref[CQ2.0]{CQ 2.0}.
-To handle the ABox queries we rewrite the natural language questions as ASK
-SPARQL queries that return either true or false values and declare a model in
+two types. Those who act on classes (TBox) like \hyperref[CQ1.1]{CQ 1.1} and
+those that act on individuals (ABox) like \hyperref[CQ2.0]{CQ 2.0}. To handle
+the ABox queries we rewrite the natural language questions as ASK queries in
+SPARQL  that return either true or false values. We also declare a model in
 Turtle Syntax that instantiates the referred classes. For example
 \hyperref[CQ2.0]{CQ 2.0} is written as listing \ref{lst:1} and its corresponding
 model \ref{lst:2} populates the ABox. The TBox questions are evaluated by
@@ -46,7 +46,7 @@ which corresponds to \hyperref[CQ1.1]{CQ 1.1}.
                          obo:BFO_0000178 :SomeParkingSpaceA,
                                          :SomeParkingSpaceB .
     \end{minted}
-    \caption{Example ABox instances. Two charging spaces (that can hold at most one car at the time) are part of some parking area. The chio namespace refers to the charging ontology.}
+    \caption{Example ABox instances. Two charging spaces (that can hold at most one car at the time) are part of some parking area. Namespaces prefixes are omitted, the chio namespace refers to the charging ontology.}
     \label{lst:2}
 \end{listing}
 
@@ -68,15 +68,15 @@ point to specific versions of the ontologies that can be updated based on
 developing needs. In some cases we reimplemented terms and pointed out the ones
 from other ontologies by using mappings. This was the case for the axioms from
 the TPSO Parking Ontology (figure \ref{parkingfig}). Our interpretation of
-parking areas and spaces is similar, but we rely on the mereology of BFO,
-instead of assign the charging stations to parking spaces directly we opt to use
+parking areas and spaces is similar, but we rely on the mereology of BFO.
+Instead of assign the charging stations to parking spaces directly we opt to use
 the facility axioms from CCO These implementations can be visualized in figure
 \ref{parkingchio}.
 
 \begin{figure}[h]
     \centering
     \includegraphics{images/CHIOParking.pdf}
-    \caption{Parking area, place and facility implementations in our ontology. Solid arrows represent super-class relations.}
+    \caption{Parking area, place and facility implementations in our ontology. This model relies on the taxonomy of the CCO. Solid arrows represent super-class relations.}
     \label{parkingchio}
 \end{figure}
 

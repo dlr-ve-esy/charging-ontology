@@ -346,7 +346,7 @@ chio_parking = pho.open_ontology(TMP.joinpath("chio_parking.owx").as_posix())
 CG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="LR"
 )
-CG.graph_attr["size"] = "4.12,2.89"
+CG.graph_attr["size"] = "3.29,2.31"
 CG.graph_attr["dpi"] = "100"
 CG.graph_attr["margin"] = "0"
 CG.graph_attr["nodesep"] = "0.1"
