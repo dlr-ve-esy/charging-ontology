@@ -4,8 +4,10 @@
 
 
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
 prefix obo: <http://purl.obolibrary.org/obo/>
+prefix chio: <http://openenergy-platform.org/ontology/chio/>
 prefix : <http://openenergy-platform.org/ontology/oeo/chio-cq21/>
 
 
@@ -13,6 +15,7 @@ ask
 where
 {
     select (COUNT(?parkingSpaces) AS ?vehicleCapacity)  
-    where  {  :SomeParkingArea obo:BFO_0000178 ?parkingSpaces . }
+    where  {  :SomeParkingArea obo:BFO_0000178 ?parkingSpaces . 
+              ?parkingSpaces rdf:type chio:CHIO_00000002 .}
     having ( ?vehicleCapacity = 2 )
 }
