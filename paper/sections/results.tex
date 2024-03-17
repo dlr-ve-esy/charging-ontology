@@ -22,7 +22,7 @@ SPARQL  that return either true or false values. We also declare a model in
 Turtle Syntax that instantiates the referred classes. For example
 \hyperref[CQ2.0]{CQ 2.0} is written as listing \ref{lst:1} and its corresponding
 model \ref{lst:2} populates the ABox. The TBox questions are evaluated by
-evaluating entailment using DL queries such as the one in listing \ref{lst:3}
+checking entailment using DL queries such as the one in listing \ref{lst:3}
 which corresponds to \hyperref[CQ1.1]{CQ 1.1}.
 
 \begin{listing}[h]
@@ -70,13 +70,13 @@ from other ontologies by using mappings. This was the case for the axioms from
 the TPSO Parking Ontology (figure \ref{parkingfig}). Our interpretation of
 parking areas and spaces is similar, but we rely on the mereology of BFO.
 Instead of assign the charging stations to parking spaces directly we opt to use
-the facility axioms from CCO These implementations can be visualized in figure
+the facility axioms from CCO. These implementations can be visualized in figure
 \ref{parkingchio}.
 
 \begin{figure}[h]
     \centering
     \includegraphics{images/CHIOParking.pdf}
-    \caption{Parking area, place and facility implementations in our ontology. This model relies on the taxonomy of the CCO. Solid arrows represent super-class relations.}
+    \caption{Parking area, place and facility implementations in our ontology. This model relies on the taxonomy of the CCO Facility Ontology. Solid arrows represent super-class relations.}
     \label{parkingchio}
 \end{figure}
 

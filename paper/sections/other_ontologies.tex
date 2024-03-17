@@ -16,17 +16,17 @@ we decide not to reutilize existing concepts.
 The OEO has been in active development since 2021 with several releases since
 then. It exists to address a technical gap associated with knowledge management
 in the field of energy systems analysis. Said gap is the lack of common
-semantics to annotate and share datasets and tools associated with the
-mentioned discipline. The ontology is part of a larger data ecosystem called
-the Open Energy Family (OEF), which allows researchers to share data sources
-and results in accordance with the FAIR principles. It has had moderate
-success, particularly within the context of projects associated to the OEF such
-as the Open Energy Platform (OEP) \cite{Hulk.2024}. One of the characteristics
-that makes this and other FAIR ontologies transparent and accessible is the
-fact that it is being openly developed in a shared
+semantics to annotate and share datasets and tools associated with the mentioned
+discipline. The ontology is part of a larger data ecosystem called the Open
+Energy Family (OEF), which allows researchers to share data sources and results
+in accordance with the FAIR principles. It has had moderate success,
+particularly within the context of projects associated to the OEF such as the
+Open Energy Platform (OEP) \cite{Hulk.2024}. One of the characteristics that
+makes this and other FAIR ontologies transparent and accessible is the fact that
+it is being openly developed in a shared
 repository\footnote{https://github.com/OpenEnergyPlatform/ontology}. An
-important work on the inclusion of concepts coming from the transport sector
-was performed by \cite{Mittermeier.2023}, who did several implementations
+important work on the inclusion of concepts coming from the transport sector was
+performed by Mittermeier \cite{Mittermeier.2023}, who did several implementations
 associated to the topic. However, since the size of the task is larger than what
 can be achieved during a master thesis, many implementations were left open in
 the form of GitHub issues. In some of these issues it was made clear that the
@@ -38,25 +38,25 @@ In our charging infrastructure ontology we need a way of describing vehicles,
 particularly electric vehicles. The OEO has a rich taxonomy of vehicles that
 rest on the definition of artificial objects which are in the context of BFO
 `causally unified material entities deliberately manufactured by humans to
-address a particular porpoise'. The taxonomy has two parallel ramifications,
-one associated to its energy consumption mode like `electric vehicle',
-`internal combustion vehicle' and `gas turbine vehicle' and another associated
-to its operational medium such as `land vehicle', `aircraft' or `watercraft'.
-The former has axiomatization significant for electric grid and energy systems
-models which can be seen in figure \ref{oeoev:b} the latter lacks its own
-axioms and relies on mainly on the former. For our application is only
-interesting to use the taxonomy of electric vehicles (Figure \ref{oeoev:a}).
-Its land vehicle taxonomy is rich (figure \ref{landvehicletaxoeo}) and contains
-elements that might produce conflicts with any future implementation in a
-transport ontology. Because of this we rely on the Common Core Ontologies (CCO)
-for a lighter vehicle taxonomy, this will be clarified in its respective
-section.
+address a particular porpoise'. The taxonomy has two parallel ramifications, one
+associated to its energy consumption mode like `electric vehicle', `internal
+combustion vehicle' and `gas turbine vehicle' and another associated to its
+operational medium such as `land vehicle', `aircraft' or `watercraft'. The
+former has axiomatization significant for electric grid and energy systems
+models which can be seen in figure \ref{oeoev:b} the latter lacks its own axioms
+and relies on mainly on the former. For our application is only interesting to
+use the taxonomy of electric vehicles, which should include plug-in hybrid
+electric vehicles (Figure \ref{oeoev:a}). Its land vehicle taxonomy is rich
+(figure \ref{landvehicletaxoeo}) and contains elements that might produce
+conflicts with any future implementation in a transport ontology. Because of
+this we rely on the Common Core Ontologies (CCO) for a lighter vehicle taxonomy,
+this will be clarified in its respective section.
 
 \begin{figure}
     \centering
     \subfigure[OEO electric vehicle taxonomy.]{\label{oeoev:a}\includegraphics{images/OEOVehicles.pdf}}
     \subfigure[OEO electric vehicle commitments]{\label{oeoev:b}\includegraphics{images/OEOEV.pdf}}
-    \caption{OEO ontological commitments relevant to the context of charging infrastructure. Note that we exclude grid related commitments, mostly because we have yet to define a scenario for that case. Solid arrows represent super-class relations.}
+    \caption{OEO ontological commitments relevant to the context of charging infrastructure. Note that we exclude grid related commitments, mostly because we have to properly outline a scenario to implement them. Solid arrows represent super-class relations.}
 \end{figure}
 
 \subsection{The Common Core Ontologies}
@@ -65,7 +65,7 @@ The CCO are twelve mid-level ontologies built as an extension of BFO and the
 Relations Ontology (RO) intended to be used as a basis to model domains of
 interest such as transportation infrastructure spacecrafts
 \cite{Rudnicki.23September2020}. Like BFO, it is a realist ontology, which
-means that it intends to model the entities data represents. The ontology
+means that it intends to model the entities data represent. The ontology
 avoids being prescriptive, instead lets data modellers decide which asserted
 class axioms are relevant for their particular applications. It also comes with
 a guide that lets non ontology experts understand how to implement terms which
@@ -128,14 +128,16 @@ the concept `infrastructure system'. These axioms can be visualized in figure
     \label{infrastructurefigs} 
 \end{figure}
 
-\subsubsection{Facilities}
+\subsubsection{Other imports}
 
-As an only exception to our `scenario first' rule (section \label{methodology})
-we import terms from the facility ontology to handle concepts like parking lots
+We also import terms from the facility, information entity and geospatial
+ontologies. We use the facility ontology to handle concepts like parking lots
 and dedicated charging stations. An alternative would be to stick to using
 material entities, but we consider this differentiation practical in the long
-run, especially when considering interoperability with future transportation
-research ontologies.
+run. The information entity ontology provides us with the `designates' relation
+which the CCO recommends using to designate geospatial data to entities. The
+geospatial ontology provides terms like city and continent which we use to
+manage addresses.
 
 
 \subsection{iCity Parking ontology}
@@ -184,17 +186,18 @@ defined in section \ref{methodology}. But since we are intending to build on
 the efforts from the OEO we streamlined to using BFO. This decision comes not
 without compromises. 
 
-BFO sacrifices expressivity for a simpler modelling intuition. It has
-weaknesses in the field of modal propositions which are prominent in both
-transportation research en energy systems analysis, particularly in the context
-of forecasts and simulation\footnote{However this weakness is addressed by CCO
-with their ModalRelationOntology which we consider importing. }. Unlike the
-TPSO foundational modules, BFO delegates its time indexing to the applications
-by keeping it outside the OWL implementation. BFO has a rather simple initial
-learning curve that can be used to facilitate the inclusion of new developers.
-But still becomes steep when dealing some of its more complex terms (i.e.
-`process profile', `disposition' vs `quality'), this can lead to frustrations
-and misuses.
+BFO sacrifices expressivity for a simpler modelling intuition. It has weaknesses
+in the field of modal propositions which are prominent in both transportation
+research en energy systems analysis, particularly in the context of forecasts
+and simulation\footnote{However this weakness is addressed by CCO with their
+ModalRelationOntology which we consider importing. }. Unlike the TPSO
+foundational modules, BFO delegates its time indexing to the applications by
+keeping it outside the OWL implementation. The perdurant component of entities
+is handled by pointing to their `history', a practical and versatile construct.
+BFO has a rather simple initial learning curve that can be used to facilitate
+the inclusion of new developers. But still becomes steep when dealing some of
+its more complex terms (i.e. `process profile', `disposition' vs `quality'),
+this can lead to frustrations and misuses.
 
 There are some important features of BFO that we intend to take advantage of.
 The first is that it allows the existence of `sites' in the same dimension as
@@ -203,7 +206,7 @@ vehicles being present and absent. We also need these entities to characterize
 the mereotopology of charging stations which usually consider parking spaces as
 their parts which in place can be part of parking lots along other parking
 spaces. To address this, we will rely on reinterpreting the axioms from the
-TPSO in the context of BFO, in some future stage we intend to explore the
+TPSO in the context of BFO, in a future stage we intend to explore the
 possibility of unintended models (i.e. a vehicle becoming infrastructure). A
 second important feature are `process profiles', since we consider that the
 charging event can have multiple dimensions that can describe it that have to
