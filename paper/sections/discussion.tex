@@ -6,7 +6,15 @@ most concepts is that implementations are slow. We consider that the benefits
 outweigh the drawbacks as the outputs are ensured to be concise without further
 validation. Sometimes is challenging to come up with competency questions when
 there are no implementations to refer to. The CCO provides a clear documentation
-that we can turn to in such cases.
+that we can turn to in such cases. Other problem is that the actual software
+implementation relies in calling java as a subprocess from python. The
+alternative would have been to use clojure instead but we are optimistic that,
+thanks to new OWL aware tools like
+horned-owl\footnote{https://github.com/phillord/horned-owl} and its respective
+python embedding
+py-horned-owl\footnote{https://github.com/jannahastings/py-horned-owl} we will
+eventually be able to migrate to a pure python solution. The only issue stopping
+us from using them directly is that they have yet to support some DL reasoner.
 
 The next milestone is to complete the terminology associated with the first two
 scenarios. As well as designing two further scenarios, each associated with a
