@@ -98,15 +98,15 @@ such conditions are explored in other scenarios.
 
 ???+ question "Competency question 1.10"
 
-    A charging station is located in some site
+    A charging station is located in some place
 
 ???+ question "Competency question 1.11"
 
-    A site can be associated with some address
+    A place can be associated with some address
 
 ???+ question "Competency question 1.12"
 
-    A site can be associated with some geograpical feature.
+    A place can be associated with some geograpical feature.
 
 ???+ question "Competency question 1.13"
 
