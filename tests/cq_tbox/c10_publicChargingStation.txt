@@ -1,1 +1,1 @@
-"'public charging station' SubClassOf 'charging station' and 'member part of' some 'public infrastructure' and 'member part of' some 'transportation infrastructure'"
+"'public charging station' SubClassOf 'charging station'"
