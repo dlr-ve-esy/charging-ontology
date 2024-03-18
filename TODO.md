@@ -1,5 +1,10 @@
 # TODO and development roadmap
 
+## 18.03.2024
+
+- [ ] Important question: is every transportation facility part of some transportation infrastructure?
+- [ ] Import from RO: has role, has quality etc...
+
 ## 07.03.2024
 
 - [X] Reworked pipeline
@@ -28,7 +33,7 @@ are still some classes that have to be redefined and added to the ontology as
 possible equivalents via annotation properties.
 
   - [ ] Implement key classes from scenario 1
-  - [ ] Add potential associations using "may be identical to"
+  - [X] Add potential associations using "may be identical to"
 
 ## 01.03.2024
 
@@ -55,7 +60,7 @@ identifiers specific to the current ontology, so they are easily recognizable.
 Added documentation online [in gitlab
 pages](https://ensym.pages.gitlab.dlr.de/lod/charging-ontology/). 
 
-- [ ] I Figured out
+- [X] I Figured out
 I need to rethink the approach for competency questions, this
 [paper](https://doi.org/10.1016/j.websem.2019.100534) has good examples of
 competency questions and their SPARQL implementation. Maybe I can use it to

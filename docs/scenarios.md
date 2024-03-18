@@ -58,7 +58,7 @@ such conditions are explored in other scenarios.
 
 ???+ question "Competency question 1.0"
 
-    A public charging station is a kind of transportation infrastructure.
+    A public charging station is part of some transportation infrastructure.
 
 ???+ question "Competency question 1.1"
 
