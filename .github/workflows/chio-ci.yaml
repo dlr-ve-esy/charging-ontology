@@ -1,0 +1,75 @@
+name: CHIO CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: "adopt"
+          java-version: "11"
+      - name: make
+        run: |
+          make
+      - name: validate-profile
+        run: |
+          echo "java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-full.owl --profile Full -vvv --output merged-validation.txt"
+          java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-full.owl --profile Full -vvv --output merged-validation.txt
+          echo "java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-el.owl --profile EL -vvv --output validation-el.txt"
+          java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-el.owl --profile EL -vvv --output merged-validation-el.txt
+      - name: verify
+        run: |
+          java -jar robot.jar verify --input build/chio/$(cat VERSION)/chio-full.owl --queries tests/verify/*
+      - uses: actions/upload-artifact@master
+        with:
+          name: build-artifacts
+          path: build/chio
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          architecture: x64
+      - uses: actions/setup-java@v2
+        with:
+          distribution: "adopt"
+          java-version: "11"
+      - uses: actions/download-artifact@master
+        with:
+          name: build-artifacts
+          path: build/chio
+      - name: setup environment
+        run: |
+          pip install poetry==1.8.1
+          poetry install
+          POETRY_ENV=$(poetry env info -p)
+          source ${POETRY_ENV}/bin/activate
+      - name: setup robot 1.9.0
+        run: |
+          wget https://github.com/ontodev/robot/releases/download/v1.9.0/robot.jar -O robot.jar
+      - name: consistency
+        run: |
+          wget https://github.com/owlcs/releases/raw/master/HermiT/org.semanticweb.hermit-packaged-1.4.6.519-SNAPSHOT.jar -O build/hermit.jar
+          OUT=$(java -jar build/hermit.jar file://`pwd`/build/chio/$(cat VERSION)/chio-full.owl -U)
+          if [ "$(echo "$OUT" | tr -d '[:space:]')" = "Classesequivalentto'owl:Nothing':owl:Nothing" ];
+          then
+            exit 0
+          fi
+          echo "Ontology is inconsistent: $OUT"
+          exit 1
+      - name: Upload Ontology
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-files
+          path: |
+            build/**/*
+            !build/**/*.jar
+      - name: competency
+        continue-on-error: true
+        run: |
+          pytest -s -v
