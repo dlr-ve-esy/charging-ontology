@@ -8,7 +8,7 @@ with open(Path(CWD).joinpath("VERSION").as_posix()) as version_file:
     __version__ = version_file.readlines()[0].strip()
 
 ROBOT_JAR = Path(CWD).joinpath("robot.jar").as_posix()
-HERMIT_JAR =  Path(CWD).joinpath("hermit.jar").as_posix()
+HERMIT_JAR = Path(CWD).joinpath("hermit.jar").as_posix()
 CATALOG_PATH = Path(CWD).joinpath("src/catalog-v001.xml")
 ONTOLOGY_PATH = Path(CWD).joinpath("src").joinpath("chio.ttl").as_posix()
 CQ_ABOX = Path(CWD).joinpath("tests/cq_abox")
@@ -18,20 +18,10 @@ INSTANCE_PATH = Path(CWD).joinpath("tests/cq_instances")
 
 def pytest_generate_tests(metafunc):
     if "cq_abox_path" in metafunc.fixturenames:
-        abox_list = [
-            p
-            for p in glob(
-                CQ_ABOX.as_posix() + "/**/*.rq", recursive=True
-            )
-        ]
+        abox_list = [p for p in glob(CQ_ABOX.as_posix() + "/**/*.rq", recursive=True)]
         metafunc.parametrize("cq_abox_path", abox_list)
     if "cq_tbox_path" in metafunc.fixturenames:
-        tbox_list = [
-            p
-            for p in glob(
-                CQ_TBOX.as_posix() + "/**/*.txt", recursive=True
-            )
-        ]
+        tbox_list = [p for p in glob(CQ_TBOX.as_posix() + "/**/*.txt", recursive=True)]
         metafunc.parametrize("cq_tbox_path", tbox_list)
 
 
@@ -57,19 +47,22 @@ def check_abox(query, ontology, tmp):
     else:
         instance_input = ""
     query_call = (
-        f"java -jar {ROBOT_JAR} merge --input {ontology} {instance_input}"
+        f"java -jar {ROBOT_JAR} merge --input {ontology} {instance_input} "
         + f"--catalog {CATALOG_PATH.as_posix()} "
+        + 'reason --reasoner hermit --axiom-generators "PropertyAssertion" '
         + f"query --format ttl --query {query} {tmp.as_posix()}"
     )
     response = sp.call(query_call)
     if response != 0:
-        raise RuntimeError(f"Response: {response}")
+        raise RuntimeError(f"Response: {response} Call: {query_call}")
     with open(f"{tmp}", "r") as f:
         result = {"true": True, "false": False}.get(f.readline(), None)
         if result is None:
-            raise RuntimeError("The query did not return a boolean.")
+            raise RuntimeError(
+                f"The query did not return a boolean. Call: {query_call}"
+            )
 
-    assert result, f"Question {query} was not satisfied."
+    assert result, f"Question {query} was not satisfied. Call: {query_call}"
 
 
 def check_tbox(conclusion, premise, tmp):
@@ -95,13 +88,14 @@ def check_tbox(conclusion, premise, tmp):
     )
     response = sp.call(query_call)
     if response != 0:
-        raise RuntimeError(f"Response: {response}")
+        raise RuntimeError(f"Response: {response} Query: {axiom}")
     # with open(f"{tmp}", "r") as f:
     #     result = {"true": True, "false": False}.get(f.readline(), None)
     #     if result is None:
     #         raise RuntimeError("The query did not return a boolean.")
 
     # assert result, f"Question {conclusion} was not satisfied."
+
 
 def test_abox(
     cq_abox_path,
@@ -110,6 +104,7 @@ def test_abox(
     """Metatest to produce competency question tests."""
     tmppath = tmp_path_factory.mktemp("data") / "test.ttl"
     check_abox(cq_abox_path, ONTOLOGY_PATH, tmppath)
+
 
 def test_tbox(
     cq_tbox_path,
