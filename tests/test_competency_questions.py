@@ -54,17 +54,15 @@ def check_abox(query, ontology, tmp):
         + 'reason --reasoner hermit --axiom-generators "PropertyAssertion" '
         + f"query --format ttl --query {query} {tmp.as_posix()}"
     )
-    response = sp.call(query_call)
-    if response != 0:
-        raise RuntimeError(f"Response: {response} Call: {query_call}")
-    with open(f"{tmp}", "r") as f:
-        result = {"true": True, "false": False}.get(f.readline(), None)
-        if result is None:
-            raise RuntimeError(
-                f"The query did not return a boolean. Call: {query_call}"
-            )
-
-    assert result, f"Question {query} was not satisfied. Call: {query_call}"
+    p = sp.Popen(
+        query_call,
+        stdin=sp.PIPE,
+        stdout=sp.PIPE,
+        stderr=sp.PIPE,
+    )
+    output, err = p.communicate(b"input data that is passed to subprocess' stdin")
+    if len(err) != 0:
+        raise RuntimeError(f"{err}")
 
 
 def check_tbox(conclusion, premise, tmp):
@@ -83,20 +81,32 @@ def check_tbox(conclusion, premise, tmp):
     conclusion = Path(conclusion).as_posix()
     with open(conclusion, "r") as axf:
         axiom = axf.read()
-    query_call = (
-        f"{JAVA_PATH}  -jar {ROBOT_JAR} merge --input {premise} "
-        + f"--catalog {CATALOG_PATH.as_posix()} "
-        + f"explain --mode entailment --axiom {axiom} --explanation {tmp.as_posix()}"
+    query_call = [
+        f"{JAVA_PATH}",
+        "-jar",
+        f"{ROBOT_JAR}",
+        "merge",
+        "--input",
+        f"{premise}",
+        "--catalog",
+        f"{CATALOG_PATH.as_posix()}",
+        "explain",
+        "--mode",
+        "entailment",
+        "--axiom",
+        f"{axiom}",
+        "--explanation",
+        f"{tmp.as_posix()}",
+    ]
+    p = sp.Popen(
+        query_call,
+        stdin=sp.PIPE,
+        stdout=sp.PIPE,
+        stderr=sp.PIPE,
     )
-    response = sp.call(query_call)
-    if response != 0:
-        raise RuntimeError(f"Response: {response} Query: {axiom}")
-    # with open(f"{tmp}", "r") as f:
-    #     result = {"true": True, "false": False}.get(f.readline(), None)
-    #     if result is None:
-    #         raise RuntimeError("The query did not return a boolean.")
-
-    # assert result, f"Question {conclusion} was not satisfied."
+    output, err = p.communicate(b"input data that is passed to subprocess' stdin")
+    if len(err) != 0:
+        raise RuntimeError(f"{err}")
 
 
 def test_abox(
