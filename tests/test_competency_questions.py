@@ -4,18 +4,30 @@ from pathlib import Path
 import os
 import shutil
 
+
 CWD = os.getcwd()
 with open(Path(CWD).joinpath("VERSION").as_posix()) as version_file:
     __version__ = version_file.readlines()[0].strip()
 
 ROBOT_JAR = Path(CWD).joinpath("robot.jar").as_posix()
-HERMIT_JAR = Path(CWD).joinpath("hermit.jar").as_posix()
 CATALOG_PATH = Path(CWD).joinpath("src/catalog-v001.xml")
-ONTOLOGY_PATH = Path(CWD).joinpath("src").joinpath("chio.ttl").as_posix()
 CQ_ABOX = Path(CWD).joinpath("tests/cq_abox")
 CQ_TBOX = Path(CWD).joinpath("tests/cq_tbox")
 INSTANCE_PATH = Path(CWD).joinpath("tests/cq_instances")
 JAVA_PATH = shutil.which("java")
+
+BUILD_PATH = (
+    Path(CWD)
+    .joinpath("build/chio")
+    .joinpath(f"{__version__}")
+    .joinpath("chio-full.ttl")
+)
+BUILD_MODE = BUILD_PATH.exists()
+
+if BUILD_MODE:
+    ONTOLOGY_PATH = BUILD_PATH
+else:
+    ONTOLOGY_PATH = Path(CWD).joinpath("src").joinpath("chio.ttl").as_posix()
 
 
 def pytest_generate_tests(metafunc):
@@ -48,21 +60,27 @@ def check_abox(query, ontology, tmp):
         instance_input = f" --input {instance_check} "
     else:
         instance_input = ""
+    if BUILD_MODE:
+        catalog_string = ""
+    else:
+        catalog_string = f"--catalog {CATALOG_PATH.as_posix()} "
     query_call = (
         f"{JAVA_PATH} -jar {ROBOT_JAR} merge --input {ontology} {instance_input} "
-        + f"--catalog {CATALOG_PATH.as_posix()} "
+        + catalog_string
         + 'reason --reasoner hermit --axiom-generators "PropertyAssertion" '
         + f"query --format ttl --query {query} {tmp.as_posix()}"
     )
-    p = sp.Popen(
-        query_call,
-        stdin=sp.PIPE,
-        stdout=sp.PIPE,
-        stderr=sp.PIPE,
-    )
-    output, err = p.communicate(b"input data that is passed to subprocess' stdin")
-    if len(err) != 0:
-        raise RuntimeError(f"{err}")
+    response = sp.call(query_call)
+    if response != 0:
+        raise RuntimeError(f"Response: {response} Call: {query_call}")
+    with open(f"{tmp}", "r") as f:
+        result = {"true": True, "false": False}.get(f.readline(), None)
+        if result is None:
+            raise RuntimeError(
+                f"The query did not return a boolean. Call: {query_call}"
+            )
+
+    assert result, f"Question {query} was not satisfied. Call: {query_call}"
 
 
 def check_tbox(conclusion, premise, tmp):
@@ -81,32 +99,18 @@ def check_tbox(conclusion, premise, tmp):
     conclusion = Path(conclusion).as_posix()
     with open(conclusion, "r") as axf:
         axiom = axf.read()
-    query_call = [
-        f"{JAVA_PATH}",
-        "-jar",
-        f"{ROBOT_JAR}",
-        "merge",
-        "--input",
-        f"{premise}",
-        "--catalog",
-        f"{CATALOG_PATH.as_posix()}",
-        "explain",
-        "--mode",
-        "entailment",
-        "--axiom",
-        f"{axiom}",
-        "--explanation",
-        f"{tmp.as_posix()}",
-    ]
-    p = sp.Popen(
-        query_call,
-        stdin=sp.PIPE,
-        stdout=sp.PIPE,
-        stderr=sp.PIPE,
+    if BUILD_MODE:
+        catalog_string = ""
+    else:
+        catalog_string = f"--catalog {CATALOG_PATH.as_posix()} "
+    query_call = (
+        f"{JAVA_PATH}  -jar {ROBOT_JAR} merge --input {premise} "
+        + catalog_string
+        + f"explain --mode entailment --axiom {axiom} --explanation {tmp.as_posix()}"
     )
-    output, err = p.communicate(b"input data that is passed to subprocess' stdin")
-    if len(err) != 0:
-        raise RuntimeError(f"{err}")
+    response = sp.call(query_call)
+    if response != 0:
+        raise RuntimeError(f"Response: {response} Query: {axiom}")
 
 
 def test_abox(
