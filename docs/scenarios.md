@@ -210,12 +210,7 @@ will be provided to the user as well.
 
 ### Competency questions
 
-List of competency questions in plain text, they don't need to be strictly
-questions, they can also be affirmations. For example:
-
-> - Is a dog considered a passenger?
-> - A shopping trip is a leisure trip
-
+To be completed ...
 
 ## Scenario X - My awesome scenario
 
