@@ -2,6 +2,7 @@ from glob import glob
 import subprocess as sp
 from pathlib import Path
 import os
+import shutil
 
 CWD = os.getcwd()
 with open(Path(CWD).joinpath("VERSION").as_posix()) as version_file:
@@ -14,6 +15,7 @@ ONTOLOGY_PATH = Path(CWD).joinpath("src").joinpath("chio.ttl").as_posix()
 CQ_ABOX = Path(CWD).joinpath("tests/cq_abox")
 CQ_TBOX = Path(CWD).joinpath("tests/cq_tbox")
 INSTANCE_PATH = Path(CWD).joinpath("tests/cq_instances")
+JAVA_PATH = shutil.which("java")
 
 
 def pytest_generate_tests(metafunc):
@@ -47,7 +49,7 @@ def check_abox(query, ontology, tmp):
     else:
         instance_input = ""
     query_call = (
-        f"java -jar {ROBOT_JAR} merge --input {ontology} {instance_input} "
+        f"{JAVA_PATH} -jar {ROBOT_JAR} merge --input {ontology} {instance_input} "
         + f"--catalog {CATALOG_PATH.as_posix()} "
         + 'reason --reasoner hermit --axiom-generators "PropertyAssertion" '
         + f"query --format ttl --query {query} {tmp.as_posix()}"
@@ -82,7 +84,7 @@ def check_tbox(conclusion, premise, tmp):
     with open(conclusion, "r") as axf:
         axiom = axf.read()
     query_call = (
-        f"java -jar {ROBOT_JAR} merge --input {premise} "
+        f"{JAVA_PATH}  -jar {ROBOT_JAR} merge --input {premise} "
         + f"--catalog {CATALOG_PATH.as_posix()} "
         + f"explain --mode entailment --axiom {axiom} --explanation {tmp.as_posix()}"
     )
