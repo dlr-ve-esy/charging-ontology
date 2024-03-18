@@ -14,13 +14,13 @@ jobs:
           make
       - name: validate-profile
         run: |
-          echo "java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-full.owl --profile Full -vvv --output merged-validation.txt"
-          java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-full.owl --profile Full -vvv --output merged-validation.txt
-          echo "java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-el.owl --profile EL -vvv --output validation-el.txt"
-          java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-el.owl --profile EL -vvv --output merged-validation-el.txt
+          echo "java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-full.ttl --profile Full -vvv --output merged-validation.txt"
+          java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-full.ttl --profile Full -vvv --output merged-validation.txt
+          echo "java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-el.ttl --profile EL -vvv --output validation-el.txt"
+          java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-el.ttl --profile EL -vvv --output merged-validation-el.txt
       - name: verify
         run: |
-          java -jar robot.jar verify --input build/chio/$(cat VERSION)/chio-full.owl --queries tests/verify/*
+          java -jar robot.jar verify --input build/chio/$(cat VERSION)/chio-full.ttl --queries tests/verify/*
       - uses: actions/upload-artifact@master
         with:
           name: build-artifacts
@@ -54,7 +54,7 @@ jobs:
       - name: consistency
         run: |
           wget https://github.com/owlcs/releases/raw/master/HermiT/org.semanticweb.hermit-packaged-1.4.6.519-SNAPSHOT.jar -O build/hermit.jar
-          OUT=$(java -jar build/hermit.jar file://`pwd`/build/chio/$(cat VERSION)/chio-full.owl -U)
+          OUT=$(java -jar build/hermit.jar file://`pwd`/build/chio/$(cat VERSION)/chio-full.ttl -U)
           if [ "$(echo "$OUT" | tr -d '[:space:]')" = "Classesequivalentto'owl:Nothing':owl:Nothing" ];
           then
             exit 0
