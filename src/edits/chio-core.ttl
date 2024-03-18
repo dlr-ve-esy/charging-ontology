@@ -82,6 +82,48 @@
                                                              rdfs:label "charging column"@en .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000006
+<http://openenergy-platform.org/ontology/chio/CHIO_00000006> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure> ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "Public infrastructure is infrastructure owned or available for use by a public (represented by a government)." ;
+                                                             rdfs:label "public infrastructure"@de ;
+                                                             <http://www.w3.org/ns/prov#wasDerivedFrom> "https://en.wikipedia.org/wiki/Public_infrastructure" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000007
+<http://openenergy-platform.org/ontology/chio/CHIO_00000007> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement> ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Entity that bears a Transportation Infrastructure Role." ;
+                                                             rdfs:label "transportation infrastructure element"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000008
+<http://openenergy-platform.org/ontology/chio/CHIO_00000008> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement> ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Entity that bears a public Infrastructure Role." ;
+                                                             rdfs:label "public infrastructure element"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000009
+<http://openenergy-platform.org/ontology/chio/CHIO_00000009> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole> ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Infrastructure Role that inheres in the elements of some transportation infrastructure." ;
+                                                             rdfs:label "transportation infrastructure role"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000010
+<http://openenergy-platform.org/ontology/chio/CHIO_00000010> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole> ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Infrastructure Role that inheres in the elements of some public infrastructure." ;
+                                                             rdfs:label "public infrastructure role"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000011
+<http://openenergy-platform.org/ontology/chio/CHIO_00000011> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000004> ;
+                                                             rdfs:label "public charging station"@de .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> .
 
@@ -114,11 +156,32 @@
 <http://purl.obolibrary.org/obo/IAO_0000030> rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000031> .
 
 
+###  http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure
+<http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure> rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000115> ;
+                                                                                          owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000002>
+                                                                                        ] .
+
+
 #################################################################
 #    Annotations
 #################################################################
 
 <http://www.ontologyrepository.com/CommonCoreOntologies/Power> <http://purl.obolibrary.org/obo/IAO_0006011> "http://openenergy-platform.org/ontology/oeo/OEO_00000333" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+  owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000010> ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000129> ;
+                    owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000006>
+                  ]
+] .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
