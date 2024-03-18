@@ -31,7 +31,7 @@ which corresponds to \hyperref[CQ1.1]{CQ 1.1}.
         ASK WHERE {
             SELECT (COUNT(?parkingSpaces) AS ?vehicleCapacity)  
             WHERE  {  :SomeParkingArea obo:BFO_0000178 ?parkingSpaces . 
-                      ?parkingSpaces rdf:type obo:CHIO_00000002 . }
+                      ?parkingSpaces rdf:type chio:CHIO_00000002 . }
             HAVING ( ?vehicleCapacity = 2 ) }
     \end{minted}
     \caption{Example ABox query. (Given a parking area with two parking places) What is the (vehicle) capacity of parking lot P? (2). The namespaces are omitted.}
