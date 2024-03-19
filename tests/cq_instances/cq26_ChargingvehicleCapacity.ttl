@@ -9,7 +9,7 @@
 @base <http://openenergy-platform.org/ontology/oeo/chio-cq21/> .
 
 
-<http://openenergy-platform.org/ontology/oeo/chio-cq21> rdf:type owl:Ontology .
+<http://openenergy-platform.org/ontology/oeo/chio-cq26> rdf:type owl:Ontology .
 
 :SomeParkingSpaceA a chio:CHIO_00000002 .
 :SomeParkingSpaceB a chio:CHIO_00000002 .
