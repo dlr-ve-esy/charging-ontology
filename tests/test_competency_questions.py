@@ -75,7 +75,13 @@ def check_abox(query, ontology, tmp):
         ]
         + instance_input
         + catalog_string
-        + ["reason", "--reasoner", "hermit", "--axiom-generators", "PropertyAssertion"]
+        + [
+            "reason",
+            "--reasoner",
+            "hermit",
+            "--axiom-generators",
+            '"SubClass EquivalentClass DataPropertyCharacteristic EquivalentDataProperties SubDataProperty ClassAssertion PropertyAssertion EquivalentObjectProperty InverseObjectProperties ObjectPropertyCharacteristic SubObjectProperty ObjectPropertyRange ObjectPropertyDomain"',
+        ]
         + ["query", "--format", "ttl", "--query", f"{query}", f"{tmp.as_posix()}"]
     )
     p = sp.Popen(
@@ -85,10 +91,23 @@ def check_abox(query, ontology, tmp):
         stderr=sp.PIPE,
     )
     output, err = p.communicate(b"input data that is passed to subprocess' stdin")
+    query_call_full = " ".join(query_call)
     if len(err) == 0:
-        return output.decode("utf-8")
+        pass
     else:
         raise RuntimeError(f"{err}")
+    if tmp.exists():
+        with open(f"{tmp}", "r") as f:
+            result = {"true": True, "false": False}.get(f.readline(), None)
+            if result is None:
+                raise RuntimeError(
+                    f"The query did not return a boolean. Call: {query_call}"
+                )
+    else:
+
+        raise RuntimeError(f"No file was produced by call: {query_call_full}")
+
+    assert result, f"Question {query} was not satisfied. Call: {query_call_full}"
 
 
 def check_tbox(conclusion, premise, tmp):
