@@ -92,6 +92,10 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000007
 <http://openenergy-platform.org/ontology/chio/CHIO_00000007> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                   owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000009>
+                                                                                 ] ;
                                                              rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement> ;
                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Entity that bears a Transportation Infrastructure Role." ;
                                                              rdfs:label "transportation infrastructure element"@de .
@@ -99,6 +103,10 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000008
 <http://openenergy-platform.org/ontology/chio/CHIO_00000008> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                   owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000010>
+                                                                                 ] ;
                                                              rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement> ;
                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Entity that bears a public Infrastructure Role." ;
                                                              rdfs:label "public infrastructure element"@de .
@@ -120,7 +128,14 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000011
 <http://openenergy-platform.org/ontology/chio/CHIO_00000011> rdf:type owl:Class ;
-                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000004> ;
+                                                             rdfs:subClassOf [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000004>
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                                      owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000010>
+                                                                                                    ]
+                                                                                                  ) ;
+                                                                               rdf:type owl:Class
+                                                                             ] ;
                                                              rdfs:label "public charging station"@de .
 
 
