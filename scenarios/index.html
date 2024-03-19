@@ -1,0 +1,1019 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../gettingstarted/">
+      
+      
+        <link rel="next" href="../about/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Scenarios - CHIO developer documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#motivating-scenarios" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CHIO developer documentation" class="md-header__button md-logo" aria-label="CHIO developer documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CHIO developer documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scenarios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://gitlab.dlr.de/ensym/lod/charging-ontology" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="m503.5 204.6-.7-1.8-69.7-181.78c-1.4-3.57-3.9-6.59-7.2-8.64-2.4-1.55-5.1-2.515-8-2.81-2.9-.295-5.7.083-8.4 1.11-2.7 1.02-5.1 2.66-7.1 4.78-1.9 2.12-3.3 4.67-4.1 7.44l-47 144H160.8l-47.1-144c-.8-2.77-2.2-5.31-4.1-7.43-2-2.12-4.4-3.75-7.1-4.77a18.1 18.1 0 0 0-8.38-1.113 18.4 18.4 0 0 0-8.04 2.793 18.09 18.09 0 0 0-7.16 8.64L9.267 202.8l-.724 1.8a129.57 129.57 0 0 0-3.52 82c7.747 26.9 24.047 50.7 46.447 67.6l.27.2.59.4 105.97 79.5 52.6 39.7 32 24.2c3.7 1.9 8.3 4.3 13 4.3 4.7 0 9.3-2.4 13-4.3l32-24.2 52.6-39.7 106.7-79.9.3-.3c22.4-16.9 38.7-40.6 45.6-67.5 8.6-27 7.4-55.8-2.6-82z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Gitlab
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CHIO developer documentation" class="md-nav__button md-logo" aria-label="CHIO developer documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    CHIO developer documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://gitlab.dlr.de/ensym/lod/charging-ontology" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="m503.5 204.6-.7-1.8-69.7-181.78c-1.4-3.57-3.9-6.59-7.2-8.64-2.4-1.55-5.1-2.515-8-2.81-2.9-.295-5.7.083-8.4 1.11-2.7 1.02-5.1 2.66-7.1 4.78-1.9 2.12-3.3 4.67-4.1 7.44l-47 144H160.8l-47.1-144c-.8-2.77-2.2-5.31-4.1-7.43-2-2.12-4.4-3.75-7.1-4.77a18.1 18.1 0 0 0-8.38-1.113 18.4 18.4 0 0 0-8.04 2.793 18.09 18.09 0 0 0-7.16 8.64L9.267 202.8l-.724 1.8a129.57 129.57 0 0 0-3.52 82c7.747 26.9 24.047 50.7 46.447 67.6l.27.2.59.4 105.97 79.5 52.6 39.7 32 24.2c3.7 1.9 8.3 4.3 13 4.3 4.7 0 9.3-2.4 13-4.3l32-24.2 52.6-39.7 106.7-79.9.3-.3c22.4-16.9 38.7-40.6 45.6-67.5 8.6-27 7.4-55.8-2.6-82z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Gitlab
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gettingstarted/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Scenarios
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Scenarios
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-1-the-charging-infrastructure-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 1 - The charging infrastructure register
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario 1 - The charging infrastructure register">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competency-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competency questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-2-icity-project-smart-parking-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 2 - iCity Project Smart Parking Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario 2 - iCity Project Smart Parking Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competency-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competency questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-3-drive2x-working-package-5-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 3 - Drive2X working package 5 scenario
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario 3 - Drive2X working package 5 scenario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competency-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competency questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-x-my-awesome-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario X - My awesome scenario
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario X - My awesome scenario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competency-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competency questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-1-the-charging-infrastructure-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 1 - The charging infrastructure register
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario 1 - The charging infrastructure register">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competency-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competency questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-2-icity-project-smart-parking-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 2 - iCity Project Smart Parking Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario 2 - iCity Project Smart Parking Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competency-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competency questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-3-drive2x-working-package-5-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 3 - Drive2X working package 5 scenario
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario 3 - Drive2X working package 5 scenario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competency-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competency questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-x-my-awesome-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario X - My awesome scenario
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario X - My awesome scenario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competency-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competency questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="motivating-scenarios">Motivating scenarios</h1>
+<p>To aid the ontology development and setting the boundaries on what belongs what
+doesn't we rely in motivating scenarios which are textual descriptions of
+situations in which the ontology might be used. These descriptions are then
+complemented with <a href="https://doi.org/10.1016/j.websem.2019.100534">competency
+questions (CQs)</a> derived from them.
+These scenarios are not exhaustive, feel free to propose both real and
+theoretical scenarios.</p>
+<h2 id="scenario-1-the-charging-infrastructure-register">Scenario 1 - The charging infrastructure register</h2>
+<h3 id="summary">Summary</h3>
+<p>This scenario is heavily inspired by the <a href="https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/E-Mobilitaet/start.html">German charging infrastructure
+register</a>,
+and it probably captures most of the requirements of this ontology. The
+scenario covers terminology and axioms necessary to perform descriptions in
+regard to where infrastructure is found, which power they are able to deliver
+and what kind of connector they have.</p>
+<h3 id="description">Description</h3>
+<p>A government agency is responsible for the enforcement and monitoring of the
+implementation of a law that intends to ensure the availability of <strong>public</strong>
+battery electric vehicles charging infrastructure. As part of their success
+reporting channels, they offer a data register where stakeholders can consult
+the availability and development of said infrastructure. The data contained in
+these reports can be used to evaluate spatial and temporal distribution,
+technical properties of the infrastructure, numbers per operator, charging
+capacities among other things. Stakeholders can use this information in their
+decision-making process to contribute to the realization of the law associated
+with the register. Citizens, government and independent parties can consult the
+data to ensure that the law is working as intended and can be used as part of a
+feedback loop for future improvements. Electric vehicle users can consult the
+register in their travel decisions, but this is not the main application as
+there are other tools for such queries, most of which are available in the
+vehicles themselves.</p>
+<p>The information detail expected in such dataset has different dimensions. First
+and probably the most relevant is geospatial data, such as addresses and
+coordinates; land use polygons could be of interest but not for all
+applications. Secondly are details about the operation, such as
+commissioning/decommissioning dates and operators. Lastly are technical details
+interesting for other parties, for example the kind of connectors that are
+compatible with a station, since not all autos have the same kind of
+connection, current type and charging capacity are interesting for both grid
+operators and road infrastructure managers. Detailed description of the
+infrastructure capacity such as number of columns and parking places per
+installation can be also of interest.</p>
+<p>Since this registry is intended to provide visibility of the infrastructure.
+Information of the daily operation of the infrastructure is not so relevant,
+specially because such data can very rapidly enter the realm of big data. But
+such conditions are explored in other scenarios.</p>
+<h3 id="competency-questions">Competency questions</h3>
+<details class="question" open="open">
+<summary>Competency question 1.0</summary>
+<p>A public charging station is part of some transportation infrastructure.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.1</summary>
+<p>A charging station has charging columns as parts that can change during its lifetime.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.2</summary>
+<p>A charging column has charging points as parts that do not change during its lifetime.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.3</summary>
+<p>A charging point is compatible with some plugs.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.4</summary>
+<p>A charging station has at least one operator at any given time.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.5</summary>
+<p>A charging station has comissioning and decomissioning dates which delimit its lifetime.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.6</summary>
+<p>A charging station has a maximum amount of power it can pull from an electric grid.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.7</summary>
+<p>A charging point has a maximum amount of power it can supply to a battery.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.8</summary>
+<p>A charging point can supply one car at a time.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.9</summary>
+<p>A charging point can operate with some current system.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.10</summary>
+<p>A charging station is located in some place</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.11</summary>
+<p>A place can be associated with some address</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.12</summary>
+<p>A place can be associated with some geograpical feature.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.13</summary>
+<p>A charging station has parking places as parts.</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 1.14</summary>
+<p>A charging station has a maximum vehicle capacity.</p>
+</details>
+<h2 id="scenario-2-icity-project-smart-parking-applications">Scenario 2 - iCity Project Smart Parking Applications</h2>
+<h3 id="summary_1">Summary</h3>
+<p>This scenario is an extract of the <a href="https://enterpriseintegrationlab.github.io/icity/iCityOntologyReport_1.2.pdf">iCity
+project</a>
+by Katsumi and Fox. Particularly the section smart parking applications. This
+subset of questions is relevant to us because charging infrastructure is
+intimately connected with parking infrastructure. These queries rely a lot in
+geographical queries and may overlap with scenario 1, but they have a
+perspective more in line with daily operation of the stations. For more details
+on the ontology <a href="https://github.com/EnterpriseIntegrationLab/icity">visit its
+repository</a>.</p>
+<h3 id="description_1">Description</h3>
+<p>The iCity Transportation Planning Suite of Ontologies was conceived to aid
+city-wide Transportation research in the City of Toronto. It has a very wide
+scope across the field of transportation planning. Their competency questions
+related to parking are a strong starting point to implement its associated
+commitments in BFO. Since the structure of the foundational ontology used in
+that particular project is significantly different, we are not taking over 100%
+of the SPARQL implementation of the questions. Some parking questions like "Is
+it accessible by disabled people, and if so how many parking spots are for
+disabled vehicles?" were excluded because they are beyond the scope of this
+ontology and not because they are irrelevant.</p>
+<h3 id="competency-questions_1">Competency questions</h3>
+<details class="question" open="open">
+<summary>Competency question 2.0</summary>
+<p>What is the address of the parking lot P?</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 2.1</summary>
+<p>What is the (vehicle) capacity of parking lot P?</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 2.2</summary>
+<p>What are the geographic coordinates for parking lot P?</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 2.3</summary>
+<p>Is there a height limit for vehicles for a parking lot P?</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 2.4</summary>
+<p>What building is a particular parking lot located in?</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 2.5</summary>
+<p>Is a particular parking lot open to the public at a given time?</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 2.6</summary>
+<p>How many parking spots are designated for electric vehicles in a particular parking lot?</p>
+</details>
+<details class="question" open="open">
+<summary>Competency question 2.7</summary>
+<p>What types of electric vehicle chargers are available in a particular parking lot?</p>
+</details>
+<h2 id="scenario-3-drive2x-working-package-5-scenario">Scenario 3 - Drive2X working package 5 scenario</h2>
+<h3 id="summary_2">Summary</h3>
+<p>This scenarios is based on work in the EU project Drive2X, specifically working
+package 5. In this context, a forecasting method is being developed providing 
+aggregated electric load of all charging stations in a defined spatial scope
+(e.g. a quarter, a couple of streets, a sub-part of a distribution grid system).
+Additionally, the temporal flexibility of this load is given.</p>
+<h3 id="description_2">Description</h3>
+<p>The forecast will be provided for two temporal scopes: For the next day in high
+temporal resolution and for the next month in lower resolution. 
+The tool will use openly available static data and dynamic data via APIs where
+possible and sensible. However, it will also build on historically known data of
+charging station electric loads to provide default values where insufficient
+live-data is available.</p>
+<p>The application will offer a front-end in form of a graphical user interface in
+which the users will provide spatial constraints (polygons, points, routes) and
+may select charging strategies (as soon as possible, as late as possible, price
+oriented etc.). The produced data will consist of indicators describing the
+forecast load for the spatial scope, scenarios and associated parameters.</p>
+<p>Indicator outputs as well as intermediary data is provided to the user in
+graphical and tabular form. A measure for uncertainty of the respective output
+will be provided to the user as well. </p>
+<h3 id="competency-questions_2">Competency questions</h3>
+<p>To be completed ...</p>
+<h2 id="scenario-x-my-awesome-scenario">Scenario X - My awesome scenario</h2>
+<h3 id="summary_3">Summary</h3>
+<p>Some short description of the scenario, where does it come from and what use
+cases it intends to cover.</p>
+<h3 id="description_3">Description</h3>
+<p>The main text of the scenario, be as specific as possible, this section can be
+a citation from some paper or other kind of content.</p>
+<h3 id="competency-questions_3">Competency questions</h3>
+<p>List of competency questions in plain text, they don't need to be strictly
+questions, they can also be affirmations. For example:</p>
+<blockquote>
+<ul>
+<li>Is a dog considered a passenger?</li>
+<li>A shopping trip is a leisure trip</li>
+</ul>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 German Aerospace Center (DLR)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://gitlab.dlr.de/ensym/lod/charging-ontology" target="_blank" rel="noopener" title="gitlab.dlr.de" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="m503.5 204.6-.7-1.8-69.7-181.78c-1.4-3.57-3.9-6.59-7.2-8.64-2.4-1.55-5.1-2.515-8-2.81-2.9-.295-5.7.083-8.4 1.11-2.7 1.02-5.1 2.66-7.1 4.78-1.9 2.12-3.3 4.67-4.1 7.44l-47 144H160.8l-47.1-144c-.8-2.77-2.2-5.31-4.1-7.43-2-2.12-4.4-3.75-7.1-4.77a18.1 18.1 0 0 0-8.38-1.113 18.4 18.4 0 0 0-8.04 2.793 18.09 18.09 0 0 0-7.16 8.64L9.267 202.8l-.724 1.8a129.57 129.57 0 0 0-3.52 82c7.747 26.9 24.047 50.7 46.447 67.6l.27.2.59.4 105.97 79.5 52.6 39.7 32 24.2c3.7 1.9 8.3 4.3 13 4.3 4.7 0 9.3-2.4 13-4.3l32-24.2 52.6-39.7 106.7-79.9.3-.3c22.4-16.9 38.7-40.6 45.6-67.5 8.6-27 7.4-55.8-2.6-82z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+    
+  </body>
+</html>
