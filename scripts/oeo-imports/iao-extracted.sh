@@ -18,4 +18,4 @@ oeo_new_version_iri="${ontology_name}/dev/imports"
 echo "downloading ${oeo_base}/imports/iao-extracted.owl"
 test -f ${tmpdir}/iao-extracted.owl && echo "${tmpdir}/iao-extracted.owl already exists." || curl -L -o ${tmpdir}/iao-extracted.owl ${oeo_base}/imports/iao-extracted.owl
 
-java -jar robot.jar remove --input ${tmpdir}/iao-extracted.owl  --term http://purl.obolibrary.org/obo/IAO_0000013 --select "self" --exclude-term http://purl.obolibrary.org/obo/BFO_0000031 annotate --annotate http://purl.org/dc/terms/license http://creativecommons.org/licenses/by/4.0/ --output ${imports}/iao-extracted.ttl
+java -jar robot.jar remove --input ${tmpdir}/iao-extracted.owl  --term http://purl.obolibrary.org/obo/IAO_0000013 --select "self" --exclude-term http://purl.obolibrary.org/obo/BFO_0000031 annotate --annotation http://purl.org/dc/terms/license http://creativecommons.org/licenses/by/4.0/ --output ${imports}/iao-extracted.ttl
