@@ -22,4 +22,4 @@ it is necessary to install the following tools:
   instructions in their respective webpages.
 
 ## Contact
-We invite to open issues when you find issues or have suggestions. For any inquiry that does not concern the ontology or the content of this repository contact: eugenio.arellanoruiz@dlr.de
+We invite to use the [issue board](https://github.com/dlr-ve-esy/charging-ontology/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) when you find issues or have suggestions. For any inquiry that does not concern the ontology or the content of this repository contact: eugenio.arellanoruiz@dlr.de
