@@ -20,3 +20,6 @@ it is necessary to install the following tools:
   [pygraphviz](https://pygraphviz.github.io/documentation/stable/install.html#windows-install)
   which are relatively hard to install in windows. We recommend following the
   instructions in their respective webpages.
+
+## Contact
+We invite to open issues when you find issues or have suggestions. For any inquiry that does not concern the ontology or the content of this repository contact: eugenio.arellanoruiz@dlr.de
