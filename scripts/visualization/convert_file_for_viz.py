@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2024 German Aerospace Center (DLR)
+# SPDX-License-Identifier: BSD-3-Clause
 # %%
 import subprocess as sp
 from pathlib import Path
@@ -15,6 +17,8 @@ elif "VERSION" in [p.name for p in CWD.iterdir()]:
 ROBOT_PATH = BASEDIR.joinpath("robot.jar")
 TMP = BASEDIR.joinpath("tmp")
 TMP.mkdir(exist_ok=True)
+
+
 # %%
 def robot_convert(
     input: str,

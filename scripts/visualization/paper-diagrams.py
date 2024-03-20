@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2024 German Aerospace Center (DLR)
+# SPDX-License-Identifier: BSD-3-Clause
 # %%
 import pygraphviz as pgv
 import pyhornedowl as pho
@@ -289,7 +291,9 @@ VG.write(TMP.joinpath("CCOVehicles.dot").as_posix())
 VG.draw(SVG.joinpath("CCOVehicles.svg").as_posix(), prog="dot")
 VG.draw(PDF.joinpath("CCOVehicles.pdf").as_posix(), prog="dot")
 # %%
-ev_vehicle_tax_oeo = pho.open_ontology(TMP.joinpath("oeo_vehicle_ev_tax.owx").as_posix())
+ev_vehicle_tax_oeo = pho.open_ontology(
+    TMP.joinpath("oeo_vehicle_ev_tax.owx").as_posix()
+)
 OVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
@@ -315,7 +319,9 @@ OVG.write(TMP.joinpath("OEOVehicles.dot").as_posix())
 OVG.draw(SVG.joinpath("OEOVehicles.svg").as_posix(), prog="dot")
 OVG.draw(PDF.joinpath("OEOVehicles.pdf").as_posix(), prog="dot")
 # %%
-land_vehicle_tax_oeo = pho.open_ontology(TMP.joinpath("oeo_vehicle_lv_tax.owx").as_posix())
+land_vehicle_tax_oeo = pho.open_ontology(
+    TMP.joinpath("oeo_vehicle_lv_tax.owx").as_posix()
+)
 OLVG = pgv.AGraph(
     strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
@@ -364,18 +370,14 @@ add_taxonomy(
     chio_parking,
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "0.8"},
 )
-for aa in chio_parking.get_axioms_for_iri(
-    "http://purl.obolibrary.org/obo/BFO_0000176"
-):
+for aa in chio_parking.get_axioms_for_iri("http://purl.obolibrary.org/obo/BFO_0000176"):
     if isinstance(aa.axiom, SubClassOf):
         render_subclass_restriction_axiom(
             CG, aa.axiom, chio_parking, edge_attrs=edge_attrs
         )
     if isinstance(aa.axiom, EquivalentClasses):
         render_equivalent_class_axiom(CG, aa.axiom, chio_parking, fontsize=10)
-for aa in chio_parking.get_axioms_for_iri(
-    "http://purl.obolibrary.org/obo/BFO_0000178"
-):
+for aa in chio_parking.get_axioms_for_iri("http://purl.obolibrary.org/obo/BFO_0000178"):
     if isinstance(aa.axiom, SubClassOf):
         render_subclass_restriction_axiom(
             CG, aa.axiom, chio_parking, edge_attrs=edge_attrs

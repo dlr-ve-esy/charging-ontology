@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# SPDX-FileCopyrightText: Copyright (c) 2024 German Aerospace Center (DLR)
+# SPDX-License-Identifier: BSD-3-Clause
 tmpdir=tmp
 mkdir -p ${tmpdir}
 
