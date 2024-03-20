@@ -89,8 +89,8 @@ profiles: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-el.ttl
 clean:
 	- $(RM) -r $(VERSIONDIR)
 	- $(RM) -r ${TMP}
-# clean-imports:
-# 	- $(RM) -r $(IMPORTS)/*
+clean-imports:
+	- $(RM) -r $(IMPORTS)/*
 
 directories: ${VERSIONDIR}/imports ${VERSIONDIR}/modules ${TMP} $(VERSIONDIR)/owl
 
