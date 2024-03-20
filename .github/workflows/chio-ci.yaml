@@ -4,7 +4,7 @@ on:
     paths:
       - src/**
       - scripts/**
-      - .github/workflows/chio-ci.yml
+      - .github/workflows/chio-ci.yaml
 jobs:
   build:
     runs-on: ubuntu-latest
