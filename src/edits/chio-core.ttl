@@ -12,7 +12,8 @@
                                                            owl:imports <http://openenergy-platform.org/ontology/chio/dev/imports/cco-extracted.ttl> ,
                                                                        <http://openenergy-platform.org/ontology/chio/dev/imports/oeo-extracted.ttl> ,
                                                                        <http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/iao-extracted.owl> ,
-                                                                       <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl> .
+                                                                       <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl> ;
+                                                           <http://purl.org/dc/elements/1.1/license> "https://creativecommons.org/licenses/by/4.0/" .
 
 #################################################################
 #    Object Properties
@@ -169,6 +170,10 @@
 
 ###  http://purl.obolibrary.org/obo/IAO_0000030
 <http://purl.obolibrary.org/obo/IAO_0000030> rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000031> .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/ElectricalPowerSource
+<http://www.ontologyrepository.com/CommonCoreOntologies/ElectricalPowerSource> rdf:type owl:Class .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure
