@@ -38,7 +38,7 @@ java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/oeo
 
 java -jar robot.jar merge --input ${tmpdir}/oeo_grid.ttl --input ${tmpdir}/oeo_vehicle.ttl annotate --annotation rdfs:comment "This is an extract of the Open Energy Ontology: https://github.com/OpenEnergyPlatform/ontology " --output ${imports}/oeo-extracted.ttl
 
-java -jar robot.jar annotate --input ${imports}/oeo-extracted.ttl --ontology-iri ${iri_base}${oeo_new_iri}/oeo-extracted.ttl --version-iri ${iri_base}${oeo_new_version_iri}/oeo-extracted.ttl --output ${imports}/oeo-extracted.ttl
+java -jar robot.jar annotate --input ${imports}/oeo-extracted.ttl --ontology-iri ${iri_base}${oeo_new_iri}/oeo-extracted.ttl --version-iri ${iri_base}${oeo_new_version_iri}/oeo-extracted.ttl --annotation http://purl.org/dc/terms/license http://creativecommons.org/publicdomain/zero/1.0/ --output ${imports}/oeo-extracted.ttl
 
 # Not necessary for imports but for the paper
 

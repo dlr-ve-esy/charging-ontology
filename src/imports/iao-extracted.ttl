@@ -10,6 +10,7 @@
 
 <http://openenergy-platform.org/ontology/oeo/imports/iao-extracted.owl> rdf:type owl:Ontology ;
                                                                          owl:versionIRI <http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/iao-extracted.owl> ;
+                                                                         <http://purl.org/dc/terms/license> "http://creativecommons.org/licenses/by/4.0/" ;
                                                                          rdfs:comment "This file contains externally imported content from the Information Artifact Ontology (IAO) for import into the Open Energy Ontology (OEO). It is automatically extracted using ROBOT from the list of selected terms (iao-extract-w-hierarchy.txt, iao-extract-n-hierarchy.txt) located in the OEO-tools repository." .
 
 #################################################################
@@ -980,6 +981,10 @@ obo:RO_0001900 rdf:type owl:AnnotationProperty ;
    owl:annotatedTarget "temporal interpretation"@en ;
    prov:wasDerivedFrom <http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/iao-extracted.owl>
  ] .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#comment

@@ -197,6 +197,7 @@ def extract_subset(input: str, output: str, terms: str):
         raise IOError(f"Something went wrong with call: {debug_string}")
     return code
 
+
 def map_ontologies(
     input: str,
     mappings: str,
@@ -224,6 +225,8 @@ def map_ontologies(
         print(debug_string)
         raise IOError(f"Something went wrong with call: {debug_string}")
     return code
+
+
 # %% [markdown]
 # ## Extract classes from the event ontology
 # %%
@@ -361,16 +364,8 @@ if not ieo_ops.exists():
     terms = load_terms(FILEPATH.joinpath("ieo_ops.txt"))
     mappings = FILEPATH.joinpath("ieo_ops_mappings.csv")
     ieo_ops_base = TMP.joinpath("ieo_ops_base.ttl")
-    extract_subset(
-        input=ieo_ontology,
-        output=ieo_ops_base,
-        terms=terms
-    )
-    map_ontologies(
-        input=ieo_ops_base,
-        mappings=mappings,
-        output=ieo_ops
-    )
+    extract_subset(input=ieo_ontology, output=ieo_ops_base, terms=terms)
+    map_ontologies(input=ieo_ops_base, mappings=mappings, output=ieo_ops)
 # %%
 input_string = ""
 for element in [
@@ -384,7 +379,7 @@ for element in [
     "eo_process_profiles.ttl",
     "eo_change.ttl",
     "ao_infrastructure.ttl",
-    "ieo_ops.ttl"
+    "ieo_ops.ttl",
 ]:
     input_string += f"--input {TMP.joinpath(element).resolve().as_posix()} "
 # %%
@@ -407,10 +402,12 @@ if not TARGET.exists():
         shell=True,
     )
     # Annotate with new iri
+    # Annotate with BSD-3-Clause since it is the original license of the CCO
     annotate_call = "java -jar {jar} \
     annotate --input {input} \
     --ontology-iri {ontology_iri} \
     --version-iri {version_iri} \
+    --annotation http://purl.org/dc/terms/license https://opensource.org/licenses/BSD-3-Clause \
     --output {output}"
     sp.call(
         annotate_call.format(

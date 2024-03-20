@@ -28,6 +28,7 @@ VERSION_IRI = "{}/chio/dev/imports/{}.ttl"
 
 TARGET = BASEDIR.joinpath("src/imports/oeo-extracted.ttl")
 
+
 # %%
 def load_terms(term_file):
     with open(term_file, "r") as terms:
@@ -193,11 +194,12 @@ if not TARGET.exists():
         ),
         shell=True,
     )
-    # Annotate with new iri
+    # Annotate with new iri, OEO has a public domain license.
     annotate_call = "java -jar {jar} \
     annotate --input {input} \
     --ontology-iri {ontology_iri} \
     --version-iri {version_iri} \
+    --annotation http://purl.org/dc/terms/license http://creativecommons.org/publicdomain/zero/1.0/ \
     --output {output}"
     sp.call(
         annotate_call.format(
@@ -224,6 +226,7 @@ if not iao_temp.exists():
             local.write(response.content)
 else:
     print(f"The file {iao_temp} already exists, you are good to go.")
+
 # %%
 IAO_DROPPED = BASEDIR.joinpath("scripts/oeo-imports/iao-dropped.txt")
 if iao_temp.exists():
@@ -232,6 +235,7 @@ remove --input {input}  \
 --term-file {term_file} \
 --select "self" \
 --exclude-term http://purl.obolibrary.org/obo/BFO_0000031 \
+annotate --annotation http://purl.org/dc/terms/license http://creativecommons.org/licenses/by/4.0/ \
 --output {output}'
 
     sp.call(
