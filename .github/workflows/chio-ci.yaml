@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - src/**
+      - scripts/**
+      - .github/workflows/chio-ci.yml
 jobs:
   build:
     runs-on: ubuntu-latest
