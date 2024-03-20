@@ -78,7 +78,7 @@ all: base merge profiles closure
 
 imports: directories ${TMP}/catalog.xml $(IMPORTS)/bfo-core.ttl $(IMPORTS)/cco-extracted.ttl $(IMPORTS)/oeo-extracted.ttl $(IMPORTS)/iao-extracted.ttl
 
-base: | directories imports $(VERSIONDIR)/catalog-v001.xml robot.jar  $(TTL_COPY) $(OWL_COPY) $(OWLVERSION) $(TTL_TRANSLATE)
+base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar  $(TTL_COPY) $(OWL_COPY) $(OWLVERSION) $(TTL_TRANSLATE)
 
 merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl 
 
@@ -89,8 +89,8 @@ profiles: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-el.ttl
 clean:
 	- $(RM) -r $(VERSIONDIR)
 	- $(RM) -r ${TMP}
-clean-imports:
-	- $(RM) -r $(IMPORTS)/*
+# clean-imports:
+# 	- $(RM) -r $(IMPORTS)/*
 
 directories: ${VERSIONDIR}/imports ${VERSIONDIR}/modules ${TMP} $(VERSIONDIR)/owl
 
