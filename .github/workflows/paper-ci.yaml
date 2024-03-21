@@ -1,8 +1,9 @@
-name: Build document
+name: Compile Paper
 on:
     push:
       paths:
         - paper/**
+        - .github/workflows/paperci.yaml
 jobs:
   build:
     runs-on: ubuntu-latest
