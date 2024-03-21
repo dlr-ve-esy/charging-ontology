@@ -21,3 +21,7 @@ To rebuild the imports call:
 make clean-imports
 make imports
 ```
+
+## Visualizations
+
+Visualization scripts require that you run the rest of the scripts at least once (these download files in the temporary directory).

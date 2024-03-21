@@ -68,7 +68,7 @@ jobs:
           exit 1
       - name: Upload Ontology
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@master
         with:
           name: build-files
           path: |
