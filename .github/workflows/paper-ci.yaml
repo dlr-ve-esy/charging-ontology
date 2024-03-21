@@ -3,7 +3,7 @@ on:
     push:
       paths:
         - paper/**
-        - .github/workflows/paperci.yaml
+        - .github/workflows/paper-ci.yaml
 jobs:
   build:
     runs-on: ubuntu-latest
