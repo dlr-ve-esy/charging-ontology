@@ -66,14 +66,6 @@ jobs:
           fi
           echo "Ontology is inconsistent: $OUT"
           exit 1
-      - name: Upload Ontology
-        if: always()
-        uses: actions/upload-artifact@master
-        with:
-          name: build-files
-          path: |
-            build/**/*
-            !build/**/*.jar
       - name: competency
         run: |
           POETRY_ENV=$(poetry env info -p)
