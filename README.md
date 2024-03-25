@@ -13,7 +13,7 @@ it is necessary to install the following tools:
 - [ROBOT is an OBO Tool](https://github.com/ontodev/robot): We recommend you
   download it with the provided script.
 - [Desktop Protégé](https://protege.stanford.edu/)
-- Python and poetry to use the scripts.
+- Python and poetry to use the scripts in windows or a Linux/MacOS system to use the MakeFile.
 - Visualizations require [graphviz](https://gitlab.com/graphviz/graphviz/) and
   [pygraphviz](https://pygraphviz.github.io/documentation/stable/install.html#windows-install)
   which are relatively hard to install in windows. We recommend following the
