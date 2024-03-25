@@ -1,10 +1,20 @@
 name: CHIO CI
 on:
   push:
+    branches:
+      - main
+      - dev
     paths:
       - src/**
       - scripts/**
       - .github/workflows/chio-ci.yaml
+  pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - src/**
+      - scripts/**
 jobs:
   build:
     runs-on: ubuntu-latest
