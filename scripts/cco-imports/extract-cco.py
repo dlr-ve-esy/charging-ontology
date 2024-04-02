@@ -280,7 +280,7 @@ if not eo_process_profiles.exists():
 # Vehicle IRI from OEO and electric/ICE definitions from the OEO
 # %%
 artifact_ontology = download_ontology_if_missing("ArtifactOntology")
-ao_artifacts = Path("tmp").joinpath("ao_artifacts.ttl")
+ao_artifacts = TMP.joinpath("ao_artifacts.ttl")
 if not ao_artifacts.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000040"
     lower_terms = load_terms(FILEPATH.joinpath("ao_artifacts.txt"))

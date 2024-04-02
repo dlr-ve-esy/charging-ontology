@@ -347,6 +347,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                                        rdfs:label "Electric Motor"@en .
 
 
+###  http://www.ontologyrepository.com/CommonCoreOntologies/ElectricalPowerSource
+<http://www.ontologyrepository.com/CommonCoreOntologies/ElectricalPowerSource> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/PowerSource> ;
+                                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Power Source that is designed to generate, control, and transfer power in the form of electrical energy."@en ;
+                                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
+                                                                               rdfs:label "Electrical Power Source"@en .
+
+
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/Engine
 <http://www.ontologyrepository.com/CommonCoreOntologies/Engine> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> ;
@@ -528,6 +536,15 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Process Profile that is characterized by the rate of Work, or Energy consumed, done in a given time period."@en ;
                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
                                                                rdfs:label "Power"@en .
+
+
+###  http://www.ontologyrepository.com/CommonCoreOntologies/PowerSource
+<http://www.ontologyrepository.com/CommonCoreOntologies/PowerSource> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> ;
+                                                                     <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Artifact that is designed to supply power to some other Artifact."@en ;
+                                                                     <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Power_source&oldid=1032888635"^^xsd:anyURI ;
+                                                                     <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
+                                                                     rdfs:label "Power Source"@en .
 
 
 ###  http://www.ontologyrepository.com/CommonCoreOntologies/Province
