@@ -140,6 +140,39 @@
                                                              rdfs:label "public charging station"@de .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000012
+<http://openenergy-platform.org/ontology/chio/CHIO_00000012> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=151-12-19" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "Fiat object part of some device providing connection and disconnection to a suitable mating component" ;
+                                                             rdfs:label "connector"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000013
+<http://openenergy-platform.org/ontology/chio/CHIO_00000013> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=442-03-02" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connector attached to the surface of a device designed to interact with another connector with compatible pins." ;
+                                                             rdfs:label "plug"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000014
+<http://openenergy-platform.org/ontology/chio/CHIO_00000014> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000118> "socket-outlet" ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=442-03-01" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connector attached to a cable designed to interact with another connector with a compatible socket." ;
+                                                             rdfs:label "outlet"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000015
+<http://openenergy-platform.org/ontology/chio/CHIO_00000015> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000019> ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A pattern of  connectors which is the physical manifestation of some specification that dictates its mating suitability." ;
+                                                             rdfs:label "connection pattern"@de ;
+                                                             <http://www.w3.org/2004/02/skos/core#example> "A socket built following the CEE 7 standard." .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> .
 
