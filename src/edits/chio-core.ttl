@@ -129,7 +129,8 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000011
 <http://openenergy-platform.org/ontology/chio/CHIO_00000011> rdf:type owl:Class ;
-                                                             rdfs:subClassOf [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000004>
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000004> ,
+                                                                             [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000004>
                                                                                                     [ rdf:type owl:Restriction ;
                                                                                                       owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
                                                                                                       owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000010>
