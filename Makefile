@@ -167,7 +167,7 @@ $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full
 	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml --input $< --input $@ annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-el.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
-	$(ROBOT) remove --input $< --catalog $(VERSIONDIR)/catalog-v001.xml --select "anonymous" remove --axioms "InverseObjectProperties FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
+	$(ROBOT) remove --input $< --catalog $(VERSIONDIR)/catalog-v001.xml --axioms "InverseObjectProperties FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-ql.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
-	$(ROBOT) remove --input $< --catalog $(VERSIONDIR)/catalog-v001.xml --select "anonymous" remove --axioms "TransitiveObjectProperty FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
+	$(ROBOT) reduce --reasoner hermit --input $< --catalog $(VERSIONDIR)/catalog-v001.xml relax remove --axioms "TransitiveObjectProperty FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@

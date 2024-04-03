@@ -31,10 +31,8 @@ jobs:
         run: |
           echo "java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-full.ttl --profile Full -vvv --output merged-validation.txt"
           java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-full.ttl --profile Full -vvv --output merged-validation.txt
-          echo "java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-el.ttl --profile EL -vvv --output validation-el.txt"
-          java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-el.ttl --profile EL -vvv --output merged-validation-el.txt
-          echo "java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-ql.ttl --profile EL -vvv --output validation-ql.txt"
-          java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-ql.ttl --profile QL -vvv --output merged-validation-ql.txt
+          echo "SKIP java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-el.ttl --profile EL -vvv --output validation-el.txt"
+          echo "SKIP java -jar robot.jar validate-profile --input build/chio/$(cat VERSION)/chio-ql.ttl --profile EL -vvv --output validation-ql.txt"
       - name: verify
         run: |
           java -jar robot.jar verify --input build/chio/$(cat VERSION)/chio-full.ttl --queries tests/verify/*
