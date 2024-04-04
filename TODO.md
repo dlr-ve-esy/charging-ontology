@@ -1,5 +1,9 @@
 # TODO and development roadmap
 
+## 04.04.2024
+
+A lot of development has happened, since I am using GitHub to document ideas and implementations this TODO is going slowly obsolete. The idea is to replace it with a CHANGELOG during the initial release.
+
 ## 18.03.2024
 
 - [ ] Important question: is every transportation facility part of some transportation infrastructure?
