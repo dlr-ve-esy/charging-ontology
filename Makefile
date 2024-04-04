@@ -85,13 +85,15 @@ endef
 
 .PHONY: all clean base merge directories
 
-all: base merge profiles closure
+all: base merge profiles closure owx
 
 imports: directories ${TMP}/catalog.xml $(IMPORTS)/bfo-core.ttl $(IMPORTS)/cco-extracted.ttl $(IMPORTS)/oeo-extracted.ttl $(IMPORTS)/iao-extracted.ttl
 
-base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar  $(TTL_COPY) $(OWL_COPY) $(OWLVERSION) $(TTL_TRANSLATE) $(VERSIONDIR)/owl/$(ONTOLOGY_NAME)-full.owx
+base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar  $(TTL_COPY) $(OWL_COPY) $(OWLVERSION) $(TTL_TRANSLATE)
 
 merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl 
+
+owx: | $(VERSIONDIR)/owx/$(ONTOLOGY_NAME)-full.owx
 
 closure: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.ttl
 
@@ -167,7 +169,6 @@ $(VERSIONDIR)/%.ttl: $(ONTOLOGY_SOURCE)/%.ttl
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl : | base
 	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml $(foreach f, $(VERSIONDIR)/$(ONTOLOGY_NAME).ttl $(TTL_COPY) $(OWL_COPY), --input $(f)) annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
-	$(call replace_ttls,$@)
 
 $(VERSIONDIR)/owl/$(ONTOLOGY_NAME)-full.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(call translate_to_ttl,$@,$<)
@@ -183,6 +184,5 @@ $(VERSIONDIR)/$(ONTOLOGY_NAME)-el.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-ql.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(ROBOT) reduce --reasoner hermit --input $< --catalog $(VERSIONDIR)/catalog-v001.xml relax remove --select "anonymous" remove --axioms "TransitiveObjectProperty FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
 
-$(VERSIONDIR)/owl/$(ONTOLOGY_NAME)-full.owx : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
+$(VERSIONDIR)/owx/$(ONTOLOGY_NAME)-full.owx : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(call translate_to_owx,$@,$<)
-	$(call replace_owls,$@)
