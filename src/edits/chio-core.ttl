@@ -190,6 +190,26 @@
                                                              rdfs:label "charging point"@de .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000017
+<http://openenergy-platform.org/ontology/chio/CHIO_00000017> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000033> ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://www.ontologyrepository.com/CommonCoreOntologies/prescribes> ;
+                                                                               owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000015>
+                                                                             ] ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A directive information entity that prescribes the requirements of power connectors." ;
+                                                             rdfs:label "power connection specification"@de ;
+                                                             <http://www.w3.org/2004/02/skos/core#example> "CEE7 AC plugs and sockets Standard" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000018
+<http://openenergy-platform.org/ontology/chio/CHIO_00000018> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000017> ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A power connection specification that prescribes the properties of electric vehicle charging station connections." ;
+                                                             rdfs:label "electric vehicle charging system specification"@de ;
+                                                             <http://www.w3.org/2004/02/skos/core#example> "Combined Charging System (CCS)" .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> .
 
