@@ -254,6 +254,51 @@
 
 
 #################################################################
+#    Individuals
+#################################################################
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000019
+<http://openenergy-platform.org/ontology/chio/CHIO_00000019> rdf:type owl:NamedIndividual ,
+                                                                      <http://openenergy-platform.org/ontology/chio/CHIO_00000018> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000118> "CSS1" ;
+                                                             <http://purl.org/dc/elements/1.1/identifier> "ISO 15118-3" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "Standard for charging electric vehicles that allows DC connection, compatible with type 1 chargers." ;
+                                                             rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/b/b2/J1772_%28CCS1%29.svg" ;
+                                                             rdfs:label "Combo 1 connection specification" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000020
+<http://openenergy-platform.org/ontology/chio/CHIO_00000020> rdf:type owl:NamedIndividual ,
+                                                                      <http://openenergy-platform.org/ontology/chio/CHIO_00000018> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000118> "J plug" ,
+                                                                                                          "SAE J1772" ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.sae.org/standards/content/j1772_201710/" ;
+                                                             rdfs:comment "Specification of AC electric vehicle charging connections proposed in the \"SAE Surface Vehicle Recommended Practice J1772, SAE Electric Vehicle Conductive Charge Coupler\"" ,
+                                                                          "https://upload.wikimedia.org/wikipedia/commons/2/2a/J1772_connector.svg" ;
+                                                             rdfs:label "Type 1 connection specification"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000021
+<http://openenergy-platform.org/ontology/chio/CHIO_00000021> rdf:type owl:NamedIndividual ,
+                                                                      <http://openenergy-platform.org/ontology/chio/CHIO_00000018> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000118> "Mennekes" ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000119> "IEC 62196" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "Specification of AC electric vehicle charging connections originally proposed by the company Mennekes." ;
+                                                             rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/7/7d/IEC_62196-2_Type_2_%28plug%29.svg" ;
+                                                             rdfs:label "Type 2 connection specification"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000022
+<http://openenergy-platform.org/ontology/chio/CHIO_00000022> rdf:type owl:NamedIndividual ,
+                                                                      <http://openenergy-platform.org/ontology/chio/CHIO_00000018> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000118> "CSS2" ;
+                                                             <http://purl.org/dc/elements/1.1/identifier> "ISO 15118-3" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "Standard for charging electric vehicles that allows DC connection, compatible with type 2 chargers." ;
+                                                             rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/2/2c/IEC_62196_Type_2_%28M%2C_DC%2C_CCS_Combo_2%29.svg" ;
+                                                             rdfs:label "Combo 2 connection specification"@de .
+
+
+#################################################################
 #    Annotations
 #################################################################
 
