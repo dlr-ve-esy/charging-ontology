@@ -24,4 +24,5 @@ svg-inkscape
 *.pygtex
 *.pygstyle
 *.thm
+target
 # Remove later when images are ready
