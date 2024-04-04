@@ -49,6 +49,11 @@ define replace_ttls
 	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
 endef
 
+define replace_ttls_to_owx
+	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owx/m" $1
+	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owx/m" $1
+endef
+
 define replace_owls
 	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
 	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
@@ -57,6 +62,12 @@ endef
 define translate_to_owl
 	$(ROBOT) convert --catalog $(VERSIONDIR)/catalog-v001.xml --input $2 --output $1 --format owl
 	$(call replace_ttls,$1)
+	$(call replace_devs,$1)
+endef
+
+define translate_to_owx
+	$(ROBOT) convert --catalog $(VERSIONDIR)/catalog-v001.xml --input $2 --output $1 --format owx
+	$(call replace_ttls_to_owx,$1)
 	$(call replace_devs,$1)
 endef
 
@@ -78,7 +89,7 @@ all: base merge profiles closure
 
 imports: directories ${TMP}/catalog.xml $(IMPORTS)/bfo-core.ttl $(IMPORTS)/cco-extracted.ttl $(IMPORTS)/oeo-extracted.ttl $(IMPORTS)/iao-extracted.ttl
 
-base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar  $(TTL_COPY) $(OWL_COPY) $(OWLVERSION) $(TTL_TRANSLATE)
+base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar  $(TTL_COPY) $(OWL_COPY) $(OWLVERSION) $(TTL_TRANSLATE) $(VERSIONDIR)/owl/$(ONTOLOGY_NAME)-full.owx
 
 merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl 
 
@@ -171,3 +182,7 @@ $(VERSIONDIR)/$(ONTOLOGY_NAME)-el.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-ql.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(ROBOT) reduce --reasoner hermit --input $< --catalog $(VERSIONDIR)/catalog-v001.xml relax remove --select "anonymous" remove --axioms "TransitiveObjectProperty FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
+
+$(VERSIONDIR)/owl/$(ONTOLOGY_NAME)-full.owx : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
+	$(call translate_to_owx,$@,$<)
+	$(call replace_owls,$@)
