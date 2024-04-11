@@ -210,6 +210,61 @@
                                                              <http://www.w3.org/2004/02/skos/core#example> "Combined Charging System (CCS)" .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000024
+<http://openenergy-platform.org/ontology/chio/CHIO_00000024> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000015> ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by> ;
+                                                                               owl:hasValue <http://openenergy-platform.org/ontology/chio/CHIO_00000023>
+                                                                             ] ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connection pattern built according to the IEC 62196-3 Configuration AA" ;
+                                                             rdfs:label "CHAdeMO pattern"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000025
+<http://openenergy-platform.org/ontology/chio/CHIO_00000025> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000015> ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by> ;
+                                                                               owl:hasValue <http://openenergy-platform.org/ontology/chio/CHIO_00000020>
+                                                                             ] ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connection pattern built according to the IEC 62196-2 Type 1" ;
+                                                             rdfs:label "Type 1 pattern"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000026
+<http://openenergy-platform.org/ontology/chio/CHIO_00000026> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000015> ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by> ;
+                                                                               owl:hasValue <http://openenergy-platform.org/ontology/chio/CHIO_00000021>
+                                                                             ] ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connection pattern built according to the IEC 62196-2 Type 2" ;
+                                                             rdfs:label "Type 2 pattern"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000027
+<http://openenergy-platform.org/ontology/chio/CHIO_00000027> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000025> ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by> ;
+                                                                               owl:hasValue <http://openenergy-platform.org/ontology/chio/CHIO_00000019>
+                                                                             ] ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connection pattern built according to the IEC 62196-3 Configuration EE" ;
+                                                             rdfs:label "Combo 1 pattern"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000028
+<http://openenergy-platform.org/ontology/chio/CHIO_00000028> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000026> ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by> ;
+                                                                               owl:hasValue <http://openenergy-platform.org/ontology/chio/CHIO_00000022>
+                                                                             ] ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connection pattern built according to the IEC 62196-3 Configuration FF" ;
+                                                             rdfs:label "Combo 2 pattern"@de .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> .
 
@@ -272,7 +327,7 @@
                                                                       <http://openenergy-platform.org/ontology/chio/CHIO_00000018> ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000118> "J plug" ,
                                                                                                           "SAE J1772" ;
-                                                             <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-2-1 Type 1" ;
+                                                             <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-2 Type 1" ;
                                                              rdfs:comment "Specification of AC electric vehicle charging connections proposed in the \"SAE Surface Vehicle Recommended Practice J1772, SAE Electric Vehicle Conductive Charge Coupler\"" ,
                                                                           "https://upload.wikimedia.org/wikipedia/commons/2/2a/J1772_connector.svg" ;
                                                              rdfs:label "Type 1 connection specification"@de .
@@ -282,7 +337,7 @@
 <http://openenergy-platform.org/ontology/chio/CHIO_00000021> rdf:type owl:NamedIndividual ,
                                                                       <http://openenergy-platform.org/ontology/chio/CHIO_00000018> ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000118> "Mennekes" ;
-                                                             <http://purl.org/dc/elements/1.1/identifier> "IEC 61851-1 Type 2" ;
+                                                             <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-2 Type 2" ;
                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "Specification of AC electric vehicle charging connections originally proposed by the company Mennekes." ;
                                                              rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/7/7d/IEC_62196-2_Type_2_%28plug%29.svg" ;
                                                              rdfs:label "Type 2 connection specification"@de .
