@@ -318,7 +318,7 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000032
 <http://openenergy-platform.org/ontology/chio/CHIO_00000032> rdf:type owl:Class ;
-                                                             owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000012>
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000030>
                                                                                                         [ rdf:type owl:Restriction ;
                                                                                                           owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
                                                                                                           owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000027>
@@ -334,7 +334,7 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000033
 <http://openenergy-platform.org/ontology/chio/CHIO_00000033> rdf:type owl:Class ;
-                                                             owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000012>
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000031>
                                                                                                         [ rdf:type owl:Restriction ;
                                                                                                           owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
                                                                                                           owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000028>
