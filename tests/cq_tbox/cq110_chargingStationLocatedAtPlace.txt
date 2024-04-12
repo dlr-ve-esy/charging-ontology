@@ -1,0 +1,1 @@
+"'charging station' SubClassOf 'owl:Thing' and 'located in' some 'Portion of Geosphere'"
