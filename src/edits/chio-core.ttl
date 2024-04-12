@@ -146,6 +146,7 @@
                                                              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=151-12-19" ;
                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "Fiat object part of some device providing connection and disconnection to a suitable mating component" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> "A connector is the attachable part of the device, be it a cable or a surface." ;
                                                              rdfs:label "connector"@de .
 
 
@@ -153,7 +154,8 @@
 <http://openenergy-platform.org/ontology/chio/CHIO_00000013> rdf:type owl:Class ;
                                                              rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=442-03-02" ;
-                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connector attached to the surface of a device designed to interact with another connector with compatible pins." ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connector attached to a cable." ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> "Plugs are often designed with pins." ;
                                                              rdfs:label "plug"@de .
 
 
@@ -162,7 +164,8 @@
                                                              rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000118> "socket-outlet" ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=442-03-01" ;
-                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connector attached to a cable designed to interact with another connector with a compatible socket." ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connector attached to the surface of a device." ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> "Outlets are designed to interact with another connector, they are often hollow sockets designed to interact with connectors with pins." ;
                                                              rdfs:label "outlet"@de .
 
 
@@ -263,6 +266,86 @@
                                                                              ] ;
                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connection pattern built according to the IEC 62196-3 Configuration FF" ;
                                                              rdfs:label "Combo 2 pattern"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000029
+<http://openenergy-platform.org/ontology/chio/CHIO_00000029> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000012>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                                          owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000024>
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000118> "CHAdeMO" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connector with a CHAdeMO connection pattern" ;
+                                                             rdfs:label "CHAdeMO connector"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000030
+<http://openenergy-platform.org/ontology/chio/CHIO_00000030> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000012>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                                          owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000025>
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000118> "J Plug" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connector with a Type 1 connection pattern" ;
+                                                             rdfs:label "Type 1 connector"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000031
+<http://openenergy-platform.org/ontology/chio/CHIO_00000031> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000012>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                                          owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000026>
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000118> "Mennekes" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A connector with a Type 2 connection pattern" ;
+                                                             rdfs:label "Type 2 connector"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000032
+<http://openenergy-platform.org/ontology/chio/CHIO_00000032> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000012>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                                          owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000027>
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000030> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000118> "CCS 1" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Type 1 connector with DC capability." ;
+                                                             rdfs:label "Combo 1 connector"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000033
+<http://openenergy-platform.org/ontology/chio/CHIO_00000033> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000012>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                                          owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000028>
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000031> ;
+                                                             <http://purl.obolibrary.org/obo/IAO_0000118> "CCS2" ;
+                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Type 2 connector with DC capability" ;
+                                                             rdfs:label "Combo 2 connector"@de .
 
 
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
