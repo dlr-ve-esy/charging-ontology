@@ -15,5 +15,5 @@ ask
 where
 {
     :someChargingPoint obo:BFO_0000178 ?someConnector . 
-    # This Fails despite working in Protégé ?someConnector rdf:type chio:CHIO_00000029 .
+    ?someConnector rdf:type chio:CHIO_00000029 .
 }
