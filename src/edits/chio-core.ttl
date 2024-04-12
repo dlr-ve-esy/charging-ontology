@@ -5,6 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix chio: <http://openenergy-platform.org/ontology/oeo/chio/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix chio-core.ttl: <http://openenergy-platform.org/ontology/chio/dev/chio-core.ttl#> .
 @base <http://openenergy-platform.org/ontology/oeo/chio-core/> .
 
 <http://openenergy-platform.org/ontology/chio/chio-core/> rdf:type owl:Ontology ;
@@ -129,15 +130,15 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000011
 <http://openenergy-platform.org/ontology/chio/CHIO_00000011> rdf:type owl:Class ;
-                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000004> ,
-                                                                             [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000004>
-                                                                                                    [ rdf:type owl:Restriction ;
-                                                                                                      owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
-                                                                                                      owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000010>
-                                                                                                    ]
-                                                                                                  ) ;
-                                                                               rdf:type owl:Class
-                                                                             ] ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://openenergy-platform.org/ontology/chio/CHIO_00000004>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                                          owl:someValuesFrom <http://openenergy-platform.org/ontology/chio/CHIO_00000010>
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] ;
+                                                             rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000004> ;
                                                              rdfs:label "public charging station"@de .
 
 
