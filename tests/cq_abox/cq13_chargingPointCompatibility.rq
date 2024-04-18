@@ -1,0 +1,19 @@
+# CQ 1.3
+# (a charging point has a chademo socket)
+# What sockets are availible in this charging point?
+
+
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix obo: <http://purl.obolibrary.org/obo/>
+prefix chio: <http://openenergy-platform.org/ontology/chio/>
+prefix : <http://openenergy-platform.org/ontology/oeo/chio-cq21/>
+
+
+ask
+where
+{
+    :someChargingPoint obo:BFO_0000178 ?someConnector . 
+    ?someConnector rdf:type chio:CHIO_00000029 .
+}
