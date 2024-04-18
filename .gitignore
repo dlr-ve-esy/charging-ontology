@@ -24,4 +24,6 @@ svg-inkscape
 *.pygtex
 *.pygstyle
 *.thm
+target
+Cargo.lock
 # Remove later when images are ready

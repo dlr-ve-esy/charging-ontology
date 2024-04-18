@@ -49,6 +49,11 @@ define replace_ttls
 	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
 endef
 
+define replace_ttls_to_owx
+	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owx/m" $1
+	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owx/m" $1
+endef
+
 define replace_owls
 	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
 	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
@@ -57,6 +62,12 @@ endef
 define translate_to_owl
 	$(ROBOT) convert --catalog $(VERSIONDIR)/catalog-v001.xml --input $2 --output $1 --format owl
 	$(call replace_ttls,$1)
+	$(call replace_devs,$1)
+endef
+
+define translate_to_owx
+	$(ROBOT) convert --catalog $(VERSIONDIR)/catalog-v001.xml --input $2 --output $1 --format owx
+	$(call replace_ttls_to_owx,$1)
 	$(call replace_devs,$1)
 endef
 
@@ -74,13 +85,15 @@ endef
 
 .PHONY: all clean base merge directories
 
-all: base merge profiles closure
+all: base merge profiles closure owx
 
 imports: directories ${TMP}/catalog.xml $(IMPORTS)/bfo-core.ttl $(IMPORTS)/cco-extracted.ttl $(IMPORTS)/oeo-extracted.ttl $(IMPORTS)/iao-extracted.ttl
 
 base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar  $(TTL_COPY) $(OWL_COPY) $(OWLVERSION) $(TTL_TRANSLATE)
 
 merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl 
+
+owx: | $(VERSIONDIR)/owx/$(ONTOLOGY_NAME)-full.owx
 
 closure: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.ttl
 
@@ -156,7 +169,6 @@ $(VERSIONDIR)/%.ttl: $(ONTOLOGY_SOURCE)/%.ttl
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl : | base
 	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml $(foreach f, $(VERSIONDIR)/$(ONTOLOGY_NAME).ttl $(TTL_COPY) $(OWL_COPY), --input $(f)) annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
-	$(call replace_ttls,$@)
 
 $(VERSIONDIR)/owl/$(ONTOLOGY_NAME)-full.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(call translate_to_ttl,$@,$<)
@@ -170,4 +182,7 @@ $(VERSIONDIR)/$(ONTOLOGY_NAME)-el.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(ROBOT) remove --input $< --catalog $(VERSIONDIR)/catalog-v001.xml --axioms "InverseObjectProperties FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-ql.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
-	$(ROBOT) reduce --reasoner hermit --input $< --catalog $(VERSIONDIR)/catalog-v001.xml relax remove --axioms "TransitiveObjectProperty FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
+	$(ROBOT) reduce --reasoner hermit --input $< --catalog $(VERSIONDIR)/catalog-v001.xml relax remove --select "anonymous" remove --axioms "TransitiveObjectProperty FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
+
+$(VERSIONDIR)/owx/$(ONTOLOGY_NAME)-full.owx : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
+	$(call translate_to_owx,$@,$<)
