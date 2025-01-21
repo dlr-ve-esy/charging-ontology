@@ -7,7 +7,7 @@ prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
 prefix obo: <http://purl.obolibrary.org/obo/>
 prefix chio: <http://openenergy-platform.org/ontology/chio/>
-prefix cco: <http://www.ontologyrepository.com/CommonCoreOntologies/>
+prefix cco: <https://www.commoncoreontologies.org/>
 prefix : <http://openenergy-platform.org/ontology/oeo/chio-cq21/>
 
 
@@ -16,5 +16,5 @@ where
 {
 :ChargingStation rdf:type chio:CHIO_00000004 ;
                 obo:BFO_0000171 ?someLocation .
- ?someLocation rdf:type cco:PortionOfGeosphere .
+ ?someLocation rdf:type cco:ont00001341 .
 }

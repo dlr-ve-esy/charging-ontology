@@ -6,14 +6,14 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix chio: <http://openenergy-platform.org/ontology/chio/> .
-@prefix cco: <http://www.ontologyrepository.com/CommonCoreOntologies/> .
+@prefix cco: <https://www.commoncoreontologies.org/> .
 @base <http://openenergy-platform.org/ontology/oeo/chio-cq21/> .
 
 <http://openenergy-platform.org/ontology/oeo/chio-cq110> rdf:type owl:Ontology .
 
 obo:BFO_0000171 rdf:type owl:ObjectProperty .
 
-:Location a cco:PortionOfGeosphere .
+:Location a cco:ont00001341 .
 
 :ChargingStation a chio:CHIO_00000004 ;
                 obo:BFO_0000171 :Location .
