@@ -165,6 +165,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000013
 <http://openenergy-platform.org/ontology/chio/CHIO_00000013> rdf:type owl:Class ;
                                                              rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
+                                                             <http://openenergy-platform.org/ontology/oeo/CHIO_00000036> "CABLE" ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=442-03-02" ;
                                                              rdfs:label "plug"@de ;
                                                              <http://www.w3.org/2004/02/skos/core#definition> "A connector attached to a cable." ;
@@ -174,6 +175,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000014
 <http://openenergy-platform.org/ontology/chio/CHIO_00000014> rdf:type owl:Class ;
                                                              rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
+                                                             <http://openenergy-platform.org/ontology/oeo/CHIO_00000036> "SOCKET" ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000118> "socket-outlet" ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=442-03-01" ;
                                                              rdfs:label "outlet"@de ;
@@ -291,6 +293,7 @@
                                                                                    rdf:type owl:Class
                                                                                  ] ;
                                                              rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
+                                                             <http://openenergy-platform.org/ontology/oeo/CHIO_00000036> "CHADEMO" ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000118> "CHAdeMO" ;
                                                              rdfs:label "CHAdeMO connector"@de ;
                                                              <http://www.w3.org/2004/02/skos/core#definition> "A connector with a CHAdeMO connection pattern" .
@@ -307,6 +310,7 @@
                                                                                    rdf:type owl:Class
                                                                                  ] ;
                                                              rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
+                                                             <http://openenergy-platform.org/ontology/oeo/CHIO_00000036> "IEC_62196_T1" ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000118> "J Plug" ;
                                                              rdfs:label "Type 1 connector"@de ;
                                                              <http://www.w3.org/2004/02/skos/core#definition> "A connector with a Type 1 connection pattern" .
@@ -323,6 +327,7 @@
                                                                                    rdf:type owl:Class
                                                                                  ] ;
                                                              rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000012> ;
+                                                             <http://openenergy-platform.org/ontology/oeo/CHIO_00000036> "IEC_62196_T2" ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000118> "Mennekes" ;
                                                              rdfs:label "Type 2 connector"@de ;
                                                              <http://www.w3.org/2004/02/skos/core#definition> "A connector with a Type 2 connection pattern" .
@@ -339,6 +344,7 @@
                                                                                    rdf:type owl:Class
                                                                                  ] ;
                                                              rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000030> ;
+                                                             <http://openenergy-platform.org/ontology/oeo/CHIO_00000036> "IEC_62196_T1_COMBO" ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000118> "CCS 1" ;
                                                              rdfs:label "Combo 1 connector"@de ;
                                                              <http://www.w3.org/2004/02/skos/core#definition> "A Type 1 connector with DC capability." .
@@ -355,6 +361,7 @@
                                                                                    rdf:type owl:Class
                                                                                  ] ;
                                                              rdfs:subClassOf <http://openenergy-platform.org/ontology/chio/CHIO_00000031> ;
+                                                             <http://openenergy-platform.org/ontology/oeo/CHIO_00000036> "IEC_62196_T2_COMBO" ;
                                                              <http://purl.obolibrary.org/obo/IAO_0000118> "CCS2" ;
                                                              rdfs:label "Combo 2 connector"@de ;
                                                              <http://www.w3.org/2004/02/skos/core#definition> "A Type 2 connector with DC capability" .
