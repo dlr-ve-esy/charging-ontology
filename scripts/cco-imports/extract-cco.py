@@ -251,7 +251,7 @@ if not eo_stasis.exists():
 eo_change = TMP.joinpath("eo_change.ttl")
 if not eo_change.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000015"
-    lower_terms = ["http://www.ontologyrepository.com/CommonCoreOntologies/Change"]
+    lower_terms = ["https://www.commoncoreontologies.org/ont00000004"]
     extract_mireot(
         input=event_ontology,
         output=eo_change,
@@ -264,7 +264,7 @@ eo_process_profiles = TMP.joinpath("eo_process_profiles.ttl")
 if not eo_process_profiles.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000144"
     lower_terms = [
-        "http://www.ontologyrepository.com/CommonCoreOntologies/MaximumPower"
+        "https://www.commoncoreontologies.org/ont00000138"
     ]
     extract_mireot(
         input=event_ontology,
@@ -323,7 +323,7 @@ if not ao_facility_classes.exists():
 # %%
 ao_vehicles = TMP.joinpath("ao_vehicles.ttl")
 if not ao_vehicles.exists():
-    upper_term = "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact"
+    upper_term = "https://www.commoncoreontologies.org/ont00000995"
     lower_terms = load_terms(FILEPATH.joinpath("ao_vehicles.txt"))
     extract_mireot(
         input=artifact_ontology,
@@ -349,7 +349,7 @@ agent_ontology = download_ontology_if_missing("AgentOntology")
 geo_tree = TMP.joinpath("geo_tree.ttl")
 if not geo_tree.exists():
     upper_term = (
-        "http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion"
+        "https://www.commoncoreontologies.org/ont00000472"
     )
     lower_terms = load_terms(FILEPATH.joinpath("geo_tree.txt"))
     extract_mireot(

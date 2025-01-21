@@ -29,7 +29,7 @@ PDF = PAPER
 PDF.mkdir(exist_ok=True)
 
 PREFIX_MAPPINGS = {
-    "http://www.ontologyrepository.com/CommonCoreOntologies/": "CCO:",
+    "https://www.commoncoreontologies.org/": "CCO:",
     "http://purl.obolibrary.org/obo/": "BFO:",
     "http://openenergy-platform.org/ontology/oeo/": "OEO",
     "http://ontology.eil.utoronto.ca/icity/Parking/": "IC:",
@@ -195,7 +195,7 @@ add_taxonomy(
     edge_attrs={"color": "black", "splines": "curved", "penwidth": "1"},
 )
 axiom = find_equivalent_class_axioms(
-    "http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement",
+    "https://www.commoncoreontologies.org/ont00000627",
     ontology,
 )[0]
 render_equivalent_class_axiom(
@@ -280,9 +280,9 @@ add_taxonomy(
     node_attrs={"penwidth": "0.8"},
 )
 linear_tax = [
-    "http://www.ontologyrepository.com/CommonCoreOntologies/Artifact",
-    "http://www.ontologyrepository.com/CommonCoreOntologies/Vehicle",
-    "http://www.ontologyrepository.com/CommonCoreOntologies/GroundVehicle",
+    "https://www.commoncoreontologies.org/ont00000995",
+    "https://www.commoncoreontologies.org/ont00000713",
+    "https://www.commoncoreontologies.org/ont00000618",
 ]
 SG = VG.add_subgraph(rank="same", rankdir="TB")
 for i in linear_tax:
@@ -350,7 +350,7 @@ OLVG.draw(PDF.joinpath("OEOLVehicles.pdf").as_posix(), prog="dot")
 # %%
 chio_parking = pho.open_ontology(TMP.joinpath("chio_parking.owx").as_posix())
 CG = pgv.AGraph(
-    strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="LR"
+    strict=False, directed=True, name="G", layout="dot", splines=True, rankdir="TB"
 )
 CG.graph_attr["size"] = "3.29,2.31"
 CG.graph_attr["dpi"] = "100"
@@ -387,3 +387,5 @@ for aa in chio_parking.get_axioms_for_iri("http://purl.obolibrary.org/obo/BFO_00
 CG.write(TMP.joinpath("CHIOParking.dot").as_posix())
 CG.draw(SVG.joinpath("CHIOParking.svg").as_posix(), prog="dot")
 CG.draw(PDF.joinpath("CHIOParking.pdf").as_posix(), prog="dot")
+
+# %%

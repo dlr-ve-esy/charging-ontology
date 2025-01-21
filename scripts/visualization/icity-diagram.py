@@ -31,7 +31,7 @@ PDF.mkdir(exist_ok=True)
 DROPLIST = []
 
 PREFIX_MAPPINGS = {
-    "http://www.ontologyrepository.com/CommonCoreOntologies/": "CCO:",
+    "https://www.commoncoreontologies.org/": "CCO:",
     "http://purl.obolibrary.org/obo/": "BFO:",
     "http://openenergy-platform.org/ontology/oeo/": "OEO",
     "http://ontology.eil.utoronto.ca/icity/Parking/": "ICP:",
