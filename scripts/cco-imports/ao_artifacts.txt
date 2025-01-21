@@ -1,4 +1,4 @@
-http://www.ontologyrepository.com/CommonCoreOntologies/ElectricMotor
-http://www.ontologyrepository.com/CommonCoreOntologies/CompressionIgnitionEngine
-http://www.ontologyrepository.com/CommonCoreOntologies/SparkIgnitionEngine
-http://www.ontologyrepository.com/CommonCoreOntologies/ElectricalPowerSource
+https://www.commoncoreontologies.org/ont00000952
+https://www.commoncoreontologies.org/ont00000807
+https://www.commoncoreontologies.org/ont00001024
+https://www.commoncoreontologies.org/ont00001049
