@@ -1,4 +1,4 @@
 http://purl.obolibrary.org/obo/BFO_0000171
-http://www.ontologyrepository.com/CommonCoreOntologies/Artifact
-http://www.ontologyrepository.com/CommonCoreOntologies/Facility
-http://www.ontologyrepository.com/CommonCoreOntologies/PortionOfGeosphere
+https://www.commoncoreontologies.org/ont00000995
+https://www.commoncoreontologies.org/ont00000192
+https://www.commoncoreontologies.org/ont00001341

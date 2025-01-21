@@ -1,11 +1,11 @@
 #!/bin/bash
 
-tmpdir=tmp
-mkdir -p ${tmpdir}
+tmpdir="tmp"
+mkdir-p ${tmpdir}
 
 this_wd=scripts/cco-imports
 ontology_name=chio
-cco_version=master
+cco_version=v2.0-2024-11-06
 ontology_source=src
 imports="${ontology_source}/imports"
 
@@ -17,11 +17,12 @@ catalog_tail='    </group>
 </catalog>'
 
 iri_base="http://openenergy-platform.org/ontology/"
-cco_base="https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/${cco_version}"
+cco_base="https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/refs/tags/${cco_version}/src/cco-modules"
 cco_new_iri="${ontology_name}/imports"
 cco_new_version_iri="${ontology_name}/dev/imports"
 
 # Extractions from Event Ontology
+echo "${cco_base}"
 test -f ${tmpdir}/EventOntology.ttl && echo "${tmpdir}/EventOntology.ttl already exists." || curl -L -o ${tmpdir}/EventOntology.ttl ${cco_base}/EventOntology.ttl
 
 # Extractions from Information EntityOntology
@@ -62,9 +63,9 @@ test -f ${tmpdir}/InformationEntityOntology.ttl && echo "${tmpdir}/InformationEn
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/EventOntology.ttl --select imports extract --method MIREOT --upper-term "http://purl.obolibrary.org/obo/BFO_0000015" --lower-terms ${this_wd}/eo_stasis.txt --intermediates all --output ${tmpdir}/eo_stasis.ttl
 
-java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/EventOntology.ttl --select imports extract --method MIREOT --upper-term "http://purl.obolibrary.org/obo/BFO_0000015" --lower-term "http://www.ontologyrepository.com/CommonCoreOntologies/Change" --intermediates all --output ${tmpdir}/eo_change.ttl
+java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/EventOntology.ttl --select imports extract --method MIREOT --upper-term "http://purl.obolibrary.org/obo/BFO_0000015" --lower-term "https://www.commoncoreontologies.org/ont00000004" --intermediates all --output ${tmpdir}/eo_change.ttl
 
-java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/EventOntology.ttl --select imports extract --method MIREOT --upper-term "http://purl.obolibrary.org/obo/BFO_0000144" --lower-term "http://www.ontologyrepository.com/CommonCoreOntologies/MaximumPower" --intermediates all --output ${tmpdir}/eo_process_profiles.ttl
+java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/EventOntology.ttl --select imports extract --method MIREOT --upper-term "http://purl.obolibrary.org/obo/BFO_0000144" --lower-term "https://www.commoncoreontologies.org/ont00000138" --intermediates all --output ${tmpdir}/eo_process_profiles.ttl
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/ArtifactOntology.ttl --select imports extract --method MIREOT --upper-term http://purl.obolibrary.org/obo/BFO_0000040 --lower-terms ${this_wd}/ao_artifacts.txt --intermediates all --output ${tmpdir}/ao_artifacts.ttl
 
@@ -72,13 +73,13 @@ java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/Art
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/ArtifactOntology.ttl --select imports extract --method subset --term-file ${this_wd}/ao_infrastructure.txt --imports exclude --output ${tmpdir}/ao_infrastructure.ttl
 
-java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/ArtifactOntology.ttl --select imports extract --method MIREOT --upper-term http://www.ontologyrepository.com/CommonCoreOntologies/Artifact --lower-terms ${this_wd}/ao_vehicles.txt --intermediates all --output ${tmpdir}/ao_vehicles.ttl
+java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/ArtifactOntology.ttl --select imports extract --method MIREOT --upper-term https://www.commoncoreontologies.org/ont00000995 --lower-terms ${this_wd}/ao_vehicles.txt --intermediates all --output ${tmpdir}/ao_vehicles.ttl
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/FacilityOntology.ttl --select imports extract --method subset --term-file ${this_wd}/ao_facility_classes.txt --imports exclude --output ${tmpdir}/ao_facility_classes.ttl
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/GeospatialOntology.ttl --select imports extract  --method MIREOT --upper-term http://purl.obolibrary.org/obo/BFO_0000029 --lower-terms ${this_wd}/geo_base.txt --intermediates all --output ${tmpdir}/geo_base.ttl
 
-java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/AgentOntology.ttl --select imports extract --method MIREOT  --imports exclude --upper-term http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion --lower-terms ${this_wd}/geo_tree.txt --intermediates all --output ${tmpdir}/geo_tree.ttl
+java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/AgentOntology.ttl --select imports extract --method MIREOT  --imports exclude --upper-term https://www.commoncoreontologies.org/ont00000472 --lower-terms ${this_wd}/geo_tree.txt --intermediates all --output ${tmpdir}/geo_tree.ttl
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/InformationEntityOntology.ttl --select imports extract --method subset --term-file ${this_wd}/ieo_ops.txt --imports exclude --output ${tmpdir}/ieo_ops_base.ttl
 

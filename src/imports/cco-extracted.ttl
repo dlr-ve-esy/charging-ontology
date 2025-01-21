@@ -27,30 +27,6 @@
 <http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label
-<http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/definition
-<http://www.ontologyrepository.com/CommonCoreOntologies/definition> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/definition_source
-<http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/elucidation
-<http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage
-<http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology
-<http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> rdf:type owl:AnnotationProperty .
-
-
 ###  http://www.w3.org/2000/01/rdf-schema#comment
 rdfs:comment rdf:type owl:AnnotationProperty .
 
@@ -59,12 +35,32 @@ rdfs:comment rdf:type owl:AnnotationProperty .
 rdfs:label rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+<http://www.w3.org/2004/02/skos/core#example> rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#prefLabel
 <http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#scopeNote
 <http://www.w3.org/2004/02/skos/core#scopeNote> rdf:type owl:AnnotationProperty .
+
+
+###  https://www.commoncoreontologies.org/ont00001754
+<https://www.commoncoreontologies.org/ont00001754> rdf:type owl:AnnotationProperty .
+
+
+###  https://www.commoncoreontologies.org/ont00001760
+<https://www.commoncoreontologies.org/ont00001760> rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -79,106 +75,106 @@ rdfs:label rdf:type owl:AnnotationProperty .
 <http://purl.obolibrary.org/obo/BFO_0000196> rdf:type owl:ObjectProperty .
 
 
-###  http://purl.obolibrary.org/obo/IAO_0000136
-<http://purl.obolibrary.org/obo/IAO_0000136> rdf:type owl:ObjectProperty ;
-                                             owl:inverseOf <http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> ;
-                                             rdfs:domain <http://purl.obolibrary.org/obo/IAO_0000030> ;
-                                             rdfs:range <http://purl.obolibrary.org/obo/BFO_0000001> ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A primitive relationship between an Information Content Entity and some Entity."@en ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://purl.obolibrary.org/obo/IAO_0000136" ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                             rdfs:label "is about"@en .
+###  https://www.commoncoreontologies.org/ont00001801
+<https://www.commoncoreontologies.org/ont00001801> rdf:type owl:ObjectProperty ;
+                                                   owl:inverseOf <https://www.commoncoreontologies.org/ont00001808> ;
+                                                   rdfs:range <https://www.commoncoreontologies.org/ont00000958> ;
+                                                   rdfs:label "is subject of"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A primitive relationship between an instance of an Entity and an instance of an Information Content Entity."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/described_by
-<http://www.ontologyrepository.com/CommonCoreOntologies/described_by> rdf:type owl:ObjectProperty ;
-                                                                      rdfs:subPropertyOf <http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> ;
-                                                                      owl:inverseOf <http://www.ontologyrepository.com/CommonCoreOntologies/describes> ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x described_by y iff y is an instance of Information Content Entity, and x is an instance of Entity, such that y is about the characteristics by which y can be recognized or visualized."@en ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                                                      rdfs:label "described by"@en .
+###  https://www.commoncoreontologies.org/ont00001808
+<https://www.commoncoreontologies.org/ont00001808> rdf:type owl:ObjectProperty ;
+                                                   rdfs:domain <https://www.commoncoreontologies.org/ont00000958> ;
+                                                   rdfs:range <http://purl.obolibrary.org/obo/BFO_0000001> ;
+                                                   rdfs:label "is about"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A primitive relationship between an Information Content Entity and some Entity."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/IAO_0000136" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/describes
-<http://www.ontologyrepository.com/CommonCoreOntologies/describes> rdf:type owl:ObjectProperty ;
-                                                                   rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
-                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x describes y iff x is an instance of Information Content Entity, and y is an instance of Entity, such that x is about the characteristics by which y can be recognized or visualized."@en ;
-                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> "the content of a newspaper article describes some current event" ,
-                                                                                                                                             "the content of a visitor's log describes some facility visit" ,
-                                                                                                                                             "the content of an accident report describes some accident" ;
-                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                                                   rdfs:comment "It is possible that this relation should be a functional property, that is for all x, y, z if x describes y and x describes z then y = z. For example, if a financial report x describes the quarterly results of a company y and that same financial report describes the quarterly results of a company z, then it should be inferred that companies y and z are the same. We refrained from classifying the relation as a functional property on the concern that descriptions are multifaceted and so consequently it may be that the same report would contain descriptions of multiple entities."@en ;
-                                                                   rdfs:label "describes"@en .
+###  https://www.commoncoreontologies.org/ont00001873
+<https://www.commoncoreontologies.org/ont00001873> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001801> ;
+                                                   owl:inverseOf <https://www.commoncoreontologies.org/ont00001938> ;
+                                                   rdfs:comment "See notes for inverse property." ;
+                                                   rdfs:label "represented by"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "y represented_by x iff x is an instance of Information Content Entity, and y is an instance of Entity, and z is carrier of x, such that x is about y in virtue of there existing an isomorphism between characteristics of z and y."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/designated_by
-<http://www.ontologyrepository.com/CommonCoreOntologies/designated_by> rdf:type owl:ObjectProperty ;
-                                                                       rdfs:subPropertyOf <http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> ;
-                                                                       owl:inverseOf <http://www.ontologyrepository.com/CommonCoreOntologies/designates> ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x designated_by y iff y is an instance of Information Content Entity and x is an instance of Entity, such that given some context, y uniquely distinguishes x from other entities."@en ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                                                       rdfs:label "designated by"@en .
+###  https://www.commoncoreontologies.org/ont00001879
+<https://www.commoncoreontologies.org/ont00001879> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001801> ;
+                                                   owl:inverseOf <https://www.commoncoreontologies.org/ont00001916> ;
+                                                   rdfs:label "designated by"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "x designated_by y iff y is an instance of Information Content Entity and x is an instance of Entity, such that given some context, y uniquely distinguishes x from other entities."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/designates
-<http://www.ontologyrepository.com/CommonCoreOntologies/designates> rdf:type owl:ObjectProperty ;
-                                                                    rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x designates y iff x is an instance of an Information Content Entity, and y is an instance of an Entity, such that given some context, x uniquely distinguishes y from other entities."@en ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> "a URL designates the location of a Web Page on the internet" ,
-                                                                                                                                              "a person's name designates that person" ,
-                                                                                                                                              "a vehicle identification number designates some vehicle" ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                                                    rdfs:label "designates"@en ;
-                                                                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Given a stronger temporal interpretation, this property may be functional. For more info please refer to https://github.com/BFO-ontology/BFO-2020/tree/master/src/owl/temporal%20extensions."@en .
+###  https://www.commoncoreontologies.org/ont00001916
+<https://www.commoncoreontologies.org/ont00001916> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001808> ;
+                                                   rdfs:label "designates"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "x designates y iff x is an instance of an Information Content Entity, and y is an instance of an Entity, such that given some context, x uniquely distinguishes y from other entities."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#example> "a URL designates the location of a Web Page on the internet" ,
+                                                                                                 "a person's name designates that person" ,
+                                                                                                 "a vehicle identification number designates some vehicle" ;
+                                                   <http://www.w3.org/2004/02/skos/core#scopeNote> "Given a stronger temporal interpretation, this property may be functional. For more info please refer to https://github.com/BFO-ontology/BFO-2020/tree/master/src/owl/temporal%20extensions."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of
-<http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> rdf:type owl:ObjectProperty ;
-                                                                       rdfs:range <http://purl.obolibrary.org/obo/IAO_0000030> ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A primitive relationship between an instance of an Entity and an instance of an Information Content Entity."@en ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                                                       rdfs:label "is subject of"@en .
+###  https://www.commoncoreontologies.org/ont00001917
+<https://www.commoncoreontologies.org/ont00001917> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001801> ;
+                                                   owl:inverseOf <https://www.commoncoreontologies.org/ont00001982> ;
+                                                   rdfs:label "described by"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "x described_by y iff y is an instance of Information Content Entity, and x is an instance of Entity, such that y is about the characteristics by which y can be recognized or visualized."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by
-<http://www.ontologyrepository.com/CommonCoreOntologies/prescribed_by> rdf:type owl:ObjectProperty ;
-                                                                       rdfs:subPropertyOf <http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> ;
-                                                                       owl:inverseOf <http://www.ontologyrepository.com/CommonCoreOntologies/prescribes> ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x prescribed_by y iff y is an instance of Information Content Entity and x is an instance of Entity, such that y serves as a rule or guide for x if x is an Occurrent, or y serves as a model for x if x is a Continuant."@en ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                                                       rdfs:label "prescribed by"@en .
+###  https://www.commoncoreontologies.org/ont00001920
+<https://www.commoncoreontologies.org/ont00001920> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001801> ;
+                                                   owl:inverseOf <https://www.commoncoreontologies.org/ont00001942> ;
+                                                   rdfs:label "prescribed by"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "x prescribed_by y iff y is an instance of Information Content Entity and x is an instance of Entity, such that y serves as a rule or guide for x if x is an Occurrent, or y serves as a model for x if x is a Continuant."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/prescribes
-<http://www.ontologyrepository.com/CommonCoreOntologies/prescribes> rdf:type owl:ObjectProperty ;
-                                                                    rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x prescribes y iff x is an instance of Information Content Entity and y is an instance of Entity, such that x serves as a rule or guide for y if y an Occurrent, or x serves as a model for y if y is a Continuant."@en ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> "a blueprint serves as a model of some Artifact or Facility" ,
-                                                                                                                                              "a professional code of conduct serves as a set of rules to be followed while acting in a role within that profession" ,
-                                                                                                                                              "an Operations Plan serves as a guide for the tasks that need to be performed to achieve the Objectives of the Operation" ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                                                    rdfs:label "prescribes"@en .
+###  https://www.commoncoreontologies.org/ont00001938
+<https://www.commoncoreontologies.org/ont00001938> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001808> ;
+                                                   rdfs:comment "Isomorphism between the carrier of x and the represented entity can be via a direct similarity relation, e.g., grooves in a vinyl record corresponding to sound waves, or linguistic convention, e.g., a court stenographer's transcription of spoken words, as well as others, such as encoding processes for images."@en ;
+                                                   rdfs:label "represents"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "x represents y iff x is an instance of Information Content Entity, y is an instance of Entity, and z is carrier of x, such that x is about y in virtue of there existing an isomorphism between characteristics of z and y."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#scopeNote> "Given a stronger temporal interpretation, this property may be functional. For more info please refer to https://github.com/BFO-ontology/BFO-2020/tree/master/src/owl/temporal%20extensions."@en ,
+                                                                                                   "The relationship that is being defined here is that between the content of a photographic image and its object, between the content of a video and its objects and events, between the content of an audio recording and the sounds or events generating those sounds, or between the content of a written transcript and the verbal event that it transcribes."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/represented_by
-<http://www.ontologyrepository.com/CommonCoreOntologies/represented_by> rdf:type owl:ObjectProperty ;
-                                                                        rdfs:subPropertyOf <http://www.ontologyrepository.com/CommonCoreOntologies/is_subject_of> ;
-                                                                        owl:inverseOf <http://www.ontologyrepository.com/CommonCoreOntologies/represents> ;
-                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "y represented_by x iff x is an instance of Information Content Entity, and y is an instance of Entity, and z is carrier of x, such that x is about y in virtue of there existing an isomorphism between characteristics of z and y."@en ;
-                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                                                        rdfs:comment "See notes for inverse property." ;
-                                                                        rdfs:label "represented by"@en .
+###  https://www.commoncoreontologies.org/ont00001942
+<https://www.commoncoreontologies.org/ont00001942> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001808> ;
+                                                   rdfs:label "prescribes"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "x prescribes y iff x is an instance of Information Content Entity and y is an instance of Entity, such that x serves as a rule or guide for y if y an Occurrent, or x serves as a model for y if y is a Continuant."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#example> "A blueprint prescribes some artifact or facility by being a model for it." ,
+                                                                                                 "A professional code of conduct prescribes some realizations of a profession (role) by giving rules for how the bearer should act in those realizations." ,
+                                                                                                 "An operations plan prescribes an operation by enumerating the tasks that need to be performed in order to achieve the objectives of the operation." ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
-###  http://www.ontologyrepository.com/CommonCoreOntologies/represents
-<http://www.ontologyrepository.com/CommonCoreOntologies/represents> rdf:type owl:ObjectProperty ;
-                                                                    rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "x represents y iff x is an instance of Information Content Entity, y is an instance of Entity, and z is carrier of x, such that x is about y in virtue of there existing an isomorphism between characteristics of z and y."@en ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> "The relationship that is being defined here is that between the content of a photographic image and its object, between the content of a video and its objects and events, between the content of an audio recording and the sounds or events generating those sounds, or between the content of a written transcript and the verbal event that it transcribes."@en ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                                                    rdfs:comment "Isomorphism between the carrier of x and the represented entity can be via a direct similarity relation, e.g., grooves in a vinyl record corresponding to sound waves, or linguistic convention, e.g., a court stenographer's transcription of spoken words, as well as others, such as encoding processes for images."@en ;
-                                                                    rdfs:label "represents"@en ;
-                                                                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Given a stronger temporal interpretation, this property may be functional. For more info please refer to https://github.com/BFO-ontology/BFO-2020/tree/master/src/owl/temporal%20extensions."@en .
+###  https://www.commoncoreontologies.org/ont00001982
+<https://www.commoncoreontologies.org/ont00001982> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001808> ;
+                                                   rdfs:comment "It is possible that this relation should be a functional property, that is for all x, y, z if x describes y and x describes z then y = z. For example, if a financial report x describes the quarterly results of a company y and that same financial report describes the quarterly results of a company z, then it should be inferred that companies y and z are the same. We refrained from classifying the relation as a functional property on the concern that descriptions are multifaceted and so consequently it may be that the same report would contain descriptions of multiple entities."@en ;
+                                                   rdfs:label "describes"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "x describes y iff x is an instance of Information Content Entity, and y is an instance of Entity, such that x is about the characteristics by which y can be recognized or visualized."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#example> "the content of a newspaper article describes some current event" ,
+                                                                                                 "the content of a visitor's log describes some facility visit" ,
+                                                                                                 "the content of an accident report describes some accident" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
 #################################################################
@@ -198,11 +194,16 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000024
-<http://purl.obolibrary.org/obo/BFO_0000024> rdf:type owl:Class .
+<http://purl.obolibrary.org/obo/BFO_0000024> rdf:type owl:Class ;
+                                             rdfs:subClassOf owl:Thing .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000029
 <http://purl.obolibrary.org/obo/BFO_0000029> rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000031
+<http://purl.obolibrary.org/obo/BFO_0000031> rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000040
@@ -211,521 +212,530 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 ###  http://purl.obolibrary.org/obo/BFO_0000144
 <http://purl.obolibrary.org/obo/BFO_0000144> rdf:type owl:Class ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "An occurrent that is an occurrent part of some process by virtue of the rate, or pattern, or amplitude of change in an attribute of one or more participants of said process."@en ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> "b process_profile_of c holds when b proper_occurrent_part_of c& there is some proper_occurrent_part d of c which has no parts in common with b & is mutually dependent on b& is such that b, c and d occupy the same temporal region (axiom label in BFO2 Reference: [094-005])"@en ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> "On a somewhat higher level of complexity are what we shall call rate process profiles, which are the targets of selective abstraction focused not on determinate quality magnitudes plotted over time, but rather on certain ratios between these magnitudes and elapsed times. A speed process profile, for example, is represented by a graph plotting against time the ratio of distance covered per unit of time. Since rates may change, and since such changes, too, may have rates of change, we have to deal here with a hierarchy of process profile universals at successive levels; One important sub-family of rate process profiles is illustrated by the beat or frequency profiles of cyclical processes, illustrated by the 60 beats per minute beating process of John’s heart, or the 120 beats per minute drumming process involved in one of John’s performances in a rock band, and so on. Each such process includes what we shall call a beat process profile instance as part, a subtype of rate process profile in which the salient ratio is not distance covered but rather number of beat cycles per unit of time. Each beat process profile instance instantiates the determinable universal beat process profile. But it also instantiates multiple more specialized universals at lower levels of generality, selected from rate process profilebeat process profileregular beat process profile3 bpm beat process profile4 bpm beat process profileirregular beat process profileincreasing beat process profileand so on.In the case of a regular beat process profile, a rate can be assigned in the simplest possible fashion by dividing the number of cycles by the length of the temporal region occupied by the beating process profile as a whole. Irregular process profiles of this sort, for example as identified in the clinic, or in the readings on an aircraft instrument panel, are often of diagnostic significance.; The simplest type of process profiles are what we shall call ‘quality process profiles’, which are the process profiles which serve as the foci of the sort of selective abstraction that is involved when measurements are made of changes in single qualities, as illustrated, for example, by process profiles of mass, temperature, aortic pressure, and so on."@en ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                             rdfs:label "Process Profile"@en .
-
-
-###  http://purl.obolibrary.org/obo/IAO_0000030
-<http://purl.obolibrary.org/obo/IAO_0000030> rdf:type owl:Class ;
-                                             rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                               owl:onProperty <http://purl.obolibrary.org/obo/IAO_0000136> ;
-                                                               owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000001>
-                                                             ] ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> "ICE"@en ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Generically Dependent Continuant that generically depends on some Information Bearing Entity and stands in relation of aboutness to some Entity."@en ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://purl.obolibrary.org/obo/IAO_0000030" ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/elucidation> "Information Content Entity is here intended to be a class of Entities whose instances are the informational content of Information Bearing Entities. For example, three instances of information bearers -- such as a bar chart, color-coded map, and a written report -- each of which lists the GDP of Countries for the year 2010 are each different carriers of the same information content. It is this content that is generically dependent upon its carrier. This treatment of Informational Content Entity (cf. the Information Artifact Ontology) leads to a principle of subtyping based upon the relationship that ICE's have with the Entity they are about rather than characteristics such as format, language, measurement scale, or media. The latter are treated here as being Qualities of bearers."@en ;
-                                             <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/InformationEntityOntology"^^xsd:anyURI ;
-                                             rdfs:label "Information Content Entity"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/ActiveStasis
-<http://www.ontologyrepository.com/CommonCoreOntologies/ActiveStasis> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfArtifactOperationality> ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Stasis of Artifact Operationality that holds during a Temporal Interval when an Artifact is realizing one or more of its designed Artifact Functions (especially one of its primary functions)."@en ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                      rdfs:label "Active Stasis"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Artifact
-<http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
-                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Entity that was designed by some Agent to realize a certain Function."@en ;
-                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                  rdfs:label "Material Artifact"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Automobile
-<http://www.ontologyrepository.com/CommonCoreOntologies/Automobile> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GroundMotorVehicle> ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Ground Motor Vehicle that is designed to transport a small number of passengers while traveling on four tired wheels."@en ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Car&oldid=1064116950"^^xsd:anyURI ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                    rdfs:label "Automobile"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Bicycle
-<http://www.ontologyrepository.com/CommonCoreOntologies/Bicycle> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GroundVehicle> ;
-                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Ground Vehicle that consists of two wheels, one in front of the other, attached to a frame along with handlebars and pedals such that it is designed to receive its motive power from pedaling."@en ;
-                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Bicycle&oldid=1063761124"^^xsd:anyURI ;
-                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                 rdfs:label "Bicycle"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Bus
-<http://www.ontologyrepository.com/CommonCoreOntologies/Bus> rdf:type owl:Class ;
-                                                             rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GroundMotorVehicle> ;
-                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Ground Motor Vehicle that is designed to transport a large number of people and to travel on six or more tired wheels."@en ;
-                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Bus&oldid=1055341487"^^xsd:anyURI ;
-                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                             rdfs:label "Bus"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Change
-<http://www.ontologyrepository.com/CommonCoreOntologies/Change> rdf:type owl:Class ;
-                                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Process in which some independent continuant endures and 1) one or more of the dependent entities it bears increase or decrease in intensity, 2) the entity begins to bear some dependent entity or 3) the entity ceases to bear some dependent entity."@en ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                rdfs:label "Change"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/City
-<http://www.ontologyrepository.com/CommonCoreOntologies/City> rdf:type owl:Class ;
-                                                              rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/LocalAdministrativeRegion> ;
-                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Local Administrative Region in which a relatively large human population permanently resides; is designated as a city based on a particular administrative, legal, or historical status; and which delimits a local Government that typically oversees the provision of systems for sanitation, utilities, land usage, housing, and transportation."@en ;
-                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=City&oldid=1062635325"^^xsd:anyURI ;
-                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                              rdfs:label "City"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/CombustionEngine
-<http://www.ontologyrepository.com/CommonCoreOntologies/CombustionEngine> rdf:type owl:Class ;
-                                                                          rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/HeatEngine> ;
-                                                                          <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Heat Engine that is designed to convert thermal energy that is generated through a local Combustion process into mechanical energy."@en ;
-                                                                          <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                          rdfs:label "Combustion Engine"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/CompressionIgnitionEngine
-<http://www.ontologyrepository.com/CommonCoreOntologies/CompressionIgnitionEngine> rdf:type owl:Class ;
-                                                                                   rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/InternalCombustionEngine> ;
-                                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "An Internal Combustion Engine that is designed to operate by igniting a portion of Fuel and Oxidizer mixture using heat generated via compression of the mixture."@en ;
-                                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                                   rdfs:label "Compression Ignition Engine"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Continent
-<http://www.ontologyrepository.com/CommonCoreOntologies/Continent> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion> ;
-                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Geospatial Region bounded by any of the Earth's main continuous expanses of land."@en ;
-                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "JC3IEDM version 3.0.2" ;
-                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                                                   rdfs:label "Continent"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/County
-<http://www.ontologyrepository.com/CommonCoreOntologies/County> rdf:type owl:Class ;
-                                                                rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GeopoliticalEntity> ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Government Domain that is part of either a First-Order or Second-Order Administrative Region."@en ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=County&oldid=1062817834"^^xsd:anyURI ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                                rdfs:label "County"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/DelimitingDomain
-<http://www.ontologyrepository.com/CommonCoreOntologies/DelimitingDomain> rdf:type owl:Class ;
-                                                                          rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion> ;
-                                                                          <http://purl.org/dc/terms/created> "2022-12-30T21:32:27-05:00"^^xsd:dateTime ;
-                                                                          <http://purl.org/dc/terms/creator> "https://cubrc.org"^^xsd:anyURI ;
-                                                                          <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Geospatial Region that delimits the authority of an Organization to exercise its control within the bounded area."@en ;
-                                                                          <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                                          rdfs:label "Delimiting Domain"@en ;
-                                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Delimiting Domain"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/ElectricMotor
-<http://www.ontologyrepository.com/CommonCoreOntologies/ElectricMotor> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Engine> ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> "Electric Engine"@en ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "An Engine that is designed to convert electrical energy into mechanical energy."@en ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Electric_motor&oldid=1063829856"^^xsd:anyURI ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                       rdfs:label "Electric Motor"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/ElectricalPowerSource
-<http://www.ontologyrepository.com/CommonCoreOntologies/ElectricalPowerSource> rdf:type owl:Class ;
-                                                                               rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/PowerSource> ;
-                                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Power Source that is designed to generate, control, and transfer power in the form of electrical energy."@en ;
-                                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                               rdfs:label "Electrical Power Source"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Engine
-<http://www.ontologyrepository.com/CommonCoreOntologies/Engine> rdf:type owl:Class ;
-                                                                rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> "Motor"@en ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Artifact that is designed to convert one form of energy into mechanical energy."@en ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Engine&oldid=1063879193"^^xsd:anyURI ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                rdfs:label "Engine"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Facility
-<http://www.ontologyrepository.com/CommonCoreOntologies/Facility> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> ,
-                                                                                  [ rdf:type owl:Restriction ;
-                                                                                    owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000171> ;
-                                                                                    owl:someValuesFrom <http://www.ontologyrepository.com/CommonCoreOntologies/PortionOfGeosphere>
-                                                                                  ] ;
-                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Artifact that is designed as a building or campus dedicated to some specific purpose."@en ;
-                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                  rdfs:label "Facility"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/FirstOrderAdministrativeRegion
-<http://www.ontologyrepository.com/CommonCoreOntologies/FirstOrderAdministrativeRegion> rdf:type owl:Class ;
-                                                                                        rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GeopoliticalEntity> ;
-                                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Government Domain that is a primary administrative division of a Country."@en ;
-                                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://www.geonames.org/export/codes.html" ;
-                                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/example_of_usage> "a state in the United States" ;
-                                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                                                        rdfs:label "First-Order Administrative Region"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/FourthOrderAdministrativeRegion
-<http://www.ontologyrepository.com/CommonCoreOntologies/FourthOrderAdministrativeRegion> rdf:type owl:Class ;
-                                                                                         rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GeopoliticalEntity> ;
-                                                                                         <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Government Domain that is a subdivision of a Third-Order Administrative Region."@en ;
-                                                                                         <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://www.geonames.org/export/codes.html" ;
-                                                                                         <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                                                         rdfs:label "Fourth-Order Administrative Region"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/GeopoliticalEntity
-<http://www.ontologyrepository.com/CommonCoreOntologies/GeopoliticalEntity> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/DelimitingDomain> ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Delimiting Domain that delimits the authority of a Government to exercise its control within the bounded area."@en ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                                            rdfs:label "Government Domain"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialLocation
-<http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialLocation> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion> ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Geospatial Region at which an Entity or Event is located."@en ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                                                            rdfs:label "Geospatial Location"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion
-<http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion> rdf:type owl:Class ;
-                                                                          rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000029> ;
-                                                                          <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Site at or near the surface of the Earth."@en ;
-                                                                          <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                                                          rdfs:label "Geospatial Region"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/GroundMotorVehicle
-<http://www.ontologyrepository.com/CommonCoreOntologies/GroundMotorVehicle> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GroundVehicle> ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Ground Vehicle that is designed to receive its motive power from an Engine and is not designed to travel on rails."@en ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Motor_vehicle&oldid=1063627395"^^xsd:anyURI ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                            rdfs:label "Ground Motor Vehicle"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/GroundVehicle
-<http://www.ontologyrepository.com/CommonCoreOntologies/GroundVehicle> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Vehicle> ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Vehicle that is designed to convey passengers, cargo, or equipment from one location to another by some form of ground travel."@en ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Category:Land_vehicles&oldid=546083623"^^xsd:anyURI ;
-                                                                       <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                       rdfs:label "Ground Vehicle"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/HeatEngine
-<http://www.ontologyrepository.com/CommonCoreOntologies/HeatEngine> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Engine> ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "An Engine that is designed to convert thermal energy into mechanical energy."@en ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                    rdfs:label "Heat Engine"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure
-<http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
-                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> "Infrastructure"@en ;
-                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Entity that is composed of elements bearing Infrastructure Roles and is by itself sufficient to provide a planned service or benefit to some organization that maintains its elements."@en ;
-                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                        rdfs:label "Infrastructure System"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement
-<http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement> rdf:type owl:Class ;
-                                                                               owl:equivalentClass [ owl:intersectionOf ( <http://purl.obolibrary.org/obo/BFO_0000040>
-                                                                                                                          [ rdf:type owl:Restriction ;
-                                                                                                                            owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
-                                                                                                                            owl:someValuesFrom <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole>
-                                                                                                                          ]
-                                                                                                                        ) ;
-                                                                                                     rdf:type owl:Class
-                                                                                                   ] ;
-                                                                               rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ,
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
-                                                                                                 owl:someValuesFrom <http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole>
-                                                                                               ] ;
-                                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Entity that bears an Infrastructure Role."@en ;
-                                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                               rdfs:label "Infrastructure Element"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole
-<http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000023> ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Role that inheres in the bearer of a Disposition and has been assigned to an Infrastructure System such that the realization of that Disposition is sometimes part of the functioning of the Infrastructure System."@en ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://archive.org/details/economicsprincip00osul/page/n489/mode/2up"^^xsd:anyURI ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                            rdfs:comment "The disposition will typically be a function of an artifact, which is often designed to be part of some Infrastructure system. But not always. In some cases an entity may be repurposed to be an element of some Infrastructure. In those cases it is a capability of that entity that supports the functioning of the system."@en ;
-                                                                            rdfs:label "Infrastructure Role"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/InternalCombustionEngine
-<http://www.ontologyrepository.com/CommonCoreOntologies/InternalCombustionEngine> rdf:type owl:Class ;
-                                                                                  rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/CombustionEngine> ;
-                                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Combustion Engine that is designed to have an internal Combustion Chamber where portions of Fuel and Oxidizer mixture are burned to generate thermal energy that is then converted into mechanical energy."@en ;
-                                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Internal_combustion_engine&oldid=1063281505"^^xsd:anyURI ;
-                                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                                  rdfs:label "Internal Combustion Engine"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/LocalAdministrativeRegion
-<http://www.ontologyrepository.com/CommonCoreOntologies/LocalAdministrativeRegion> rdf:type owl:Class ;
-                                                                                   rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GeopoliticalEntity> ;
-                                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> "Locality"@en ;
-                                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Government Domain that delimits a local Government."@en ;
-                                                                                   <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                                                   rdfs:label "Local Administrative Region"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/MaximumPower
-<http://www.ontologyrepository.com/CommonCoreOntologies/MaximumPower> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Power> ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Power that is characterized by the maximum rate of Work, or Energy consumed, done in a given time period."@en ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                      rdfs:label "Maximum Power"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Motorcycle
-<http://www.ontologyrepository.com/CommonCoreOntologies/Motorcycle> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GroundMotorVehicle> ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> "Motorbike"@en ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Ground Motor Vehicle that is designed to transport a very small number of passengers (usually 1 or 2) while traveling on two or three tired wheels."@en ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Motorcycle&oldid=1063743553"^^xsd:anyURI ;
-                                                                    <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                    rdfs:label "Motorcycle"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/PortionOfGeosphere
-<http://www.ontologyrepository.com/CommonCoreOntologies/PortionOfGeosphere> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A fiat object part that is composed of one or more portions of the atmosphere, cryosphere, hydrosphere, or lithosphere"@en ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Geosphere&oldid=1137306949"^^xsd:anyURI ;
-                                                                            <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                                                            rdfs:label "Portion of Geosphere"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Power
-<http://www.ontologyrepository.com/CommonCoreOntologies/Power> rdf:type owl:Class ;
-                                                               rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000144> ;
-                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Process Profile that is characterized by the rate of Work, or Energy consumed, done in a given time period."@en ;
-                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                               rdfs:label "Power"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/PowerSource
-<http://www.ontologyrepository.com/CommonCoreOntologies/PowerSource> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> ;
-                                                                     <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Artifact that is designed to supply power to some other Artifact."@en ;
-                                                                     <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Power_source&oldid=1032888635"^^xsd:anyURI ;
-                                                                     <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                     rdfs:label "Power Source"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Province
-<http://www.ontologyrepository.com/CommonCoreOntologies/Province> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/FirstOrderAdministrativeRegion> ;
-                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A First-Order Administrative Region that is part of a Country and delimits the authority of a magistrate who holds constitutionally-defined administrative jurisdiction over the defined geographic territory that bounds the Province."@en ;
-                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Province&oldid=1062496131"^^xsd:anyURI ;
-                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                                  rdfs:label "Province"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/SecondOrderAdministrativeRegion
-<http://www.ontologyrepository.com/CommonCoreOntologies/SecondOrderAdministrativeRegion> rdf:type owl:Class ;
-                                                                                         rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GeopoliticalEntity> ;
-                                                                                         <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Government Domain that is a subdivision of a First-Order Administrative Region."@en ;
-                                                                                         <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://www.geonames.org/export/codes.html" ;
-                                                                                         <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                                                         rdfs:label "Second-Order Administrative Region"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/SparkIgnitionEngine
-<http://www.ontologyrepository.com/CommonCoreOntologies/SparkIgnitionEngine> rdf:type owl:Class ;
-                                                                             rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/InternalCombustionEngine> ;
-                                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "An Internal Combustion Engine that is designed to operate by generating a spark to ignite a portion of Fuel and Oxidizer mixture."@en ;
-                                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                             rdfs:label "Spark Ignition Engine"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/StableOrientation
-<http://www.ontologyrepository.com/CommonCoreOntologies/StableOrientation> rdf:type owl:Class ;
-                                                                           rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfQuality> ;
-                                                                           <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Stasis of Quality that holds during a Temporal Interval when an object maintains the same Spatial Orientation."@en ;
-                                                                           <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                           rdfs:label "Stable Orientation"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Stasis
-<http://www.ontologyrepository.com/CommonCoreOntologies/Stasis> rdf:type owl:Class ;
-                                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Process in which one or more Independent Continuants endure in an unchanging condition."@en ;
-                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                rdfs:label "Stasis"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfArtifactOperationality
-<http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfArtifactOperationality> rdf:type owl:Class ;
-                                                                                        rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRealizableEntity> ;
-                                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Stasis of Realizable Entity that holds during a Temporal Interval when an Artifact's designed set of Artifact Functions (or at least its primary functions) or the realizations of those functions remain unchanged."@en ;
-                                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                                        rdfs:label "Stasis of Artifact Operationality"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfDisposition
-<http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfDisposition> rdf:type owl:Class ;
-                                                                             rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRealizableEntity> ;
-                                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Stasis of Realizable Entity in which some Independent Continuant bears some Disposition that remains unchanged during a Temporal Interval."@en ;
-                                                                             <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                             rdfs:label "Stasis of Disposition"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfFunction
-<http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfFunction> rdf:type owl:Class ;
-                                                                          rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRealizableEntity> ;
-                                                                          <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Stasis of Realizable Entity in which some Independent Continuant bears some Function that remains unchanged during a Temporal Interval."@en ;
-                                                                          <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                          rdfs:label "Stasis of Function"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfQuality
-<http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfQuality> rdf:type owl:Class ;
-                                                                         rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfSpecificallyDependentContinuant> ;
-                                                                         <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Stasis of Specifically Dependent Continuant in which some Independent Continuant bears some Quality that remains unchanged during a Temporal Interval."@en ;
-                                                                         <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                         rdfs:label "Stasis of Quality"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRealizableEntity
-<http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRealizableEntity> rdf:type owl:Class ;
-                                                                                  rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfSpecificallyDependentContinuant> ;
-                                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Stasis of Specifically Dependent Continuant in which some Independent Continuant bears some Realizable Entity that remains unchanged during a Temporal Interval."@en ;
-                                                                                  <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                                  rdfs:label "Stasis of Realizable Entity"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRole
-<http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRole> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfRealizableEntity> ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Stasis of Realizable Entity in which some Independent Continuant bears some Role that remains unchanged during a Temporal Interval."@en ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                      rdfs:label "Stasis of Role"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfSpecificallyDependentContinuant
-<http://www.ontologyrepository.com/CommonCoreOntologies/StasisOfSpecificallyDependentContinuant> rdf:type owl:Class ;
-                                                                                                 rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Stasis> ;
-                                                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Stasis in which some Independent Continuant bears some Specifically Dependent Continuant that remains unchanged during a Temporal Interval."@en ;
-                                                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/EventOntology"^^xsd:anyURI ;
-                                                                                                 rdfs:label "Stasis of Specifically Dependent Continuant"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/State
-<http://www.ontologyrepository.com/CommonCoreOntologies/State> rdf:type owl:Class ;
-                                                               rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/FirstOrderAdministrativeRegion> ;
-                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> "State"@en ;
-                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A First-Order Administrative Region that is part of a Country and delimits a centralized regional Government that holds constitutionally-defined administrative jurisdiction over the defined geographic territory that bounds the State."@en ;
-                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Constituent_state&oldid=1063662102"^^xsd:anyURI ;
-                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                               rdfs:label "Constituent State"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Subcontinent
-<http://www.ontologyrepository.com/CommonCoreOntologies/Subcontinent> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GeospatialRegion> ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Geospatial Region bounded by a large, relatively self-contained landmass forming a subdivision of a Continent."@en ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Continent&oldid=1064057312"^^xsd:anyURI ;
-                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/GeospatialOntology"^^xsd:anyURI ;
-                                                                      rdfs:label "Subcontinent"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/ThirdOrderAdministrativeRegion
-<http://www.ontologyrepository.com/CommonCoreOntologies/ThirdOrderAdministrativeRegion> rdf:type owl:Class ;
-                                                                                        rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GeopoliticalEntity> ;
-                                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Government Domain that is a subdivision of a Second-Order Administrative Region."@en ;
-                                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://www.geonames.org/export/codes.html" ;
-                                                                                        <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                                                        rdfs:label "Third-Order Administrative Region"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Town
-<http://www.ontologyrepository.com/CommonCoreOntologies/Town> rdf:type owl:Class ;
-                                                              rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/LocalAdministrativeRegion> ;
-                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Local Administrative Region in which a human population permanently resides that is typically larger than the population of a Village but smaller than that of a City; is designated as a town based on a particular administrative, legal, or historical status; and which delimits a local Government that typically exercises less power than that of a City Government."@en ;
-                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://www.dictionary.com/browse/town" ;
-                                                              <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                              rdfs:label "Town"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/TransportationFacility
-<http://www.ontologyrepository.com/CommonCoreOntologies/TransportationFacility> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Facility> ;
-                                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Facility that is designed for commencing or concluding the transportation of transportation artifacts, or for housing transportation artifacts."@en ;
-                                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Transport&oldid=1063526665"^^xsd:anyURI ;
-                                                                                <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/FacilityOntology"^^xsd:anyURI ;
-                                                                                rdfs:label "Transportation Facility"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/TransportationInfrastructure
-<http://www.ontologyrepository.com/CommonCoreOntologies/TransportationInfrastructure> rdf:type owl:Class ;
-                                                                                      rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure> ;
-                                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "An Infrastructure System that is designed to facilitate the movement of material entities from one location to another by providing the necessary structures for Persons to travel or for Vehicles to transport material entities."@en ;
-                                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://www.cfr.org/infrastructure/transportation-infrastructure-moving-america/p18611" ;
-                                                                                      <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                                      rdfs:label "Transportation Infrastructure"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Truck
-<http://www.ontologyrepository.com/CommonCoreOntologies/Truck> rdf:type owl:Class ;
-                                                               rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/GroundMotorVehicle> ;
-                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Ground Motor Vehicle that is designed to be used to transport cargo."@en ;
-                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Truck&oldid=1060924486"^^xsd:anyURI ;
-                                                               <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                               rdfs:comment "Trucks vary greatly in their size and power -- ranging from small ultra-light trucks to enormous heavy trucks. Trucks also vary greatly in their configurations -- ranging from very basic flatbeds or box trucks to highly specialized cargo carriers. Trucks may also be configured to mount specialized equipment, such as in the case of fire trucks, concrete mixers, and suction excavators."@en ;
-                                                               rdfs:label "Truck"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Vehicle
-<http://www.ontologyrepository.com/CommonCoreOntologies/Vehicle> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/Artifact> ;
-                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Material Artifact that is designed to facilitate the movement of material entities from one location to another by conveying them there."@en ;
-                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "https://en.wikipedia.org/w/index.php?title=Vehicle&oldid=1063682179"^^xsd:anyURI ;
-                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/ArtifactOntology"^^xsd:anyURI ;
-                                                                 rdfs:label "Vehicle"@en .
-
-
-###  http://www.ontologyrepository.com/CommonCoreOntologies/Village
-<http://www.ontologyrepository.com/CommonCoreOntologies/Village> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf <http://www.ontologyrepository.com/CommonCoreOntologies/LocalAdministrativeRegion> ;
-                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/definition> "A Local Administrative Region in which a human population permanently resides that is typically larger than the population of a hamlet but smaller than that of a Town."@en ;
-                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/definition_source> "http://www.merriam-webster.com/dictionary/village" ;
-                                                                 <http://www.ontologyrepository.com/CommonCoreOntologies/is_curated_in_ontology> "http://www.ontologyrepository.com/CommonCoreOntologies/Mid/AgentOntology"^^xsd:anyURI ;
-                                                                 rdfs:label "Village"@en .
+                                             rdfs:label "Process Profile"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "An occurrent that is an occurrent part of some process by virtue of the rate, or pattern, or amplitude of change in an attribute of one or more participants of said process."@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "On a somewhat higher level of complexity are what we shall call rate process profiles, which are the targets of selective abstraction focused not on determinate quality magnitudes plotted over time, but rather on certain ratios between these magnitudes and elapsed times. A speed process profile, for example, is represented by a graph plotting against time the ratio of distance covered per unit of time. Since rates may change, and since such changes, too, may have rates of change, we have to deal here with a hierarchy of process profile universals at successive levels; One important sub-family of rate process profiles is illustrated by the beat or frequency profiles of cyclical processes, illustrated by the 60 beats per minute beating process of John’s heart, or the 120 beats per minute drumming process involved in one of John’s performances in a rock band, and so on. Each such process includes what we shall call a beat process profile instance as part, a subtype of rate process profile in which the salient ratio is not distance covered but rather number of beat cycles per unit of time. Each beat process profile instance instantiates the determinable universal beat process profile. But it also instantiates multiple more specialized universals at lower levels of generality, selected from rate process profilebeat process profileregular beat process profile3 bpm beat process profile4 bpm beat process profileirregular beat process profileincreasing beat process profileand so on.In the case of a regular beat process profile, a rate can be assigned in the simplest possible fashion by dividing the number of cycles by the length of the temporal region occupied by the beating process profile as a whole. Irregular process profiles of this sort, for example as identified in the clinic, or in the readings on an aircraft instrument panel, are often of diagnostic significance.; The simplest type of process profiles are what we shall call ‘quality process profiles’, which are the process profiles which serve as the foci of the sort of selective abstraction that is involved when measurements are made of changes in single qualities, as illustrated, for example, by process profiles of mass, temperature, aortic pressure, and so on."@en ;
+                                             <http://www.w3.org/2004/02/skos/core#scopeNote> "b process_profile_of c holds when b proper_occurrent_part_of c& there is some proper_occurrent_part d of c which has no parts in common with b & is mutually dependent on b& is such that b, c and d occupy the same temporal region (axiom label in BFO2 Reference: [094-005])"@en ;
+                                             <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000004
+<https://www.commoncoreontologies.org/ont00000004> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                                   rdfs:label "Change"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Process in which some independent continuant endures and 1) one or more of the dependent entities it bears increase or decrease in intensity, 2) the entity begins to bear some dependent entity or 3) the entity ceases to bear some dependent entity."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000046
+<https://www.commoncoreontologies.org/ont00000046> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000126> ;
+                                                   rdfs:label "Province"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A First-Order Administrative Region that is part of a Country and delimits the authority of a magistrate who holds constitutionally-defined administrative jurisdiction over the defined geographic territory that bounds the Province."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Province&oldid=1062496131"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000053
+<https://www.commoncoreontologies.org/ont00000053> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000618> ;
+                                                   rdfs:label "Ground Motor Vehicle"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Ground Vehicle that is designed to receive its motive power from an Engine and is not designed to travel on rails."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Motor_vehicle&oldid=1063627395"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000071
+<https://www.commoncoreontologies.org/ont00000071> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000460> ;
+                                                   rdfs:label "Town"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Local Administrative Region in which a human population permanently resides that is typically larger than the population of a Village but smaller than that of a City; is designated as a town based on a particular administrative, legal, or historical status; and which delimits a local Government that typically exercises less power than that of a City Government."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://www.dictionary.com/browse/town" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000115
+<https://www.commoncoreontologies.org/ont00000115> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000246> ;
+                                                   rdfs:label "Stasis of Disposition"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Realizable Entity in which some Independent Continuant bears some Disposition that remains unchanged during a Temporal Interval."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000126
+<https://www.commoncoreontologies.org/ont00000126> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001152> ;
+                                                   rdfs:label "First-Order Administrative Region"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Government Domain that is a primary administrative division of a Country."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#example> "a state in the United States" ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://www.geonames.org/export/codes.html" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000134
+<https://www.commoncoreontologies.org/ont00000134> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001152> ;
+                                                   rdfs:label "Third-Order Administrative Region"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Government Domain that is a subdivision of a Second-Order Administrative Region."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://www.geonames.org/export/codes.html" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000135
+<https://www.commoncoreontologies.org/ont00000135> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000819> ;
+                                                   rdfs:label "Stasis of Specifically Dependent Continuant"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis in which some Independent Continuant bears some Specifically Dependent Continuant that remains unchanged during a Temporal Interval."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000138
+<https://www.commoncoreontologies.org/ont00000138> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000503> ;
+                                                   rdfs:label "Maximum Power"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Power that is characterized by the maximum rate of Work, or Energy consumed, done in a given time period."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000192
+<https://www.commoncoreontologies.org/ont00000192> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ,
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000171> ;
+                                                                     owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001341>
+                                                                   ] ;
+                                                   rdfs:label "Facility"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed as a building or campus dedicated to some specific purpose."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000210
+<https://www.commoncoreontologies.org/ont00000210> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   rdfs:label "Engine"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Motor"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to convert one form of energy into mechanical energy."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Engine&oldid=1063879193"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000213
+<https://www.commoncoreontologies.org/ont00000213> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000472> ;
+                                                   rdfs:label "Subcontinent"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Geospatial Region that is bounded by a large, relatively self-contained landmass forming a subdivision of a Continent."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Continent&oldid=1064057312"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/GeospatialOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000226
+<https://www.commoncoreontologies.org/ont00000226> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000192> ;
+                                                   rdfs:label "Transportation Facility"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Facility that is designed for commencing or concluding the transportation of transportation artifacts, or for housing transportation artifacts."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Transport&oldid=1063526665"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/FacilityOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000246
+<https://www.commoncoreontologies.org/ont00000246> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000135> ;
+                                                   rdfs:label "Stasis of Realizable Entity"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Specifically Dependent Continuant in which some Independent Continuant bears some Realizable Entity that remains unchanged during a Temporal Interval."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000251
+<https://www.commoncoreontologies.org/ont00000251> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000472> ;
+                                                   rdfs:label "Continent"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Geospatial Region that is bounded by any of the Earth's main continuous expanses of land."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "JC3IEDM version 3.0.2" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/GeospatialOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000288
+<https://www.commoncoreontologies.org/ont00000288> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   rdfs:label "Power Source"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to supply power to some other Artifact."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Power_source&oldid=1032888635"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000328
+<https://www.commoncoreontologies.org/ont00000328> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000870> ;
+                                                   rdfs:label "Transportation Infrastructure"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Infrastructure System that is designed to facilitate the movement of material entities from one location to another by providing the necessary structures for Persons to travel or for Vehicles to transport material entities."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://www.cfr.org/infrastructure/transportation-infrastructure-moving-america/p18611" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000394
+<https://www.commoncoreontologies.org/ont00000394> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000746> ;
+                                                   rdfs:label "Internal Combustion Engine"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Combustion Engine that is designed to have an internal Combustion Chamber where portions of Fuel and Oxidizer mixture are burned to generate thermal energy that is then converted into mechanical energy."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Internal_combustion_engine&oldid=1063281505"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000405
+<https://www.commoncoreontologies.org/ont00000405> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001152> ;
+                                                   rdfs:label "Second-Order Administrative Region"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Government Domain that is a subdivision of a First-Order Administrative Region."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://www.geonames.org/export/codes.html" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000430
+<https://www.commoncoreontologies.org/ont00000430> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000850> ;
+                                                   rdfs:label "Stable Orientation"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Quality that holds during a Temporal Interval when an object maintains the same Spatial Orientation."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000460
+<https://www.commoncoreontologies.org/ont00000460> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001152> ;
+                                                   rdfs:label "Local Administrative Region"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Locality"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Government Domain that delimits a local Government."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000472
+<https://www.commoncoreontologies.org/ont00000472> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000029> ;
+                                                   rdfs:label "Geospatial Region"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Site that is at or near the surface of the Earth."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/GeospatialOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000473
+<https://www.commoncoreontologies.org/ont00000473> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001152> ;
+                                                   rdfs:label "Fourth-Order Administrative Region"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Government Domain that is a subdivision of a Third-Order Administrative Region."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://www.geonames.org/export/codes.html" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000487
+<https://www.commoncoreontologies.org/ont00000487> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000472> ;
+                                                   rdfs:label "Geospatial Location"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Geospatial Region that is at which an Entity or Event is located."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/GeospatialOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000503
+<https://www.commoncoreontologies.org/ont00000503> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000144> ;
+                                                   rdfs:label "Power"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Process Profile that is characterized by the rate of Work, or Energy consumed, done in a given time period."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000606
+<https://www.commoncoreontologies.org/ont00000606> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000053> ;
+                                                   rdfs:comment "Trucks vary greatly in their size and power -- ranging from small ultra-light trucks to enormous heavy trucks. Trucks also vary greatly in their configurations -- ranging from very basic flatbeds or box trucks to highly specialized cargo carriers. Trucks may also be configured to mount specialized equipment, such as in the case of fire trucks, concrete mixers, and suction excavators."@en ;
+                                                   rdfs:label "Truck"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Ground Motor Vehicle that is designed to be used to transport cargo."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Truck&oldid=1060924486"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000618
+<https://www.commoncoreontologies.org/ont00000618> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000713> ;
+                                                   rdfs:label "Ground Vehicle"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Vehicle that is designed to convey passengers, cargo, or equipment from one location to another by some form of ground travel."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Category:Land_vehicles&oldid=546083623"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000627
+<https://www.commoncoreontologies.org/ont00000627> rdf:type owl:Class ;
+                                                   owl:equivalentClass [ owl:intersectionOf ( <http://purl.obolibrary.org/obo/BFO_0000040>
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                                                owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001141>
+                                                                                              ]
+                                                                                            ) ;
+                                                                         rdf:type owl:Class
+                                                                       ] ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ,
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                                     owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001141>
+                                                                   ] ;
+                                                   rdfs:label "Infrastructure Element"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Entity that bears an Infrastructure Role."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000638
+<https://www.commoncoreontologies.org/ont00000638> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000210> ;
+                                                   rdfs:label "Heat Engine"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Engine that is designed to convert thermal energy into mechanical energy."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000713
+<https://www.commoncoreontologies.org/ont00000713> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   rdfs:label "Vehicle"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to facilitate the movement of material entities from one location to another by conveying them there."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Vehicle&oldid=1063682179"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000718
+<https://www.commoncoreontologies.org/ont00000718> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000460> ;
+                                                   rdfs:label "Village"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Local Administrative Region in which a human population permanently resides that is typically larger than the population of a hamlet but smaller than that of a Town."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://www.merriam-webster.com/dictionary/village" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000746
+<https://www.commoncoreontologies.org/ont00000746> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000638> ;
+                                                   rdfs:label "Combustion Engine"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Heat Engine that is designed to convert thermal energy that is generated through a local Combustion process into mechanical energy."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000807
+<https://www.commoncoreontologies.org/ont00000807> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000394> ;
+                                                   rdfs:label "Compression Ignition Engine"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Internal Combustion Engine that is designed to operate by igniting a portion of Fuel and Oxidizer mixture using heat generated via compression of the mixture."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000819
+<https://www.commoncoreontologies.org/ont00000819> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                                   rdfs:label "Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Process in which one or more Independent Continuants endure in an unchanging condition."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000820
+<https://www.commoncoreontologies.org/ont00000820> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000246> ;
+                                                   rdfs:label "Stasis of Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Realizable Entity in which some Independent Continuant bears some Function that remains unchanged during a Temporal Interval."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000824
+<https://www.commoncoreontologies.org/ont00000824> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000246> ;
+                                                   rdfs:label "Stasis of Role"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Realizable Entity in which some Independent Continuant bears some Role that remains unchanged during a Temporal Interval."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000840
+<https://www.commoncoreontologies.org/ont00000840> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000618> ;
+                                                   rdfs:label "Bicycle"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Ground Vehicle that consists of two wheels, one in front of the other, attached to a frame along with handlebars and pedals such that it is designed to receive its motive power from pedaling."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Bicycle&oldid=1063761124"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000847
+<https://www.commoncoreontologies.org/ont00000847> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001213> ;
+                                                   rdfs:label "Active Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Artifact Operationality that holds during a Temporal Interval when an Artifact is realizing one or more of its designed Artifact Functions (especially one of its primary functions)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000850
+<https://www.commoncoreontologies.org/ont00000850> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000135> ;
+                                                   rdfs:label "Stasis of Quality"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Specifically Dependent Continuant in which some Independent Continuant bears some Quality that remains unchanged during a Temporal Interval."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000870
+<https://www.commoncoreontologies.org/ont00000870> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
+                                                   rdfs:label "Infrastructure System"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Infrastructure"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Entity that is composed of elements bearing Infrastructure Roles and is by itself sufficient to provide a planned service or benefit to some organization that maintains its elements."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000887
+<https://www.commoncoreontologies.org/ont00000887> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000460> ;
+                                                   rdfs:label "City"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Local Administrative Region in which a relatively large human population permanently resides; is designated as a city based on a particular administrative, legal, or historical status; and which delimits a local Government that typically oversees the provision of systems for sanitation, utilities, land usage, housing, and transportation."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=City&oldid=1062635325"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000934
+<https://www.commoncoreontologies.org/ont00000934> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000126> ;
+                                                   rdfs:label "Constituent State"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "State"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A First-Order Administrative Region that is part of a Country and delimits a centralized regional Government that holds constitutionally-defined administrative jurisdiction over the defined geographic territory that bounds the State."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Constituent_state&oldid=1063662102"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000952
+<https://www.commoncoreontologies.org/ont00000952> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000210> ;
+                                                   rdfs:label "Electric Motor"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Electric Engine"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Engine that is designed to convert electrical energy into mechanical energy."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Electric_motor&oldid=1063829856"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000958
+<https://www.commoncoreontologies.org/ont00000958> rdf:type owl:Class ;
+                                                   owl:equivalentClass [ owl:intersectionOf ( <http://purl.obolibrary.org/obo/BFO_0000031>
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty <https://www.commoncoreontologies.org/ont00001808> ;
+                                                                                                owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000001>
+                                                                                              ]
+                                                                                            ) ;
+                                                                         rdf:type owl:Class
+                                                                       ] ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000031> ,
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty <https://www.commoncoreontologies.org/ont00001808> ;
+                                                                     owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000001>
+                                                                   ] ;
+                                                   rdfs:label "Information Content Entity"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "ICE"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Generically Dependent Continuant that generically depends on some Information Bearing Entity and stands in relation of aboutness to some Entity."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#scopeNote> "Information Content Entity is here intended to be a class of Entities whose instances are the informational content of Information Bearing Entities. For example, three instances of information bearers -- such as a bar chart, color-coded map, and a written report -- each of which lists the GDP of Countries for the year 2010 are each different carriers of the same information content. It is this content that is generically dependent upon its carrier. This treatment of Informational Content Entity (cf. the Information Artifact Ontology) leads to a principle of subtyping based upon the relationship that ICE's have with the Entity they are about rather than characteristics such as format, language, measurement scale, or media. The latter are treated here as being Qualities of bearers."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/IAO_0000030" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000995
+<https://www.commoncoreontologies.org/ont00000995> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
+                                                   rdfs:label "Material Artifact"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Entity that was designed by some Agent to realize a certain Function."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001011
+<https://www.commoncoreontologies.org/ont00001011> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000053> ;
+                                                   rdfs:label "Automobile"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Ground Motor Vehicle that is designed to transport a small number of passengers while traveling on four tired wheels."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Car&oldid=1064116950"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001024
+<https://www.commoncoreontologies.org/ont00001024> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000394> ;
+                                                   rdfs:label "Spark Ignition Engine"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Internal Combustion Engine that is designed to operate by generating a spark to ignite a portion of Fuel and Oxidizer mixture."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001049
+<https://www.commoncoreontologies.org/ont00001049> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000288> ;
+                                                   rdfs:label "Electrical Power Source"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Power Source that is designed to generate, control, and transfer power in the form of electrical energy."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001061
+<https://www.commoncoreontologies.org/ont00001061> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000053> ;
+                                                   rdfs:label "Motorcycle"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Motorbike"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Ground Motor Vehicle that is designed to transport a very small number of passengers (usually 1 or 2) while traveling on two or three tired wheels."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Motorcycle&oldid=1063743553"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001141
+<https://www.commoncoreontologies.org/ont00001141> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000023> ;
+                                                   rdfs:comment "The disposition will typically be a function of an artifact, which is often designed to be part of some Infrastructure system. But not always. In some cases an entity may be repurposed to be an element of some Infrastructure. In those cases it is a capability of that entity that supports the functioning of the system."@en ;
+                                                   rdfs:label "Infrastructure Role"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Role that inheres in the bearer of a Disposition and has been assigned to an Infrastructure System such that the realization of that Disposition is sometimes part of the functioning of the Infrastructure System."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://archive.org/details/economicsprincip00osul/page/n489/mode/2up"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001152
+<https://www.commoncoreontologies.org/ont00001152> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001203> ;
+                                                   rdfs:label "Government Domain"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Delimiting Domain that delimits the authority of a Government to exercise its control within the bounded area."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001164
+<https://www.commoncoreontologies.org/ont00001164> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001152> ;
+                                                   rdfs:label "County"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Government Domain that is part of either a First-Order or Second-Order Administrative Region."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=County&oldid=1062817834"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001203
+<https://www.commoncoreontologies.org/ont00001203> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000472> ;
+                                                   <http://purl.org/dc/terms/created> "2022-12-30T21:32:27-05:00"^^xsd:dateTime ;
+                                                   <http://purl.org/dc/terms/creator> "https://cubrc.org"^^xsd:anyURI ;
+                                                   rdfs:label "Delimiting Domain"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Geospatial Region that delimits the authority of an Organization to exercise its control within the bounded area."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Delimiting Domain"@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001213
+<https://www.commoncoreontologies.org/ont00001213> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000246> ;
+                                                   rdfs:label "Stasis of Artifact Operationality"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Realizable Entity that holds during a Temporal Interval when an Artifact's designed set of Artifact Functions (or at least its primary functions) or the realizations of those functions remain unchanged."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001292
+<https://www.commoncoreontologies.org/ont00001292> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000053> ;
+                                                   rdfs:label "Bus"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Ground Motor Vehicle that is designed to transport a large number of people and to travel on six or more tired wheels."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Bus&oldid=1055341487"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001341
+<https://www.commoncoreontologies.org/ont00001341> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
+                                                   rdfs:label "Portion of Geosphere"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A fiat object part that is composed of one or more portions of the atmosphere, cryosphere, hydrosphere, or lithosphere"@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Geosphere&oldid=1137306949"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/GeospatialOntology"^^xsd:anyURI .
 
 
 ###  Generated by the OWL API (version 4.5.26) https://github.com/owlcs/owlapi
