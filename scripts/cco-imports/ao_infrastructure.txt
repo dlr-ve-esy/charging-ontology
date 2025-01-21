@@ -1,7 +1,7 @@
 http://purl.obolibrary.org/obo/BFO_0000196
 http://purl.obolibrary.org/obo/BFO_0000023
-http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureRole
+https://www.commoncoreontologies.org/ont00001141
 http://purl.obolibrary.org/obo/BFO_0000040
-http://www.ontologyrepository.com/CommonCoreOntologies/InfrastructureElement
-http://www.ontologyrepository.com/CommonCoreOntologies/Infrastructure
-http://www.ontologyrepository.com/CommonCoreOntologies/TransportationInfrastructure
+https://www.commoncoreontologies.org/ont00000627
+https://www.commoncoreontologies.org/ont00000870
+https://www.commoncoreontologies.org/ont00000328
