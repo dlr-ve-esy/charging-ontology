@@ -33,6 +33,7 @@ CCO = "tmp/MergedAllCoreOntology.ttl"
 TARGET = BASEDIR.joinpath("src/imports/cco-extracted.ttl")
 TMP = BASEDIR.joinpath("tmp")
 TMP.mkdir(exist_ok=True)
+CATALOG = BASEDIR.joinpath("scripts/catalog.xml")
 # %%
 
 
@@ -74,6 +75,7 @@ def extract_mireot(
         upper_term_string = f"--upper-term {upper_term} "
     extract_call = (
         "java -jar {jar} extract "
+        "--catalog {catalog} "
         "--input {input} "
         "--method MIREOT {upper_term_string}"
         "--lower-terms {lower_terms} "
@@ -88,6 +90,7 @@ def extract_mireot(
     debug_string = extract_call.format(
         jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
+        catalog=CATALOG,
         lower_terms=TMP.joinpath("temp.txt").resolve().as_posix(),
         upper_term_string=upper_term_string,
         intermediates=intermediates,
@@ -110,6 +113,7 @@ def extract_star(input: str, output: str, terms: str):
     """Call robot to do a STAR extraction"""
     extract_call = (
         "java -jar {jar} extract "
+        "--catalog {catalog} "
         "--input {input} "
         "--method STAR "
         "--term-file {term_file} "
@@ -122,6 +126,7 @@ def extract_star(input: str, output: str, terms: str):
     debug_string = extract_call.format(
         jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
+        catalog=CATALOG,
         term_file=TMP.joinpath("temp.txt").resolve().as_posix(),
         output=Path(output).resolve().as_posix(),
     )
@@ -146,6 +151,7 @@ def extract_tree(
     """Call robot to do a TOP extraction of a tree."""
     extract_call = (
         "java -jar {jar} extract "
+        "--catalog {catalog} "
         "--input {input} "
         "--method TOP "
         "--term {term} "
@@ -155,6 +161,7 @@ def extract_tree(
     debug_string = extract_call.format(
         jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
+        catalog=CATALOG,
         term=term,
         output=Path(output).resolve().as_posix(),
     )
@@ -172,6 +179,7 @@ def extract_subset(input: str, output: str, terms: str):
     """Call robot to do a subset extraction"""
     extract_call = (
         "java -jar {jar} extract "
+        "--catalog {catalog} "
         "--input {input} "
         "--method subset "
         "--term-file {term_file} "
@@ -187,6 +195,7 @@ def extract_subset(input: str, output: str, terms: str):
         jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
         term_file=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
+        catalog=CATALOG,
         # term_file_filter=Path("tmp").joinpath("temp.txt").resolve().as_posix(),
         output=Path(output).resolve().as_posix(),
     )
@@ -208,6 +217,7 @@ def map_ontologies(
     """Call robot to do a TOP extraction of a tree."""
     extract_call = (
         "java -jar {jar} rename "
+        "--catalog {catalog} "
         "--input {input} "
         "--mappings {mappings} "
         "--allow-missing-entities true "
@@ -216,6 +226,7 @@ def map_ontologies(
     debug_string = extract_call.format(
         jar=ROBOT_PATH.resolve().as_posix(),
         input=Path(input).resolve().as_posix(),
+        catalog=CATALOG,
         mappings=Path(mappings).resolve().as_posix(),
         output=Path(output).resolve().as_posix(),
     )
@@ -263,9 +274,7 @@ if not eo_change.exists():
 eo_process_profiles = TMP.joinpath("eo_process_profiles.ttl")
 if not eo_process_profiles.exists():
     upper_term = "http://purl.obolibrary.org/obo/BFO_0000144"
-    lower_terms = [
-        "https://www.commoncoreontologies.org/ont00000138"
-    ]
+    lower_terms = ["https://www.commoncoreontologies.org/ont00000138"]
     extract_mireot(
         input=event_ontology,
         output=eo_process_profiles,
@@ -348,9 +357,7 @@ if not geo_base.exists():
 agent_ontology = download_ontology_if_missing("AgentOntology")
 geo_tree = TMP.joinpath("geo_tree.ttl")
 if not geo_tree.exists():
-    upper_term = (
-        "https://www.commoncoreontologies.org/ont00000472"
-    )
+    upper_term = "https://www.commoncoreontologies.org/ont00000472"
     lower_terms = load_terms(FILEPATH.joinpath("geo_tree.txt"))
     extract_mireot(
         input=agent_ontology,

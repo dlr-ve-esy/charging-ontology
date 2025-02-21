@@ -55,6 +55,10 @@ rdfs:label rdf:type owl:AnnotationProperty .
 <http://www.w3.org/2004/02/skos/core#scopeNote> rdf:type owl:AnnotationProperty .
 
 
+###  https://www.commoncoreontologies.org/ont00001753
+<https://www.commoncoreontologies.org/ont00001753> rdf:type owl:AnnotationProperty .
+
+
 ###  https://www.commoncoreontologies.org/ont00001754
 <https://www.commoncoreontologies.org/ont00001754> rdf:type owl:AnnotationProperty .
 
@@ -252,6 +256,17 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Local Administrative Region in which a human population permanently resides that is typically larger than the population of a Village but smaller than that of a City; is designated as a town based on a particular administrative, legal, or historical status; and which delimits a local Government that typically exercises less power than that of a City Government."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "http://www.dictionary.com/browse/town" ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000106
+<https://www.commoncoreontologies.org/ont00000106> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001213> ;
+                                                   rdfs:comment "An End of Life Stasis (EoL) is distinguished from a Stasis of Partially Mission Capable or Stasis of Non-Mission Capable in that EoL is more inclusive such that the participating Artifact may be either Partially or Non-Mission Capable. Additionally, EoL applies only to Artifacts and is typically determined in relation to its original mission and designed primary functions. In contrast, an Artifact's level of Mission Capability depends on the requirements of the mission under consideration such that a given Artifact may simultaneously be Fully Mission Capable for mission1, Partially Mission Capable for mission2, and Non-Mission Capable for mission3."@en ;
+                                                   rdfs:label "End of Life Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Artifact Operationality that holds during a Temporal Interval when the participating Artifact is no longer capable of realizing all of its designed primary Artifact Functions."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001753> "EOL" ,
+                                                                                                      "EoL" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000115
@@ -588,6 +603,17 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000924
+<https://www.commoncoreontologies.org/ont00000924> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001191> ;
+                                                   rdfs:comment "A Beginning of Life Stasis (BoL) is a relatively brief Operational Stasis that is primarily of interest for the purpose of establishing a baseline for operational parameters to be compared to the designed specifications as well as the Artifact's performance throughout its operational life."@en ;
+                                                   rdfs:label "Beginning of Life Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Operational Stasis that holds during a Temporal Interval when an Artifact is first put into operational use such that its designed set of Artifact Functions is capable of operating at or near their designed peak performance levels."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001753> "BOL" ,
+                                                                                                      "BoL" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000934
 <https://www.commoncoreontologies.org/ont00000934> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000126> ;
@@ -596,6 +622,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A First-Order Administrative Region that is part of a Country and delimits a centralized regional Government that holds constitutionally-defined administrative jurisdiction over the defined geographic territory that bounds the State."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Constituent_state&oldid=1063662102"^^xsd:anyURI ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000936
+<https://www.commoncoreontologies.org/ont00000936> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001213> ;
+                                                   rdfs:label "Deactivated Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Artifact Operationality that holds during a Temporal Interval when an Artifact is not realizing any of its designed Artifact Functions (or at least not realizing any of its primary functions)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000952
@@ -637,6 +671,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    rdfs:label "Material Artifact"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Material Entity that was designed by some Agent to realize a certain Function."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000999
+<https://www.commoncoreontologies.org/ont00000999> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001213> ;
+                                                   rdfs:label "Defunct Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Artifact Operationality that holds during a Temporal Interval when an Artifact no longer maintains its designed set of Artifact Functions (or at least no longer maintains its primary functions)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00001011
@@ -699,6 +741,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Government Domain that is part of either a First-Order or Second-Order Administrative Region."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=County&oldid=1062817834"^^xsd:anyURI ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001191
+<https://www.commoncoreontologies.org/ont00001191> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001213> ;
+                                                   rdfs:label "Operational Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Artifact Operationality that holds during a Temporal Interval when an Artifact maintains its designed set of Artifact Functions (or at least maintains its primary functions)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00001203

@@ -3,3 +3,8 @@ https://www.commoncoreontologies.org/ont00000115
 https://www.commoncoreontologies.org/ont00000820
 https://www.commoncoreontologies.org/ont00000824
 https://www.commoncoreontologies.org/ont00000847
+https://www.commoncoreontologies.org/ont00001191
+https://www.commoncoreontologies.org/ont00000924
+https://www.commoncoreontologies.org/ont00000106
+https://www.commoncoreontologies.org/ont00000999
+https://www.commoncoreontologies.org/ont00000936
