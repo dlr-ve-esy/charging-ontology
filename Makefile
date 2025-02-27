@@ -7,6 +7,15 @@ BFOCOMMIT := d9aa636303766bfb6a7a6d46265873f96cdd8584
 TMP := tmp
 IMPORTS := $(ONTOLOGY_SOURCE)/imports
 
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	SED := sed
+endif
+ifeq ($(UNAME_S),Darwin)
+	SED := gsed
+endif
+
+
 subst_paths =	${subst $(ONTOLOGY_SOURCE),$(VERSIONDIR),${patsubst $(ONTOLOGY_SOURCE)/edits/%,$(ONTOLOGY_SOURCE)/modules/%,$(1)}}
 subst_paths_owl =	${subst $(VERSIONDIR),$(VERSIONDIR)/owl,${patsubst %.ttl,%.owl,$(1)}}
 
@@ -36,22 +45,27 @@ HERMIT_PATH := hermit.jar
 HERMIT := java -jar $(HERMIT_PATH)
 
 define replace_devs
-	sed -i -E "s/$(OEP_BASE)\/dev\/([a-zA-Z/\.\-]+)/$(OEP_BASE)\/releases\/$(VERSION)\/\1/m" $1
+	$(SED) -i -E "s/$(OEP_BASE)\/dev\/([a-zA-Z/\.\-]+)/$(OEP_BASE)\/releases\/$(VERSION)\/\1/m" $1
 endef
 
 define replace_oms
-	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
-	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
 endef
 
 define replace_ttls
-	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
-	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
 endef
 
 define replace_owls
-	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
-	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
+endef
+
+define replace_ttls_owx
+	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owx/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owx/m" $1
 endef
 
 define translate_to_owl
@@ -72,15 +86,23 @@ define translate_to_omn
 	$(call replace_devs,$1)
 endef
 
+define translate_to_owx
+	$(ROBOT) convert --catalog $(VERSIONDIR)/catalog-v001.xml --input $2 --output $1 --format owx
+	$(call replace_ttls_owx,$1)
+	$(call replace_devs,$1)
+endef
+
 .PHONY: all clean base merge directories
 
-all: base merge profiles closure
+all: base merge profiles closure owx
 
 imports: directories ${TMP}/catalog.xml $(IMPORTS)/bfo-core.ttl $(IMPORTS)/cco-extracted.ttl $(IMPORTS)/oeo-extracted.ttl $(IMPORTS)/iao-extracted.ttl
 
 base: | directories $(VERSIONDIR)/catalog-v001.xml robot.jar  $(TTL_COPY) $(OWL_COPY) $(OWLVERSION) $(TTL_TRANSLATE)
 
 merge: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl 
+
+owx: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.owx 
 
 closure: | $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.ttl
 
@@ -124,7 +146,7 @@ ${VERSIONDIR}/modules:
 $(VERSIONDIR)/catalog-v001.xml: $(ONTOLOGY_SOURCE)/catalog-v001.xml
 	cp $< $@
 	$(call replace_devs,$@)
-	sed -i -E "s/edits\//modules\//m" $@
+	$(SED) -i -E "s/edits\//modules\//m" $@
 
 $(ROBOT_PATH): | build
 	curl -L -o $@ https://github.com/ontodev/robot/releases/download/v1.9.5/robot.jar
@@ -171,3 +193,6 @@ $(VERSIONDIR)/$(ONTOLOGY_NAME)-el.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-ql.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(ROBOT) reduce --reasoner hermit --input $< --catalog $(VERSIONDIR)/catalog-v001.xml relax remove --axioms "TransitiveObjectProperty FunctionalObjectProperty InverseFunctionalObjectProperty" annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
+
+$(VERSIONDIR)/$(ONTOLOGY_NAME)-full.owx : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
+	$(call translate_to_owx,$@,$<)
