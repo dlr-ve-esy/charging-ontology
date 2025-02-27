@@ -7,6 +7,15 @@ BFOCOMMIT := d9aa636303766bfb6a7a6d46265873f96cdd8584
 TMP := tmp
 IMPORTS := $(ONTOLOGY_SOURCE)/imports
 
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	SED := sed
+endif
+ifeq ($(UNAME_S),Darwin)
+	SED := gsed
+endif
+
+
 subst_paths =	${subst $(ONTOLOGY_SOURCE),$(VERSIONDIR),${patsubst $(ONTOLOGY_SOURCE)/edits/%,$(ONTOLOGY_SOURCE)/modules/%,$(1)}}
 subst_paths_owl =	${subst $(VERSIONDIR),$(VERSIONDIR)/owl,${patsubst %.ttl,%.owl,$(1)}}
 
@@ -36,22 +45,22 @@ HERMIT_PATH := hermit.jar
 HERMIT := java -jar $(HERMIT_PATH)
 
 define replace_devs
-	sed -i -E "s/$(OEP_BASE)\/dev\/([a-zA-Z/\.\-]+)/$(OEP_BASE)\/releases\/$(VERSION)\/\1/m" $1
+	$(SED) -i -E "s/$(OEP_BASE)\/dev\/([a-zA-Z/\.\-]+)/$(OEP_BASE)\/releases\/$(VERSION)\/\1/m" $1
 endef
 
 define replace_oms
-	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
-	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
 endef
 
 define replace_ttls
-	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
-	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
 endef
 
 define replace_owls
-	sed -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
-	sed -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
+	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
 endef
 
 define translate_to_owl
@@ -124,7 +133,7 @@ ${VERSIONDIR}/modules:
 $(VERSIONDIR)/catalog-v001.xml: $(ONTOLOGY_SOURCE)/catalog-v001.xml
 	cp $< $@
 	$(call replace_devs,$@)
-	sed -i -E "s/edits\//modules\//m" $@
+	$(SED) -i -E "s/edits\//modules\//m" $@
 
 $(ROBOT_PATH): | build
 	curl -L -o $@ https://github.com/ontodev/robot/releases/download/v1.9.5/robot.jar
