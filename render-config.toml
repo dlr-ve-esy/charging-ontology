@@ -1,0 +1,22 @@
+baseurl = "https://dlr-ve-esy.github.io/charging-ontology/"
+title = "The Charging Infrastructure Ontology"
+templates = "templates"
+assets = "static"
+
+[ontology]
+iri = "https://dlr-ve-esy.github.io/charging-ontology/"
+suffix = "CHIO"
+source = "chio.owx"
+
+[build]
+output = "./public"
+render = true
+
+
+[[import]]
+iri = "http://purl.obolibrary.org/obo/"
+suffix = "OBO"
+
+[[import]]
+iri = "https://www.commoncoreontologies.org/"
+suffix = "CCO"
