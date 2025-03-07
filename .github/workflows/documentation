@@ -1,0 +1,43 @@
+name: docs 
+on:
+  push:
+    branches:
+      - dev 
+      - main
+    paths:
+      - src/**
+permissions:
+  contents: write
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build Ontology Pages
+        uses: enioarz/ontology-server@v2
+        id: build
+        with:
+          args: --config ./configs/example.toml  --assets ./static build --output ./public --render_imports
+      - name: Get the output
+        run: echo "${{ steps.build.outputs.results }}"
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }}/public
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
