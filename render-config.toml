@@ -1,4 +1,4 @@
-baseurl = "https://dlr-ve-esy.github.io/charging-ontology/"
+baseurl = "/charging-ontology/"
 title = "The Charging Infrastructure Ontology"
 templates = "templates"
 assets = "static"
