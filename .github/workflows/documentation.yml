@@ -37,7 +37,7 @@ jobs:
         uses: enioarz/ontology-server@781be893bccc210495457ec50198611bd6492ac5
         id: build
         with:
-          args: --source ./${{ env.ONTOLOGY_VERSION }}/chio-full.owx --config ./render-config.toml  --assets ./static build --output ./public --render_imports
+          args: --source ./${{ env.ONTOLOGY_VERSION }}/chio-full.owx --config ./render-config.toml  --assets ./static --templates ./templates build --output ./public --render_imports
       - name: Get the output
         run: echo "${{ steps.build.outputs.results }}"
       - name: Upload Build Artifacts
