@@ -31,11 +31,13 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: build-artifacts
+      - name: Get version
+        run: echo "ONTOLOGY_VERSION=$(cat VERSION)" >> $GITHUB_ENV
       - name: Build Ontology Pages
         uses: enioarz/ontology-server@781be893bccc210495457ec50198611bd6492ac5
         id: build
         with:
-          args: --source ./$(cat VERSION)/chio-full.owx --config ./render-config.toml  --assets ./static build --output ./public --render_imports
+          args: --source ./${{ env.ONTOLOGY_VERSION }}/chio-full.owx --config ./render-config.toml  --assets ./static build --output ./public --render_imports
       - name: Get the output
         run: echo "${{ steps.build.outputs.results }}"
       - name: Upload Build Artifacts
