@@ -40,11 +40,8 @@ jobs:
           args: --source ./${{ env.ONTOLOGY_VERSION }}/chio-full.owx --config ./render-config.toml  --assets /static --templates /templates build --output ./public --render_imports
       - name: Get the output
         run: echo "${{ steps.build.outputs.results }}"
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: workspace_artifacts
-          path: ${{ github.workspace }}/public
+      - name: Move Build Artifacts
+        run: cp -r ${{ github.workspace }}/public/ ./_site/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
