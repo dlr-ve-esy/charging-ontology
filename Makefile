@@ -45,27 +45,27 @@ HERMIT_PATH := hermit.jar
 HERMIT := java -jar $(HERMIT_PATH)
 
 define replace_devs
-	$(SED) -i -E "s/$(OEP_BASE)\/dev\/([a-zA-Z/\.\-]+)/$(OEP_BASE)\/releases\/$(VERSION)\/\1/m" $1
+	$(SED) -i -E "s/$(IRI_ONTOLOGY)\/dev\/([a-zA-Z/\.\-]+)/$(IRI_ONTOLOGY)\/releases\/$(VERSION)\/\1/m" $1
 endef
 
 define replace_oms
-	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
-	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
+	$(SED) -i -E "s/($(IRI_ONTOLOGY)\/dev\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
+	$(SED) -i -E "s/($(IRI_ONTOLOGY)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)omn/\1owl/m" $1
 endef
 
 define replace_ttls
-	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
-	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
+	$(SED) -i -E "s/($(IRI_ONTOLOGY)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
+	$(SED) -i -E "s/($(IRI_ONTOLOGY)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owl/m" $1
 endef
 
 define replace_owls
-	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
-	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
+	$(SED) -i -E "s/($(IRI_ONTOLOGY)\/dev\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
+	$(SED) -i -E "s/($(IRI_ONTOLOGY)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)owl/\1ttl/m" $1
 endef
 
 define replace_ttls_owx
-	$(SED) -i -E "s/($(OEP_BASE)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owx/m" $1
-	$(SED) -i -E "s/($(OEP_BASE)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owx/m" $1
+	$(SED) -i -E "s/($(IRI_ONTOLOGY)\/dev\/([a-zA-Z/\-]+)\.)ttl/\1owx/m" $1
+	$(SED) -i -E "s/($(IRI_ONTOLOGY)\/releases\/$(VERSION)\/([a-zA-Z/\-]+)\.)ttl/\1owx/m" $1
 endef
 
 define translate_to_owl
