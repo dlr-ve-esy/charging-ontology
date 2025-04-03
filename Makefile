@@ -23,7 +23,9 @@ OWL_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)/* -type f -name 
 OMN_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)/* -type f -name "*.omn"))
 TTL_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)* -type f -name "*.ttl"))
 
-IRI_BASE := http:\/\/openenergy-platform\.org\/ontology\/
+IRI_PLACEHOLDER := http:\/\/openenergy-platform\.org\/ontology\/
+IRI_BASE := http:\/\/ontologyserver\.org\/
+IRI_ONTOLOGY_PLACEHOLDER := $(IRI_PLACEHOLDER)$(ONTOLOGY_NAME)
 IRI_ONTOLOGY := $(IRI_BASE)$(ONTOLOGY_NAME)
 SEPARATOR := \/
 
@@ -97,6 +99,10 @@ define translate_to_owx
 	$(call replace_devs,$1)
 endef
 
+define replace_placeholder
+	$(SED) -i -E "s/$(IRI_ONTOLOGY_PLACEHOLDER)\/([a-zA-Z/\.\-]+)/$(IRI_ONTOLOGY)\/\1/m" $1
+endef
+
 .PHONY: all clean base merge directories
 
 all: base merge profiles closure owx
@@ -151,6 +157,7 @@ ${VERSIONDIR}/modules:
 $(VERSIONDIR)/catalog-v001.xml: $(ONTOLOGY_SOURCE)/catalog-v001.xml
 	cp $< $@
 	$(call replace_devs,$@)
+	$(call replace_placeholder,$@)
 	$(SED) -i -E "s/edits\//modules\//m" $@
 
 $(ROBOT_PATH): | build
@@ -167,18 +174,22 @@ $(VERSIONDIR)/owl/modules/%.owl: $(VERSIONDIR)/edits/%.ttl
 
 $(VERSIONDIR)/owl/%.owl: $(ONTOLOGY_SOURCE)/%.owl
 	cp -a $< $@
+	$(call replace_placeholder,$@)
 	$(call replace_devs,$@)
 
 $(VERSIONDIR)/owl/modules/%.owl: $(ONTOLOGY_SOURCE)/edits/%.owl
 	cp -a $< $@
+	$(call replace_placeholder,$@)
 	$(call replace_devs,$@)
 
 $(VERSIONDIR)/modules/%.ttl: $(ONTOLOGY_SOURCE)/edits/%.ttl
 	cp -a $< $@
+	$(call replace_placeholder,$@)
 	$(call replace_devs,$@)
 
 $(VERSIONDIR)/%.ttl: $(ONTOLOGY_SOURCE)/%.ttl
 	cp -a $< $@
+	$(call replace_placeholder,$@)
 	$(call replace_devs,$@)
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl : | base
