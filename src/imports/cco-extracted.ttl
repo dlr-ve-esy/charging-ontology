@@ -209,6 +209,10 @@ rdfs:label rdf:type owl:AnnotationProperty .
 <http://purl.obolibrary.org/obo/BFO_0000031> rdf:type owl:Class .
 
 
+###  http://purl.obolibrary.org/obo/BFO_0000034
+<http://purl.obolibrary.org/obo/BFO_0000034> rdf:type owl:Class .
+
+
 ###  http://purl.obolibrary.org/obo/BFO_0000040
 <http://purl.obolibrary.org/obo/BFO_0000040> rdf:type owl:Class .
 
@@ -255,6 +259,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Local Administrative Region in which a human population permanently resides that is typically larger than the population of a Village but smaller than that of a City; is designated as a town based on a particular administrative, legal, or historical status; and which delimits a local Government that typically exercises less power than that of a City Government."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "http://www.dictionary.com/browse/town" ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000098
+<https://www.commoncoreontologies.org/ont00000098> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000323> ;
+                                                   rdfs:label "Electrical Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Artifact Function that is realized during events in which an Artifact is used to perform a process involving electrical power."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000106
@@ -311,6 +323,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000162
+<https://www.commoncoreontologies.org/ont00000162> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000795> ;
+                                                   rdfs:label "Electrical Connector Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Electrical Conduction Artifact Function that is realized by processes in which some Artifact is used to join electrical terminations to create an electrical circuit."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000192
 <https://www.commoncoreontologies.org/ont00000192> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ,
@@ -320,6 +340,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                                    ] ;
                                                    rdfs:label "Facility"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed as a building or campus dedicated to some specific purpose."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000194
+<https://www.commoncoreontologies.org/ont00000194> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000795> ;
+                                                   rdfs:label "Electrical Contact Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Electrical Conduction Artifact Function that is realized by processes in which some Artifact is used as an endpoint of an electrical circuit from which an electrical current is passed via physical contact with the endpoint."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
@@ -374,6 +402,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    rdfs:label "Power Source"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to supply power to some other Artifact."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Power_source&oldid=1032888635"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000323
+<https://www.commoncoreontologies.org/ont00000323> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000034> ;
+                                                   rdfs:label "Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Function that inheres in some Artifact in virtue of that Artifact being designed to be used in processes that require that Function to be realized."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
@@ -524,6 +560,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000638> ;
                                                    rdfs:label "Combustion Engine"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Heat Engine that is designed to convert thermal energy that is generated through a local Combustion process into mechanical energy."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000795
+<https://www.commoncoreontologies.org/ont00000795> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000098> ;
+                                                   rdfs:label "Electrical Conduction Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Electrical Artifact Function that is realized by an Artifact being used to conduct an electric current."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 

@@ -212,7 +212,7 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001942> ;
                                  owl:someValuesFrom :CHIO_00000015
                                ] ;
-               rdfs:label "power connection specification" ;
+               rdfs:label "power connection dimensional specification" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A directive information entity that prescribes the requirements of power connectors." ;
                <http://www.w3.org/2004/02/skos/core#example> "CEE7 AC plugs and sockets Standard" .
 
@@ -220,7 +220,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000018
 :CHIO_00000018 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000017 ;
-               rdfs:label "electric vehicle charging system specification" ;
+               rdfs:label "electric vehicle charging system dimensional specification" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A power connection specification that prescribes the properties of electric vehicle charging station connections." ;
                <http://www.w3.org/2004/02/skos/core#example> "Combined Charging System (CCS)" .
 
@@ -415,6 +415,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000019
 :CHIO_00000019 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000042 ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "CSS1" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-3 Configuration EE" ;
                rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/b/b2/J1772_%28CCS1%29.svg" ;
@@ -425,6 +426,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000020
 :CHIO_00000020 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000041 ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "J plug" ,
                                                             "SAE J1772" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-2 Type 1" ;
@@ -436,6 +438,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000021
 :CHIO_00000021 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000041 ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "Mennekes" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-2 Type 2" ;
                rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/7/7d/IEC_62196-2_Type_2_%28plug%29.svg" ;
@@ -446,6 +449,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000022
 :CHIO_00000022 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000042 ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "CSS2" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-3 Configuration FF" ;
                rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/2/2c/IEC_62196_Type_2_%28M%2C_DC%2C_CCS_Combo_2%29.svg" ;
@@ -456,10 +460,33 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000023
 :CHIO_00000023 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000042 ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-3 Configuration AA" ;
                rdfs:comment "https://en.wikipedia.org/wiki/IEC_62196#/media/File:CHAdeMO_connector.svg" ;
                rdfs:label "CHAdeMO specification" ;
                <http://www.w3.org/2004/02/skos/core#definition> "Standard for charging electric vehicles that allows DC connection, developed by the CHAdeMO Association." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000040
+:CHIO_00000040 rdf:type owl:NamedIndividual ,
+                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+               rdfs:comment "Series of standards for plugs, socket-outlets, vehicle connectors and vehicle inlets – Conductive charging of electric vehicles" ;
+               rdfs:label "IEC 62196"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000041
+:CHIO_00000041 rdf:type owl:NamedIndividual ,
+                        :CHIO_00000018 ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000040 ;
+               rdfs:label "IEC 62196-2"@de ;
+               <http://www.w3.org/2004/02/skos/core#definition> "Part of the IEC 62196-2 prescribing dimensional compatibility and interchangeability requirements for A.C. pin and contact-tube accessories." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000042
+:CHIO_00000042 rdf:type owl:NamedIndividual ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000040 ;
+               rdfs:label "IEC 62196-3"@de ;
+               <http://www.w3.org/2004/02/skos/core#definition> "Part of the IEC 62196-2 prescribing dimensional compatibility and interchangeability requirements for D.C. and A.C./D.C. pin and contact-tube vehicle couplers." .
 
 
 #################################################################
