@@ -1,4 +1,12 @@
 ONTOLOGY_NAME := chio
+IRI_NAME := charging_ontology
+
+IRI_PLACEHOLDER := http:\/\/openenergy-platform\.org\/ontology\/
+IRI_BASE := https:\/\/dlr-ve-esy\.github\.io\/
+
+IRI_ONTOLOGY_PLACEHOLDER := $(IRI_PLACEHOLDER)$(ONTOLOGY_NAME)
+IRI_ONTOLOGY := $(IRI_BASE)$(IRI_NAME)
+
 MKDIR_P = mkdir -p
 VERSION:= $(shell cat VERSION)
 VERSIONDIR := build/chio/$(VERSION)
@@ -23,10 +31,6 @@ OWL_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)/* -type f -name 
 OMN_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)/* -type f -name "*.omn"))
 TTL_FILES := $(call subst_paths,$(shell find $(ONTOLOGY_SOURCE)* -type f -name "*.ttl"))
 
-IRI_PLACEHOLDER := http:\/\/openenergy-platform\.org\/ontology\/
-IRI_BASE := http:\/\/ontologyserver\.org\/
-IRI_ONTOLOGY_PLACEHOLDER := $(IRI_PLACEHOLDER)$(ONTOLOGY_NAME)
-IRI_ONTOLOGY := $(IRI_BASE)$(ONTOLOGY_NAME)
 SEPARATOR := \/
 
 OWL_COPY := $(OWL_FILES)
