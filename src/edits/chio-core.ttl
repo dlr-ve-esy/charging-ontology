@@ -365,6 +365,15 @@
                <http://www.w3.org/2004/02/skos/core#definition> "A Type 2 connector with DC capability" .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000043
+:CHIO_00000043 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000015 ;
+               <http://purl.obolibrary.org/obo/IAO_0000118> "Tesla S" ;
+               rdfs:comment "Typically used by Tesla vehicles and chargers." ;
+               rdfs:label "NACS pattern"@de ;
+               <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern built according to the SAE J3400 specification." .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> .
 
