@@ -4,7 +4,7 @@ templates = "templates"
 assets = "static"
 
 [ontology]
-iri = "http://openenergy-platform.org/ontology/chio/"
+iri = "https://dlr-ve-esy.github.io/"
 suffix = "CHIO"
 source = "chio.owx"
 
