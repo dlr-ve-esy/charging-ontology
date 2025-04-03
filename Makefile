@@ -101,6 +101,7 @@ endef
 
 define replace_placeholder
 	$(SED) -i -E "s/$(IRI_ONTOLOGY_PLACEHOLDER)\/([a-zA-Z/\.\-]+)/$(IRI_ONTOLOGY)\/\1/m" $1
+	$(SED) -i -E "s/$(IRI_ONTOLOGY_PLACEHOLDER)\//$(IRI_ONTOLOGY)\//m" $1
 endef
 
 .PHONY: all clean base merge directories
@@ -156,8 +157,8 @@ ${VERSIONDIR}/modules:
 
 $(VERSIONDIR)/catalog-v001.xml: $(ONTOLOGY_SOURCE)/catalog-v001.xml
 	cp $< $@
-	$(call replace_devs,$@)
 	$(call replace_placeholder,$@)
+	$(call replace_devs,$@)
 	$(SED) -i -E "s/edits\//modules\//m" $@
 
 $(ROBOT_PATH): | build
