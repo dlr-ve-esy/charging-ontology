@@ -1,0 +1,22 @@
+baseurl = "/charging-ontology/"
+title = "The Charging Infrastructure Ontology"
+templates = "templates"
+assets = "static"
+
+[ontology]
+iri = "http://openenergy-platform.org/ontology/chio/"
+suffix = "CHIO"
+source = "chio.owx"
+
+[build]
+output = "./public"
+render = true
+
+
+[[import]]
+iri = "http://purl.obolibrary.org/obo/"
+suffix = "OBO"
+
+[[import]]
+iri = "https://www.commoncoreontologies.org/"
+suffix = "CCO"

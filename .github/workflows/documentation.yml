@@ -4,28 +4,59 @@ on:
     branches:
       - dev 
       - main
-    paths:
-      - docs/**
 permissions:
   contents: write
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure Git Credentials
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "adopt"
+          java-version: "11"
+      - name: make
         run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v5
+          make
+      - uses: actions/upload-artifact@master
         with:
-          python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
-      - uses: actions/cache@v4
+          name: build-artifacts
+          path: build/chio
+  pages:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/download-artifact@master
         with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-      - run: pip install mkdocs-material 
-      - run: mkdocs gh-deploy --force
+          name: build-artifacts
+      - name: Get version
+        run: echo "ONTOLOGY_VERSION=$(cat VERSION)" >> $GITHUB_ENV
+      - name: Build Ontology Pages
+        uses: enioarz/ontology-server@main
+        id: build
+        with:
+          args: --source ./${{ env.ONTOLOGY_VERSION }}/chio-full.owx --config ./render-config.toml  --assets /static --templates /templates build --output ./public --render_imports
+      - name: Get the output
+        run: echo "${{ steps.build.outputs.results }}"
+      - name: Move Build Artifacts
+        run: cp -r ${{ github.workspace }}/public/ ./_site/
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  # Deployment job
+  deploy:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+    runs-on: ubuntu-latest
+    needs: pages
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
