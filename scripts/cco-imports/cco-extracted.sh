@@ -77,7 +77,7 @@ java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/Art
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/FacilityOntology.ttl --select imports extract --method subset --term-file ${this_wd}/ao_facility_classes.txt --imports exclude --output ${tmpdir}/ao_facility_classes.ttl
 
-java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/GeospatialOntology.ttl --select imports extract  --method MIREOT --upper-term http://purl.obolibrary.org/obo/BFO_0000029 --lower-terms ${this_wd}/geo_base.txt --intermediates all --output ${tmpdir}/geo_base.ttl
+java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/GeospatialOntology.ttl --select imports extract  --method MIREOT --upper-terms ${this_wd}/geo_base_upper.txt --lower-terms ${this_wd}/geo_base.txt --intermediates all --output ${tmpdir}/geo_base.ttl
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/AgentOntology.ttl --select imports extract --method MIREOT  --imports exclude --upper-term https://www.commoncoreontologies.org/ont00000472 --lower-terms ${this_wd}/geo_tree.txt --intermediates all --output ${tmpdir}/geo_tree.ttl
 

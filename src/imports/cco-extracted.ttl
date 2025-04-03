@@ -198,8 +198,7 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000024
-<http://purl.obolibrary.org/obo/BFO_0000024> rdf:type owl:Class ;
-                                             rdfs:subClassOf owl:Thing .
+<http://purl.obolibrary.org/obo/BFO_0000024> rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000029
