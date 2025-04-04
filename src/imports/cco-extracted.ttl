@@ -234,6 +234,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000019
+<https://www.commoncoreontologies.org/ont00000019> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000961> ;
+                                                   rdfs:label "Power Inverting Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Current Conversion Artifact Function that is realized by processes in which some Artifact is used to convert direct current (DC) to alternating current (AC)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000046
 <https://www.commoncoreontologies.org/ont00000046> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000126> ;
@@ -706,6 +714,22 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Information Content Entity is here intended to be a class of Entities whose instances are the informational content of Information Bearing Entities. For example, three instances of information bearers -- such as a bar chart, color-coded map, and a written report -- each of which lists the GDP of Countries for the year 2010 are each different carriers of the same information content. It is this content that is generically dependent upon its carrier. This treatment of Informational Content Entity (cf. the Information Artifact Ontology) leads to a principle of subtyping based upon the relationship that ICE's have with the Entity they are about rather than characteristics such as format, language, measurement scale, or media. The latter are treated here as being Qualities of bearers."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/IAO_0000030" ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000961
+<https://www.commoncoreontologies.org/ont00000961> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000098> ;
+                                                   rdfs:label "Current Conversion Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Electrical Artifact Function that is realized by processes in which some Artifact is used to convert some electrical current."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000993
+<https://www.commoncoreontologies.org/ont00000993> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000961> ;
+                                                   rdfs:label "Power Rectifying Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Current Conversion Artifact Function that is realized by processes in which some Artifact is used to convert alternating current (AC) to direct current (DC)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000995
