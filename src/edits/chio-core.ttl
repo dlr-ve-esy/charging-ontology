@@ -438,14 +438,19 @@
 :CHIO_00000052 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "standard connection pattern" ;
-               rdfs:label "domestic connection pattern"@de .
+               rdfs:label "domestic connection pattern"@de ;
+               skos:definition "A connection pattern found in general use electronics." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000053
 :CHIO_00000053 rdf:type owl:Class ;
-               owl:equivalentClass [ rdf:type owl:Restriction ;
+               owl:equivalentClass [ owl:intersectionOf ( <https://www.commoncoreontologies.org/ont00000995>
+                                                          [ rdf:type owl:Restriction ;
                                      owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
                                      owl:someValuesFrom <https://www.commoncoreontologies.org/ont00000993>
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
                rdfs:label "rectifier"@de ;
@@ -454,6 +459,14 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000054
 :CHIO_00000054 rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :CHIO_00000005
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000051> ;
+                                                            owl:someValuesFrom :CHIO_00000053
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
                rdfs:subClassOf :CHIO_00000005 ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "fast charging column" ;
                rdfs:label "direct current charging column"@de ;
