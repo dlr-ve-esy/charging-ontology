@@ -4,6 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix chio-core.ttl: <http://openenergy-platform.org/ontology/chio/dev/chio-core.ttl#> .
 @base <http://openenergy-platform.org/ontology/chio/> .
 
 <http://openenergy-platform.org/ontology/chio/chio-core/> rdf:type owl:Ontology ;
@@ -232,6 +233,7 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
                                  owl:hasValue :CHIO_00000023
                                ] ;
+               :CHIO_00000036 "CHADEMO" ;
                rdfs:label "CHAdeMO pattern" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern built according to the IEC 62196-3 Configuration AA" .
 
@@ -243,6 +245,7 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
                                  owl:hasValue :CHIO_00000020
                                ] ;
+               :CHIO_00000036 "IEC_62196_T1" ;
                rdfs:label "Type 1 pattern" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern built according to the IEC 62196-2 Type 1" .
 
@@ -254,6 +257,7 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
                                  owl:hasValue :CHIO_00000021
                                ] ;
+               :CHIO_00000036 "IEC_62196_T2" ;
                rdfs:label "Type 2 pattern" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern built according to the IEC 62196-2 Type 2" .
 
@@ -265,6 +269,7 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
                                  owl:hasValue :CHIO_00000019
                                ] ;
+               :CHIO_00000036 "IEC_62196_T1_COMBO" ;
                rdfs:label "Combo 1 pattern" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern built according to the IEC 62196-3 Configuration EE" .
 
@@ -276,6 +281,7 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
                                  owl:hasValue :CHIO_00000022
                                ] ;
+               :CHIO_00000036 "IEC_62196_T2_COMBO" ;
                rdfs:label "Combo 2 pattern" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern built according to the IEC 62196-3 Configuration FF" .
 
@@ -291,7 +297,6 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000012 ;
-               :CHIO_00000036 "CHADEMO" ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "CHAdeMO" ;
                rdfs:label "CHAdeMO connector" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A connector with a CHAdeMO connection pattern" .
@@ -308,7 +313,6 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000012 ;
-               :CHIO_00000036 "IEC_62196_T1" ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "J Plug" ;
                rdfs:label "Type 1 connector" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A connector with a Type 1 connection pattern" .
@@ -325,7 +329,6 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000012 ;
-               :CHIO_00000036 "IEC_62196_T2" ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "Mennekes" ;
                rdfs:label "Type 2 connector" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A connector with a Type 2 connection pattern" .
@@ -342,7 +345,6 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000030 ;
-               :CHIO_00000036 "IEC_62196_T1_COMBO" ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "CCS 1" ;
                rdfs:label "Combo 1 connector" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A Type 1 connector with DC capability." .
@@ -359,7 +361,6 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000031 ;
-               :CHIO_00000036 "IEC_62196_T2_COMBO" ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "CCS2" ;
                rdfs:label "Combo 2 connector" ;
                <http://www.w3.org/2004/02/skos/core#definition> "A Type 2 connector with DC capability" .
@@ -368,10 +369,24 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000043
 :CHIO_00000043 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "Tesla S" ;
+               :CHIO_00000036 "Tesla S" ;
                rdfs:comment "Typically used by Tesla vehicles and chargers." ;
                rdfs:label "NACS pattern"@de ;
                <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern built according to the SAE J3400 specification." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000044
+:CHIO_00000044 rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :CHIO_00000012
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                            owl:someValuesFrom :CHIO_00000043
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf :CHIO_00000012 ;
+               rdfs:label "NACS connector"@de .
 
 
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
