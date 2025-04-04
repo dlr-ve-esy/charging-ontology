@@ -199,6 +199,10 @@
                                  owl:someValuesFrom :CHIO_00000004
                                ] ,
                                [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                 owl:someValuesFrom :CHIO_00000005
+                               ] ,
+                               [ rdf:type owl:Restriction ;
                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000178> ;
                                  owl:someValuesFrom :CHIO_00000012
                                ] ;
@@ -602,6 +606,77 @@
                rdfs:subClassOf :CHIO_00000066 ;
                rdfs:label "three phase 64A connector" ;
                skos:definition "A connector with an IEC 60309-2 three phase 64A pattern." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000071
+:CHIO_00000071 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic A pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000072
+:CHIO_00000072 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic B pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000073
+:CHIO_00000073 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic C pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000074
+:CHIO_00000074 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic D pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000075
+:CHIO_00000075 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic E pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000076
+:CHIO_00000076 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic F pattern" .
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000077
+:CHIO_00000077 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic G pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000078
+:CHIO_00000078 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic H pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000079
+:CHIO_00000079 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic I pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000080
+:CHIO_00000080 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic J pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000081
+:CHIO_00000081 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic K pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000082
+:CHIO_00000082 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:label "domestic L pattern" .
 
 
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
