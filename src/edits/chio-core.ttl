@@ -4,6 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w2.org/2004/02/skos/core#> .
 @prefix chio-core.ttl: <http://openenergy-platform.org/ontology/chio/dev/chio-core.ttl#> .
 @base <http://openenergy-platform.org/ontology/chio/> .
 
@@ -23,6 +24,10 @@
 :CHIO_00000036 rdf:type owl:AnnotationProperty ;
                rdfs:label "OCPI 2.2 label" ;
                rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+
+
+###  http://www.w2.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -370,9 +375,9 @@
 :CHIO_00000043 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
                :CHIO_00000036 "Tesla S" ;
+               skos:definition "A connection pattern built according to the SAE J3400 specification." ;
                rdfs:comment "Typically used by Tesla vehicles and chargers." ;
-               rdfs:label "NACS pattern"@de ;
-               <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern built according to the SAE J3400 specification." .
+               rdfs:label "NACS pattern" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000044
@@ -386,7 +391,23 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000012 ;
-               rdfs:label "NACS connector"@de .
+               rdfs:label "NACS connector" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000045
+:CHIO_00000045 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000015 ;
+               :CHIO_00000036 "Tesla R" ;
+               skos:definition "A connection pattern used by the Tesla Roadster model." ;
+               rdfs:comment "Connector used by Tesla Models before 2012." ;
+               rdfs:label "Tesla Roadster pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000047
+:CHIO_00000047 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000015 ;
+               rdfs:label "industrial connection pattern"@de ;
+               <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern built according to the IEC 60309" .
 
 
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
@@ -495,21 +516,21 @@
 :CHIO_00000040 rdf:type owl:NamedIndividual ,
                         <http://purl.obolibrary.org/obo/IAO_0000030> ;
                rdfs:comment "Series of standards for plugs, socket-outlets, vehicle connectors and vehicle inlets – Conductive charging of electric vehicles" ;
-               rdfs:label "IEC 62196"@de .
+               rdfs:label "IEC 62196" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000041
 :CHIO_00000041 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000040 ;
-               rdfs:label "IEC 62196-2"@de ;
+               rdfs:label "IEC 62196-2" ;
                <http://www.w3.org/2004/02/skos/core#definition> "Part of the IEC 62196-2 prescribing dimensional compatibility and interchangeability requirements for A.C. pin and contact-tube accessories." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000042
 :CHIO_00000042 rdf:type owl:NamedIndividual ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000040 ;
-               rdfs:label "IEC 62196-3"@de ;
+               rdfs:label "IEC 62196-3" ;
                <http://www.w3.org/2004/02/skos/core#definition> "Part of the IEC 62196-2 prescribing dimensional compatibility and interchangeability requirements for D.C. and A.C./D.C. pin and contact-tube vehicle couplers." .
 
 
