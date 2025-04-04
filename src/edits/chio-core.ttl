@@ -528,6 +528,20 @@
                skos:definition "An industrial connection pattern following the IEC 60309-2 specification for three phase 64 ampere connections." .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000066
+:CHIO_00000066 rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :CHIO_00000012
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                            owl:someValuesFrom :CHIO_00000047
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf :CHIO_00000012 ;
+               rdfs:label "industrial connector"@de .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> .
 
@@ -662,7 +676,7 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000057
 :CHIO_00000057 rdf:type owl:NamedIndividual ,
-                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                        :CHIO_00000017 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000056 ;
                rdfs:comment "Standard for dimensional interchangeability requirements for industrial pin and contact-tube accessories" ;
                rdfs:label "IEC 60309-2" .
@@ -670,28 +684,28 @@
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000058
 :CHIO_00000058 rdf:type owl:NamedIndividual ,
-                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                        :CHIO_00000017 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000057 ;
                rdfs:label "Industrial Connector single phase 16 amperes specification" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000059
 :CHIO_00000059 rdf:type owl:NamedIndividual ,
-                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                        :CHIO_00000017 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000057 ;
                rdfs:label "Industrial Connector three phase 16 amperes specification" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000060
 :CHIO_00000060 rdf:type owl:NamedIndividual ,
-                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                        :CHIO_00000017 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000057 ;
                rdfs:label "Industrial Connector three phase 32 amperes specification" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000061
 :CHIO_00000061 rdf:type owl:NamedIndividual ,
-                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                        :CHIO_00000017 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000057 ;
                rdfs:label "Industrial Connector three phase 64 amperes specification" .
 
