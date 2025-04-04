@@ -402,7 +402,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000047
 :CHIO_00000047 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
-               rdfs:label "industrial connection pattern"@de ;
+               rdfs:label "industrial connection pattern" ;
                skos:definition "A connection pattern built according to the IEC 60309" .
 
 
@@ -438,7 +438,7 @@
 :CHIO_00000052 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "standard connection pattern" ;
-               rdfs:label "domestic connection pattern"@de ;
+               rdfs:label "domestic connection pattern" ;
                skos:definition "A connection pattern found in general use electronics." .
 
 
@@ -453,7 +453,7 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
-               rdfs:label "rectifier"@de ;
+               rdfs:label "rectifier" ;
                skos:definition "A rectifier is a material artifact  that converts alternating current to direct current." .
 
 
@@ -469,14 +469,14 @@
                                    ] ;
                rdfs:subClassOf :CHIO_00000005 ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "fast charging column" ;
-               rdfs:label "direct current charging column"@de ;
+               rdfs:label "direct current charging column" ;
                skos:definition "A charging column that supplies direct current." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000055
 :CHIO_00000055 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000005 ;
-               rdfs:label "alternate current charging column"@de ;
+               rdfs:label "alternate current charging column" ;
                skos:definition "A charging column that supplies alternate current" .
 
 
@@ -609,7 +609,7 @@
 :CHIO_00000056 rdf:type owl:NamedIndividual ,
                         <http://purl.obolibrary.org/obo/IAO_0000030> ;
                rdfs:comment "Series of standards for plugs, socket-outlets and couplers for industrial purposes" ;
-               rdfs:label "IEC 60309"@de .
+               rdfs:label "IEC 60309" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000057
@@ -617,7 +617,7 @@
                         <http://purl.obolibrary.org/obo/IAO_0000030> ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000056 ;
                rdfs:comment "Standard for dimensional interchangeability requirements for industrial pin and contact-tube accessories" ;
-               rdfs:label "IEC 60309-2"@de .
+               rdfs:label "IEC 60309-2" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000058
