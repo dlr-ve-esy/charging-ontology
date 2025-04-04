@@ -5,7 +5,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix chio-core.ttl: <http://openenergy-platform.org/ontology/chio/dev/chio-core.ttl#> .
 @base <http://openenergy-platform.org/ontology/chio/> .
 
 <http://openenergy-platform.org/ontology/chio/chio-core/> rdf:type owl:Ontology ;
@@ -371,9 +370,9 @@
 :CHIO_00000043 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
                :CHIO_00000036 "Tesla S" ;
-               <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern built according to the SAE J3400 specification." ;
                rdfs:comment "Typically used by Tesla vehicles and chargers." ;
-               rdfs:label "NACS pattern" .
+               rdfs:label "NACS pattern" ;
+               skos:definition "A connection pattern built according to the SAE J3400 specification." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000044
@@ -394,9 +393,9 @@
 :CHIO_00000045 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
                :CHIO_00000036 "Tesla R" ;
-               <http://www.w3.org/2004/02/skos/core#definition> "A connection pattern used by the Tesla Roadster model." ;
                rdfs:comment "Connector used by Tesla Models before 2012." ;
-               rdfs:label "Tesla Roadster pattern" .
+               rdfs:label "Tesla Roadster pattern" ;
+               skos:definition "A connection pattern used by the Tesla Roadster model." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000047
