@@ -480,6 +480,50 @@
                skos:definition "A charging column that supplies alternate current" .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000062
+:CHIO_00000062 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000047 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
+                                 owl:hasValue :CHIO_00000058
+                               ] ;
+               rdfs:label "IEC 60309-2 single phase 16A pattern" ;
+               skos:definition "An industrial connection pattern following the IEC 60309-2 specification for single phase 16 ampere connections." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000063
+:CHIO_00000063 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000047 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
+                                 owl:hasValue :CHIO_00000059
+                               ] ;
+               rdfs:label "IEC 60309-2 three phase 16A pattern" ;
+               skos:definition "An industrial connection pattern following the IEC 60309-2 specification for three phase 16 ampere connections." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000064
+:CHIO_00000064 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000047 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
+                                 owl:hasValue :CHIO_00000060
+                               ] ;
+               rdfs:label "IEC 60309-2 three phase 32A pattern" ;
+               skos:definition "An industrial connection pattern following the IEC 60309-2 specification for three phase 32 ampere connections." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000065
+:CHIO_00000065 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000047 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
+                                 owl:hasValue :CHIO_00000061
+                               ] ;
+               rdfs:label "IEC 60309-2 three phase 64A pattern" ;
+               skos:definition "An industrial connection pattern following the IEC 60309-2 specification for three phase 64 ampere connections." .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> .
 
@@ -646,6 +690,8 @@
                         <http://purl.obolibrary.org/obo/IAO_0000030> ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000057 ;
                rdfs:label "Industrial Connector three phase 64 amperes specification" .
+
+
 #################################################################
 #    Annotations
 #################################################################
