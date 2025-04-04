@@ -5,6 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix chio-core.ttl: <http://openenergy-platform.org/ontology/chio/dev/chio-core.ttl#> .
 @base <http://openenergy-platform.org/ontology/chio/> .
 
 <http://openenergy-platform.org/ontology/chio/chio-core/> rdf:type owl:Ontology ;
@@ -431,6 +432,39 @@
                rdfs:subClassOf :CHIO_00000049 ;
                rdfs:label "3 Phase Alternate Current Electrical Artifact Function" ;
                skos:definition "An Alternate Current Electrical Artifact Function that is realized in a process involving 3 Phase Alternate Current." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000052
+:CHIO_00000052 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000015 ;
+               <http://purl.obolibrary.org/obo/IAO_0000118> "standard connection pattern" ;
+               rdfs:label "domestic connection pattern"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000053
+:CHIO_00000053 rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                     owl:someValuesFrom <https://www.commoncoreontologies.org/ont00000993>
+                                   ] ;
+               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+               rdfs:label "rectifier"@de ;
+               skos:definition "A rectifier is a material artifact  that converts alternating current to direct current." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000054
+:CHIO_00000054 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000005 ;
+               <http://purl.obolibrary.org/obo/IAO_0000118> "fast charging column" ;
+               rdfs:label "direct current charging column"@de ;
+               skos:definition "A charging column that supplies direct current." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000055
+:CHIO_00000055 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000005 ;
+               rdfs:label "alternate current charging column"@de ;
+               skos:definition "A charging column that supplies alternate current" .
 
 
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
