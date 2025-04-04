@@ -446,8 +446,8 @@
 :CHIO_00000053 rdf:type owl:Class ;
                owl:equivalentClass [ owl:intersectionOf ( <https://www.commoncoreontologies.org/ont00000995>
                                                           [ rdf:type owl:Restriction ;
-                                     owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
-                                     owl:someValuesFrom <https://www.commoncoreontologies.org/ont00000993>
+                                                            owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                            owl:someValuesFrom <https://www.commoncoreontologies.org/ont00000993>
                                                           ]
                                                         ) ;
                                      rdf:type owl:Class
@@ -598,12 +598,54 @@
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000042
-:CHIO_00000042 rdf:type owl:NamedIndividual ;
+:CHIO_00000042 rdf:type owl:NamedIndividual ,
+                        :CHIO_00000018 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000040 ;
                rdfs:label "IEC 62196-3" ;
                skos:definition "Part of the IEC 62196-2 prescribing dimensional compatibility and interchangeability requirements for D.C. and A.C./D.C. pin and contact-tube vehicle couplers." .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000056
+:CHIO_00000056 rdf:type owl:NamedIndividual ,
+                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+               rdfs:comment "Series of standards for plugs, socket-outlets and couplers for industrial purposes" ;
+               rdfs:label "IEC 60309"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000057
+:CHIO_00000057 rdf:type owl:NamedIndividual ,
+                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000056 ;
+               rdfs:comment "Standard for dimensional interchangeability requirements for industrial pin and contact-tube accessories" ;
+               rdfs:label "IEC 60309-2"@de .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000058
+:CHIO_00000058 rdf:type owl:NamedIndividual ,
+                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000057 ;
+               rdfs:label "Industrial Connector single phase 16 amperes specification" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000059
+:CHIO_00000059 rdf:type owl:NamedIndividual ,
+                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000057 ;
+               rdfs:label "Industrial Connector three phase 16 amperes specification" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000060
+:CHIO_00000060 rdf:type owl:NamedIndividual ,
+                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000057 ;
+               rdfs:label "Industrial Connector three phase 32 amperes specification" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000061
+:CHIO_00000061 rdf:type owl:NamedIndividual ,
+                        <http://purl.obolibrary.org/obo/IAO_0000030> ;
+               <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000057 ;
+               rdfs:label "Industrial Connector three phase 64 amperes specification" .
 #################################################################
 #    Annotations
 #################################################################
