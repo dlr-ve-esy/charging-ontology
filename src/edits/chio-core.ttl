@@ -405,6 +405,34 @@
                skos:definition "A connection pattern built according to the IEC 60309" .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000048
+:CHIO_00000048 rdf:type owl:Class ;
+               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000098> ;
+               rdfs:label "Direct Current Electrical Artifact Function" ;
+               skos:definition "An Electrical Artifact Function that is realized in a process involving Direct Current." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000049
+:CHIO_00000049 rdf:type owl:Class ;
+               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000098> ;
+               rdfs:label "Alternate Current Electrical Artifact Function" ;
+               skos:definition "An Electrical Artifact Function that is realized in a process involving Alternate Current." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000050
+:CHIO_00000050 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000049 ;
+               rdfs:label "1 Phase Alternate Current Electrical Artifact Function" ;
+               skos:definition "An Alternate Current Electrical Artifact Function that is realized in a process involving 1 Phase Alternate Current." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000051
+:CHIO_00000051 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000049 ;
+               rdfs:label "3 Phase Alternate Current Electrical Artifact Function" ;
+               skos:definition "An Alternate Current Electrical Artifact Function that is realized in a process involving 3 Phase Alternate Current." .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> .
 
