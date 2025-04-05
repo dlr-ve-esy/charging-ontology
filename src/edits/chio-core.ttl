@@ -176,9 +176,9 @@
 :CHIO_00000014 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000012 ;
                :CHIO_00000036 "SOCKET" ;
-               skos:altLabel "socket-outlet" ;
                <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=442-03-01" ;
                rdfs:label "outlet" ;
+               skos:altLabel "socket-outlet" ;
                skos:definition "A connector attached to the surface of a device." ;
                skos:example "Outlets are designed to interact with another connector, they are often hollow sockets designed to interact with connectors with pins." .
 
@@ -302,8 +302,8 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000012 ;
-               skos:altLabel "CHAdeMO" ;
                rdfs:label "CHAdeMO connector" ;
+               skos:altLabel "CHAdeMO" ;
                skos:definition "A connector with a CHAdeMO connection pattern" .
 
 
@@ -318,8 +318,8 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000012 ;
-               skos:altLabel "J Plug" ;
                rdfs:label "Type 1 connector" ;
+               skos:altLabel "J Plug" ;
                skos:definition "A connector with a Type 1 connection pattern" .
 
 
@@ -334,8 +334,8 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000012 ;
-               skos:altLabel "Mennekes" ;
                rdfs:label "Type 2 connector" ;
+               skos:altLabel "Mennekes" ;
                skos:definition "A connector with a Type 2 connection pattern" .
 
 
@@ -350,8 +350,8 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000030 ;
-               skos:altLabel "CCS 1" ;
                rdfs:label "Combo 1 connector" ;
+               skos:altLabel "CCS 1" ;
                skos:definition "A Type 1 connector with DC capability." .
 
 
@@ -366,15 +366,15 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000031 ;
-               skos:altLabel "CCS2" ;
                rdfs:label "Combo 2 connector" ;
+               skos:altLabel "CCS2" ;
                skos:definition "A Type 2 connector with DC capability" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000043
 :CHIO_00000043 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
-               :CHIO_00000036 "Tesla S" ;
+               :CHIO_00000036 "TESLA_S" ;
                rdfs:comment "Typically used by Tesla vehicles and chargers." ;
                rdfs:label "NACS pattern" ;
                skos:definition "A connection pattern built according to the SAE J3400 specification." .
@@ -398,7 +398,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000045
 :CHIO_00000045 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
-               :CHIO_00000036 "Tesla R" ;
+               :CHIO_00000036 "TESLA_R" ;
                rdfs:comment "Connector used by Tesla Models before 2012." ;
                rdfs:label "Tesla Roadster pattern" ;
                skos:definition "A connection pattern used by the Tesla Roadster model." .
@@ -446,8 +446,8 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000052
 :CHIO_00000052 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
-               skos:altLabel "standard connection pattern" ;
                rdfs:label "domestic connection pattern" ;
+               skos:altLabel "standard connection pattern" ;
                skos:definition "A connection pattern found in general use electronics." .
 
 
@@ -477,8 +477,8 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000005 ;
-               skos:altLabel "fast charging column" ;
                rdfs:label "direct current charging column" ;
+               skos:altLabel "fast charging column" ;
                skos:definition "A charging column that supplies direct current." .
 
 
@@ -496,6 +496,7 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
                                  owl:hasValue :CHIO_00000058
                                ] ;
+               :CHIO_00000036 "IEC_60309_2_single_16" ;
                rdfs:label "IEC 60309-2 single phase 16A pattern" ;
                skos:definition "An industrial connection pattern following the IEC 60309-2 specification for single phase 16 ampere connections." .
 
@@ -507,6 +508,7 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
                                  owl:hasValue :CHIO_00000059
                                ] ;
+               :CHIO_00000036 "IEC_60309_2_three_16" ;
                rdfs:label "IEC 60309-2 three phase 16A pattern" ;
                skos:definition "An industrial connection pattern following the IEC 60309-2 specification for three phase 16 ampere connections." .
 
@@ -518,6 +520,7 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
                                  owl:hasValue :CHIO_00000060
                                ] ;
+               :CHIO_00000036 "IEC_60309_2_three_32" ;
                rdfs:label "IEC 60309-2 three phase 32A pattern" ;
                skos:definition "An industrial connection pattern following the IEC 60309-2 specification for three phase 32 ampere connections." .
 
@@ -529,6 +532,7 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
                                  owl:hasValue :CHIO_00000061
                                ] ;
+               :CHIO_00000036 "IEC_60309_2_three_64" ;
                rdfs:label "IEC 60309-2 three phase 64A pattern" ;
                skos:definition "An industrial connection pattern following the IEC 60309-2 specification for three phase 64 ampere connections." .
 
@@ -620,7 +624,8 @@
 :CHIO_00000072 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
                rdfs:comment "A domestic connection pattern with 3 pins built according to the NEMA 5-15 dimensional specification." ;
-               rdfs:label "domestic B pattern" .
+               rdfs:label "domestic B pattern" ;
+               skos:altLabel "NEMA 5-15" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000073
@@ -734,10 +739,10 @@
 :CHIO_00000019 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000042 ;
-               skos:altLabel "CSS1" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-3 Configuration EE" ;
                rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/b/b2/J1772_%28CCS1%29.svg" ;
                rdfs:label "Combo 1 connection specification" ;
+               skos:altLabel "CSS1" ;
                skos:definition "Standard for charging electric vehicles that allows DC connection, compatible with type 1 chargers." .
 
 
@@ -745,22 +750,22 @@
 :CHIO_00000020 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000041 ;
-               skos:altLabel "J plug" ,
-                                                            "SAE J1772" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-2 Type 1" ;
                rdfs:comment "Specification of AC electric vehicle charging connections proposed in the \"SAE Surface Vehicle Recommended Practice J1772, SAE Electric Vehicle Conductive Charge Coupler\"" ,
                             "https://upload.wikimedia.org/wikipedia/commons/2/2a/J1772_connector.svg" ;
-               rdfs:label "Type 1 connection specification" .
+               rdfs:label "Type 1 connection specification" ;
+               skos:altLabel "J plug" ,
+                             "SAE J1772" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000021
 :CHIO_00000021 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000041 ;
-               skos:altLabel "Mennekes" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-2 Type 2" ;
                rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/7/7d/IEC_62196-2_Type_2_%28plug%29.svg" ;
                rdfs:label "Type 2 connection specification" ;
+               skos:altLabel "Mennekes" ;
                skos:definition "Specification of AC electric vehicle charging connections originally proposed by the company Mennekes." .
 
 
@@ -768,10 +773,10 @@
 :CHIO_00000022 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000042 ;
-               skos:altLabel "CSS2" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-3 Configuration FF" ;
                rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/2/2c/IEC_62196_Type_2_%28M%2C_DC%2C_CCS_Combo_2%29.svg" ;
                rdfs:label "Combo 2 connection specification" ;
+               skos:altLabel "CSS2" ;
                skos:definition "Standard for charging electric vehicles that allows DC connection, compatible with type 2 chargers." .
 
 
