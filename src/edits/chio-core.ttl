@@ -652,28 +652,38 @@
 :CHIO_00000075 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
                :CHIO_00000036 "DOMESTIC_E" ;
-               rdfs:label "domestic E pattern" .
+               rdfs:label "domestic E pattern" ;
+               skos:altLabel "CEE 7/5" ;
+               skos:definition "A domestic connection pattern with 3 pins built according to the CEE 7/5 dimensional specification." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000076
 :CHIO_00000076 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
                :CHIO_00000036 "DOMESTIC_F" ;
-               rdfs:label "domestic F pattern" .
+               rdfs:label "domestic F pattern" ;
+               skos:altLabel "CEE 7/4" ,
+                             "Schuko" ;
+               skos:definition "A domestic connection pattern with 3 pins built according to the CEE 7/4 dimensional specification." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000077
 :CHIO_00000077 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
                :CHIO_00000036 "DOMESTIC_G" ;
-               rdfs:label "domestic G pattern" .
+               rdfs:label "domestic G pattern" ;
+               skos:altLabel "BS 1363" ,
+                             "Commonwealth standard" ;
+               skos:definition "A domestic connection pattern with 3 pins built according to the BS 1363 dimensional specification." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000078
 :CHIO_00000078 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
                :CHIO_00000036 "DOMESTIC_H" ;
-               rdfs:label "domestic H pattern" .
+               rdfs:label "domestic H pattern" ;
+               skos:altLabel "SI-32" ;
+               skos:definition "A domestic connection pattern with 3 pins built according to the  SI-32 3 dimensional specification." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000079
@@ -702,6 +712,22 @@
                rdfs:subClassOf :CHIO_00000052 ;
                :CHIO_00000036 "DOMESTIC_L" ;
                rdfs:label "domestic L pattern" .
+
+
+###  http://openenergy-platform.org/ontology/chio/chio-core/CHIO_00000084
+:CHIO_00000084 rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :CHIO_00000012
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                            owl:someValuesFrom :CHIO_00000052
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf :CHIO_00000012 ;
+               <http://purl.obolibrary.org/obo/IAO_0000116> "We do not consider necessary to implement every domestic connector, the patterns are sufficiently expressive to differentiate connectors. If you see a valid reason to have individual connectors, feel free to do a PR." ;
+               rdfs:label "domestic connector"@en ;
+               skos:definition "A connector with some domestic pattern" .
 
 
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
