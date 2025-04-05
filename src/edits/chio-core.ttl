@@ -23,7 +23,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000036
 :CHIO_00000036 rdf:type owl:AnnotationProperty ;
                rdfs:label "OCPI 2.2 label" ;
-               rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000118> .
+               rdfs:subPropertyOf skos:altLabel .
 
 
 #################################################################
@@ -176,7 +176,7 @@
 :CHIO_00000014 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000012 ;
                :CHIO_00000036 "SOCKET" ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "socket-outlet" ;
+               skos:altLabel "socket-outlet" ;
                <http://purl.obolibrary.org/obo/IAO_0000119> "https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=442-03-01" ;
                rdfs:label "outlet" ;
                skos:definition "A connector attached to the surface of a device." ;
@@ -302,7 +302,7 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000012 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "CHAdeMO" ;
+               skos:altLabel "CHAdeMO" ;
                rdfs:label "CHAdeMO connector" ;
                skos:definition "A connector with a CHAdeMO connection pattern" .
 
@@ -318,7 +318,7 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000012 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "J Plug" ;
+               skos:altLabel "J Plug" ;
                rdfs:label "Type 1 connector" ;
                skos:definition "A connector with a Type 1 connection pattern" .
 
@@ -334,7 +334,7 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000012 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "Mennekes" ;
+               skos:altLabel "Mennekes" ;
                rdfs:label "Type 2 connector" ;
                skos:definition "A connector with a Type 2 connection pattern" .
 
@@ -350,7 +350,7 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000030 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "CCS 1" ;
+               skos:altLabel "CCS 1" ;
                rdfs:label "Combo 1 connector" ;
                skos:definition "A Type 1 connector with DC capability." .
 
@@ -366,7 +366,7 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000031 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "CCS2" ;
+               skos:altLabel "CCS2" ;
                rdfs:label "Combo 2 connector" ;
                skos:definition "A Type 2 connector with DC capability" .
 
@@ -446,7 +446,7 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000052
 :CHIO_00000052 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000015 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "standard connection pattern" ;
+               skos:altLabel "standard connection pattern" ;
                rdfs:label "domestic connection pattern" ;
                skos:definition "A connection pattern found in general use electronics." .
 
@@ -477,7 +477,7 @@
                                      rdf:type owl:Class
                                    ] ;
                rdfs:subClassOf :CHIO_00000005 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "fast charging column" ;
+               skos:altLabel "fast charging column" ;
                rdfs:label "direct current charging column" ;
                skos:definition "A charging column that supplies direct current." .
 
@@ -611,12 +611,15 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000071
 :CHIO_00000071 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
-               rdfs:label "domestic A pattern" .
+               rdfs:comment "A domestic connection pattern with 2 pins built according to the NEMA 1-15 dimensional specification." ;
+               rdfs:label "domestic A pattern" ;
+               skos:altLabel "NEMA 1-15" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000072
 :CHIO_00000072 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
+               rdfs:comment "A domestic connection pattern with 3 pins built according to the NEMA 5-15 dimensional specification." ;
                rdfs:label "domestic B pattern" .
 
 
@@ -731,7 +734,7 @@
 :CHIO_00000019 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000042 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "CSS1" ;
+               skos:altLabel "CSS1" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-3 Configuration EE" ;
                rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/b/b2/J1772_%28CCS1%29.svg" ;
                rdfs:label "Combo 1 connection specification" ;
@@ -742,7 +745,7 @@
 :CHIO_00000020 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000041 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "J plug" ,
+               skos:altLabel "J plug" ,
                                                             "SAE J1772" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-2 Type 1" ;
                rdfs:comment "Specification of AC electric vehicle charging connections proposed in the \"SAE Surface Vehicle Recommended Practice J1772, SAE Electric Vehicle Conductive Charge Coupler\"" ,
@@ -754,7 +757,7 @@
 :CHIO_00000021 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000041 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "Mennekes" ;
+               skos:altLabel "Mennekes" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-2 Type 2" ;
                rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/7/7d/IEC_62196-2_Type_2_%28plug%29.svg" ;
                rdfs:label "Type 2 connection specification" ;
@@ -765,7 +768,7 @@
 :CHIO_00000022 rdf:type owl:NamedIndividual ,
                         :CHIO_00000018 ;
                <http://purl.obolibrary.org/obo/BFO_0000176> :CHIO_00000042 ;
-               <http://purl.obolibrary.org/obo/IAO_0000118> "CSS2" ;
+               skos:altLabel "CSS2" ;
                <http://purl.org/dc/elements/1.1/identifier> "IEC 62196-3 Configuration FF" ;
                rdfs:comment "https://upload.wikimedia.org/wikipedia/commons/2/2c/IEC_62196_Type_2_%28M%2C_DC%2C_CCS_Combo_2%29.svg" ;
                rdfs:label "Combo 2 connection specification" ;
