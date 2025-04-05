@@ -187,7 +187,7 @@
 :CHIO_00000015 rdf:type owl:Class ;
                rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000019> ;
                rdfs:label "connection pattern" ;
-               skos:definition "A pattern of  connectors which is the physical manifestation of some specification that dictates its mating suitability." ;
+               skos:definition "A quality of plugs and sockets which is the physical manifestation of some specification that dictates its mating suitability." ;
                skos:example "A socket built following the CEE 7 standard." .
 
 
