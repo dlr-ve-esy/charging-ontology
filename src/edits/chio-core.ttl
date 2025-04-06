@@ -690,28 +690,33 @@
 :CHIO_00000079 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
                :CHIO_00000036 "DOMESTIC_I" ;
-               rdfs:label "domestic I pattern" .
+               rdfs:label "domestic I pattern" ;
+               skos:altLabel "AS 3112" ;
+               skos:definition "A domestic connection pattern with 3 pins built according to the  AS 3112 dimensional specification." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000080
 :CHIO_00000080 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
                :CHIO_00000036 "DOMESTIC_J" ;
-               rdfs:label "domestic J pattern" .
+               rdfs:label "domestic J pattern" ;
+               skos:definition "A domestic connection pattern with 3 pins built according to the  SEV 1011 dimensional specification." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000081
 :CHIO_00000081 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
                :CHIO_00000036 "DOMESTIC_K" ;
-               rdfs:label "domestic K pattern" .
+               rdfs:label "domestic K pattern" ;
+               skos:definition "A domestic connection pattern with 3 pins built according to the  DS 60884-2-D1 dimensional specification." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000082
 :CHIO_00000082 rdf:type owl:Class ;
                rdfs:subClassOf :CHIO_00000052 ;
                :CHIO_00000036 "DOMESTIC_L" ;
-               rdfs:label "domestic L pattern" .
+               rdfs:label "domestic L pattern" ;
+               skos:definition "A domestic connection pattern with 3 pins built according to the CEI 23-16-VII dimensional specification." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/chio-core/CHIO_00000084
