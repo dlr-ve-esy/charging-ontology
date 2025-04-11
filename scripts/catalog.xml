@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+	<group xml:base="">
+		<uri name="https://www.commoncoreontologies.org/EventOntology" uri="../tmp/EventOntology.ttl" />
+		<uri name="https://www.commoncoreontologies.org/InformationEntityOntology" uri="../tmp/InformationEntityOntology.ttl" />
+		<uri name="https://www.commoncoreontologies.org/ArtifactOntology" uri="../tmp/ArtifactOntology.ttl" />
+		<uri name="https://www.commoncoreontologies.org/ExtendedRelationOntology" uri="../tmp/ExtendedRelationOntology.ttl" />
+		<uri name="https://www.commoncoreontologies.org/AgentOntology" uri="../tmp/AgentOntology.ttl" />
+		<uri name="https://www.commoncoreontologies.org/FacilityOntology" uri="../tmp/FacilityOntology.ttl" />
+		<uri name="https://www.commoncoreontologies.org/GeospatialOntology" uri="../tmp/GeospatialOntology.ttl" />
+		<uri name="https://www.commoncoreontologies.org/TimeOntology" uri="../tmp/TimeOntology.ttl" />
+		<uri name="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl" uri="../src/imports/bfo-core.ttl" />
+		<uri name="https://raw.githubusercontent.com/BFO-ontology/BFO/v2.0/bfo.owl" uri="../src/imports/bfo-core.ttl" />
+		<uri name="http://openenergy-platform.org/ontology/oeo/releases/2.1.0/imports/iao-extracted.owl" uri="../src/imports/iao-extracted.ttl" />
+	</group>
+</catalog>

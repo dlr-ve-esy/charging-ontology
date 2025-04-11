@@ -11,12 +11,14 @@
 
 <http://openenergy-platform.org/ontology/oeo/chio-cq21> rdf:type owl:Ontology .
 
-:SomeParkingSpaceA a chio:CHIO_00000002 .
-:SomeParkingSpaceB a chio:CHIO_00000002 .
 
-:SomeParkingArea a chio:CHIO_00000001 ;
-                 obo:BFO_0000178 :SomeParkingSpaceA,
-                                 :SomeParkingSpaceB .
+obo:BFO_0000178 rdf:type owl:ObjectProperty .
 
+obo:BFO_0000196 rdf:type owl:ObjectProperty .
 
+:somePattern a chio:CHIO_00000024 .
+:someConnector a chio:CHIO_00000012 ;
+                obo:BFO_0000196 :somePattern .
 
+:someChargingPoint a chio:CHIO_00000016 ;
+                 obo:BFO_0000178 :someConnector .

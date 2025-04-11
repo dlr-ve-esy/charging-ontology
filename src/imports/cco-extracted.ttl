@@ -55,6 +55,10 @@ rdfs:label rdf:type owl:AnnotationProperty .
 <http://www.w3.org/2004/02/skos/core#scopeNote> rdf:type owl:AnnotationProperty .
 
 
+###  https://www.commoncoreontologies.org/ont00001753
+<https://www.commoncoreontologies.org/ont00001753> rdf:type owl:AnnotationProperty .
+
+
 ###  https://www.commoncoreontologies.org/ont00001754
 <https://www.commoncoreontologies.org/ont00001754> rdf:type owl:AnnotationProperty .
 
@@ -75,22 +79,22 @@ rdfs:label rdf:type owl:AnnotationProperty .
 <http://purl.obolibrary.org/obo/BFO_0000196> rdf:type owl:ObjectProperty .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000136
+<http://purl.obolibrary.org/obo/IAO_0000136> rdf:type owl:ObjectProperty ;
+                                             owl:inverseOf <https://www.commoncoreontologies.org/ont00001801> ;
+                                             rdfs:domain <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                                             rdfs:range <http://purl.obolibrary.org/obo/BFO_0000001> ;
+                                             rdfs:label "is about"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "A primitive relationship between an Information Content Entity and some Entity."@en ;
+                                             <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/IAO_0000136" ;
+                                             <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00001801
 <https://www.commoncoreontologies.org/ont00001801> rdf:type owl:ObjectProperty ;
-                                                   owl:inverseOf <https://www.commoncoreontologies.org/ont00001808> ;
-                                                   rdfs:range <https://www.commoncoreontologies.org/ont00000958> ;
+                                                   rdfs:range <http://purl.obolibrary.org/obo/IAO_0000030> ;
                                                    rdfs:label "is subject of"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A primitive relationship between an instance of an Entity and an instance of an Information Content Entity."@en ;
-                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
-
-
-###  https://www.commoncoreontologies.org/ont00001808
-<https://www.commoncoreontologies.org/ont00001808> rdf:type owl:ObjectProperty ;
-                                                   rdfs:domain <https://www.commoncoreontologies.org/ont00000958> ;
-                                                   rdfs:range <http://purl.obolibrary.org/obo/BFO_0000001> ;
-                                                   rdfs:label "is about"@en ;
-                                                   <http://www.w3.org/2004/02/skos/core#definition> "A primitive relationship between an Information Content Entity and some Entity."@en ;
-                                                   <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/IAO_0000136" ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
@@ -115,7 +119,7 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 ###  https://www.commoncoreontologies.org/ont00001916
 <https://www.commoncoreontologies.org/ont00001916> rdf:type owl:ObjectProperty ;
-                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001808> ;
+                                                   rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
                                                    rdfs:label "designates"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "x designates y iff x is an instance of an Information Content Entity, and y is an instance of an Entity, such that given some context, x uniquely distinguishes y from other entities."@en ;
                                                    <http://www.w3.org/2004/02/skos/core#example> "a URL designates the location of a Web Page on the internet" ,
@@ -145,7 +149,7 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 ###  https://www.commoncoreontologies.org/ont00001938
 <https://www.commoncoreontologies.org/ont00001938> rdf:type owl:ObjectProperty ;
-                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001808> ;
+                                                   rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
                                                    rdfs:comment "Isomorphism between the carrier of x and the represented entity can be via a direct similarity relation, e.g., grooves in a vinyl record corresponding to sound waves, or linguistic convention, e.g., a court stenographer's transcription of spoken words, as well as others, such as encoding processes for images."@en ;
                                                    rdfs:label "represents"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "x represents y iff x is an instance of Information Content Entity, y is an instance of Entity, and z is carrier of x, such that x is about y in virtue of there existing an isomorphism between characteristics of z and y."@en ;
@@ -156,7 +160,7 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 ###  https://www.commoncoreontologies.org/ont00001942
 <https://www.commoncoreontologies.org/ont00001942> rdf:type owl:ObjectProperty ;
-                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001808> ;
+                                                   rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
                                                    rdfs:label "prescribes"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "x prescribes y iff x is an instance of Information Content Entity and y is an instance of Entity, such that x serves as a rule or guide for y if y an Occurrent, or x serves as a model for y if y is a Continuant."@en ;
                                                    <http://www.w3.org/2004/02/skos/core#example> "A blueprint prescribes some artifact or facility by being a model for it." ,
@@ -167,7 +171,7 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 ###  https://www.commoncoreontologies.org/ont00001982
 <https://www.commoncoreontologies.org/ont00001982> rdf:type owl:ObjectProperty ;
-                                                   rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001808> ;
+                                                   rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
                                                    rdfs:comment "It is possible that this relation should be a functional property, that is for all x, y, z if x describes y and x describes z then y = z. For example, if a financial report x describes the quarterly results of a company y and that same financial report describes the quarterly results of a company z, then it should be inferred that companies y and z are the same. We refrained from classifying the relation as a functional property on the concern that descriptions are multifaceted and so consequently it may be that the same report would contain descriptions of multiple entities."@en ;
                                                    rdfs:label "describes"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "x describes y iff x is an instance of Information Content Entity, and y is an instance of Entity, such that x is about the characteristics by which y can be recognized or visualized."@en ;
@@ -194,8 +198,7 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000024
-<http://purl.obolibrary.org/obo/BFO_0000024> rdf:type owl:Class ;
-                                             rdfs:subClassOf owl:Thing .
+<http://purl.obolibrary.org/obo/BFO_0000024> rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000029
@@ -204,6 +207,10 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 ###  http://purl.obolibrary.org/obo/BFO_0000031
 <http://purl.obolibrary.org/obo/BFO_0000031> rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000034
+<http://purl.obolibrary.org/obo/BFO_0000034> rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000040
@@ -219,12 +226,43 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                              <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000030
+<http://purl.obolibrary.org/obo/IAO_0000030> rdf:type owl:Class ;
+                                             owl:equivalentClass [ owl:intersectionOf ( <http://purl.obolibrary.org/obo/BFO_0000031>
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty <http://purl.obolibrary.org/obo/IAO_0000136> ;
+                                                                                          owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000001>
+                                                                                        ]
+                                                                                      ) ;
+                                                                   rdf:type owl:Class
+                                                                 ] ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000031> ,
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty <http://purl.obolibrary.org/obo/IAO_0000136> ;
+                                                               owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000001>
+                                                             ] ;
+                                             rdfs:label "Information Content Entity"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#altLabel> "ICE"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "A Generically Dependent Continuant that generically depends on some Information Bearing Entity and stands in relation of aboutness to some Entity."@en ;
+                                             <http://www.w3.org/2004/02/skos/core#scopeNote> "Information Content Entity is here intended to be a class of Entities whose instances are the informational content of Information Bearing Entities. For example, three instances of information bearers -- such as a bar chart, color-coded map, and a written report -- each of which lists the GDP of Countries for the year 2010 are each different carriers of the same information content. It is this content that is generically dependent upon its carrier. This treatment of Informational Content Entity (cf. the Information Artifact Ontology) leads to a principle of subtyping based upon the relationship that ICE's have with the Entity they are about rather than characteristics such as format, language, measurement scale, or media. The latter are treated here as being Qualities of bearers."@en ;
+                                             <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/IAO_0000030" ;
+                                             <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000004
 <https://www.commoncoreontologies.org/ont00000004> rdf:type owl:Class ;
                                                    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
                                                    rdfs:label "Change"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Process in which some independent continuant endures and 1) one or more of the dependent entities it bears increase or decrease in intensity, 2) the entity begins to bear some dependent entity or 3) the entity ceases to bear some dependent entity."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000019
+<https://www.commoncoreontologies.org/ont00000019> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000961> ;
+                                                   rdfs:label "Power Inverting Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Current Conversion Artifact Function that is realized by processes in which some Artifact is used to convert direct current (DC) to alternating current (AC)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000046
@@ -252,6 +290,36 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Local Administrative Region in which a human population permanently resides that is typically larger than the population of a Village but smaller than that of a City; is designated as a town based on a particular administrative, legal, or historical status; and which delimits a local Government that typically exercises less power than that of a City Government."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "http://www.dictionary.com/browse/town" ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000077
+<https://www.commoncoreontologies.org/ont00000077> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000649> ;
+                                                   rdfs:label "Code Identifier"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Code ID"@en ,
+                                                                                                  "ID Code"@en ,
+                                                                                                  "Identifier Code"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Non-Name Identifier that consists of a string of characters that was created and assigned according to an encoding system such that metadata can be derived from the identifier."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000098
+<https://www.commoncoreontologies.org/ont00000098> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000323> ;
+                                                   rdfs:label "Electrical Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Artifact Function that is realized during events in which an Artifact is used to perform a process involving electrical power."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000106
+<https://www.commoncoreontologies.org/ont00000106> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001213> ;
+                                                   rdfs:comment "An End of Life Stasis (EoL) is distinguished from a Stasis of Partially Mission Capable or Stasis of Non-Mission Capable in that EoL is more inclusive such that the participating Artifact may be either Partially or Non-Mission Capable. Additionally, EoL applies only to Artifacts and is typically determined in relation to its original mission and designed primary functions. In contrast, an Artifact's level of Mission Capability depends on the requirements of the mission under consideration such that a given Artifact may simultaneously be Fully Mission Capable for mission1, Partially Mission Capable for mission2, and Non-Mission Capable for mission3."@en ;
+                                                   rdfs:label "End of Life Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Artifact Operationality that holds during a Temporal Interval when the participating Artifact is no longer capable of realizing all of its designed primary Artifact Functions."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001753> "EOL" ,
+                                                                                                      "EoL" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000115
@@ -297,6 +365,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000162
+<https://www.commoncoreontologies.org/ont00000162> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000795> ;
+                                                   rdfs:label "Electrical Connector Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Electrical Conduction Artifact Function that is realized by processes in which some Artifact is used to join electrical terminations to create an electrical circuit."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000192
 <https://www.commoncoreontologies.org/ont00000192> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ,
@@ -306,6 +382,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                                    ] ;
                                                    rdfs:label "Facility"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed as a building or campus dedicated to some specific purpose."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000194
+<https://www.commoncoreontologies.org/ont00000194> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000795> ;
+                                                   rdfs:label "Electrical Contact Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Electrical Conduction Artifact Function that is realized by processes in which some Artifact is used as an endpoint of an electrical circuit from which an electrical current is passed via physical contact with the endpoint."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
@@ -363,6 +447,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000323
+<https://www.commoncoreontologies.org/ont00000323> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000034> ;
+                                                   rdfs:label "Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Function that inheres in some Artifact in virtue of that Artifact being designed to be used in processes that require that Function to be realized."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000328
 <https://www.commoncoreontologies.org/ont00000328> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000870> ;
@@ -370,6 +462,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "An Infrastructure System that is designed to facilitate the movement of material entities from one location to another by providing the necessary structures for Persons to travel or for Vehicles to transport material entities."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "http://www.cfr.org/infrastructure/transportation-infrastructure-moving-america/p18611" ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000390
+<https://www.commoncoreontologies.org/ont00000390> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000686> ;
+                                                   rdfs:label "Spatial Region Identifier"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Designative Information Content Entity that designates some Spatial Region."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000394
@@ -459,6 +559,17 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000626
+<https://www.commoncoreontologies.org/ont00000626> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000853> ;
+                                                   rdfs:comment "Since predictions are inherently about not-yet-existant things, the Modal Relation Ontology term 'describes' (i.e. mro:describes) should be used (instead of the standard cco:describes) to relate instances of Predictive Information Content Entity to the entities they are about."@en ;
+                                                   rdfs:label "Predictive Information Content Entity"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Prediction"@en ,
+                                                                                                  "Prediction Information Content Entity"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Descriptive Information Content Entity that describes an uncertain future event."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000627
 <https://www.commoncoreontologies.org/ont00000627> rdf:type owl:Class ;
                                                    owl:equivalentClass [ owl:intersectionOf ( <http://purl.obolibrary.org/obo/BFO_0000040>
@@ -487,6 +598,25 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000649
+<https://www.commoncoreontologies.org/ont00000649> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000686> ;
+                                                   rdfs:label "Non-Name Identifier"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "ID"@en ,
+                                                                                                  "Identifier"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Designative Information Content Entity that consists of a string of characters that designates an entity within a specified namespace or context, is not a Designative Name, may be automatically or randomly generated, and typically has no preexisting cultural or social significance."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000686
+<https://www.commoncoreontologies.org/ont00000686> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                                                   rdfs:label "Designative Information Content Entity"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Designative ICE"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Information Content Entity that consists of a set of symbols that denote some Entity."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000713
 <https://www.commoncoreontologies.org/ont00000713> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
@@ -510,6 +640,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000638> ;
                                                    rdfs:label "Combustion Engine"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Heat Engine that is designed to convert thermal energy that is generated through a local Combustion process into mechanical energy."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000795
+<https://www.commoncoreontologies.org/ont00000795> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000098> ;
+                                                   rdfs:label "Electrical Conduction Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Electrical Artifact Function that is realized by an Artifact being used to conduct an electric current."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
@@ -570,6 +708,15 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000853
+<https://www.commoncoreontologies.org/ont00000853> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                                                   rdfs:label "Descriptive Information Content Entity"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Descriptive ICE"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Information Content Entity that consists of a set of propositions that describe some Entity."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000870
 <https://www.commoncoreontologies.org/ont00000870> rdf:type owl:Class ;
                                                    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
@@ -588,6 +735,17 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000924
+<https://www.commoncoreontologies.org/ont00000924> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001191> ;
+                                                   rdfs:comment "A Beginning of Life Stasis (BoL) is a relatively brief Operational Stasis that is primarily of interest for the purpose of establishing a baseline for operational parameters to be compared to the designed specifications as well as the Artifact's performance throughout its operational life."@en ;
+                                                   rdfs:label "Beginning of Life Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Operational Stasis that holds during a Temporal Interval when an Artifact is first put into operational use such that its designed set of Artifact Functions is capable of operating at or near their designed peak performance levels."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001753> "BOL" ,
+                                                                                                      "BoL" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000934
 <https://www.commoncoreontologies.org/ont00000934> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000126> ;
@@ -596,6 +754,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A First-Order Administrative Region that is part of a Country and delimits a centralized regional Government that holds constitutionally-defined administrative jurisdiction over the defined geographic territory that bounds the State."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Constituent_state&oldid=1063662102"^^xsd:anyURI ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000936
+<https://www.commoncoreontologies.org/ont00000936> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001213> ;
+                                                   rdfs:label "Deactivated Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Artifact Operationality that holds during a Temporal Interval when an Artifact is not realizing any of its designed Artifact Functions (or at least not realizing any of its primary functions)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000952
@@ -608,27 +774,20 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
-###  https://www.commoncoreontologies.org/ont00000958
-<https://www.commoncoreontologies.org/ont00000958> rdf:type owl:Class ;
-                                                   owl:equivalentClass [ owl:intersectionOf ( <http://purl.obolibrary.org/obo/BFO_0000031>
-                                                                                              [ rdf:type owl:Restriction ;
-                                                                                                owl:onProperty <https://www.commoncoreontologies.org/ont00001808> ;
-                                                                                                owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000001>
-                                                                                              ]
-                                                                                            ) ;
-                                                                         rdf:type owl:Class
-                                                                       ] ;
-                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000031> ,
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty <https://www.commoncoreontologies.org/ont00001808> ;
-                                                                     owl:someValuesFrom <http://purl.obolibrary.org/obo/BFO_0000001>
-                                                                   ] ;
-                                                   rdfs:label "Information Content Entity"@en ;
-                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "ICE"@en ;
-                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Generically Dependent Continuant that generically depends on some Information Bearing Entity and stands in relation of aboutness to some Entity."@en ;
-                                                   <http://www.w3.org/2004/02/skos/core#scopeNote> "Information Content Entity is here intended to be a class of Entities whose instances are the informational content of Information Bearing Entities. For example, three instances of information bearers -- such as a bar chart, color-coded map, and a written report -- each of which lists the GDP of Countries for the year 2010 are each different carriers of the same information content. It is this content that is generically dependent upon its carrier. This treatment of Informational Content Entity (cf. the Information Artifact Ontology) leads to a principle of subtyping based upon the relationship that ICE's have with the Entity they are about rather than characteristics such as format, language, measurement scale, or media. The latter are treated here as being Qualities of bearers."@en ;
-                                                   <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/IAO_0000030" ;
-                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+###  https://www.commoncoreontologies.org/ont00000961
+<https://www.commoncoreontologies.org/ont00000961> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000098> ;
+                                                   rdfs:label "Current Conversion Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Electrical Artifact Function that is realized by processes in which some Artifact is used to convert some electrical current."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000993
+<https://www.commoncoreontologies.org/ont00000993> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000961> ;
+                                                   rdfs:label "Power Rectifying Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Current Conversion Artifact Function that is realized by processes in which some Artifact is used to convert alternating current (AC) to direct current (DC)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000995
@@ -637,6 +796,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    rdfs:label "Material Artifact"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Material Entity that was designed by some Agent to realize a certain Function."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000999
+<https://www.commoncoreontologies.org/ont00000999> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001213> ;
+                                                   rdfs:label "Defunct Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Artifact Operationality that holds during a Temporal Interval when an Artifact no longer maintains its designed set of Artifact Functions (or at least no longer maintains its primary functions)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00001011
@@ -674,6 +841,17 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00001069
+<https://www.commoncoreontologies.org/ont00001069> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                                                   rdfs:label "Representational Information Content Entity"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Information Content Entity that represents some Entity."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#example> "the content of a court transcript represents a courtroom proceeding" ,
+                                                                                                 "the content of a photograph of the Statue of Liberty represents the Statue of Liberty" ,
+                                                                                                 "the content of a video of a sporting event represents that sporting event" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00001141
 <https://www.commoncoreontologies.org/ont00001141> rdf:type owl:Class ;
                                                    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000023> ;
@@ -699,6 +877,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Government Domain that is part of either a First-Order or Second-Order Administrative Region."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=County&oldid=1062817834"^^xsd:anyURI ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001191
+<https://www.commoncoreontologies.org/ont00001191> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001213> ;
+                                                   rdfs:label "Operational Stasis"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Artifact Operationality that holds during a Temporal Interval when an Artifact maintains its designed set of Artifact Functions (or at least maintains its primary functions)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00001203

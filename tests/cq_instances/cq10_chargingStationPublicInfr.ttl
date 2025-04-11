@@ -5,8 +5,8 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix chio: <http://openenergy-platform.org/ontology/chio/> .
-@prefix cco: <http://www.ontologyrepository.com/CommonCoreOntologies/> .
+@prefix chio: <https://dlr-ve-esy.github.io/charging_ontology/> .
+@prefix cco: <https://www.commoncoreontologies.org/> .
 @base <http://openenergy-platform.org/ontology/oeo/chio-cq21/> .
 
 
@@ -23,5 +23,5 @@ obo:BFO_0000196 rdf:type owl:ObjectProperty .
                      obo:BFO_0000129 :InfrastructureSystem ;
                      obo:BFO_0000196 :someRole .
 
-:InfrastructureSystem a cco:TransportationInfrastructure, 
+:InfrastructureSystem a cco:ont00000328, 
                         chio:CHIO_00000006 .
