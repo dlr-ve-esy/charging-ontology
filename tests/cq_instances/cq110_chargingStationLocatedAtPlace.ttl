@@ -5,7 +5,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix chio: <https://dlr-ve-esy.github.io/charging_ontology/> .
+@prefix chio: <https://dlr-ve-esy.github.io/charging-ontology/> .
 @prefix cco: <https://www.commoncoreontologies.org/> .
 @base <http://openenergy-platform.org/ontology/oeo/chio-cq21/> .
 

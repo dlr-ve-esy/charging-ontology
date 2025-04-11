@@ -58,11 +58,11 @@ such conditions are explored in other scenarios.
 
 ???+ question "Competency question 1.0"
 
-    A public charging station is part of some transportation infrastructure.
+    Is a charging station part of a transport infrastructure?
 
 ???+ question "Competency question 1.1"
 
-    A charging station has charging columns as parts that can change during its lifetime.
+    How many charging columns does charging station "A" had in 2020?
 
 ???+ question "Competency question 1.2"
 

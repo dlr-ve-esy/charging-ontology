@@ -438,6 +438,11 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/GeospatialOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000253
+<https://www.commoncoreontologies.org/ont00000253> rdf:type owl:Class ;
+                                                   rdfs:subClassOf owl:Thing .
+
+
 ###  https://www.commoncoreontologies.org/ont00000288
 <https://www.commoncoreontologies.org/ont00000288> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
@@ -904,6 +909,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    rdfs:label "Stasis of Artifact Operationality"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Realizable Entity that holds during a Temporal Interval when an Artifact's designed set of Artifact Functions (or at least its primary functions) or the realizations of those functions remain unchanged."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001243
+<https://www.commoncoreontologies.org/ont00001243> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000253> ;
+                                                   rdfs:label "Document Field"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Information Bearing Entity that is a part of some document into which bearers of prescribed information can be written or selected."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00001292

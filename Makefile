@@ -1,5 +1,5 @@
 ONTOLOGY_NAME := chio
-IRI_NAME := charging_ontology
+IRI_NAME := charging-ontology
 
 IRI_PLACEHOLDER := http:\/\/openenergy-platform\.org\/ontology\/
 IRI_BASE := https:\/\/dlr-ve-esy\.github\.io\/
