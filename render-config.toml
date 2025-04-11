@@ -4,9 +4,9 @@ templates = "templates"
 assets = "static"
 
 [ontology]
-iri = "https://dlr-ve-esy.github.io/"
+iri = "https://dlr-ve-esy.github.io/charging_ontology/"
 suffix = "CHIO"
-source = "chio.owx"
+source = "chio-full.owx"
 
 [build]
 output = "./public"
