@@ -5,3 +5,5 @@ https://www.commoncoreontologies.org/ont00000509
 https://www.commoncoreontologies.org/ont00001239
 https://www.commoncoreontologies.org/ont00001017
 https://www.commoncoreontologies.org/ont00001006
+https://www.commoncoreontologies.org/ont00001925
+https://www.commoncoreontologies.org/ont00001813
