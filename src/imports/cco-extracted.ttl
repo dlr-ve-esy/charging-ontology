@@ -15,6 +15,10 @@
 #    Annotation properties
 #################################################################
 
+###  http://purl.org/dc/terms/bibliographicCitation
+<http://purl.org/dc/terms/bibliographicCitation> rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/terms/created
 <http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
 
@@ -41,6 +45,10 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/2004/02/skos/core#definition
 <http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#editorialNote
+<http://www.w3.org/2004/02/skos/core#editorialNote> rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#example
@@ -199,6 +207,10 @@ rdfs:label rdf:type owl:AnnotationProperty .
 
 ###  http://purl.obolibrary.org/obo/BFO_0000024
 <http://purl.obolibrary.org/obo/BFO_0000024> rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000027
+<http://purl.obolibrary.org/obo/BFO_0000027> rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000029
@@ -452,6 +464,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000300
+<https://www.commoncoreontologies.org/ont00000300> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000027> ;
+                                                   rdfs:label "Group of Agents"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Object Aggregate that has only Agents as parts."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000323
 <https://www.commoncoreontologies.org/ont00000323> rdf:type owl:Class ;
                                                    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000034> ;
@@ -495,12 +515,28 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000408
+<https://www.commoncoreontologies.org/ont00000408> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001180> ;
+                                                   rdfs:label "Government Organization"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Organization that is part of a Government and is responsible for the oversight or administration of specific governmental functions."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000430
 <https://www.commoncoreontologies.org/ont00000430> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000850> ;
                                                    rdfs:label "Stable Orientation"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Stasis of Quality that holds during a Temporal Interval when an object maintains the same Spatial Orientation."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000443
+<https://www.commoncoreontologies.org/ont00000443> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001180> ;
+                                                   rdfs:label "Commercial Organization"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Organization that is the bearer of a Commercial Role and whose primary objective is to make a profit from the provision of goods or services."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000460
@@ -543,6 +579,28 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    rdfs:label "Power"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Process Profile that is characterized by the rate of Work, or Energy consumed, done in a given time period."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000509
+<https://www.commoncoreontologies.org/ont00000509> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001180> ;
+                                                   rdfs:label "Service Provider"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Organization whose purpose is to provide a service to other Agents."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Service_provider&oldid=1059415018"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000532
+<https://www.commoncoreontologies.org/ont00000532> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001335> ;
+                                                   <http://purl.org/dc/terms/bibliographicCitation> "Convention on Rights and Duties of States (inter-American); December 26, 1933. https://avalon.law.yale.edu/20th_century/intam03.asp. Accessed 6 Apr. 2023." ;
+                                                   <http://purl.org/dc/terms/created> "2023-02-08T19:54:46-05:00"^^xsd:dateTime ;
+                                                   <http://purl.org/dc/terms/creator> "https://cubrc.org"^^xsd:anyURI ;
+                                                   rdfs:label "Government of a Country"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Government that has legitimate authority within and is delimited by a Domain of a Country."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Government of a Country"@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://avalon.law.yale.edu/20th_century/intam03.asp" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000606
@@ -831,6 +889,15 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00001017
+<https://www.commoncoreontologies.org/ont00001017> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
+                                                   rdfs:label "Agent"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Entity that bears an Agent Capability."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "Schlosser, Markus, \"Agency\", The Stanford Encyclopedia of Philosophy (Winter 2019 Edition), Edward N. Zalta (ed.), available at: https://plato.stanford.edu/archives/win2019/entries/agency/"@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00001024
 <https://www.commoncoreontologies.org/ont00001024> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000394> ;
@@ -895,6 +962,16 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00001180
+<https://www.commoncoreontologies.org/ont00001180> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000300> ;
+                                                   rdfs:comment "Members of organizations are either Organizations themselves or individual Persons. Members can bear specific Organization Member Roles that are determined in the organization rules. The organization rules also determine how decisions are made on behalf of the Organization by the organization members."@en ;
+                                                   rdfs:label "Organization"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Group of Agents which can be the bearer of roles, has members, and has a set of organization rules."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/OBI_0000245" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00001191
 <https://www.commoncoreontologies.org/ont00001191> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001213> ;
@@ -922,6 +999,14 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00001239
+<https://www.commoncoreontologies.org/ont00001239> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000300> ;
+                                                   rdfs:label "Group of Organizations"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Group of Agents that has only Organizations as parts."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00001243
 <https://www.commoncoreontologies.org/ont00001243> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000253> ;
@@ -937,6 +1022,18 @@ rdfs:label rdf:type owl:AnnotationProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Ground Motor Vehicle that is designed to transport a large number of people and to travel on six or more tired wheels."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Bus&oldid=1055341487"^^xsd:anyURI ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001335
+<https://www.commoncoreontologies.org/ont00001335> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001180> ;
+                                                   <http://purl.org/dc/terms/creator> "https://cubrc.org"^^xsd:anyURI ;
+                                                   rdfs:label "Government"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Organization that is the highest legitimate authority delimited by some Delimiting Domain and that exercises executive, legislative, or judicial authority in that Domain."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#editorialNote> "Highest legitimate authority should not be confused with highest legitimate authority of a particular kind. For example, while the judicial branch of the United States government has the highest judicial authority in a Delimiting Domain, it is not the highest legitimate authority delimited by that domain. The combination of executive, judicial, and legislative branches is higher because it wields more legitimate authority than any branch on its own."@en ,
+                                                                                                       "Importantly, the definition states \"highest legitimate authority delimited by some Delimiting Domain\" and not \"highest legitimate authority in some Delimiting Domain.\" The government of Wales is the highest legitimate authority delimited by some Delimiting Domain but it is not the highest legitimate authority in that domain, which would be the government of the United Kingdom."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Government&oldid=1063736308"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00001341
