@@ -650,6 +650,14 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000575
+<https://www.commoncoreontologies.org/ont00000575> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000033> ;
+                                                   rdfs:label "Quality Specification"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Directive Information Content Entity that prescribes some Quality."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000606
 <https://www.commoncoreontologies.org/ont00000606> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000053> ;
@@ -725,6 +733,14 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
                                                    <http://www.w3.org/2004/02/skos/core#altLabel> "Designative ICE"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "An Information Content Entity that consists of a set of symbols that denote some Entity."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000693
+<https://www.commoncoreontologies.org/ont00000693> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000575> ;
+                                                   rdfs:label "Mass Specification"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Quality Specification that prescribes the Amount of Mass that a Material Entity should have."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000713
@@ -843,6 +859,14 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Local Administrative Region in which a relatively large human population permanently resides; is designated as a city based on a particular administrative, legal, or historical status; and which delimits a local Government that typically oversees the provision of systems for sanitation, utilities, land usage, housing, and transportation."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=City&oldid=1062635325"^^xsd:anyURI ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000919
+<https://www.commoncoreontologies.org/ont00000919> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000575> ;
+                                                   rdfs:label "Parts List"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Quality Specification that prescribes the Amount of some type of Artifact that are part of or located on another Artifact."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000924
@@ -1060,6 +1084,14 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
                                                    rdfs:label "Bus"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Ground Motor Vehicle that is designed to transport a large number of people and to travel on six or more tired wheels."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Bus&oldid=1055341487"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001304
+<https://www.commoncoreontologies.org/ont00001304> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000575> ;
+                                                   rdfs:label "Dimension Specification"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Quality Specification that prescribes some Size Quality."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 

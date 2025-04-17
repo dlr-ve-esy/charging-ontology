@@ -1,0 +1,3 @@
+https://www.commoncoreontologies.org/ont00000919
+https://www.commoncoreontologies.org/ont00000693
+https://www.commoncoreontologies.org/ont00001304
