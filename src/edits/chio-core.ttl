@@ -818,6 +818,15 @@
                skos:definition "A Performance Specification that prescribes the highest power flow of a power source." .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000093
+:CHIO_00000093 rdf:type owl:Class ;
+               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000127> ;
+               <http://purl.obolibrary.org/obo/IAO_0000118> "ampacity" ,
+                                                            "maximum current" ;
+               rdfs:comment "A Performance Specification that prescribes the maximum current an electrical conductor can transfer." ;
+               rdfs:label "current capacity" .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> .
 
