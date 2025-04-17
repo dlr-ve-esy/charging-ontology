@@ -800,6 +800,24 @@
                skos:definition "A connector with some domestic pattern" .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000091
+:CHIO_00000091 rdf:type owl:Class ;
+               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000127> ;
+               <http://purl.obolibrary.org/obo/IAO_0000118> "maximum voltage" ;
+               rdfs:comment "Rated voltage usually means maximum voltage." ;
+               rdfs:label "rated voltage" ;
+               skos:definition "A Performance Specification that prescribes the intended operating voltage of some electrical artifact." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000092
+:CHIO_00000092 rdf:type owl:Class ;
+               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000127> ;
+               <http://purl.obolibrary.org/obo/IAO_0006011> "http://openenergy-platform.org/ontology/oeo/OEO_00230001" ;
+               rdfs:comment "The power rating of a device is usually determined by its manufacturer." ;
+               rdfs:label "power rating" ;
+               skos:definition "A Performance Specification that prescribes the highest power flow of a power source." .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> .
 
