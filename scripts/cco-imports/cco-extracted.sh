@@ -1,7 +1,7 @@
 #!/bin/bash
 
 tmpdir="tmp"
-mkdir-p ${tmpdir}
+mkdir -p ${tmpdir}
 
 this_wd=scripts/cco-imports
 ontology_name=chio
@@ -82,12 +82,14 @@ java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/Inf
 
 java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/InformationEntityOntology.ttl --select imports extract --method subset --term-file ${this_wd}/ieo_ops.txt --imports exclude --output ${tmpdir}/ieo_ops_base.ttl
 
+java -jar robot.jar remove --catalog ${tmpdir}/catalog.xml --input ${tmpdir}/InformationEntityOntology.ttl --select imports extract --method MIREOT --lower-term https://www.commoncoreontologies.org/ont00000253 --upper-term http://purl.obolibrary.org/obo/BFO_0000030 --imports exclude --output ${tmpdir}/ibe.ttl
+
 java -jar robot.jar rename --input ${tmpdir}/ieo_ops_base.ttl --mappings ${this_wd}/ieo_ops_mappings.csv --allow-missing-entities true --output ${tmpdir}/ieo_ops.ttl
 
 java -jar robot.jar rename --input ${tmpdir}/ieo_mireot_base.ttl --mappings ${this_wd}/ieo_ops_mappings.csv --allow-missing-entities true --output ${tmpdir}/ieo_entities.ttl
 
 # Merging together
 
-java -jar robot.jar merge --input ${tmpdir}/geo_tree.ttl --input ${tmpdir}/geo_base.ttl --input ${tmpdir}/ao_artifacts.ttl --input ${tmpdir}/ao_vehicles.ttl --input ${tmpdir}/ao_facility.ttl --input ${tmpdir}/ao_facility_classes.ttl --input ${tmpdir}/eo_stasis.ttl --input ${tmpdir}/eo_process_profiles.ttl --input ${tmpdir}/eo_change.ttl --input ${tmpdir}/ao_infrastructure.ttl --input ${tmpdir}/ao_electrical.ttl --input ${tmpdir}/ieo_ops.ttl --input ${tmpdir}/ieo_entities.ttl --input ${tmpdir}/ago_agents.ttl annotate --annotation rdfs:comment "This is an extract of the Common Core Ontologies: https://github.com/CommonCoreOntology/CommonCoreOntologies " --output src/imports/cco-extracted.ttl
+java -jar robot.jar merge --input ${tmpdir}/geo_tree.ttl --input ${tmpdir}/geo_base.ttl --input ${tmpdir}/ao_artifacts.ttl --input ${tmpdir}/ao_vehicles.ttl --input ${tmpdir}/ao_facility.ttl --input ${tmpdir}/ao_facility_classes.ttl --input ${tmpdir}/eo_stasis.ttl --input ${tmpdir}/eo_process_profiles.ttl --input ${tmpdir}/eo_change.ttl --input ${tmpdir}/ao_infrastructure.ttl --input ${tmpdir}/ao_electrical.ttl --input ${tmpdir}/ieo_ops.ttl --input ${tmpdir}/ieo_entities.ttl --input ${tmpdir}/ago_agents.ttl --input ${tmpdir}/ibe.ttl annotate --annotation rdfs:comment "This is an extract of the Common Core Ontologies: https://github.com/CommonCoreOntology/CommonCoreOntologies " --output src/imports/cco-extracted.ttl
 
 java -jar robot.jar annotate --input ${imports}/cco-extracted.ttl --ontology-iri "${iri_base}${cco_new_iri}/cco-extracted.ttl" --version-iri "${iri_base}${cco_new_version_iri}/cco-extracted.ttl" --annotation http://purl.org/dc/terms/license https://opensource.org/licenses/BSD-3-Clause --output ${imports}/cco-extracted.ttl

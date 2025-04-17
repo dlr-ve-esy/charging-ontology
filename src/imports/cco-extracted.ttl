@@ -237,6 +237,10 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
 <http://purl.obolibrary.org/obo/BFO_0000029> rdf:type owl:Class .
 
 
+###  http://purl.obolibrary.org/obo/BFO_0000030
+<http://purl.obolibrary.org/obo/BFO_0000030> rdf:type owl:Class .
+
+
 ###  http://purl.obolibrary.org/obo/BFO_0000031
 <http://purl.obolibrary.org/obo/BFO_0000031> rdf:type owl:Class .
 
@@ -278,6 +282,15 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
                                              <http://www.w3.org/2004/02/skos/core#definition> "A Generically Dependent Continuant that generically depends on some Information Bearing Entity and stands in relation of aboutness to some Entity."@en ;
                                              <http://www.w3.org/2004/02/skos/core#scopeNote> "Information Content Entity is here intended to be a class of Entities whose instances are the informational content of Information Bearing Entities. For example, three instances of information bearers -- such as a bar chart, color-coded map, and a written report -- each of which lists the GDP of Countries for the year 2010 are each different carriers of the same information content. It is this content that is generically dependent upon its carrier. This treatment of Informational Content Entity (cf. the Information Artifact Ontology) leads to a principle of subtyping based upon the relationship that ICE's have with the Entity they are about rather than characteristics such as format, language, measurement scale, or media. The latter are treated here as being Qualities of bearers."@en ;
                                              <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/IAO_0000030" ;
+                                             <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000033
+<http://purl.obolibrary.org/obo/IAO_0000033> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> ;
+                                             rdfs:label "Directive Information Content Entity"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#altLabel> "Directive ICE"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "An Information Content Entity that consists of a set of propositions or images (as in the case of a blueprint) that prescribe some Entity."@en ;
                                              <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
@@ -370,6 +383,15 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
                                                    <http://www.w3.org/2004/02/skos/core#example> "a state in the United States" ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "http://www.geonames.org/export/codes.html" ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000127
+<https://www.commoncoreontologies.org/ont00000127> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000033> ;
+                                                   rdfs:label "Performance Specification"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Directive Information Content Entity that prescribes some aspect of the behavior of a participant in a Process given one or more operating conditions."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#example> "Maximum Speed at high altitude; Rate of Ascent at 10 degrees celsius with nominal payload." ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000134
@@ -472,7 +494,12 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
 
 ###  https://www.commoncoreontologies.org/ont00000253
 <https://www.commoncoreontologies.org/ont00000253> rdf:type owl:Class ;
-                                                   rdfs:subClassOf owl:Thing .
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000030> ;
+                                                   rdfs:label "Information Bearing Entity"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "IBE"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Object upon which an Information Content Entity generically depends."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/IAO_0000178"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000288
@@ -1025,14 +1052,6 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
                                                    rdfs:label "Group of Organizations"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "A Group of Agents that has only Organizations as parts."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
-
-
-###  https://www.commoncoreontologies.org/ont00001243
-<https://www.commoncoreontologies.org/ont00001243> rdf:type owl:Class ;
-                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000253> ;
-                                                   rdfs:label "Document Field"@en ;
-                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Information Bearing Entity that is a part of some document into which bearers of prescribed information can be written or selected."@en ;
-                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00001292
