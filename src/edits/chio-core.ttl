@@ -54,7 +54,7 @@
                                          )
                            ] ;
                rdfs:range <https://www.commoncoreontologies.org/ont00001017> ;
-               rdfs:label "possessed by"@de ;
+               rdfs:label "possessed by" ;
                skos:definition "b possessed by c =Def c possesses b" .
 
 
@@ -62,7 +62,7 @@
 :CHIO_00000086 rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :CHIO_00000083 ;
                owl:inverseOf :CHIO_00000088 ;
-               rdfs:label "owns"@de ;
+               rdfs:label "owns" ;
                skos:definition "x owns y iff x is an instance of an Agent and y is an instance of Material Artifact or Information Content Entity such as y exerts some externally acknowledged, time unlimited right of possession of y during time t." .
 
 
@@ -70,28 +70,28 @@
 :CHIO_00000087 rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :CHIO_00000083 ;
                owl:inverseOf :CHIO_00000089 ;
-               rdfs:label "borrows"@de ;
+               rdfs:label "borrows" ;
                skos:definition "x borrows y iff x is an instance of an Agent and y is an instance of Material Artifact or Information Content Entity such as y exerts some externally acknowledged, time limited right of possession of y during time t." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000088
 :CHIO_00000088 rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :CHIO_00000085 ;
-               rdfs:label "owned by"@de ;
+               rdfs:label "owned by" ;
                skos:definition "b owned by c =Def c owns b" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000089
 :CHIO_00000089 rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :CHIO_00000085 ;
-               rdfs:label "borrowed by"@de ;
+               rdfs:label "borrowed by" ;
                skos:definition "b borrowed by c =Def c borrows b" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000090
 :CHIO_00000090 rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001813> ;
-               rdfs:label "manages"@de ;
+               rdfs:label "manages" ;
                skos:definition "x manages y iff x is an instance of an Agent and y is an instance of a Material Entity, such that both x and y participate in some instance of a Process wherein x actively enables the realization of the function of y." .
 
 
@@ -831,7 +831,7 @@
 :CHIO_00000094 rdf:type owl:Class ;
                rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000472> ;
                rdfs:comment "This definition refers to the postal code and not the mail distribution process, this is open to revision." ;
-               rdfs:label "postal region"@de ;
+               rdfs:label "postal region" ;
                skos:definition "A Geospatial Region delimiting all the spatial regions designated by a postal code." .
 
 
@@ -839,7 +839,7 @@
 :CHIO_00000095 rdf:type owl:Class ;
                rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000077> ,
                                <https://www.commoncoreontologies.org/ont00000390> ;
-               rdfs:label "postal code"@de ;
+               rdfs:label "postal code" ;
                skos:definition "An identifier that differentiates spatial regions for the purpose of mail distribution." .
 
 
@@ -847,7 +847,7 @@
 :CHIO_00000096 rdf:type owl:Class ;
                rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000390> ;
                rdfs:comment "Using thoroughfares as the basis of addresses would narrow down the definiton a lot. Addresses are very complex to model, specially when dealing with international data. For instance, in this project we decide to keep the definition broad." ;
-               rdfs:label "address"@de ;
+               rdfs:label "address" ;
                skos:definition "A text that identifies a geospatial location in relation to proximate landmarks." .
 
 
@@ -857,7 +857,7 @@
                                <https://www.commoncoreontologies.org/ont00000390> ;
                <http://purl.obolibrary.org/obo/IAO_0000118> "country code" ;
                rdfs:comment "An alphanumeric identifier that identifies some government domain." ;
-               rdfs:label "territorial code"@de .
+               rdfs:label "territorial code" .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000098
@@ -874,7 +874,14 @@
                                  owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
                                  owl:hasValue :CHIO_00000099
                                ] ;
-               rdfs:label "ISO 3166-1 alpha-2 code"@de .
+               rdfs:label "ISO 3166-1 alpha-2 code" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000104
+:CHIO_00000104 rdf:type owl:Class ;
+               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000003> ;
+               <http://purl.obolibrary.org/obo/IAO_0000118> "The designative name of a government domain." ;
+               rdfs:label "territory name" .
 
 
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
@@ -1055,14 +1062,14 @@
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000100
 :CHIO_00000100 rdf:type owl:NamedIndividual ,
                         :CHIO_00000098 ;
-               rdfs:label "ISO 3166-1 alpha-3"@de ;
+               rdfs:label "ISO 3166-1 alpha-3" ;
                skos:definition "ISO 3166-1 Three-letter country code specification." .
 
 
 ###  http://openenergy-platform.org/ontology/chio/CHIO_00000101
 :CHIO_00000101 rdf:type owl:NamedIndividual ,
                         :CHIO_00000098 ;
-               rdfs:label "ISO 3166-1 numeric"@de ;
+               rdfs:label "ISO 3166-1 numeric" ;
                skos:definition "ISO 3166-1 three-digit country code specification." .
 
 
@@ -1071,7 +1078,7 @@
                         :CHIO_00000098 ;
                rdfs:comment "NUTS 2024 administrative region identifiers." ,
                             "http://data.europa.eu/eli/reg_del/2023/674/oj" ;
-               rdfs:label "NUTS 2024"@de .
+               rdfs:label "NUTS 2024" .
 
 
 #################################################################
