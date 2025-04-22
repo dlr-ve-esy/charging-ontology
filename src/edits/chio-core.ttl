@@ -827,6 +827,29 @@
                rdfs:label "current capacity" .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000094
+:CHIO_00000094 rdf:type owl:Class ;
+               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000472> ;
+               rdfs:comment "This definition refers to the postal code and not the mail distribution process, this is open to revision." ;
+               rdfs:label "postal region"@de ;
+               skos:definition "A Geospatial Region delimiting all the spatial regions designated by a postal code." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000095
+:CHIO_00000095 rdf:type owl:Class ;
+               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000390> ;
+               rdfs:label "postal code"@de ;
+               skos:definition "An identifier that differentiates spatial regions for the purpose of mail distribution." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000096
+:CHIO_00000096 rdf:type owl:Class ;
+               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000390> ;
+               rdfs:comment "Using thoroughfares as the basis of addresses would narrow down the definiton a lot. Addresses are very complex to model, specially when dealing with international data. For instance, in this project we decide to keep the definition broad." ;
+               rdfs:label "address"@de ;
+               skos:definition "A text that identifies a geospatial location in relation to proximate landmarks." .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> .
 
