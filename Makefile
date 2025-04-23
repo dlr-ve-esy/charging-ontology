@@ -198,12 +198,12 @@ $(VERSIONDIR)/%.ttl: $(ONTOLOGY_SOURCE)/%.ttl
 	$(call replace_devs,$@)
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl : | base
-	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml $(foreach f, $(VERSIONDIR)/$(ONTOLOGY_NAME).ttl $(TTL_COPY) $(OWL_COPY), --input $(f)) annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
-	$(call replace_ttls,$@)
+	$(ROBOT) merge --catalog $(VERSIONDIR)/catalog-v001.xml $(foreach f, $(VERSIONDIR)/$(ONTOLOGY_NAME).ttl $(TTL_COPY) $(OWL_COPY), --input $(f)) annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --version-iri $(IRI_ONTOLOGY)/releases/$(VERSION)/$(ONTOLOGY_NAME)-full.ttl --output $@
+	$(call replace_owls,$@)
 
 $(VERSIONDIR)/owl/$(ONTOLOGY_NAME)-full.owl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(call translate_to_ttl,$@,$<)
-	$(call replace_owls,$@)
+	$(call replace_ttls,$@)
 
 $(VERSIONDIR)/$(ONTOLOGY_NAME)-closure.ttl : $(VERSIONDIR)/$(ONTOLOGY_NAME)-full.ttl
 	$(ROBOT) reason --input $< --reasoner hermit --catalog $(VERSIONDIR)/catalog-v001.xml --axiom-generators "SubClass EquivalentClass DataPropertyCharacteristic EquivalentDataProperties SubDataProperty ClassAssertion EquivalentObjectProperty InverseObjectProperties ObjectPropertyCharacteristic SubObjectProperty ObjectPropertyRange ObjectPropertyDomain" --include-indirect true annotate --ontology-iri $(IRI_ONTOLOGY)$(SEPARATOR) --output $@
