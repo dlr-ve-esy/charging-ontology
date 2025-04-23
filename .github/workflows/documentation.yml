@@ -41,7 +41,9 @@ jobs:
       - name: Get the output
         run: echo "${{ steps.build.outputs.results }}"
       - name: Move Static Ontology files
-        run: cp -r ./${{ env.ONTOLOGY_VERSION }}/chio-full.ttl ./_site/releases/${{ env.ONTOLOGY_VERSION }}/chio-full.ttl
+        run: |
+          mkdir -p ./_site/releases/${{ env.ONTOLOGY_VERSION }}
+          cp -r ./${{ env.ONTOLOGY_VERSION }}/chio-full.ttl ./_site/releases/${{ env.ONTOLOGY_VERSION }}/chio-full.ttl
       - name: Move Build Artifacts
         run: cp -r ${{ github.workspace }}/public/ ./_site/
       - name: Upload artifact
