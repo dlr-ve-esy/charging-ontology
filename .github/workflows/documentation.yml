@@ -40,10 +40,6 @@ jobs:
           args: --source ./${{ env.ONTOLOGY_VERSION }}/chio-full.owx --config ./render-config.toml  --assets /static --templates /templates build --output ./public --render_imports
       - name: Get the output
         run: echo "${{ steps.build.outputs.results }}"
-      - name: Move Static Ontology files
-        run: |
-          mkdir -p ./_site/releases/${{ env.ONTOLOGY_VERSION }}
-          cp -r ./${{ env.ONTOLOGY_VERSION }}/chio-full.ttl ./_site/releases/${{ env.ONTOLOGY_VERSION }}/chio-full.ttl
       - name: Move Build Artifacts
         run: cp -r ${{ github.workspace }}/public/ ./_site/
       - name: Upload artifact
