@@ -493,6 +493,15 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/FacilityOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000229
+<https://www.commoncoreontologies.org/ont00000229> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000120> ;
+                                                   rdfs:label "Measurement Unit of Power"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Measurement Unit that is used as a standard for measurement of rates of work."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#example> "watt, horsepower" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/UnitsOfMeasureOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000246
 <https://www.commoncoreontologies.org/ont00000246> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000135> ;
@@ -602,6 +611,15 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
                                                    rdfs:label "Commercial Organization"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#definition> "An Organization that is the bearer of a Commercial Role and whose primary objective is to make a profit from the provision of goods or services."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000444
+<https://www.commoncoreontologies.org/ont00000444> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000120> ;
+                                                   rdfs:label "Measurement Unit of Energy"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Measurement Unit that is used as a standard for measurement of the Amount of work that is available in an object."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#example> "ft-lbs, calorie, horsepower, kilowatt" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/UnitsOfMeasureOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000460
