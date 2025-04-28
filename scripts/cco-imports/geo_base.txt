@@ -2,3 +2,5 @@ https://www.commoncoreontologies.org/ont00000251
 https://www.commoncoreontologies.org/ont00000487
 https://www.commoncoreontologies.org/ont00000213
 https://www.commoncoreontologies.org/ont00001341
+https://www.commoncoreontologies.org/ont00001766
+https://www.commoncoreontologies.org/ont00001764

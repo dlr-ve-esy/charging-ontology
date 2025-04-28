@@ -105,6 +105,17 @@
 
 
 #################################################################
+#    Data properties
+#################################################################
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000106
+:CHIO_00000106 rdf:type owl:DatatypeProperty ;
+               rdfs:domain <http://purl.obolibrary.org/obo/IAO_0000030> ;
+               rdfs:label "has value" ;
+               skos:definition "Generic relation to associate ICEs with their values" .
+
+
+#################################################################
 #    Classes
 #################################################################
 

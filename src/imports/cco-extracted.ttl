@@ -210,6 +210,30 @@ owl:topObjectProperty rdf:type owl:ObjectProperty .
 
 
 #################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#topDataProperty
+owl:topDataProperty rdf:type owl:DatatypeProperty .
+
+
+###  https://www.commoncoreontologies.org/ont00001764
+<https://www.commoncoreontologies.org/ont00001764> rdf:type owl:DatatypeProperty ;
+                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                   rdfs:label "has longitude value"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Data Property that has as its range the longitude value from some Geospatial Location coordinates set expressed in decimal degrees."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/GeospatialOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001766
+<https://www.commoncoreontologies.org/ont00001766> rdf:type owl:DatatypeProperty ;
+                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                   rdfs:label "has latitude value"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Data Property that has as its range the latitude value from some Geospatial Location coordinates set expressed in decimal degrees."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/GeospatialOntology"^^xsd:anyURI .
+
+
+#################################################################
 #    Classes
 #################################################################
 
