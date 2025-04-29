@@ -95,6 +95,35 @@
                skos:definition "x manages y iff x is an instance of an Agent and y is an instance of a Material Entity, such that both x and y participate in some instance of a Process wherein x actively enables the realization of the function of y." .
 
 
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000109
+:CHIO_00000109 rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf <https://www.commoncoreontologies.org/ont00001920> ;
+               rdfs:range <https://www.commoncoreontologies.org/ont00000127> ;
+               rdfs:label "has performance specification" ;
+               skos:definition "x has_performance_specification y iff y is a Performance Specification and x is an instance of Material Entity, such that y serves as a model for the operation of x." .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000110
+:CHIO_00000110 rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :CHIO_00000109 ;
+               rdfs:range :CHIO_00000091 ;
+               rdfs:label "has max voltage" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000111
+:CHIO_00000111 rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :CHIO_00000109 ;
+               rdfs:range :CHIO_00000093 ;
+               rdfs:label "has max current" .
+
+
+###  http://openenergy-platform.org/ontology/chio/CHIO_00000112
+:CHIO_00000112 rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :CHIO_00000109 ;
+               rdfs:range :CHIO_00000092 ;
+               rdfs:label "has max power" .
+
+
 ###  http://purl.obolibrary.org/obo/BFO_0000176
 <http://purl.obolibrary.org/obo/BFO_0000176> rdf:type owl:ObjectProperty .
 
