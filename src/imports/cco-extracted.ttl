@@ -370,6 +370,15 @@ owl:topDataProperty rdf:type owl:DatatypeProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000073
+<https://www.commoncoreontologies.org/ont00000073> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000399> ;
+                                                   rdfs:label "Temporal Interval Identifier"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "One-Dimensional Temporal Region Identifier"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Temporal Region Identifier that designates some Temporal Interval."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000077
 <https://www.commoncoreontologies.org/ont00000077> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000649> ;
@@ -604,6 +613,14 @@ owl:topDataProperty rdf:type owl:DatatypeProperty .
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
 
 
+###  https://www.commoncoreontologies.org/ont00000399
+<https://www.commoncoreontologies.org/ont00000399> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000686> ;
+                                                   rdfs:label "Temporal Region Identifier"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Designative Information Content Entity that designates some Temporal Region."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
+
+
 ###  https://www.commoncoreontologies.org/ont00000405
 <https://www.commoncoreontologies.org/ont00000405> rdf:type owl:Class ;
                                                    rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001152> ;
@@ -695,6 +712,15 @@ owl:topDataProperty rdf:type owl:DatatypeProperty .
                                                    <http://www.w3.org/2004/02/skos/core#definition> "An Organization whose purpose is to provide a service to other Agents."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Service_provider&oldid=1059415018"^^xsd:anyURI ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000529
+<https://www.commoncoreontologies.org/ont00000529> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000073> ;
+                                                   rdfs:label "Date Identifier"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Day Identifier"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Temporal Interval Identifier that designates some Day."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00000532
@@ -1165,6 +1191,15 @@ owl:topDataProperty rdf:type owl:DatatypeProperty .
                                                                                                        "Importantly, the definition states \"highest legitimate authority delimited by some Delimiting Domain\" and not \"highest legitimate authority in some Delimiting Domain.\" The government of Wales is the highest legitimate authority delimited by some Delimiting Domain but it is not the highest legitimate authority in that domain, which would be the government of the United Kingdom."@en ;
                                                    <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Government&oldid=1063736308"^^xsd:anyURI ;
                                                    <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001340
+<https://www.commoncoreontologies.org/ont00001340> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000529> ;
+                                                   rdfs:label "Calendar Date Identifier"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Date Identifier that designates some Day by using a combination of Day, Week, Month, or Year Identifiers formatted according to an implementation of a Calendar System."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#example> "January 1, 2018; 1 January 2018; 01/01/18; 01Jan18" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .
 
 
 ###  https://www.commoncoreontologies.org/ont00001341

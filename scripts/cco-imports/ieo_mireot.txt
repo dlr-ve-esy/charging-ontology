@@ -8,3 +8,4 @@ https://www.commoncoreontologies.org/ont00000626
 https://www.commoncoreontologies.org/ont00000127
 https://www.commoncoreontologies.org/ont00000003
 https://www.commoncoreontologies.org/ont00000120
+https://www.commoncoreontologies.org/ont00001340
