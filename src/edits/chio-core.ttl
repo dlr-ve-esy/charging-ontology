@@ -924,6 +924,67 @@
                rdfs:label "territory name" .
 
 
+###  http://openenergy-platform.org/ontology/chio/chio-core/CHIO_00000087
+:CHIO_00000087 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000015 ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <https://www.commoncoreontologies.org/ont00001920> ;
+                                 owl:hasValue :CHIO_00000086
+                               ] ;
+               rdfs:label "Type 3 pattern"@en ;
+               skos:definition "A connection pattern built according to the IEC 62196-2 Type 3" .
+
+
+###  http://openenergy-platform.org/ontology/chio/chio-core/CHIO_00000088
+:CHIO_00000088 rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :CHIO_00000012
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                            owl:someValuesFrom :CHIO_00000089
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf :CHIO_00000012 ;
+               rdfs:comment "Designed to operate using single phase AC current." ;
+               rdfs:label "Type 3A connector"@en ;
+               skos:definition "A connector with a Type 3A connection pattern." .
+
+
+###  http://openenergy-platform.org/ontology/chio/chio-core/CHIO_00000089
+:CHIO_00000089 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000087 ;
+               :CHIO_00000036 "IEC_62196_T3A" ;
+               rdfs:comment "The pins are one earth, one line phase, one neutral and one for signaling." ;
+               rdfs:label "Type 3A pattern"@en ;
+               skos:definition "Type 3 pattern with four pins." .
+
+
+###  http://openenergy-platform.org/ontology/chio/chio-core/CHIO_00000090
+:CHIO_00000090 rdf:type owl:Class ;
+               rdfs:subClassOf :CHIO_00000087 ;
+               :CHIO_00000036 "IEC_62196_T3C" ;
+               rdfs:comment "The pins are one earth, three line phases, one neutral and two for signaling." ;
+               rdfs:label "Type 3C pattern"@en ;
+               skos:definition "Type 3 pattern with seven pins." .
+
+
+###  http://openenergy-platform.org/ontology/chio/chio-core/CHIO_00000091
+:CHIO_00000091 rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :CHIO_00000012
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
+                                                            owl:someValuesFrom :CHIO_00000090
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf :CHIO_00000012 ;
+               rdfs:comment "Designed to operate in single- and three-phase AC current." ;
+               rdfs:label "Type 3C connector"@en ;
+               skos:definition "A connector with a Type 3C connection pattern" .
+
+
 ###  http://openenergy-platform.org/ontology/oeo/OEO_00000068
 <http://openenergy-platform.org/ontology/oeo/OEO_00000068> rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> .
 
