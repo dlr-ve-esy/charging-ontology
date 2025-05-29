@@ -969,8 +969,8 @@
                skos:definition "Type 3 pattern with seven pins." .
 
 
-###  http://openenergy-platform.org/ontology/chio/chio-core/CHIO_00000091
-:CHIO_00000091 rdf:type owl:Class ;
+###  http://openenergy-platform.org/ontology/chio/chio-core/CHIO_00000105
+:CHIO_00000105 rdf:type owl:Class ;
                owl:equivalentClass [ owl:intersectionOf ( :CHIO_00000012
                                                           [ rdf:type owl:Restriction ;
                                                             owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000196> ;
