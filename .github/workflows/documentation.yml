@@ -44,8 +44,10 @@ jobs:
         run: cp -r ${{ github.workspace }}/public/ ./_site/
       - name: Create version folder
         run: mkdir -p ./_site/releases/${{ env.ONTOLOGY_VERSION }}
-      - name: Copy full ontology
+      - name: Copy full owx ontology
         run: cp ./${{ env.ONTOLOGY_VERSION }}/chio-full.owx ./_site/releases/${{ env.ONTOLOGY_VERSION }}/chio-full.owx
+      - name: Copy full ttl ontology
+        run: cp ./${{ env.ONTOLOGY_VERSION }}/chio-full.owx ./_site/releases/${{ env.ONTOLOGY_VERSION }}/chio-full.ttl
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
