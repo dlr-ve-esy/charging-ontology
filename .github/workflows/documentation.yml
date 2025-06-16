@@ -47,7 +47,7 @@ jobs:
       - name: Copy full owx ontology
         run: cp ./${{ env.ONTOLOGY_VERSION }}/chio-full.owx ./_site/releases/${{ env.ONTOLOGY_VERSION }}/chio-full.owx
       - name: Copy full ttl ontology
-        run: cp ./${{ env.ONTOLOGY_VERSION }}/chio-full.owx ./_site/releases/${{ env.ONTOLOGY_VERSION }}/chio-full.ttl
+        run: cp ./${{ env.ONTOLOGY_VERSION }}/chio-full.ttl ./_site/releases/${{ env.ONTOLOGY_VERSION }}/chio-full.ttl
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
