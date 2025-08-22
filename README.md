@@ -1,5 +1,5 @@
 # Charging infrastructure ontology
-Explorethe ontology: https://dlr-ve-esy.github.io/charging-ontology/
+Explore the ontology: https://dlr-ve-esy.github.io/charging-ontology/
 
 This is a bfo-based charging infrastructure ontology, intended as a tool for
 the demonstration of the "Ontology first data-model design" methodology part of
